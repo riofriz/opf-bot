@@ -1,4 +1,5 @@
 let corevars = require('./corevars');
+let fun = require('./fun');
 const Discord = require('discord.js');
 const fs = require('fs');
 
@@ -15,7 +16,7 @@ module.exports = {
         (
             !message.content.toLowerCase().startsWith(commandPrefix)
             && !message.isMentioned(client.user)
-            && corevars.isException(message.content.toLowerCase()) === false
+            && corevars.isException(fun.commandsWithNoCommands(message.content.toLowerCase())) === false
         ) { return false;
         } else { return true;
         }

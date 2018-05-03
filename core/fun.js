@@ -86,13 +86,15 @@ module.exports = {
             "symphogear",
             "y'all"
         ];
+        let result;
         for (let i = 0; i !== substrings.length; i++) {
             let string = str.split(' ');
             for (let j = 0; j !== string.length; j++) {
                 if (string[j] === substrings[i]) {
-                    return string[j];
+                    result = string[j];
                 }
             }
         }
+        return result;
     }
 };
