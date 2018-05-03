@@ -75,6 +75,25 @@ module.exports = {
             .then(m => {
                 m.delete();
             });
-    }
+    },
 
+    /**
+     * @param str
+     * @returns {*}
+     */
+    commandsWithNoCommands: function(str) {
+        let substrings = [
+            "symphogear",
+            "y'all"
+        ];
+        for (let i = 0; i !== substrings.length; i++) {
+            let string = str.split(' ');
+            for (let j = 0; j !== string.length; j++) {
+                if (string[j] === substrings[i]) {
+                    return string[j];
+                }
+            }
+        }
+        return null;
+    }
 };
