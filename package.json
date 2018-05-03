@@ -1,0 +1,17 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "Bot to connect https://opforum.net",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "rss-parser": "^3.1.2",
+    "xml2json": "^0.11.2",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
