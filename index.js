@@ -47,8 +47,10 @@ client.on("message", (message) => {
         corecommands.helloMessage(message);
     }
 
-    if (message.content.toLowerCase().includes("y'all")) {
+    if (commandsWithNoCommands(message.content.toLowerCase()) === "y'all") {
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
+    } else if (commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
+        message.channel.send("mmmh.. you mean S Y M P H O G E A R, right? <:rip:433296953208471592>");
     }
 
     if(command === "help"){
