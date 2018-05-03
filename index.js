@@ -1,4 +1,4 @@
-// Import the discord.js module
+// Import all the modules.
 const Discord = require('discord.js');
 let corevars = require('./core/corevars');
 let corecommands = require('./core/corecommands');
@@ -6,23 +6,13 @@ let forumapi = require('./core/forumapi');
 let getToken = require('./core/getToken');
 let fun = require('./core/fun');
 
-// Create an instance of Discord that we will use to control the bot
+// Let's call discord now.
 const client = new Discord.Client();
 
-//const token = 'NDQxMjAzMTEyNDYwNjgxMjE2.Dcs2rQ.SrajRjkbaL2mgF1e8XZdEBL4aRg';
 const token = getToken.getToken();
-
-// Here you find the prefix for all commands.
-// For example: When it is set to "!" then you can execute commands with "!" like "!help"
-//              or if you set it to "_" then you can execute commands like "_help".
 const commandPrefix = "opf-";
 
-
-
-
-
-
-// This is a function which will be called when the bot is ready.
+// OPFBOT READY? GOOO
 client.on("ready", () => {
     console.log("Bot started!");
     client.user.setUsername("OPF MegaBot");

@@ -66,6 +66,9 @@ module.exports = {
         }
     },
 
+    /**
+     * @param message
+     */
     evilLaugh: function(message) {
         message.channel.send('Evil Laugh!!!!111!!!!');
         message.channel.fetchMessage(message.id)

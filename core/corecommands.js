@@ -4,6 +4,12 @@ const fs = require('fs');
 
 module.exports = {
 
+    /**
+     * @param client
+     * @param commandPrefix
+     * @param message
+     * @returns {boolean}
+     */
     globalCheck: function(client, commandPrefix, message) {
         if
         (
@@ -55,27 +61,16 @@ module.exports = {
         })
             .then(messages => {
                 let msg_array = messages;
-                // filter the message to only your own
-                //msg_array = msg_array.filter(m => m.author.id === args[0]);
-                // limit to the requested number + 1 for the command message
                 msg_array = msg_array.filter(m =>  m.id === thisCommand[0]);
 
                 message.channel.fetchMessage(thisCommand[0])
                     .then(m => {
-                        // let embed1 = new Discord.RichEmbed()
-                        //     .setFooter()
-                        //     .setColor(colorArray[randomColor]);
-                        //@USER... QUOTER said "(message)" to:
-
                         message.channel.send('<@'+m.author.id+'>, '+message.author.username+' said " '+thisCommand[1]+'" to: \n' + '```'+m.content+'```');
-                        // Send the embed with message.channel.send()
                     });
                 message.channel.fetchMessage(message.id)
                     .then(m => {
                         m.delete();
                     });
-
-                //message.channel.send(fetchMessage(thisCommand[0]));
             });
     },
 
@@ -90,6 +85,9 @@ module.exports = {
         return deletemessage;
     },
 
+    /**
+     * @param message
+     */
     credits: function(message) {
         message.channel.send('<@408255473821679617> made me, he\'s boss!');
     }

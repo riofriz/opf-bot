@@ -81,6 +81,11 @@ module.exports = {
         message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
     },
 
+    /**
+     * BETA, NOT WORKING FOR NOW.
+     * @param message
+     * @param args
+     */
     whois: function(message, args) {
         let nick = '';
         lineReader.on('close', function(){
