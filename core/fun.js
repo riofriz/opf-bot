@@ -81,13 +81,13 @@ module.exports = {
      * @param str
      * @returns {*}
      */
-    commandsWithNoCommands: function(str) {
+    commandsWithNoCommands: function(string) {
         let substrings = [
             "symphogear",
             "y'all"
         ];
         for (let i = 0; i !== substrings.length; i++) {
-            let string = str.split(' ');
+            string = str.split(' ');
             for (let j = 0; j !== string.length; j++) {
                 if (string[j] === substrings[i]) {
                     return string[j];
