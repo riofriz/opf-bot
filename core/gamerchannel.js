@@ -91,15 +91,16 @@ module.exports = {
                             } else {
                                 if (typeof json_body['results'][key]['aliases'] !== 'undefined') {
                                     console.log(json_body['results'][key]['aliases']);
-                                    aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
-                                    if (aliases.findIndex(item => string.toLowerCase().trim() === item.toLowerCase().trim())) {
-                                        for (let j = 0; j !== aliases.length; j++) {
-                                            if (typeof aliases[j] !== 'undefined') {
-                                                console.log(aliases[j]+' - alias');
-                                                alternatives += aliases[j] + '\n';
-                                            }
-                                        }
-                                    }
+                                    aliases = json_body['results'][key]['aliases'];
+                                    // aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
+                                    // if (aliases.findIndex(item => string.toLowerCase().trim() === item.toLowerCase().trim())) {
+                                    //     for (let j = 0; j !== aliases.length; j++) {
+                                    //         if (typeof aliases[j] !== 'undefined') {
+                                    //             console.log(aliases[j]+' - alias');
+                                    //             alternatives += aliases[j] + '\n';
+                                    //         }
+                                    //     }
+                                    // }
                                 }
                             }
                         }
@@ -108,7 +109,7 @@ module.exports = {
                         message.channel.send(name);
                         message.channel.send(desc);
                     } else {
-                        message.channel.send('```'+alternatives+'```');
+                        message.channel.send('```'+aliases+'```');
                     }
                 }
             }
