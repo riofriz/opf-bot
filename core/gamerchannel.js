@@ -40,7 +40,7 @@ module.exports = {
                         console.log(apiName);
                         console.log(check);
                         console.log(userCheck);
-                        if (check.trim() === userCheck.trim()) {
+                        if (apiName.indexOf(userCheck.trim()) > -1) {
                             message.channel.send(check);
                             message.channel.send(gameDescription);
                         } else {
