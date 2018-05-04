@@ -15,8 +15,8 @@ module.exports = {
             string += args[i]+' ';
         }
 
-        let url = 'https://www.giantbomb.com';
-        let path = '/api/search/'+qs.stringify('?api_key='+process.env.GIANTBOMB+'&format=json&query='+string);
+        let url = 'https://www.giantbomb.com/api/search/'+qs.stringify('?api_key='+process.env.GIANTBOMB+'&format=json&query='+string);
+        let path = '/';
         let call = url+path;
         let options = {
             host: url,
@@ -27,7 +27,7 @@ module.exports = {
 
 
         https.get(options, function (res) {
-            var json = '';
+            let json = '';
             res.on('data', function (chunk) {
                 json += chunk;
             });
