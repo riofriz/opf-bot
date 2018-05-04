@@ -141,8 +141,6 @@ module.exports = {
     },
 
     editMessageToSpoiler: function(commandPrefix, message, args) {
-        req.write(query);
-        req.end();
         message.channel.fetchMessage(args[0])
             .then(m => {
                 let query = qs.stringify({
@@ -171,6 +169,8 @@ module.exports = {
                         m.edit('***SPOILER*** \n' + data);
                     });
                 });
+                req.write(query);
+                req.end();
             });
     }
 };
