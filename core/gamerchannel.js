@@ -31,7 +31,7 @@ module.exports = {
 
         parser.on('error', function(err) { message.channel.send('Whops.. something must have gone wrong', err); });
         let data = '';
-        https.get(options, function(res) {
+        https.request(options, function(res) {
             if (res.statusCode >= 200) {
                 res.on('data', function(data_) { data += data_.toString(); });
                 res.on('end', function() {
