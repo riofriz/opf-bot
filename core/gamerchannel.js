@@ -14,7 +14,7 @@ module.exports = {
         let title;
         let messageToSend;
         for (let i = 0; i !== args.length; i++) {
-            string += args[i]+' ';
+            string += args[i] + ' ';
         }
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
@@ -24,13 +24,13 @@ module.exports = {
             url: 'https://www.giantbomb.com/api/search',
             method: 'GET',
             headers: headers,
-            qs: {'api_key': process.env.GIANTBOMB, 'format': 'json', 'query' : string}
+            qs: {'api_key': process.env.GIANTBOMB, 'format': 'json', 'query': string}
         };
 
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-            let json_body = JSON.parse(body);
-            let apiName;
+                let json_body = JSON.parse(body);
+                let apiName;
                 if (json_body['number_of_page_results'] > 0) {
                     if (json_body['results'][0]['aliases'] !== null) {
                         apiName = json_body['results'][0]['aliases'].replace(/\n/g, '').split(/\r/g);
@@ -56,5 +56,6 @@ module.exports = {
                     console.log(body);
                 }
             }
-    })
+        });
+    }
 };
