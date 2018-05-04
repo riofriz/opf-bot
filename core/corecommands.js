@@ -40,6 +40,8 @@ module.exports = {
             .addField(commandPrefix+"latest anime", "Shows the latest OP episode")
             .addField(commandPrefix+"latest nakama", "Last user to join the forum")
             .addField(commandPrefix+"love <user>", "<:pfft:393455142239862795>")
+            .addField(commandPrefix+"sgame", "Displays information about the game requested.")
+            .addField(commandPrefix+"sgame", "Displays information about the game requested.")
             //.addField(commandPrefix+"username <nickontheforum>", "connects your discord account to opf")
             //.addField(commandPrefix+"whois <user>", "If registered shows who the user is on opf")
             .addField(commandPrefix+"q <messageid> > reply to message", "Quotes message. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
