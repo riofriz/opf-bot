@@ -83,6 +83,8 @@ module.exports = {
     garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
             message.channel.send('whops.. you can\'t.. <:pfft:393455142239862795>');
+        } else if (message.author.id === '273453235287883776') {
+            message.channel.send('I\'m sorry Grin.. Can\'t let you use this command.. P..p..please understand..');
         } else {
             if (args[0]) {
                 let firstStrip = args[0].replace('<@', '');
