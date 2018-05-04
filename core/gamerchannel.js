@@ -30,9 +30,10 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
+                let apiName;
 
-                if (json_body['results'][0]['aliases']) {
-                    let apiName = json_body['results'][0]['aliases'].split(/\r|\n/);
+                if (json_body['results'][0]['aliases'] !== 'undefined') {
+                    apiName = json_body['results'][0]['aliases'].split(/\r|\n/);
                 }
                 if (json_body['results'][0]) {
                     console.log(apiName);
