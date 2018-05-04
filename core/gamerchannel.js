@@ -21,7 +21,6 @@ module.exports = {
         }
         let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
 
-
         parser.on('error', function(err) { message.channel.send('Whops.. something must have gone wrong', err); });
         let data = '';
         https.get(url, function(res) {
@@ -36,6 +35,9 @@ module.exports = {
                     } else {
                         messageToSend = 'Please be more specific';
                     }
+
+                    message.channel.send(messageToSend);
+
                     parser.parseString(data, function(err, result) {
                         console.log('FINISHED', err, result);
                     });
