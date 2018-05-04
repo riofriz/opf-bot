@@ -7,6 +7,7 @@ const Discord = require('discord.js');
 let string = '';
 let https = require('https');
 let request = require('request');
+let striptags = require('striptags');
 
 module.exports = {
     gamesearch: function(message, args) {
@@ -15,18 +16,6 @@ module.exports = {
         for (let i = 0; i !== args.length; i++) {
             string += args[i]+' ';
         }
-
-        // let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&format=json&query='+string;
-        // let path = '/';
-        // let call = url+path;
-        // let options = {
-        //     host: url,
-        //     path: path,
-        //     headers: {'User-Agent': "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com"},
-        //     method: 'GET',
-        // };
-
-        // Set the headers
         let headers = {
             'User-Agent':       'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
@@ -41,7 +30,9 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
-                console.log(json_body);
+                //console.log(json_body);
+                console.log(json_body.results.aliases);
+                console.log(striptags(json_body.results.aliases));
             } else {
                 console.log(error.message);
                 console.log(error);
