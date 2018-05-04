@@ -74,6 +74,7 @@ module.exports = {
                 let thumb = '';
                 let works = true;
                 let aliases;
+                let renderAliases;
                 if (json_body['number_of_page_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
@@ -90,14 +91,10 @@ module.exports = {
                                 desc = striptags(json_body['results'][key].deck);
                             } else {
                                 if (typeof json_body['results'][key]['aliases'] !== 'undefined') {
-                                    console.log(json_body['results'][key]['aliases']);
                                     aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
                                     if (aliases.findIndex(item => string.toLowerCase().trim() === item.toLowerCase().trim())) {
-                                        for (let j = 0; j !== aliases.length; j++) {
-                                            if (typeof aliases[j] !== 'undefined') {
-                                                alternatives += aliases[j] + '\n';
-                                            }
-                                        }
+                                        console.log(json_body['results'][key]['aliases']);
+                                        renderAliases += json_body['results'][key]['aliases']+'\n';
                                     }
                                 }
                             }
@@ -108,7 +105,7 @@ module.exports = {
                         message.channel.send(desc);
                     } else {
                         console.log(alternatives);
-                        message.channel.send('```'+alternatives+'```');
+                        message.channel.send('```'+renderAliases+'```');
                     }
                 }
             }
