@@ -105,7 +105,12 @@ client.on("message", (message) => {
 
     // GAMERS
     if (commandWithArgs === 'sgame') {
-        gamerchannel.gamesearch(message, args);
+
+        if (message.channel.name === 'gamers-general') {
+            gamerchannel.gamesearch(message, args);
+        } else {
+            message.channel.reply('Sorry, this is not allowed in here.');
+        }
     }
 
 });
