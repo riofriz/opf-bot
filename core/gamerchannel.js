@@ -19,10 +19,12 @@ module.exports = {
         for (let i = 0; i !== args.length; i++) {
             string += args[i]+' ';
         }
-        let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
+        let url = 'https://www.giantbomb.com';
+        let path = '/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
 
         let options = {
             host: url,
+            path: path,
             "user-agent": "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com",
             method: 'GET',
         };
