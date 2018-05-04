@@ -27,41 +27,61 @@ module.exports = {
             qs: {'api_key': process.env.GIANTBOMB, 'format': 'json', 'query': string}
         };
 
+        // request(options, function (error, response, body) {
+        //     if (!error && response.statusCode === 200) {
+        //         let json_body = JSON.parse(body);
+        //         let apiName;
+        //         if (json_body['number_of_page_results'] > 0) {
+        //             if (json_body['results'][0]['aliases'] !== null) {
+        //                 apiName = json_body['results'][0]['aliases'].replace(/\n/g, '').split(/\r/g);
+        //                 let check = '';
+        //                 let userCheck = string.toLowerCase();
+        //                 let gameDescription = striptags(json_body['results'][0]['deck']);
+        //                 if (apiName.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
+        //                     for (let i = 0; i !== apiName.length; i++) {
+        //                         if (apiName[i].trim().toLowerCase() === userCheck.trim().toLowerCase()) {
+        //                             check = apiName[i].trim();
+        //                         } else {
+        //                             console.log(i+escape(apiName[i].trim().toLowerCase())+'api');
+        //                             console.log(i+escape(userCheck.trim().toLowerCase())+'user');
+        //                         }
+        //                     }
+        //                     if (check === '') {
+        //                         check = apiName[0].trim();
+        //                     }
+        //                     message.channel.send(check);
+        //                     message.channel.send(gameDescription);
+        //                 } else {
+        //                     message.channel.send('Please, be a bit more specific');
+        //                 }
+        //             } else {
+        //                 message.channel.send('Couldn\'t find anything for you.. sorry.. :( ');
+        //             }
+        //
+        //         } else {
+        //             console.log(error);
+        //         }
+        //     }
+        // });
+
+
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 let apiName;
                 if (json_body['number_of_page_results'] > 0) {
-                    if (json_body['results'][0]['aliases'] !== null) {
-                        apiName = json_body['results'][0]['aliases'].replace(/\n/g, '').split(/\r/g);
-                        let check = '';
-                        let userCheck = string.toLowerCase();
-                        let gameDescription = striptags(json_body['results'][0]['deck']);
-                        if (apiName.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
-                            for (let i = 0; i !== apiName.length; i++) {
-                                if (apiName[i].trim().toLowerCase() === userCheck.trim().toLowerCase()) {
-                                    check = apiName[i].trim();
-                                } else {
-                                    console.log(i+escape(apiName[i].trim().toLowerCase())+'api');
-                                    console.log(i+escape(userCheck.trim().toLowerCase())+'user');
-                                }
-                            }
-                            if (check === '') {
-                                check = apiName[0].trim();
-                            }
-                            message.channel.send(check);
-                            message.channel.send(gameDescription);
-                        } else {
-                            message.channel.send('Please, be a bit more specific');
+                    for (let key in json_body['results']) {
+                        if (json_body['results'].hasOwnProperty(key)) {
+                            console.log(json_body['results'][key].name);
+                            console.log(striptags(json_body['results'][key].deck));
                         }
-                    } else {
-                        message.channel.send('Couldn\'t find anything for you.. sorry.. :( ');
                     }
-
-                } else {
-                    console.log(error);
                 }
             }
         });
+
+
+
+
     }
 };
