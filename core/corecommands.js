@@ -115,7 +115,6 @@ module.exports = {
 
         let req = https.request({
             host: 'pastebin.com',
-            port: 80,
             path: '/api/api_post.php',
             method: 'POST',
             headers: {
