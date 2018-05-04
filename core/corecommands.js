@@ -140,7 +140,7 @@ module.exports = {
         }
     },
 
-    editMessageToSpoiler: function(commandPrefix, message, args) {
+    editMessageToSpoiler: function(message, args) {
         message.channel.fetchMessage(args[0])
             .then(m => {
                 let query = qs.stringify({

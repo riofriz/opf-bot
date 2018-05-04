@@ -73,7 +73,7 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === 'spoilalert') {
-        corecommands.editMessageToSpoiler(message);
+        corecommands.editMessageToSpoiler(message, args);
     }
 
     // FORUM API
