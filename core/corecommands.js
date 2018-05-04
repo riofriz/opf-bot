@@ -166,7 +166,8 @@ module.exports = {
                         data += chunk;
                     });
                     res.on('end', function () {
-                        m.edit('***SPOILER*** \n' + data);
+                        m.delete();
+                        message.channel.send('***SPOILER*** \n' + data);
                     });
                 });
                 req.write(query);
