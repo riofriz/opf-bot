@@ -74,42 +74,36 @@ module.exports = {
                 let thumb = '';
                 let works = true;
                 let aliases;
+                let site_url;
                 if (json_body['number_of_page_results'] > 0) {
+                    let counter = 0;
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
-                            // if (json_body['results'][key]['aliases']) {
-                            //     aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
-                            // } else {
-                            //     aliases = [
-                            //         json_body['results'][key].name
-                            //     ]
-                            // }
-
+                            if (counter === 0) {
+                                thumb = json_body['results'][key]['image']['medium_url'];
+                            }
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
+                                site_url = json_body['result'][key].site_detail_url;
                             } else {
                                 if (typeof json_body['results'][key]['aliases'] !== 'undefined') {
                                     console.log(json_body['results'][key]['aliases']);
-                                    aliases += json_body['results'][key].name;
-                                    // aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
-                                    // if (aliases.findIndex(item => string.toLowerCase().trim() === item.toLowerCase().trim())) {
-                                    //     for (let j = 0; j !== aliases.length; j++) {
-                                    //         if (typeof aliases[j] !== 'undefined') {
-                                    //             console.log(aliases[j]+' - alias');
-                                    //             alternatives += aliases[j] + '\n';
-                                    //         }
-                                    //     }
-                                    // }
+                                    aliases += json_body['results'][key].name+'\n';
                                 }
                             }
                         }
+                        counter++;
                     }
                     if (name !== '') {
-                        message.channel.send(name);
-                        message.channel.send(desc);
+                        let embed = new Discord.RichEmbed()
+                            .setThumbnail(url=thumb)
+                            .addField(name, desc)
+                            .setColor(corevars.randomColor())
+                            .setFooter(site_url);
+                        message.channel.send({embed: embed});
                     } else {
-                        message.channel.send('Mhhh.. maybe you could try this instead? \n\n ```'+aliases+'```');
+                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases+'```');
                     }
                 } else {
                     message.channel.send('mmmh.. are you actually sure you wanted to search '+string+'? Check for typos.. maybe.. ')
