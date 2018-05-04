@@ -3,7 +3,7 @@ require("dotenv").config();
 let corevars = require('./corevars');
 const Discord = require('discord.js');
 let request = require("request");
-let string;
+let string = '';
 
 module.exports = {
     gamesearch: function(message, args) {
@@ -13,7 +13,7 @@ module.exports = {
 
         let request = require('request');
         let options = {
-            url: 'https://api-endpoint.igdb.com/games/search?q='+string,
+            url: 'https://api-endpoint.igdb.com/games/search?q=Kingdom Hearts 2',
             headers: {
                 'User-Agent': 'request',
                 "user-key": process.env.IGDB_TOKEN
@@ -21,6 +21,7 @@ module.exports = {
         };
         console.log('https://api-endpoint.igdb.com/games/search?q='+string);
         function callback(error, response, body) {
+            console.log(response);
             if (!error && response.statusCode == 200) {
                 let info = JSON.parse(body);
                 console.log(info);
