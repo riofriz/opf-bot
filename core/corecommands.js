@@ -131,7 +131,7 @@ module.exports = {
                     data += chunk;
                 });
                 res.on('end', function () {
-                    message.channel.send('***SPOILER***\n' + string[0] + ': ' + data);
+                    message.channel.send('```diff\n+ ***SPOILER***```\n' + string[0] + ': ' + data);
                 });
             });
             req.write(query);
