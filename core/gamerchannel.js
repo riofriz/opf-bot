@@ -43,7 +43,7 @@ module.exports = {
                     });
                 });
             } else {
-                console.log('error!! '+url);
+                console.log('error!! '+url+' '+res.statusCode+'\n'+res);
             }
         });
 
