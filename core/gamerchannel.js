@@ -13,7 +13,7 @@ module.exports = {
         for (let i = 0; i !== args.length; i++) {
             string += args[i]+' ';
         }
-        let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.IGDB_TOKEN+'&query='+string;
+        let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
         (async () => {
             let feed = await parser.parseURL(url);
 
