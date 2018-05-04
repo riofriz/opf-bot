@@ -78,6 +78,21 @@ module.exports = {
     },
 
     /**
+     * @param message
+     */
+    garchu: function(message, args) {
+        if (message.author.id === '307390107411939329') {
+            message.channel.send('whops.. you can\'t.. <:pfft:393455142239862795>');
+        } else {
+            const embed = new Discord.RichEmbed()
+                .setColor(corevars.ramdomColor())
+                .setTitle('GARCHUUUUUUUUU '+`${args[0]}`)
+                .setThumbnail("https://vignette.wikia.nocookie.net/fairytail/images/7/79/Sanji%27s_Nosebleed.png")
+                .setImage('https://78.media.tumblr.com/7278a764d558c352b4afbf38dfc69b33/tumblr_om24udgwBU1vbwog6o1_1280.gif');
+        }
+    },
+
+    /**
      * @param str
      * @returns {*}
      */

@@ -43,6 +43,10 @@ client.on("message", (message) => {
 
     // CORE COMMANDS
 
+    if (command === 'who\'s boss') {
+        corecommands.credits(message);
+    }
+
     if(command === "hello"){
         corecommands.helloMessage(message);
     }
@@ -93,8 +97,8 @@ client.on("message", (message) => {
         fun.evilLaugh(message);
     }
 
-    if (command === 'who\'s boss') {
-        corecommands.credits(message);
+    if (commandWithArgs === 'garchu') {
+        fun.garchu(message, args);
     }
 
 });
