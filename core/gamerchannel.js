@@ -22,7 +22,7 @@ module.exports = {
         function callback(error, response, body) {
             if (!error && response.statusCode == 200) {
                 let info = JSON.parse(body);
-                console.log(body);
+                console.log(info);
                 //console.log(info.forks_count + " Forks");
             } else {
                 message.channel.send('Ehm.. this is embarassing.. There was a little issue.'+error);
