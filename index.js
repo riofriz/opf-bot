@@ -109,7 +109,7 @@ client.on("message", (message) => {
         if (message.channel.name === 'gamers-general') {
             gamerchannel.gamesearch(message, args);
         } else {
-            message.channel.reply('Sorry, this is not allowed in here.');
+            message.channel.send('Sorry, this is not allowed in here.');
         }
     }
 
