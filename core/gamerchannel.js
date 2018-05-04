@@ -3,10 +3,10 @@ require("dotenv").config();
 let corevars = require('./corevars');
 const Discord = require('discord.js');
 let request = require("request");
+let string;
 
 module.exports = {
     gamesearch: function(message, args) {
-        let string;
         for (let i = 0; i <= args.length; i++) {
             string += args[i]+' ';
         }
@@ -25,6 +25,7 @@ module.exports = {
                 console.log(info);
                 //console.log(info.forks_count + " Forks");
             } else {
+                console.log(info);
                 message.channel.send('Ehm.. this is embarassing.. There was a little issue.'+error);
             }
         }
