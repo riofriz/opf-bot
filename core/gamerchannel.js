@@ -105,7 +105,7 @@ module.exports = {
                             .setThumbnail(url=thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())
-                            .setFooter(site_url);
+                            .setFooter(siteurl);
                         message.channel.send({embed: embed});
                     } else {
                         message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases.replace('undefined', '')+'```');
