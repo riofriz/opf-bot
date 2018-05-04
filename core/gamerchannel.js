@@ -7,7 +7,7 @@ let string;
 
 module.exports = {
     gamesearch: function(message, args) {
-        for (let i = 0; i <= args.length; i++) {
+        for (let i = 0; i !== args.length; i++) {
             string += args[i]+' ';
         }
 
