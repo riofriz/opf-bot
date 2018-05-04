@@ -41,6 +41,9 @@ module.exports = {
                             for (let i = 0; i !== apiName.length; i++) {
                                 if (apiName[i].trim().toLowerCase() === userCheck.trim().toLowerCase()) {
                                     check = apiName[i].trim();
+                                } else {
+                                    console.log(i+decode(apiName[i].trim().toLowerCase())+'api');
+                                    console.log(i+decode(userCheck.trim().toLowerCase())+'user');
                                 }
                             }
                             if (check === '') {
