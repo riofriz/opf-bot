@@ -33,7 +33,7 @@ module.exports = {
                 let apiName;
 
                 if (json_body['results'][0]['aliases'] !== 'undefined') {
-                    apiName = json_body['results'][0]['aliases'].split(/\r|\n/);
+                    apiName = json_body['results'][0]['aliases'].replace(/\n/g, '').split(/\r/g);
                 }
                 if (json_body['results'][0]) {
                     let check = apiName[0].toLowerCase();
