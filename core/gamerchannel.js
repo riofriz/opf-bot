@@ -6,6 +6,7 @@ const Discord = require('discord.js');
 //let parser = new Parser();
 let string = '';
 let https = require('https');
+let request = require('request');
 
 module.exports = {
     gamesearch: function(message, args) {
@@ -15,37 +16,37 @@ module.exports = {
             string += args[i]+' ';
         }
 
-        let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&format=json&query='+string;
-        let path = '/';
-        let call = url+path;
-        let options = {
-            host: url,
-            path: path,
-            headers: {'User-Agent': "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com"},
-            method: 'GET',
+        // let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&format=json&query='+string;
+        // let path = '/';
+        // let call = url+path;
+        // let options = {
+        //     host: url,
+        //     path: path,
+        //     headers: {'User-Agent': "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com"},
+        //     method: 'GET',
+        // };
+
+        // Set the headers
+        let headers = {
+            'User-Agent':       'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
 
+        let options = {
+            url: 'https://www.giantbomb.com/api/search',
+            method: 'GET',
+            headers: headers,
+            qs: {'api_key': process.env.GIANTBOMB, 'format': 'json', 'query' : string}
+        };
 
-        https.get(options, function (res) {
-            let json = '';
-            res.on('data', function (chunk) {
-                json += chunk;
-            });
-            res.on('end', function () {
-                if (res.statusCode >= 200) {
-                    try {
-                        var data = JSON.parse(json);
-                        // data is available here:
-                        console.log(data);
-                    } catch (e) {
-                        console.log('Error parsing JSON!');
-                    }
-                } else {
-                    console.log('Status:', res.statusCode);
-                }
-            });
-        }).on('error', function (err) {
-            console.log('Error:', err);
-        });
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                console.log(json_body);
+            } else {
+                console.log(error.message);
+                console.log(error);
+                console.log(body);
+            }
+        })
     }
 };
