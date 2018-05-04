@@ -108,7 +108,7 @@ module.exports = {
                             .setFooter(siteurl);
                         message.channel.send({embed: embed});
                     } else {
-                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases+'```');
+                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+escape(aliases)+'```');
                     }
                 } else {
                     message.channel.send('mmmh.. are you actually sure you wanted to search ***'+string+'***? Check for typos.. maybe.. ')
