@@ -107,6 +107,7 @@ module.exports = {
                         message.channel.send(name);
                         message.channel.send(desc);
                     } else {
+                        console.log(alternatives);
                         message.channel.send('```'+alternatives+'```');
                     }
                 }
