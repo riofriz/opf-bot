@@ -86,12 +86,10 @@ module.exports = {
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
-                            } else {
-                                works = false;
                             }
                         }
                     }
-                    if (works === true) {
+                    if (name !== '') {
                         message.channel.send(name);
                         message.channel.send(desc);
                     }
