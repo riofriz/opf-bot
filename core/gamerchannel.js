@@ -39,8 +39,9 @@ module.exports = {
                     let check = apiName[0].toLowerCase();
                     let userCheck = string.toLowerCase();
                     console.log(apiName);
-                    console.log(check);
-                    console.log(userCheck);
+                    console.log(escape(check));
+                    console.log(escape(userCheck));
+                    console.log('test');
                     if (check.includes(userCheck)) {
                         message.channel.send(json_body['results'][0]['aliases']);
                         message.channel.send(striptags(json_body['results'][0]['deck']));
