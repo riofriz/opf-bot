@@ -108,10 +108,10 @@ module.exports = {
                             .setFooter(siteurl);
                         message.channel.send({embed: embed});
                     } else {
-                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases.replace('undefined', '')+'```');
+                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases+'```');
                     }
                 } else {
-                    message.channel.send('mmmh.. are you actually sure you wanted to search '+string+'? Check for typos.. maybe.. ')
+                    message.channel.send('mmmh.. are you actually sure you wanted to search ***'+string+'***? Check for typos.. maybe.. ')
                 }
             }
         });
