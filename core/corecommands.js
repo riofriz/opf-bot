@@ -167,7 +167,7 @@ module.exports = {
                     });
                     res.on('end', function () {
                         m.delete();
-                        message.channel.send('***SPOILER*** '+m.author.username+' your message has been converted into spoiler. \n' + data);
+                        message.channel.send('***SPOILER*** <@'+m.author.id+'> your message has been converted into spoiler. \n' + data);
                     });
                 });
                 req.write(query);
