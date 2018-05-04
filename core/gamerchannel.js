@@ -49,12 +49,14 @@ module.exports = {
                         message.channel.send('Couldn\'t find anything for you.. sorry.. :( ');
                     }
                 } else {
-                    toReturn = 'Erhm.. if \'+string+\' is a game.. i really don\\\'t know it. Maybe syntax error? :P';
+                    toReturn = toReturn+'';
                 }
+            } else {
+                toReturn = 'Erhm.. if \'+string+\' is a game.. i really don\\\'t know it. Maybe syntax error? :P';
+            }
+            if (toReturn !== '') {
+                message.channel.send(toReturn);
             }
         });
-        if (toReturn !== '') {
-            message.channel.send(toReturn);
-        }
     }
 };
