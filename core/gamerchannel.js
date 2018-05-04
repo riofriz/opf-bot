@@ -30,19 +30,18 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
-                //console.log(json_body);
-                //\r\n
 
                 let apiName = json_body['results'][0]['aliases'].split('\\r\\n');
-
-                if (apiName === string) {
-                    message.channel.send(json_body['results'][0]['aliases']);
-                    message.channel.send(striptags(json_body['results'][0]['deck']));
+                if (json_body['results'][0]) {
+                    if (apiName.toLowercase() === string.toLowerCase()) {
+                        message.channel.send(json_body['results'][0]['aliases']);
+                        message.channel.send(striptags(json_body['results'][0]['deck']));
+                    } else {
+                        message.channel.send('Please, be a bit more specific');
+                    }
                 } else {
-                    message.channel.send('Please, be a bit more specific');
+                    message.channel.send('Couldn\'t find anything for you.. sorry.. :( ');
                 }
-
-
             } else {
                 console.log(error.message);
                 console.log(error);
