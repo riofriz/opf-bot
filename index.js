@@ -103,6 +103,10 @@ client.on("message", (message) => {
         fun.garchu(client, message, args);
     }
 
+    if (commandWithArgs === 'who\'s boss') {
+        corecommands.spoilerTag(commandPrefix, message, args);
+    }
+
     // GAMERS
     if (commandWithArgs === 'sgame') {
 

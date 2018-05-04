@@ -93,5 +93,43 @@ module.exports = {
      */
     credits: function(message) {
         message.channel.send('<@408255473821679617> made me, he\'s boss!');
+    },
+
+    /**
+     * @param commandPrefix
+     * @param message
+     * @param args
+     */
+    spoilerTag: function(commandPrefix, message, args) {
+        let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':')
+        let query = qs.stringify({
+            api_option: 'paste',
+            api_dev_key: process.env.PASTEBIN,
+            api_paste_code: string[1],
+            api_paste_name: string[0],
+            api_paste_private: 0,
+            api_paste_expire_date: '1D'
+        });
+
+        let req = https.request({
+            host: 'pastebin.com',
+            port: 80,
+            path: '/api/api_post.php',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': query.length
+            }
+        }, function (res) {
+            let data = '';
+            res.on('data', function (chunk) {
+                data += chunk;
+            });
+            res.on('end', function () {
+                console.log(data);
+            });
+        });
+        req.write(query);
+        req.end();
     }
 };
