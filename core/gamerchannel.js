@@ -31,7 +31,7 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
 
-                let apiName = json_body['results'][0]['aliases'].split('\\r\\n');
+                let apiName = json_body['results'][0]['aliases'].split(/\r|\n/);
                 if (json_body['results'][0]) {
                     console.log(apiName);
                     if (apiName[0].toLowerCase() === string.toLowerCase()) {
