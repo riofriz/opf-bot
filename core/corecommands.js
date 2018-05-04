@@ -130,7 +130,7 @@ module.exports = {
                     data += chunk;
                 });
                 res.on('end', function () {
-                    message.channel.send('***SPOILER*** \n' + string[0] + ':' + data);
+                    message.channel.send('***SPOILER***\n' + string[0] + ': ' + data);
                 });
             });
             req.write(query);
@@ -138,5 +138,39 @@ module.exports = {
         } else {
             message.channel.send('Sorry, wrong syntax.. try again opf-<spoilerargument>:<spoilercontent>');
         }
+    },
+
+    editMessageToSpoiler: function(commandPrefix, message, args) {
+        req.write(query);
+        req.end();
+        message.channel.fetchMessage(args[0])
+            .then(m => {
+                let query = qs.stringify({
+                    api_option: 'paste',
+                    api_dev_key: process.env.PASTEBIN,
+                    api_paste_code: m.content,
+                    api_paste_name: m.author.username,
+                    api_paste_private: 0,
+                    api_paste_expire_date: '1D'
+                });
+
+                let req = https.request({
+                    host: 'pastebin.com',
+                    path: '/api/api_post.php',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Length': query.length
+                    }
+                }, function (res) {
+                    let data = '';
+                    res.on('data', function (chunk) {
+                        data += chunk;
+                    });
+                    res.on('end', function () {
+                        m.edit('***SPOILER*** \n' + data);
+                    });
+                });
+            });
     }
 };

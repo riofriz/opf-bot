@@ -67,6 +67,15 @@ client.on("message", (message) => {
         corecommands.quoteMessage(commandPrefix, message, args);
     }
 
+    if (commandWithArgs === 'spoiler') {
+        corecommands.spoilerTag(commandPrefix, message, args);
+        corecommands.deleteMessage(message);
+    }
+
+    if (commandWithArgs === 'spoilalert') {
+        corecommands.editMessageToSpoiler(message);
+    }
+
     // FORUM API
 
     if (commandWithArgs === "latest") {
@@ -101,11 +110,6 @@ client.on("message", (message) => {
 
     if (commandWithArgs === 'garchu') {
         fun.garchu(client, message, args);
-    }
-
-    if (commandWithArgs === 'spoiler') {
-        corecommands.spoilerTag(commandPrefix, message, args);
-        corecommands.deleteMessage(message);
     }
 
     // GAMERS
