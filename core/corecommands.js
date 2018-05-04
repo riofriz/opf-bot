@@ -1,4 +1,5 @@
 let corevars = require('./corevars');
+require("dotenv").config();
 let fun = require('./fun');
 const Discord = require('discord.js');
 const fs = require('fs');
