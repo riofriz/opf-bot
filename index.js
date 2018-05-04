@@ -105,6 +105,7 @@ client.on("message", (message) => {
 
     if (commandWithArgs === 'spoiler') {
         corecommands.spoilerTag(commandPrefix, message, args);
+        corecommands.deleteMessage(message);
     }
 
     // GAMERS
