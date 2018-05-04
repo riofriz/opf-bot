@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+let qs = require('qs');
 let corevars = require('./corevars');
 const Discord = require('discord.js');
 //let Parser = require('rss-parser');
@@ -20,7 +20,7 @@ module.exports = {
             string += args[i]+' ';
         }
         let url = 'https://www.giantbomb.com';
-        let path = '/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string.replace(' ', '%20');
+        let path = '/api/search/'+qs.stringify('?api_key='+process.env.GIANTBOMB+'&query='+string);
 
         let options = {
             host: url,
