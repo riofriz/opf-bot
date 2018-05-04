@@ -80,14 +80,14 @@ module.exports = {
     /**
      * @param message
      */
-    garchu: function(message, args) {
+    garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
             message.channel.send('whops.. you can\'t.. <:pfft:393455142239862795>');
         } else {
             if (args[0]) {
                 let firstStrip = args[0].replace('<@');
                 let secondStrip = firstStrip.replace('>');
-                bot.fetchUser(secondStrip).then(myUser => {
+                client.fetchUser(secondStrip).then(myUser => {
                     let userAvatar = myUser.avatarURL;
                     let userName = myUser.username;
                     let embed = new Discord.RichEmbed()

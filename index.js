@@ -98,7 +98,7 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === 'garchu') {
-        fun.garchu(message, args);
+        fun.garchu(client, message, args);
     }
 
 });
