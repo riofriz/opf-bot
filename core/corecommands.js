@@ -3,6 +3,7 @@ let fun = require('./fun');
 const Discord = require('discord.js');
 const fs = require('fs');
 let qs = require('qs');
+let https = require('https');
 
 module.exports = {
 

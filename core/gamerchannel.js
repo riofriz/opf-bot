@@ -2,8 +2,6 @@ require("dotenv").config();
 let qs = require('qs');
 let corevars = require('./corevars');
 const Discord = require('discord.js');
-//let Parser = require('rss-parser');
-//let parser = new Parser();
 let https = require('https');
 let request = require('request');
 let striptags = require('striptags');
