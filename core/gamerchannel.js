@@ -41,7 +41,7 @@ module.exports = {
                     console.log(apiName);
                     console.log(check);
                     console.log(userCheck);
-                    if (check.toString() === userCheck.toString()) {
+                    if (check.includes(userCheck)) {
                         message.channel.send(json_body['results'][0]['aliases']);
                         message.channel.send(striptags(json_body['results'][0]['deck']));
                     } else {
