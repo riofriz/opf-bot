@@ -11,8 +11,7 @@ let striptags = require('striptags');
 
 module.exports = {
     gamesearch: function(message, args) {
-        let title;
-        let messageToSend;
+        let toReturn = '';
         for (let i = 0; i !== args.length; i++) {
             string += args[i] + ' ';
         }
@@ -50,9 +49,12 @@ module.exports = {
                         message.channel.send('Couldn\'t find anything for you.. sorry.. :( ');
                     }
                 } else {
-                    message.channel.send('Erhm.. if '+string+' is a game.. i really don\'t know it. Maybe syntax error? :P');
+                    toReturn = 'Erhm.. if \'+string+\' is a game.. i really don\\\'t know it. Maybe syntax error? :P';
                 }
             }
         });
+        if (toReturn !== '') {
+            message.channel.send(toReturn);
+        }
     }
 };
