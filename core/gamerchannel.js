@@ -43,7 +43,7 @@ module.exports = {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
                                 if (typeof json_body['results'][key]['site_detail_url'] !== 'undefined') {
-                                    siteurl = '['+name+']('+json_body['results'][key]['site_detail_url']+')';
+                                    siteurl = json_body['results'][key]['site_detail_url'];
                                 } else {
                                     siteurl = 'https://www.giantbomb.com/';
                                 }
@@ -64,7 +64,7 @@ module.exports = {
                             .setThumbnail(url=thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())
-                            .setFooter(siteurl);
+                            .setURL(siteurl);
                         message.channel.send({embed: embed});
                     } else {
                         message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases+'```');
