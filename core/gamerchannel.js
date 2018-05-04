@@ -13,6 +13,7 @@ module.exports = {
         let string = '';
         let title;
         let messageToSend;
+        let alternatives = '';
         for (let i = 0; i !== args.length; i++) {
             string += args[i] + ' ';
         }
@@ -72,6 +73,7 @@ module.exports = {
                 let desc = '';
                 let thumb = '';
                 let works = true;
+                let aliases;
                 if (json_body['number_of_page_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
@@ -86,12 +88,23 @@ module.exports = {
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
+                            } else {
+                                if (json_body['results'][key]['aliases'] !== null) {
+                                    aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
+                                    if (aliases.findIndex(item => string.toLowerCase().trim() === item.toLowerCase().trim())) {
+                                        for (let j = 0; j !== aliases.length; j++) {
+                                            alternatives += aliases[j]+'\n';
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                     if (name !== '') {
                         message.channel.send(name);
                         message.channel.send(desc);
+                    } else {
+                        message.channel.send('```'+alternatives+'```');
                     }
                 }
             }
