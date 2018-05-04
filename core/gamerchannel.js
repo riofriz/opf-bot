@@ -40,7 +40,7 @@ module.exports = {
                         console.log(apiName);
                         console.log(check);
                         console.log(userCheck);
-                        if (apiName.indexOf(userCheck.trim()) > -1) {
+                        if (apiName.findIndex(item => userCheck.toLowerCase() === item.toLowerCase())) {
                             message.channel.send(check);
                             message.channel.send(gameDescription);
                         } else {
