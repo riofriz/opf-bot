@@ -22,8 +22,9 @@ module.exports = {
         let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
 
         let options = {
-            host: 'url',
-            "user-agent": "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com"
+            host: url,
+            "user-agent": "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com",
+            method: 'GET',
         };
 
         parser.on('error', function(err) { message.channel.send('Whops.. something must have gone wrong', err); });
