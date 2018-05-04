@@ -32,7 +32,8 @@ module.exports = {
             "who's boss",
             "garchu",
             "sgame",
-            "q"
+            "q",
+            "spoiler"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
