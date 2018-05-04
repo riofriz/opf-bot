@@ -33,7 +33,7 @@ module.exports = {
 
                 let apiName = json_body['results'][0]['aliases'].split('\\r\\n');
                 if (json_body['results'][0]) {
-                    if (apiName.toLowercase() === string.toLowerCase()) {
+                    if (apiName.toLowerCase() === string.toLowerCase()) {
                         message.channel.send(json_body['results'][0]['aliases']);
                         message.channel.send(striptags(json_body['results'][0]['deck']));
                     } else {
