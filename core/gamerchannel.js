@@ -28,6 +28,6 @@ module.exports = {
                 message.channel.send('Ehm.. this is embarassing.. There was a little issue.'+error);
             }
         }
-
+        request(options, callback);
     }
 };
