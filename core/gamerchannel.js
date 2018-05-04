@@ -31,9 +31,12 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
 
-                let apiName = json_body['results'][0]['aliases'].split(/\r|\n/);
+                if (json_body['results'][0]['aliases']) {
+                    let apiName = json_body['results'][0]['aliases'].split(/\r|\n/);
+                }
                 if (json_body['results'][0]) {
                     console.log(apiName);
+                    console.log(apiName[0]);
                     if (apiName[0].toLowerCase() === string.toLowerCase()) {
                         message.channel.send(json_body['results'][0]['aliases']);
                         message.channel.send(striptags(json_body['results'][0]['deck']));
