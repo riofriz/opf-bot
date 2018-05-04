@@ -86,7 +86,7 @@ module.exports = {
         } else {
             const embed = new Discord.RichEmbed()
                 .setColor(corevars.randomColor())
-                .setTitle('GARCHUUUUUUUUU '+`${args[0]}`)
+                .setTitle('GARCHUUUUUUUUU')
                 .setThumbnail("https://vignette.wikia.nocookie.net/fairytail/images/7/79/Sanji%27s_Nosebleed.png")
                 .setImage('https://78.media.tumblr.com/7278a764d558c352b4afbf38dfc69b33/tumblr_om24udgwBU1vbwog6o1_1280.gif');
             message.channel.send({embed: embed});
