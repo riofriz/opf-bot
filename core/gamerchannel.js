@@ -2,35 +2,33 @@ require("dotenv").config();
 
 let corevars = require('./corevars');
 const Discord = require('discord.js');
-let request = require("request");
+let Parser = require('rss-parser');
+let parser = new Parser();
 let string = '';
 
 module.exports = {
     gamesearch: function(message, args) {
+        let title;
+        let messageToSend;
         for (let i = 0; i !== args.length; i++) {
             string += args[i]+' ';
         }
+        let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.IGDB_TOKEN+'&query='+string;
+        (async () => {
+            let feed = await parser.parseURL(url);
 
-        let request = require('request');
-        let options = {
-            url: 'https://api-endpoint.igdb.com/games/search?q=Kingdom Hearts 2',
-            headers: {
-                'User-Agent': 'request',
-                "user-key": process.env.IGDB_TOKEN
-            }
-        };
-        console.log('https://api-endpoint.igdb.com/games/search?q='+string);
-        function callback(error, response, body) {
-            console.log(response);
-            if (!error && response.statusCode == 200) {
-                let info = JSON.parse(body);
-                console.log(info);
-                //console.log(info.forks_count + " Forks");
-            } else {
-                console.log(error);
-                message.channel.send('Ehm.. this is embarassing.. There was a little issue.');
-            }
-        }
-        request(options, callback);
+            feed.items.forEach(item => {
+                "use strict";
+                let rawName = item.game.name.replace('<![CDATA[ ', '');
+                let name = rawName.replace(' ]]>', '');
+                if (name === string) {
+                    messageToSend = name +' - '+ item.game.name;
+                } else {
+                    messageToSend = 'Please be more specific';
+                }
+            });
+            message.channel.send(messageToSend);
+
+        })();
     }
 };
