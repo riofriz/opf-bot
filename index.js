@@ -1,15 +1,16 @@
+//configure enviornment variables
+require("dotenv").config();
+
 // Import all the modules.
 const Discord = require('discord.js');
 let corevars = require('./core/corevars');
 let corecommands = require('./core/corecommands');
 let forumapi = require('./core/forumapi');
-let getToken = require('./core/getToken');
 let fun = require('./core/fun');
 
 // Let's call discord now.
 const client = new Discord.Client();
 
-const token = getToken.getToken();
 const commandPrefix = "opf-";
 
 // OPFBOT READY? GOOO
@@ -102,8 +103,7 @@ client.on("message", (message) => {
     }
 
 });
-
-client.login(token);
+client.login(process.env.BOT_TOKEN);
 
 
 
