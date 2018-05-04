@@ -42,6 +42,8 @@ module.exports = {
                         console.log('FINISHED', err, result);
                     });
                 });
+            } else {
+                console.log('error!! '+url);
             }
         });
 
