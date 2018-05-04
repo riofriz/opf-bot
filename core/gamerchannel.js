@@ -43,7 +43,7 @@ module.exports = {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
                                 if (typeof json_body['results'][key]['site_detail_url'] !== 'undefined') {
-                                    siteurl = json_body['results'][key]['site_detail_url'];
+                                    siteurl = '['+name+']('+json_body['results'][key]['site_detail_url']+')';
                                 } else {
                                     siteurl = 'https://www.giantbomb.com/';
                                 }
