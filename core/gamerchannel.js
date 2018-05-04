@@ -69,11 +69,16 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 let apiName;
+                let userCheck = string.toLowerCase().trim();
                 if (json_body['number_of_page_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
-                            console.log(json_body['results'][key].name);
-                            console.log(striptags(json_body['results'][key].deck));
+                            if (userCheck === json_body['results'][key].name) {
+                                message.channel.send(json_body['results'][key].name);
+                                message.channel.send(striptags(json_body['results'][key].deck));
+                            } else {
+                                message.channel.send('Please be more specific');
+                            }
                         }
                     }
                 }
