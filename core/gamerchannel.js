@@ -42,8 +42,8 @@ module.exports = {
                                 if (apiName[i].trim().toLowerCase() === userCheck.trim().toLowerCase()) {
                                     check = apiName[i].trim();
                                 } else {
-                                    console.log(i+decode(apiName[i].trim().toLowerCase())+'api');
-                                    console.log(i+decode(userCheck.trim().toLowerCase())+'user');
+                                    console.log(i+escape(apiName[i].trim().toLowerCase())+'api');
+                                    console.log(i+escape(userCheck.trim().toLowerCase())+'user');
                                 }
                             }
                             if (check === '') {
