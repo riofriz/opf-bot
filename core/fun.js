@@ -85,8 +85,8 @@ module.exports = {
             message.channel.send('whops.. you can\'t.. <:pfft:393455142239862795>');
         } else {
             if (args[0]) {
-                let firstStrip = args[0].replace('<@');
-                let secondStrip = firstStrip.replace('>');
+                let firstStrip = args[0].replace('<@', '');
+                let secondStrip = firstStrip.replace('>', '');
                 client.fetchUser(secondStrip).then(myUser => {
                     let userAvatar = myUser.avatarURL;
                     let userName = myUser.username;
