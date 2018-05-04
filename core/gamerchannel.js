@@ -81,9 +81,9 @@ module.exports = {
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
-                                console.log(json_body['results'][key].site_detail_url);
-                                if (typeof json_body['results'][key].site_detail_url !== 'undefined') {
-                                    siteurl = json_body['result'][key].site_detail_url;
+                                if (typeof json_body['results'][key]['site_detail_url'] !== 'undefined') {
+                                    console.log(json_body['results'][key]['site_detail_url']);
+                                    siteurl = json_body['result'][key]['site_detail_url'];
                                 } else {
                                     siteurl = 'https://www.giantbomb.com/';
                                 }
