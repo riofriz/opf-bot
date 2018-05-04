@@ -69,11 +69,11 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 let apiName;
-                let userCheck = string.toLowerCase().trim();
+                let userCheck;
                 if (json_body['number_of_page_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
-                            if (userCheck === json_body['results'][key].name) {
+                            if (json_body['results'][key].aliases.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
                                 message.channel.send(json_body['results'][key].name);
                                 message.channel.send(striptags(json_body['results'][key].deck));
                             } else {
