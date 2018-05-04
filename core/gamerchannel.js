@@ -49,11 +49,8 @@ module.exports = {
                     } else {
                         message.channel.send('Couldn\'t find anything for you.. sorry.. :( ');
                     }
-
                 } else {
-                    console.log(error.message);
-                    console.log(error);
-                    console.log(body);
+                    message.channel.send('Erhm.. if '+userCheck+' is a game.. i really don\'t know it. Maybe syntax error? :P');
                 }
             }
         });
