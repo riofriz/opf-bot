@@ -84,12 +84,26 @@ module.exports = {
         if (message.author.id === '307390107411939329') {
             message.channel.send('whops.. you can\'t.. <:pfft:393455142239862795>');
         } else {
-            const embed = new Discord.RichEmbed()
-                .setColor(corevars.randomColor())
-                .setTitle('GARCHUUUUUUUUU')
-                .setThumbnail("https://vignette.wikia.nocookie.net/fairytail/images/7/79/Sanji%27s_Nosebleed.png")
-                .setImage('https://78.media.tumblr.com/7278a764d558c352b4afbf38dfc69b33/tumblr_om24udgwBU1vbwog6o1_1280.gif');
-            message.channel.send({embed: embed});
+            if (args[0]) {
+                let firstStrip = args[0].strip('<@');
+                let secondStrip = firstStrip.strip('>');
+                bot.fetchUser(secondStrip).then(myUser => {
+                    let userAvatar = myUser.avatarURL;
+                    let userName = myUser.username;
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setTitle('GARCHUUUUUUUUU '+userName)
+                        .setThumbnail(userAvatar)
+                        .setImage('https://78.media.tumblr.com/7278a764d558c352b4afbf38dfc69b33/tumblr_om24udgwBU1vbwog6o1_1280.gif');
+                    message.channel.send({embed: embed});
+                });
+            } else {
+                let embed = new Discord.RichEmbed()
+                    .setColor(corevars.randomColor())
+                    .setTitle('GARCHUUUUUUUUU')
+                    .setImage('https://78.media.tumblr.com/7278a764d558c352b4afbf38dfc69b33/tumblr_om24udgwBU1vbwog6o1_1280.gif');
+                message.channel.send({embed: embed});
+            }
         }
     },
 
