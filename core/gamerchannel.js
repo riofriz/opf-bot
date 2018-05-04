@@ -34,13 +34,16 @@ module.exports = {
                 if (json_body['number_of_page_results'] > 0) {
                     if (json_body['results'][0]['aliases'] !== null) {
                         apiName = json_body['results'][0]['aliases'].replace(/\n/g, '').split(/\r/g);
-                        let check = apiName[0].toLowerCase();
+                        let check = '';
                         let userCheck = string.toLowerCase();
                         let gameDescription = striptags(json_body['results'][0]['deck']);
-                        console.log(apiName);
-                        console.log(check);
-                        console.log(userCheck);
-                        if (apiName.findIndex(item => userCheck.toLowerCase() === item.toLowerCase())) {
+                        if (apiName.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
+                            check = apiName[0].trim();
+                            for (let i = 0; i !== apiName.length; i++) {
+                                if (apiName[i].trim() === userCheck.trim()) {
+                                    check = apiName[i].trim();
+                                }
+                            }
                             message.channel.send(check);
                             message.channel.send(gameDescription);
                         } else {
