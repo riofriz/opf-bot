@@ -1,17 +1,9 @@
 **How to add access token:**
 
-In the folder:
-<pre>core/</pre>
-
-create a file called:
-<pre>getToken.js</pre>
+In your top folder, create a file called:
+<pre>.env</pre>
 
 with content:
 <pre>
-module.exports = {
-    getToken: function() {
-        return 'ENTER_ACCESS_TOKEN_HERE';
-    }
-};
+BOT_TOKEN="enter_token_here"
 </pre>
-
