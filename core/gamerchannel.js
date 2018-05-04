@@ -94,7 +94,9 @@ module.exports = {
                                     aliases = json_body['results'][key]['aliases'].replace(/\n/g, '').split(/\r/g);
                                     if (aliases.findIndex(item => string.toLowerCase().trim() === item.toLowerCase().trim())) {
                                         for (let j = 0; j !== aliases.length; j++) {
-                                            alternatives += aliases[j]+'\n';
+                                            if (typeof aliases[j] !== 'undefined') {
+                                                alternatives += aliases[j] + '\n';
+                                            }
                                         }
                                     }
                                 }
