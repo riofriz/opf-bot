@@ -7,6 +7,7 @@ let corevars = require('./core/corevars');
 let corecommands = require('./core/corecommands');
 let forumapi = require('./core/forumapi');
 let fun = require('./core/fun');
+let gamerchannel = require('./core/gamerchannel');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -104,7 +105,7 @@ client.on("message", (message) => {
 
     // GAMERS
     if (commandWithArgs === 'sgame') {
-        fun.garchu(message, args);
+        gamerchannel.gamesearch(message, args);
     }
 
 });
