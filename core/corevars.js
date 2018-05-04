@@ -30,6 +30,7 @@ module.exports = {
             'nsfw',
             "muhahaha",
             "who's boss",
+            "garchu",
             "q"
         ];
         if (commandsArray.indexOf(value) === -1) {
