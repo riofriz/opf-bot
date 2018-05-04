@@ -40,7 +40,7 @@ module.exports = {
                         if (apiName.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
                             check = apiName[0].trim();
                             for (let i = 0; i !== apiName.length; i++) {
-                                if (apiName[i].trim() === userCheck.trim()) {
+                                if (apiName[i].trim().toLowerCase() === userCheck.trim().toLowerCase()) {
                                     check = apiName[i].trim();
                                 }
                             }
