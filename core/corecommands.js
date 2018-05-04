@@ -104,34 +104,38 @@ module.exports = {
      * @param args
      */
     spoilerTag: function(commandPrefix, message, args) {
-        let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':')
-        let query = qs.stringify({
-            api_option: 'paste',
-            api_dev_key: process.env.PASTEBIN,
-            api_paste_code: string[1],
-            api_paste_name: string[0],
-            api_paste_private: 0,
-            api_paste_expire_date: '1D'
-        });
+        let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':');
+        if (string.length === 2) {
+            let query = qs.stringify({
+                api_option: 'paste',
+                api_dev_key: process.env.PASTEBIN,
+                api_paste_code: string[1],
+                api_paste_name: string[0],
+                api_paste_private: 0,
+                api_paste_expire_date: '1D'
+            });
 
-        let req = https.request({
-            host: 'pastebin.com',
-            path: '/api/api_post.php',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Content-Length': query.length
-            }
-        }, function (res) {
-            let data = '';
-            res.on('data', function (chunk) {
-                data += chunk;
+            let req = https.request({
+                host: 'pastebin.com',
+                path: '/api/api_post.php',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': query.length
+                }
+            }, function (res) {
+                let data = '';
+                res.on('data', function (chunk) {
+                    data += chunk;
+                });
+                res.on('end', function () {
+                    message.channel.send('***SPOILER*** \n' + string[0] + ':' + data);
+                });
             });
-            res.on('end', function () {
-                console.log(data);
-            });
-        });
-        req.write(query);
-        req.end();
+            req.write(query);
+            req.end();
+        } else {
+            message.channel.send('Sorry, wrong syntax.. try again opf-<spoilerargument>:<spoilercontent>');
+        }
     }
 };
