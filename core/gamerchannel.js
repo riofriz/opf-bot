@@ -81,8 +81,9 @@ module.exports = {
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
-                                if (typeof json_body['results'].site_detail_url !== 'undefined') {
-                                    site_url = json_body['result'].site_detail_url;
+                                console.log(json_body['results'][key].site_detail_url);
+                                if (typeof json_body['results'][key].site_detail_url !== 'undefined') {
+                                    site_url = json_body['result'][key].site_detail_url;
                                 } else {
                                     site_url = 'https://www.giantbomb.com/';
                                 }
@@ -107,7 +108,7 @@ module.exports = {
                             .setFooter(site_url);
                         message.channel.send({embed: embed});
                     } else {
-                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases+'```');
+                        message.channel.send('Mhhh.. maybe you could try this instead? \n ```'+aliases.replace('undefined', '')+'```');
                     }
                 } else {
                     message.channel.send('mmmh.. are you actually sure you wanted to search '+string+'? Check for typos.. maybe.. ')
