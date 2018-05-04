@@ -31,8 +31,8 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 //console.log(json_body);
-                console.log(json_body.results.aliases);
-                console.log(striptags(json_body.results.aliases));
+                console.log(json_body['results']['aliases']);
+                console.log(striptags(json_body['results']['deck']));
             } else {
                 console.log(error.message);
                 console.log(error);
