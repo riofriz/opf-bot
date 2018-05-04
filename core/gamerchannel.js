@@ -70,10 +70,12 @@ module.exports = {
                 let json_body = JSON.parse(body);
                 let apiName;
                 let userCheck;
+                let aliases;
                 if (json_body['number_of_page_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
-                            if (json_body['results'][key]['aliases'].findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
+                            aliases = json_body['results'][key]['aliases'];
+                            if (aliases.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
                                 message.channel.send(json_body['results'][key].name);
                                 message.channel.send(striptags(json_body['results'][key].deck));
                             } else {
