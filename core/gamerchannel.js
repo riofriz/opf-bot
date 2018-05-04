@@ -38,11 +38,13 @@ module.exports = {
                         let userCheck = string.toLowerCase();
                         let gameDescription = striptags(json_body['results'][0]['deck']);
                         if (apiName.findIndex(item => userCheck.toLowerCase().trim() === item.toLowerCase().trim())) {
-                            check = apiName[0].trim();
                             for (let i = 0; i !== apiName.length; i++) {
                                 if (apiName[i].trim().toLowerCase() === userCheck.trim().toLowerCase()) {
                                     check = apiName[i].trim();
                                 }
+                            }
+                            if (check === '') {
+                                check = apiName[0].trim();
                             }
                             message.channel.send(check);
                             message.channel.send(gameDescription);
