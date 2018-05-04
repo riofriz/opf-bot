@@ -20,7 +20,7 @@ module.exports = {
             string += args[i]+' ';
         }
         let url = 'https://www.giantbomb.com';
-        let path = '/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
+        let path = '/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string.replace(' ', '%20');
 
         let options = {
             host: url,
