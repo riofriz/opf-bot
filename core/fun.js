@@ -87,6 +87,7 @@ module.exports = {
             if (args[0]) {
                 let firstStrip = args[0].replace('<@', '');
                 let secondStrip = firstStrip.replace('>', '');
+                let thirdStrip = firstStrip.replace('!', '');
                 client.fetchUser(secondStrip).then(myUser => {
                     let userAvatar = myUser.avatarURL;
                     let userName = myUser.username;
