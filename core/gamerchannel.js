@@ -16,7 +16,7 @@ module.exports = {
         }
 
         let url = 'https://www.giantbomb.com';
-        let path = '/api/search/'+qs.stringify('?api_key='+process.env.GIANTBOMB+'&query='+string);
+        let path = '/api/search/'+qs.stringify('?api_key='+process.env.GIANTBOMB+'&format=json&query='+string);
         let call = url+path;
         let options = {
             host: url,
