@@ -21,9 +21,14 @@ module.exports = {
         }
         let url = 'https://www.giantbomb.com/api/search/?api_key='+process.env.GIANTBOMB+'&query='+string;
 
+        let options = {
+            host: 'url',
+            "user-agent": "https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com"
+        };
+
         parser.on('error', function(err) { message.channel.send('Whops.. something must have gone wrong', err); });
         let data = '';
-        https.get(url, function(res) {
+        https.get(options, function(res) {
             if (res.statusCode >= 200) {
                 res.on('data', function(data_) { data += data_.toString(); });
                 res.on('end', function() {
