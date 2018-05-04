@@ -25,8 +25,8 @@ module.exports = {
                 console.log(info);
                 //console.log(info.forks_count + " Forks");
             } else {
-                console.log(info);
-                message.channel.send('Ehm.. this is embarassing.. There was a little issue.'+error);
+                console.log(error);
+                message.channel.send('Ehm.. this is embarassing.. There was a little issue.');
             }
         }
         request(options, callback);
