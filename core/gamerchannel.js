@@ -76,16 +76,13 @@ module.exports = {
                 let aliases;
                 let site_url;
                 if (json_body['number_of_page_results'] > 0) {
-                    let counter = 0;
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
-                            if (counter === 0) {
-                                thumb = json_body['results'][key]['image']['medium_url'];
-                            }
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
                                 site_url = json_body['result'][key].site_detail_url;
+                                thumb = json_body['results'][key]['image']['medium_url'];
                             } else {
                                 if (typeof json_body['results'][key]['aliases'] !== 'undefined') {
                                     console.log(json_body['results'][key]['aliases']);
@@ -93,7 +90,6 @@ module.exports = {
                                 }
                             }
                         }
-                        counter++;
                     }
                     if (name !== '') {
                         let embed = new Discord.RichEmbed()
