@@ -102,6 +102,11 @@ client.on("message", (message) => {
         fun.garchu(client, message, args);
     }
 
+    // GAMERS
+    if (commandWithArgs === 'sgame') {
+        fun.garchu(message, args);
+    }
+
 });
 client.login(process.env.BOT_TOKEN);
 
