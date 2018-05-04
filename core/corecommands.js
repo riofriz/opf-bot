@@ -2,6 +2,7 @@ let corevars = require('./corevars');
 let fun = require('./fun');
 const Discord = require('discord.js');
 const fs = require('fs');
+let qs = require('qs');
 
 module.exports = {
 
