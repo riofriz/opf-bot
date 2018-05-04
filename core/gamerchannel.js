@@ -38,6 +38,7 @@ module.exports = {
                 if (json_body['results'][0]) {
                     console.log(apiName);
                     console.log(apiName[0]);
+                    console.log(string);
                     if (apiName[0].toLowerCase() === string.toLowerCase()) {
                         message.channel.send(json_body['results'][0]['aliases']);
                         message.channel.send(striptags(json_body['results'][0]['deck']));
