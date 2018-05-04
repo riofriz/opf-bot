@@ -73,7 +73,7 @@ module.exports = {
                 let desc = '';
                 let thumb = '';
                 let works = true;
-                let aliases;
+                let aliases = '';
                 let siteurl;
                 if (json_body['number_of_page_results'] > 0) {
                     for (let key in json_body['results']) {
@@ -82,7 +82,6 @@ module.exports = {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
                                 if (typeof json_body['results'][key]['site_detail_url'] !== 'undefined') {
-                                    console.log(json_body['results'][key]['site_detail_url']);
                                     siteurl = json_body['results'][key]['site_detail_url'];
                                 } else {
                                     siteurl = 'https://www.giantbomb.com/';
@@ -94,7 +93,7 @@ module.exports = {
                                 }
                             } else {
                                 if (typeof json_body['results'][key]['aliases'] !== 'undefined') {
-                                    console.log(json_body['results'][key]['aliases']);
+                                    console.log(json_body['results'][key].name);
                                     aliases += json_body['results'][key].name+'\n';
                                 }
                             }
