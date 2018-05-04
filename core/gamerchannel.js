@@ -81,12 +81,12 @@ module.exports = {
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].deck);
-                                if (typeof json_body['results'][key].site_detail_url !== 'undefined') {
-                                    site_url = json_body['result'][key].site_detail_url;
+                                if (typeof json_body['results'].site_detail_url !== 'undefined') {
+                                    site_url = json_body['result'].site_detail_url;
                                 } else {
                                     site_url = 'https://www.giantbomb.com/';
                                 }
-                                if (typeof json_body['results'][key].site_detail_url !== 'undefined') {
+                                if (typeof json_body['results'][key]['image'] !== 'undefined') {
                                     thumb = json_body['results'][key]['image']['medium_url'];
                                 } else {
                                     thumb = 'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png';
