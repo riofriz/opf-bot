@@ -59,7 +59,7 @@ module.exports = {
                     }
                     if (name !== '') {
                         let embed = new Discord.RichEmbed()
-                            .setThumbnail(url=thumb)
+                            .setImage(url=thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())
                             .setURL(siteurl);
