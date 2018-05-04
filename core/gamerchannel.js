@@ -19,6 +19,7 @@ module.exports = {
                 "user-key": process.env.IGDB_TOKEN
             }
         };
+        console.log('https://api-endpoint.igdb.com/games/search?q='+string);
         function callback(error, response, body) {
             if (!error && response.statusCode == 200) {
                 let info = JSON.parse(body);
