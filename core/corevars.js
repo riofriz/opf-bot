@@ -31,6 +31,7 @@ module.exports = {
             "muhahaha",
             "who's boss",
             "garchu",
+            "sgame",
             "q"
         ];
         if (commandsArray.indexOf(value) === -1) {
