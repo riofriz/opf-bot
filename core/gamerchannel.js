@@ -4,13 +4,13 @@ let corevars = require('./corevars');
 const Discord = require('discord.js');
 //let Parser = require('rss-parser');
 //let parser = new Parser();
-let string = '';
 let https = require('https');
 let request = require('request');
 let striptags = require('striptags');
 
 module.exports = {
     gamesearch: function(message, args) {
+        let string = '';
         let title;
         let messageToSend;
         for (let i = 0; i !== args.length; i++) {
