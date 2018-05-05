@@ -196,7 +196,7 @@ module.exports = {
                     let embed = new Discord.RichEmbed()
                         .setColor(corevars.randomColor())
                         .setImage(customMeme)
-                        .setFooter(message.channel.author.username);
+                        .setFooter(message.author.username);
                     message.channel.send({embed: embed});
                 } else {
                     console.log(error.message);
