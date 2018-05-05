@@ -57,7 +57,9 @@ module.exports = {
                             }
                         }
                     }
-                    console.log(thumb + ' & '+ name + ' & '+ escape(desc) + ' & ' + siteurl);
+                    if (desc === '') {
+                        desc = 'Sorry, short description is not available.'
+                    }
                     if (name !== '') {
                         let embed = new Discord.RichEmbed()
                             .setImage(url=thumb)
