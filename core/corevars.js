@@ -33,9 +33,10 @@ module.exports = {
             "garchu",
             "sgame",
             "q",
+            "t",
             "spoiler",
             "spoilalert",
-            "pokemon"
+            "pokemon",
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

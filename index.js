@@ -8,6 +8,7 @@ let corecommands = require('./core/corecommands');
 let forumapi = require('./core/forumapi');
 let fun = require('./core/fun');
 let gamerchannel = require('./core/gamerchannel');
+let translate = require('./core/translate');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -79,6 +80,10 @@ client.on("message", (message) => {
 
     if (commandWithArgs === "q") {
         corecommands.quoteMessage(commandPrefix, message, args);
+    }
+
+    if (commandWithArgs === "t") {
+        translate.translateText(message, args);
     }
 
     if (commandWithArgs === 'spoiler') {
