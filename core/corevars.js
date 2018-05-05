@@ -40,7 +40,8 @@ module.exports = {
             "spoilalert",
             "pokemon",
             "meme",
-            "yomama"
+            "yomama",
+            "howlong"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
