@@ -94,9 +94,15 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
-                message.channel.send(json_body['id']);
-                message.channel.send(json_body['name']);
-                message.channel.send('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+json_body['id']+'.png');
+                if (typeof string === 'string') {
+                    message.channel.send(json_body['id']);
+                    message.channel.send(json_body['name']);
+                    message.channel.send('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + json_body['id'] + '.png');
+                } else {
+                    message.channel.send('you sent a number');
+                }
+            } else {
+                message.channel.send('Erhm.. you sure that\'s a pokemon? https://bit.ly/2wdRln8')
             }
         });
     }
