@@ -171,18 +171,18 @@ module.exports = {
             });
 
         } else if (args[0] === 'make') {
-            if (args[1] !== '') {
-                let string = '';
-                let headers = {
-                    'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
-                };
-                for (let i = 0; i !== args.length; i++) {
-                    if (args[i] !== 'make') {
-                        string += args[i] + ' ';
-                    }
+            let string = '';
+            let headers = {
+                'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+            };
+            for (let i = 0; i !== args.length; i++) {
+                if (args[i] !== 'make') {
+                    string += args[i] + ' ';
                 }
-                string = string.split(':');
+            }
+            string = string.split(':');
 
+            if (string[0] !== '') {
                 let options = {
                     url: 'https://api.imgflip.com/caption_image',
                     method: 'POST',
