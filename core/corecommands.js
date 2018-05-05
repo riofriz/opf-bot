@@ -47,6 +47,7 @@ module.exports = {
             .addField(commandPrefix+"love <user>", "<:pfft:393455142239862795>")
             .addField(commandPrefix+"pokemon <name/id>", "❓ WHO'S THAT POKEMON ❓. only in #pokemon_channel")
             .addField(commandPrefix+"sgame", "Displays information about the game requested. only in #gamers-general")
+            .addField(commandPrefix+"meme <get>/<make>:meme_id:message1:message2", "Gets a random meme or makes one given specific id. (meme id can be found at the bottom of the random meme get or here: https://api.imgflip.com/popular_meme_ids")
             .addField(commandPrefix+"spoiler <topic>:<spoilercontent>", "⚠️ Hides the content in a paste.ee url that contains the spoiler. usage example: opf-spoiler one piece : ACE NOOO! ⚠️")
             .addField(commandPrefix+"spoilalert <messageid>", "🚨 Converts the selected message into a spoiler. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.) 🚨")
             //.addField(commandPrefix+"username <nickontheforum>", "connects your discord account to opf")
