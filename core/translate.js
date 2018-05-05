@@ -10,6 +10,7 @@ module.exports = {
             string += args[i] + ' ';
         }
         string = string.replace('undefined', '').split('>');
+        console.log(typeof string[1]);
         if (string[1].trim().match(/^[0-9]+$/) != null) {
             message.channel.fetchMessage(string[1])
                 .then(m => {
