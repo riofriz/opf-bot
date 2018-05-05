@@ -203,7 +203,7 @@ module.exports = {
                 }
             });
         } else {
-            message.channel.send('Please use get or make, this command makes no sense to me.')
+            message.channel.send('Please use **get** or give **make** some parameters. This command makes no sense to me.')
         }
 
     }
