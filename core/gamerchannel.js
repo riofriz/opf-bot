@@ -87,10 +87,9 @@ module.exports = {
         };
 
         let options = {
-            url: 'https://pokeapi.co/api/v2/pokemon',
+            url: 'https://pokeapi.co/api/v2/pokemon/bulbasaur',
             method: 'GET',
-            headers: headers,
-            qs: {'format': 'json', 'query': string}
+            headers: headers
         };
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
