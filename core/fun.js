@@ -121,11 +121,12 @@ module.exports = {
         let substrings = [
             "symphogear",
             "y'all",
-            "chuck norris"
+            "norris"
         ];
         let result;
+        let string;
         for (let i = 0; i !== substrings.length; i++) {
-            let string = str.split(' ');
+            string = str.split(' ');
             for (let j = 0; j !== string.length; j++) {
                 if (string[j] === substrings[i]) {
                     result = string[j];
