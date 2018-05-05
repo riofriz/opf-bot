@@ -89,36 +89,41 @@ module.exports = {
             method: 'GET',
             headers: headers
         };
-        request(options, function (error, response, body) {
-            if (!error && response.statusCode === 200) {
-                let json_body = JSON.parse(body);
-                if (typeof string === 'string') {
-                    let id = json_body['id'];
-                    let thumb = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + json_body['id'] + '.png';
-                    let name = json_body['name'];
-                    for (let key in json_body['types']) {
-                        if (json_body['types'].hasOwnProperty(key)) {
-                            types += json_body['types'][key]['type']['name']+' ';
+
+        if (string !== '') {
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    if (typeof string === 'string') {
+                        let id = json_body['id'];
+                        let thumb = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + json_body['id'] + '.png';
+                        let name = json_body['name'];
+                        for (let key in json_body['types']) {
+                            if (json_body['types'].hasOwnProperty(key)) {
+                                types += json_body['types'][key]['type']['name'] + ' ';
+                            }
                         }
-                    }
-                    for (let key in json_body['moves']) {
-                        if (json_body['moves'].hasOwnProperty(key)) {
-                            moves[key] = json_body['moves'][key]['move']['name'];
+                        for (let key in json_body['moves']) {
+                            if (json_body['moves'].hasOwnProperty(key)) {
+                                moves[key] = json_body['moves'][key]['move']['name'];
+                            }
                         }
+                        let randomMoves = corevars.getMeRandomElements(moves, 5).replace('undefined', '');
+                        let embed = new Discord.RichEmbed()
+                            .setThumbnail(url = thumb)
+                            .addField('Name:', name)
+                            .addField('ID:', id)
+                            .addField('Type:', types)
+                            .addField('Random Moves:', randomMoves.replace('-', ' '))
+                            .setColor(corevars.randomColor())
+                        message.channel.send({embed: embed});
                     }
-                    let randomMoves = corevars.getMeRandomElements(moves, 5).replace('undefined', '');
-                    let embed = new Discord.RichEmbed()
-                        .setThumbnail(url=thumb)
-                        .addField('Name:', name)
-                        .addField('ID:', id)
-                        .addField('Type:', types)
-                        .addField('Random Moves:', randomMoves.replace('-', ' '))
-                        .setColor(corevars.randomColor())
-                    message.channel.send({embed: embed});
+                } else {
+                    message.channel.send('Erhm.. you sure that\'s a pokemon? https://bit.ly/2wdRln8')
                 }
-            } else {
-                message.channel.send('Erhm.. you sure that\'s a pokemon? https://bit.ly/2wdRln8')
-            }
-        });
+            });
+        } else {
+            message.channel.send('I don\'t see any wild pokemon appear..')
+        }
     }
 };
