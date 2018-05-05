@@ -45,8 +45,8 @@ module.exports = {
             .addField(commandPrefix+"love <user>", "<:pfft:393455142239862795>")
             .addField(commandPrefix+"sgame", "Displays information about the game requested.")
             .addField(commandPrefix+"sgame", "Displays information about the game requested.")
-            .addField(commandPrefix+"spoiler <topic>:<spoilercontent>", "Hides the content in a pastebin url that contains the spoiler. usage example: opf-spoiler one piece : ACE NOOO!")
-            .addField(commandPrefix+"spoilalert <messageid>", "Converts the selected message into a spoiler. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
+            //.addField(commandPrefix+"spoiler <topic>:<spoilercontent>", "Hides the content in a pastebin url that contains the spoiler. usage example: opf-spoiler one piece : ACE NOOO!")
+            //.addField(commandPrefix+"spoilalert <messageid>", "Converts the selected message into a spoiler. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
             //.addField(commandPrefix+"username <nickontheforum>", "connects your discord account to opf")
             //.addField(commandPrefix+"whois <user>", "If registered shows who the user is on opf")
             .addField(commandPrefix+"q <messageid> > reply to message", "Quotes message. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
@@ -109,17 +109,14 @@ module.exports = {
         let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':');
         if (string.length === 2) {
             let query = qs.stringify({
-                api_option: 'paste',
-                api_dev_key: process.env.PASTEBIN,
-                api_paste_code: string[1],
-                api_paste_name: string[0],
-                api_paste_private: 0,
-                api_paste_expire_date: '1D'
+                key: process.env.PASTEBIN,
+                contents: string[1],
+                description: string[0],
             });
 
             let req = https.request({
-                host: 'pastebin.com',
-                path: '/api/api_post.php',
+                host: 'https://api.paste.ee',
+                path: '/v1/pastes',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -131,7 +128,7 @@ module.exports = {
                     data += chunk;
                 });
                 res.on('end', function () {
-                    message.channel.send('```diff\n- ⚠️ SPOILER ⚠️```\n' + string[0] + ': ' + data);
+                    message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n' + string[0] + ': ' + data);
                 });
             });
             req.write(query);
@@ -145,17 +142,14 @@ module.exports = {
         message.channel.fetchMessage(args[0])
             .then(m => {
                 let query = qs.stringify({
-                    api_option: 'paste',
-                    api_dev_key: process.env.PASTEBIN,
-                    api_paste_code: m.content,
-                    api_paste_name: m.author.username,
-                    api_paste_private: 0,
-                    api_paste_expire_date: '1D'
+                    key: process.env.PASTEBIN,
+                    contents: string[1],
+                    description: string[0],
                 });
 
                 let req = https.request({
-                    host: 'pastebin.com',
-                    path: '/api/api_post.php',
+                    host: 'https://api.paste.ee',
+                    path: '/v1/pastes',
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
