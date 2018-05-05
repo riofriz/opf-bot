@@ -9,6 +9,7 @@ let forumapi = require('./core/forumapi');
 let fun = require('./core/fun');
 let gamerchannel = require('./core/gamerchannel');
 let translate = require('./core/translate');
+let yomomma = require('./core/yomomma');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -124,6 +125,10 @@ client.on("message", (message) => {
 
     if (commandWithArgs === "love") {
         fun.love(message, args);
+    }
+
+    if (commandWithArgs === "love") {
+        yomomma.yomama(message, args);
     }
 
     if (commandWithArgs === 'nsfw') {
