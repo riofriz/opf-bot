@@ -154,7 +154,7 @@ module.exports = {
                     for (let key in json_body['data']['memes']) {
                         if (json_body['data']['memes'].hasOwnProperty(key)) {
                             console.log(json_body['data']['memes'][key]);
-                            // memeArray[key]['url'] = json_body['data']['memes'][key]['url'];
+                            memeArray[key] = json_body['data']['memes'][key]['url'];
                             // memeArray[key]['id'] = json_body['data']['memes'][key]['id'];
                             // memeArray[key]['name'] = json_body['data']['memes'][key]['name'];
                         }
@@ -162,8 +162,8 @@ module.exports = {
                     let randomNumber = Math.floor(Math.random() * memeArray.length);
                     let embed = new Discord.RichEmbed()
                         .setColor(corevars.randomColor())
-                        .setImage(memeArray[randomNumber]['url'])
-                        .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
+                        .setImage(memeArray[randomNumber]['url']);
+                        // .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
                     message.channel.send({embed: embed});
                 }
             });
