@@ -111,43 +111,11 @@ module.exports = {
         let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':');
         if (string.length >= 2) {
             // Submit a normal paste
-
-            Pastee.paste({"contents" : string[1], "name": string[0], "expire": 100}).then(res => {
-                console.log(res);
+            Pastee.paste({"contents" : string[1], "name": string[0], "expire": 2}).then(res => {
+                message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n' + string[0] + ': ' + res.link);
             }).catch(err => {
                 console.log(err);
             });
-
-            // let query = qs.stringify({
-            //     key: process.env.PASTEBIN,
-            //     sections:[{
-            //         "name":"Section1",
-            //         "syntax":"autodetect",
-            //         "contents": string[1]
-            //     }],
-            //     description: string[0]
-            // });
-            //
-            // let req = https.request({
-            //     host: 'https://api.paste.ee',
-            //     path: '/v1/pastes',
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/x-www-form-urlencoded',
-            //         'Content-Length': query.length,
-            //         'X-Auth-Token': process.env.PASTEBIN
-            //     }
-            // }, function (res) {
-            //     let data = '';
-            //     res.on('data', function (chunk) {
-            //         data += chunk;
-            //     });
-            //     res.on('end', function () {
-            //         message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n' + string[0] + ': ' + data);
-            //     });
-            // });
-            // req.write(query);
-            // req.end();
         } else {
             message.channel.send('Sorry, wrong syntax.. try again opf-<spoilerargument>:<spoilercontent>');
         }
@@ -156,34 +124,11 @@ module.exports = {
     editMessageToSpoiler: function(message, args) {
         message.channel.fetchMessage(args[0])
             .then(m => {
-                let query = qs.stringify({
-                    key: process.env.PASTEBIN,
-                    contents: string[1],
-                    sections:[{
-                        "name":"Section1",
-                        "syntax":"autodetect",
-                        "contents":"Testing!"}],
-                    description: string[0],
-                });
-
-                let req = https.request({
-                    host: 'https://api.paste.ee',
-                    path: '/v1/pastes',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Content-Length': query.length,
-                        'X-Auth-Token': process.env.PASTEBIN
-                    }
-                }, function (res) {
-                    let data = '';
-                    res.on('data', function (chunk) {
-                        data += chunk;
-                    });
-                    res.on('end', function () {
-                        m.delete();
-                        message.channel.send('***SPOILER*** <@'+m.author.id+'> your message has been converted into spoiler. \n' + data);
-                    });
+                Pastee.paste({"contents" : string[1], "name": string[0], "expire": 100}).then(res => {
+                    m.delete();
+                    message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n <@'+m.author.id+'>, your message has been converted into spoiler. \n' + data);
+                }).catch(err => {
+                    console.log(err);
                 });
                 req.write(query);
                 req.end();
