@@ -58,6 +58,8 @@ module.exports = {
                     }
                     counter++;
                 });
+            } else if (typeof args[0] !== 'undefined') {
+                message.channel.send('Latest what??? <:ping:432976718010122250>');
             } else {
                 message.channel.send('Latest what??? <:ping:432976718010122250>');
             }
