@@ -170,7 +170,7 @@ module.exports = {
                 }
             });
 
-        } else if (args[0] === 'make') {
+        } else if (args[0] === 'make' && args[1] !== '') {
             let string = '';
             let headers = {
                 'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
