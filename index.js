@@ -26,11 +26,11 @@ client.on("ready", () => {
 client.on("message", (message) => {
     "use strict";
 
-    if (isArray(message.split('opf-'))) {
+    if (Array.isArray(message.split('opf-'))) {
         const commandPrefix = 'opf-';
-    } else if (isArray(message.split('op-'))) {
+    } else if (Array.isArray(message.split('op-'))) {
         const commandPrefix = 'op-';
-    } else if (isArray(message.split('o-'))) {
+    } else if (Array.isArray(message.split('o-'))) {
         const commandPrefix = 'o-';
     }
 
