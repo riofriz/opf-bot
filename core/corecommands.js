@@ -110,8 +110,12 @@ module.exports = {
         if (string.length === 2) {
             let query = qs.stringify({
                 key: process.env.PASTEBIN,
-                contents: string[1],
-                description: string[0],
+                sections:[{
+                    "name":"Section1",
+                    "syntax":"autodetect",
+                    "contents": string[1]
+                }],
+                description: string[0]
             });
 
             let req = https.request({
@@ -145,6 +149,10 @@ module.exports = {
                 let query = qs.stringify({
                     key: process.env.PASTEBIN,
                     contents: string[1],
+                    sections:[{
+                        "name":"Section1",
+                        "syntax":"autodetect",
+                        "contents":"Testing!"}],
                     description: string[0],
                 });
 
