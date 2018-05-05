@@ -112,6 +112,7 @@ module.exports = {
                         .setTitle(name)
                         .addField('ID:', name)
                         .addField('Type:', types)
+                        .addField('Random Moves:', corevars.getMeRandomElements(moves, 5))
                         .setColor(corevars.randomColor())
                     message.channel.send({embed: embed});
                 }

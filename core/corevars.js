@@ -97,6 +97,23 @@ module.exports = {
         return url;
     },
 
+    /**
+     * @param sourceArray
+     * @param neededElements
+     * @returns {string}
+     */
+    getMeRandomElements: function(sourceArray, neededElements) {
+        let result;
+        for (let i = 0; i < neededElements; i++) {
+            if (i !== neededElements-1) {
+                result += sourceArray[Math.floor(Math.random()*sourceArray.length)]+', ';
+            } else {
+                result += sourceArray[Math.floor(Math.random()*sourceArray.length)];
+            }
+        }
+        return result;
+    }
+
 
 
 };
