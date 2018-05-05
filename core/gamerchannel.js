@@ -98,17 +98,17 @@ module.exports = {
                     let name = json_body['name'];
                     for (let key in json_body['types']) {
                         if (json_body['types'].hasOwnProperty(key)) {
-                            types += json_body['types'][key]['type']+' ';
+                            types += json_body['types'][key]['type']['name']+' ';
                         }
                     }
                     for (let key in json_body['moves']) {
                         if (json_body['moves'].hasOwnProperty(key)) {
-                            moves += json_body['moves'][key]['move']['name'];
+                            moves[key] = json_body['moves'][key]['move']['name'];
                         }
                     }
                     console.log(moves);
                     let embed = new Discord.RichEmbed()
-                        .setImage(url=thumb)
+                        .setThumbnail(url=thumb)
                         .setTitle(name)
                         .addField('ID:', name)
                         .addField('Type:', types)
