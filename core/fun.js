@@ -135,7 +135,7 @@ module.exports = {
     },
 
     getMeme: function(message, args) {
-        let memeArray = [];
+        let memeArray = {};
         if (args[0] === 'get') {
 
             let headers = {
