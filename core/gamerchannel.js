@@ -87,15 +87,16 @@ module.exports = {
         };
 
         let options = {
-            url: 'https://pokeapi.co/api/v2/pokemon/bulbasaur',
+            url: 'https://pokeapi.co/api/v2/pokemon/'+string,
             method: 'GET',
             headers: headers
         };
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
-                console.log(json_body['id']);
-                console.log(json_body);
+                message.channel.send(json_body['id']);
+                message.channel.send(json_body['name']);
+                message.channel.send('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+json_body['id']+'.png');
             }
         });
     }
