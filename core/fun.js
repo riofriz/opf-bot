@@ -135,7 +135,7 @@ module.exports = {
     },
 
     getMeme: function(message, args) {
-        let memeArray = {};
+        let memeArray = [];
         if (args[0] === 'get') {
 
             let headers = {
@@ -154,16 +154,18 @@ module.exports = {
                     for (let key in json_body['data']['memes']) {
                         if (json_body['data']['memes'].hasOwnProperty(key)) {
                             console.log(json_body['data']['memes'][key]);
-                            memeArray[key]['url'] = json_body['data']['memes'][key]['url'];
-                            // memeArray[key]['id'] = json_body['data']['memes'][key]['id'];
-                            // memeArray[key]['name'] = json_body['data']['memes'][key]['name'];
+                            memeArray.push({
+                                url: json_body['data']['memes'][key]['url'],
+                                id: json_body['data']['memes'][key]['id'],
+                                name: json_body['data']['memes'][key]['name']
+                            });
                         }
                     }
                     let randomNumber = Math.floor(Math.random() * memeArray.length);
                     let embed = new Discord.RichEmbed()
                         .setColor(corevars.randomColor())
-                        .setImage(memeArray[randomNumber]['url']);
-                        // .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
+                        .setImage(memeArray[randomNumber]['url'])
+                        .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
                     message.channel.send({embed: embed});
                 }
             });
