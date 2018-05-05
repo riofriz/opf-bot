@@ -19,52 +19,53 @@ module.exports = {
      */
     latestCommands: function(message, args) {
         let title;
-        (async () => {
+        if (typeof args[0] !== 'undefined') {
             let pull;
             if (args[0] === 'manga') {
                 pull = 'one-piece-manga';
             } else if (args[0] === 'anime') {
                 pull = 'one-piece-anime'
             } else if (args[0] === 'nakama') {
-                pull='konnichiwa'
+                pull = 'konnichiwa'
             }
-            let feed = await parser.parseURL(corevars.buildRss(pull));
-            if (args[0] === 'manga') {
-                feed.items.forEach(item => {
-                    "use strict";
-                    title = item.title;
-                    if (title.includes("Predictions") === false && title.includes("One Piece Chapter")) {
-                        message.channel.send('***' + title + '*** is out!! Check it out' + ': \n' + item.link);
+            if (pull === 'konnichiwa' || pull === 'one-piece-manga' || pull === 'nakama') {
+                (async () => {
+                    let feed = await parser.parseURL(corevars.buildRss(pull));
+                    if (args[0] === 'manga') {
+                        feed.items.forEach(item => {
+                            "use strict";
+                            title = item.title;
+                            if (title.includes("Predictions") === false && title.includes("One Piece Chapter")) {
+                                message.channel.send('***' + title + '*** is out!! Check it out' + ': \n' + item.link);
+                            }
+                        });
+                    } else if (args[0] === 'anime') {
+                        feed.items.forEach(item => {
+                            "use strict";
+                            title = item.title;
+                            if (title.includes("Predictions") === false && title.includes("One Piece Episode")) {
+                                message.channel.send('***' + title + '*** is out!! Check it out' + ': \n' + item.link);
+                            }
+                        });
+                    } else if (args[0] === 'nakama') {
+                        let counter = 0;
+                        feed.items.forEach(item => {
+                            "use strict";
+                            if (counter === 0) {
+                                "use strict";
+                                title = item.creator;
+                                message.channel.send('***' + title + '*** is the latest Nakama! Say welcome' + ':\n ' + item.link);
+                            }
+                            counter++;
+                        });
                     }
-                });
-            } else if (args[0] === 'anime') {
-                feed.items.forEach(item => {
-                    "use strict";
-                    title = item.title;
-                    if (title.includes("Predictions") === false && title.includes("One Piece Episode"))
-                    {
-                        message.channel.send('***'+title+'*** is out!! Check it out' + ': \n' + item.link);
-                    }
-                });
-            } else if (args[0] === 'nakama') {
-                let counter = 0;
-                feed.items.forEach(item => {
-                    "use strict";
-                    if (counter === 0)
-                    {
-                        "use strict";
-                        title = item.creator;
-                        message.channel.send('***'+title+'*** is the latest Nakama! Say welcome' + ':\n ' + item.link);
-                    }
-                    counter++;
-                });
-            } else if (typeof args[0] !== 'undefined') {
-                message.channel.send('Latest what??? <:ping:432976718010122250>');
+                })();
             } else {
                 message.channel.send('Latest what??? <:ping:432976718010122250>');
             }
-
-        })();
+        } else {
+            message.channel.send('Latest what??? <:ping:432976718010122250>');
+        }
         message.channel.fetchMessage(message.id)
             .then(m => {
                 m.delete();
