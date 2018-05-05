@@ -76,7 +76,7 @@ module.exports = {
     pokemon: function(message, args) {
         let string = '';
         let types = '';
-        let moves;
+        let moves = [];
         for (let i = 0; i !== args.length; i++) {
             string += args[i] + ' ';
         }
@@ -101,11 +101,9 @@ module.exports = {
                             types += json_body['types'][key]['type']['name']+' ';
                         }
                     }
-                    var counter = 0;
                     for (let key in json_body['moves']) {
                         if (json_body['moves'].hasOwnProperty(key)) {
-                            moves[counter] = json_body['moves'][key]['move']['name'];
-                            counter++;
+                            moves[key] = json_body['moves'][key]['move']['name'];
                         }
                     }
                     console.log(moves);
