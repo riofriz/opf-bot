@@ -27,12 +27,14 @@ client.on("message", (message) => {
     "use strict";
 
 
-    if (Array.isArray(message.content.split('opf-'))) {
+    if (message.content.includes('opf-')) {
         const commandPrefix = 'opf-';
-    } else if (Array.isArray(message.content.split('op-'))) {
+    } else if (message.content.includes('op-')) {
         const commandPrefix = 'op-';
-    } else if (Array.isArray(message.content.split('o-'))) {
+    } else if (message.content.includes('o-')) {
         const commandPrefix = 'o-';
+    } else {
+        const commandPrefix = 'opf-';
     }
 
     //Declares Command variable
