@@ -192,8 +192,12 @@ module.exports = {
             request(options, function (error, response, body) {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
-                    console.log(body);
-                    console.log(json_body);
+                    let customMeme = json_body['data']['url'];
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(memeArray[randomNumber]['url'])
+                        .setFooter(message.channel.author.username);
+                    message.channel.send({embed: embed});
                 } else {
                     console.log(error.message);
                 }
