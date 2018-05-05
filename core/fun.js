@@ -153,9 +153,9 @@ module.exports = {
                     let json_body = JSON.parse(body);
                     for (let key in json_body['data']['memes']) {
                         if (json_body['data']['memes'].hasOwnProperty(key)) {
-                            memeArray[key]['url'] = json_body[key]['data']['memes']['url'];
-                            memeArray[key]['id'] = json_body[key]['data']['memes']['id'];
-                            memeArray[key]['name'] = json_body[key]['data']['memes']['name'];
+                            memeArray[key]['url'] = json_body['data']['memes'][key]['url'];
+                            memeArray[key]['id'] = json_body['data']['memes'][key]['id'];
+                            memeArray[key]['name'] = json_body['data']['memes'][key]['name'];
                         }
                     }
                     let randomNumber = Math.floor(Math.random() * memeArray.length);
