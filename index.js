@@ -26,16 +26,17 @@ client.on("ready", () => {
 client.on("message", (message) => {
     "use strict";
 
-
-    if (message.content.includes('opf-')) {
-        const commandPrefix = 'opf-';
-    } else if (message.content.includes('op-')) {
-        const commandPrefix = 'op-';
-    } else if (message.content.includes('o-')) {
-        const commandPrefix = 'o-';
+    if (message.content.toLowerCase().includes('opf-')) {
+        let commandPrefix = 'opf-';
+    } else if (message.content.toLowerCase().includes('op-')) {
+        let commandPrefix = 'op-';
+    } else if (message.content.toLowerCase().includes('o-')) {
+        let commandPrefix = 'o-';
     } else {
-        const commandPrefix = 'opf-';
+        let commandPrefix = 'opf-';
     }
+
+    console.log(commandPrefix);
 
     //Declares Command variable
     let command = message.content.toLowerCase();
