@@ -106,7 +106,6 @@ module.exports = {
                             moves[key] = json_body['moves'][key]['move']['name'];
                         }
                     }
-                    console.log(moves);
                     let embed = new Discord.RichEmbed()
                         .setThumbnail(url=thumb)
                         .setTitle(name)

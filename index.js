@@ -113,12 +113,15 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === 'pokemon') {
-        gamerchannel.pokemon(message, args);
+        if (message.channel.name === 'pokemon_channel') {
+            gamerchannel.pokemon(message, args);
+        } else {
+            message.channel.send('Sorry, this is not allowed in here.');
+        }
     }
 
     // GAMERS
     if (commandWithArgs === 'sgame') {
-
         if (message.channel.name === 'gamers-general') {
             gamerchannel.gamesearch(message, args);
         } else {
