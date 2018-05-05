@@ -103,7 +103,7 @@ module.exports = {
                     }
                     for (let key in json_body['moves']) {
                         if (json_body['moves'].hasOwnProperty(key)) {
-                            moves[key] = json_body['moves'][key]['move']['name'];
+                            moves += json_body['moves'][key]['move']['name'];
                         }
                     }
                     console.log(moves);
