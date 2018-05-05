@@ -95,9 +95,8 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
-                for (let key in json_body) {
-                    console.log(json_body['id'])
-                }
+                console.log(json_body['id']);
+                console.log(json_body);
             }
         });
     }
