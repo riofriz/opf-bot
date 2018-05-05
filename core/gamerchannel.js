@@ -74,11 +74,9 @@ module.exports = {
         });
     },
     pokemon: function(message, args) {
-        //
         let string = '';
-        let title;
-        let messageToSend;
-        let alternatives = '';
+        let types = '';
+        let moves;
         for (let i = 0; i !== args.length; i++) {
             string += args[i] + ' ';
         }
@@ -95,11 +93,28 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 if (typeof string === 'string') {
-                    message.channel.send(json_body['id']);
-                    message.channel.send(json_body['name']);
-                    message.channel.send('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + json_body['id'] + '.png');
-                } else {
-                    message.channel.send('you sent a number');
+                    let id = json_body['id'];
+                    let thumb = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + json_body['id'] + '.png';
+                    let name = json_body['name'];
+                    for (let key in json_body['types']) {
+                        if (json_body['types'].hasOwnProperty(key)) {
+                            types += json_body['types'][key]['type']+' ';
+                        }
+                    }
+                    for (let key in json_body['moves']) {
+                        if (json_body['moves'].hasOwnProperty(key)) {
+                            moves[key] = json_body['moves'][key]['move']['name'];
+                        }
+                    }
+                    console.log(moves);
+                    let embed = new Discord.RichEmbed()
+                        .setImage(url=thumb)
+                        .setTitle(name)
+                        .addField('ID:', name)
+                        .addField('Type:', types)
+                        .setColor(corevars.randomColor())
+                        .setURL(siteurl);
+                    message.channel.send({embed: embed});
                 }
             } else {
                 message.channel.send('Erhm.. you sure that\'s a pokemon? https://bit.ly/2wdRln8')
