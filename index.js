@@ -83,7 +83,11 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === "t") {
-        translate.translateText(message, args);
+        if (message.channel.name === 'multi-lingual-channel') {
+            translate.translateText(message, args);
+        } else {
+            message.channel.send('Naaah.. just speak english in here.');
+        }
     }
 
     if (commandWithArgs === 'spoiler') {

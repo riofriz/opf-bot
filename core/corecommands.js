@@ -52,6 +52,7 @@ module.exports = {
             //.addField(commandPrefix+"username <nickontheforum>", "connects your discord account to opf")
             //.addField(commandPrefix+"whois <user>", "If registered shows who the user is on opf")
             .addField(commandPrefix+"q <messageid> > reply to message", "Quotes message. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
+            .addField(commandPrefix+"t <languagecode> > <text/messageid>", "🇨🇳 🇺🇸 🇫🇷 🇪🇸 🇮🇹 🇷🇺 🇬🇧 Translates either plain text or someone's message. e.g. to translate something to English: opf-t en > bella ciao (or id of the message)")
             .setTitle("Bot commands:")
             .setFooter("Your lovable OPF MegaBot")
             .setColor(corevars.randomColor());
