@@ -57,6 +57,7 @@ module.exports = {
                             }
                         }
                     }
+                    console.log(thumb + ' & '+ name + ' & '+ desc + ' & ' + siteurl);
                     if (name !== '') {
                         let embed = new Discord.RichEmbed()
                             .setImage(url=thumb)
