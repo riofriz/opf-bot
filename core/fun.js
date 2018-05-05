@@ -182,36 +182,26 @@ module.exports = {
             }
             string = string.split(':');
 
-            if (string[0] !== '') {
-                let options = {
-                    url: 'https://api.imgflip.com/caption_image',
-                    method: 'POST',
-                    headers: headers,
-                    qs: {
-                        'username': process.env.BOT_USER,
-                        'password': process.env.BOT_PASSWORD,
-                        'template_id': string[0],
-                        'text0': string[1],
-                        'text1': string[2]
-                    }
-                };
+            let options = {
+                url: 'https://api.imgflip.com/caption_image',
+                method: 'POST',
+                headers: headers,
+                qs: {'username': process.env.BOT_USER, 'password': process.env.BOT_PASSWORD, 'template_id': string[0], 'text0': string[1], 'text1': string[2]}
+            };
 
-                request(options, function (error, response, body) {
-                    if (!error && response.statusCode === 200) {
-                        let json_body = JSON.parse(body);
-                        let customMeme = json_body['data']['url'];
-                        let embed = new Discord.RichEmbed()
-                            .setColor(corevars.randomColor())
-                            .setImage(customMeme)
-                            .setFooter(message.author.username);
-                        message.channel.send({embed: embed});
-                    } else {
-                        console.log(error.message);
-                    }
-                });
-            } else {
-                message.channel.send('Almost.. but your syntax wasn\'t right!');
-            }
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    let customMeme = json_body['data']['url'];
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(customMeme)
+                        .setFooter(message.author.username);
+                    message.channel.send({embed: embed});
+                } else {
+                    console.log(error.message);
+                }
+            });
         } else {
             message.channel.send('Please use get or make, this command makes no sense to me.')
         }
