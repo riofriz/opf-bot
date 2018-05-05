@@ -136,7 +136,7 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === 'meme') {
-        if (message.channel.name === 'meme') {
+        if (message.channel.name === 'memes') {
             fun.getMeme(message, args);
         } else {
             message.channel.send('Sorry, this is not allowed in here. try in #memes');
