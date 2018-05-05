@@ -109,9 +109,9 @@ module.exports = {
      */
     spoilerTag: function(commandPrefix, message, args) {
         let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':');
-        if (string.length === 2) {
+        if (string.length >= 2) {
             // Submit a normal paste
-            paste.submit(string[1], function(err, res) {
+            paste.submit('test', function(err, res) {
                 console.log(res);
             });
 
