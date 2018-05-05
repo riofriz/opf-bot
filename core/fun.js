@@ -162,7 +162,7 @@ module.exports = {
                     let randomNumber = Math.floor(Math.random() * memeArray.length);
                     let embed = new Discord.RichEmbed()
                         .setColor(corevars.randomColor())
-                        .setImage(memeArray[randomNumber]['url']);
+                        .setImage(memeArray[randomNumber]);
                         // .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
                     message.channel.send({embed: embed});
                 }
