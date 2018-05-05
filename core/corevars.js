@@ -23,6 +23,7 @@ module.exports = {
         const commandsArray = [
             'hello',
             'help',
+            '',
             'latest',
             'love',
             'username',
