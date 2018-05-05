@@ -12,7 +12,7 @@ let gamerchannel = require('./core/gamerchannel');
 // Let's call discord now.
 const client = new Discord.Client();
 
-const commandPrefix = "opf-";
+const commandPrefix = "opf-" || "op-" || "o-";
 
 // OPFBOT READY? GOOO
 client.on("ready", () => {
