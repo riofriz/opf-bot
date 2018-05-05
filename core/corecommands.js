@@ -39,21 +39,21 @@ module.exports = {
      */
     help: function(commandPrefix, message) {
         let embed = new Discord.RichEmbed()
-            .addField(commandPrefix+"hello", "Sends a friendly message!")
             .addField(commandPrefix+"help", "Sends this help embed")
-            .addField(commandPrefix+"latest manga", "Shows the latest OP issue")
+            .addField(commandPrefix+"hello", "👋 Sends a friendly message! 👋")
+            .addField(commandPrefix+"latest manga", "📰 Shows the latest OP issue 📰")
             .addField(commandPrefix+"latest anime", "Shows the latest OP episode")
             .addField(commandPrefix+"latest nakama", "Last user to join the forum")
             .addField(commandPrefix+"love <user>", "<:pfft:393455142239862795>")
+            .addField(commandPrefix+"pokemon <name/id>", "❓ WHO'S THAT POKEMON ❓")
             .addField(commandPrefix+"sgame", "Displays information about the game requested.")
-            .addField(commandPrefix+"sgame", "Displays information about the game requested.")
-            .addField(commandPrefix+"spoiler <topic>:<spoilercontent>", "Hides the content in a paste.ee url that contains the spoiler. usage example: opf-spoiler one piece : ACE NOOO!")
-            .addField(commandPrefix+"spoilalert <messageid>", "Converts the selected message into a spoiler. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
+            .addField(commandPrefix+"spoiler <topic>:<spoilercontent>", "⚠️ Hides the content in a paste.ee url that contains the spoiler. usage example: opf-spoiler one piece : ACE NOOO! ⚠️")
+            .addField(commandPrefix+"spoilalert <messageid>", "🚨 Converts the selected message into a spoiler. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.) 🚨")
             //.addField(commandPrefix+"username <nickontheforum>", "connects your discord account to opf")
             //.addField(commandPrefix+"whois <user>", "If registered shows who the user is on opf")
             .addField(commandPrefix+"q <messageid> > reply to message", "Quotes message. Right click on the message to copy the id. (To enable: UserSettings -> Appearance -> Enable Developer mode.)")
             .setTitle("Bot commands:")
-            .setFooter("Here you have all bot commands you can use!")
+            .setFooter("Your lovable OPF MegaBot")
             .setColor(corevars.randomColor());
 
         message.channel.send({embed: embed});
