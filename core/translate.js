@@ -14,7 +14,7 @@ module.exports = {
         if (string[1].trim().match(/^[0-9]*$/) != null) {
             message.channel.fetchMessage(string[1])
                 .then(m => {
-                    translateText = message.content;
+                    translateText = m.content;
                     translate(translateText.trim(), {to: string[0].trim()}).then(res => {
                         console.log(res.text);
                         //=> I speak English
@@ -23,7 +23,7 @@ module.exports = {
                         let thumb = 'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png1000px/'+res.from.language.iso.trim()+'.png';
                         let embed = new Discord.RichEmbed()
                             .setThumbnail(url=thumb)
-                            .addField(res.text, string[1].trim())
+                            .addField(res.text, translateText.trim())
                             .setColor(corevars.randomColor());
                         message.channel.send({embed: embed});
                     }).catch(err => {
