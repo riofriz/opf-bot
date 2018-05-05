@@ -148,26 +148,24 @@ module.exports = {
                 headers: headers
             };
 
-            if (string !== '') {
-                request(options, function (error, response, body) {
-                    if (!error && response.statusCode === 200) {
-                        let json_body = JSON.parse(body);
-                        for (let key in json_body['data']['memes']) {
-                            if (json_body['data']['memes'].hasOwnProperty(key)) {
-                                memeArray[key]['url'] = json_body[key]['data']['memes']['url'];
-                                memeArray[key]['id'] = json_body[key]['data']['memes']['id'];
-                                memeArray[key]['name'] = json_body[key]['data']['memes']['name'];
-                            }
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    for (let key in json_body['data']['memes']) {
+                        if (json_body['data']['memes'].hasOwnProperty(key)) {
+                            memeArray[key]['url'] = json_body[key]['data']['memes']['url'];
+                            memeArray[key]['id'] = json_body[key]['data']['memes']['id'];
+                            memeArray[key]['name'] = json_body[key]['data']['memes']['name'];
                         }
-                        let randomNumber = Math.floor(Math.random() * memeArray.length);
-                        let embed = new Discord.RichEmbed()
-                            .setColor(corevars.randomColor())
-                            .setImage(memeArray[randomNumber]['url'])
-                            .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
-                        message.channel.send({embed: embed});
                     }
-                });
-            }
+                    let randomNumber = Math.floor(Math.random() * memeArray.length);
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(memeArray[randomNumber]['url'])
+                        .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
+                    message.channel.send({embed: embed});
+                }
+            });
 
         } else if (args[0] === 'make') {
 
