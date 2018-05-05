@@ -5,8 +5,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 let qs = require('qs');
 let https = require('https');
-let Pastee = require('pastee');
-let paste = new Pastee(process.env.PASTEBIN);
+let Pastee = new PasteeAPI(process.env.PASTEBIN);
 
 module.exports = {
 
@@ -111,8 +110,11 @@ module.exports = {
         let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':');
         if (string.length >= 2) {
             // Submit a normal paste
-            paste.submit('test', function(err, res) {
+
+            Pastee.paste({"contents" : string[1], "name": string[0], "expire": 100}).then(res => {
                 console.log(res);
+            }).catch(err => {
+                console.log(err);
             });
 
             // let query = qs.stringify({
