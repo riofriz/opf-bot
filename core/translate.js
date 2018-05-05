@@ -5,11 +5,21 @@ const Discord = require('discord.js');
 module.exports = {
     translateText: function(message, args) {
         let string;
+        let translateText;
         for (let i = 0; i !== args.length; i++) {
             string += args[i] + ' ';
         }
         string = string.replace('undefined', '').split('>');
-        translate(string[1].trim(), {to: string[0].trim()}).then(res => {
+        if (string[1].trim().match(/^[0-9]+$/) != null) {
+            message.channel.fetchMessage(string[1])
+                .then(m => {
+                    translateText = message.content;
+                });
+        } else {
+            translateText = string[1].trim();
+        }
+
+        translate(translateText.trim(), {to: string[0].trim()}).then(res => {
             console.log(res.text);
             //=> I speak English
             console.log();
