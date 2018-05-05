@@ -171,7 +171,33 @@ module.exports = {
             });
 
         } else if (args[0] === 'make') {
+            let string = '';
+            let headers = {
+                'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+            };
+            for (let i = 0; i !== args.length; i++) {
+                if (args[i] !== 'make') {
+                    string += args[i] + ' ';
+                }
+            }
+            string = string.split(':');
 
+            let options = {
+                url: 'https://api.imgflip.com/get_memes',
+                method: 'POST',
+                headers: headers,
+                qs: {'username': process.env.BOT_USER, 'password': process.env.BOT_PASSWORD, 'template_id': string[0], 'text0': string[1], 'text1': string[2]}
+            };
+
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    console.log(body);
+                    console.log(json_body);
+                } else {
+                    console.log(error.message);
+                }
+            });
         } else {
             message.channel.send('Please use get or make, this command makes no sense to me.')
         }
