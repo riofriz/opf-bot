@@ -17,7 +17,7 @@ module.exports = {
             let thumb = 'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png1000px/'+res.from.language.iso.trim()+'.png';
             let embed = new Discord.RichEmbed()
                 .setThumbnail(url=thumb)
-                .addField(res.from.language.iso.trim(), string[1].trim())
+                .addField(res.text, string[1].trim())
                 .setColor(corevars.randomColor());
             message.channel.send({embed: embed});
         }).catch(err => {
