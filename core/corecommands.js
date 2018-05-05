@@ -112,7 +112,7 @@ module.exports = {
         if (string.length >= 2) {
             // Submit a normal paste
             Pastee.paste({"contents" : string[1], "name": string[0], "expire": 2}).then(res => {
-                message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n' + string[0] + ': ' + res.link);
+                message.channel.send('```diff\n- ⚠️ SPOILER ⚠️```' + string[0] + ': ' + res.link);
             }).catch(err => {
                 console.log(err);
             });
@@ -124,9 +124,9 @@ module.exports = {
     editMessageToSpoiler: function(message, args) {
         message.channel.fetchMessage(args[0])
             .then(m => {
-                Pastee.paste({"contents" : string[1], "name": string[0], "expire": 100}).then(res => {
+                Pastee.paste({"contents" : m.content, "name": m.author.username, "expire": 100}).then(res => {
                     m.delete();
-                    message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n <@'+m.author.id+'>, your message has been converted into spoiler. \n' + data);
+                    message.channel.send('```diff\n- ⚠️ SPOILER ⚠️``` <@'+m.author.id+'>, your message has been converted into spoiler. \n' + res.link);
                 }).catch(err => {
                     console.log(err);
                 });
