@@ -72,7 +72,7 @@ client.on("message", (message) => {
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
         message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
-    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "Chuck Norris") {
+    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "chuck norris") {
         fun.chuckNorris();
     }
 
