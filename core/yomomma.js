@@ -1046,6 +1046,6 @@ module.exports = {
             "Yo mama's like a puppy... everybody wants to give her a hug."
         ];
         let randomNumber = Math.floor(Math.random()*yomamma.length);
-        return yomamma[randomNumber];
+        message.channel.send(yomamma[randomNumber]);
     }
 };
