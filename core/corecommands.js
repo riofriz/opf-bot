@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 let qs = require('qs');
 let https = require('https');
-let PasteAPI = require('pastee-api')
+const PasteeAPI = require('pastee-api');
 let Pastee = new PasteeAPI(process.env.PASTEBIN);
 
 module.exports = {
