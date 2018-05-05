@@ -74,7 +74,7 @@ client.on("message", (message) => {
         message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
     }
 
-    if(command === "help"){
+    if(command === "help" || command === ''){
         corecommands.help(commandPrefix, message);
     }
 
