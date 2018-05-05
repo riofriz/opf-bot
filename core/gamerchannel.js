@@ -106,12 +106,13 @@ module.exports = {
                             moves[key] = json_body['moves'][key]['move']['name'];
                         }
                     }
+                    let randomMoves = corevars.getMeRandomElements(moves, 5).replace('undefined', '');
                     let embed = new Discord.RichEmbed()
                         .setThumbnail(url=thumb)
                         .setTitle(name)
                         .addField('ID:', name)
                         .addField('Type:', types)
-                        .addField('Random Moves:', corevars.getMeRandomElements(moves, 5))
+                        .addField('Random Moves:', randomMoves.replace('-', ' '))
                         .setColor(corevars.randomColor())
                     message.channel.send({embed: embed});
                 }
