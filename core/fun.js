@@ -183,7 +183,7 @@ module.exports = {
             string = string.split(':');
 
             let options = {
-                url: 'https://api.imgflip.com/get_memes',
+                url: 'https://api.imgflip.com/caption_image',
                 method: 'POST',
                 headers: headers,
                 qs: {'username': process.env.BOT_USER, 'password': process.env.BOT_PASSWORD, 'template_id': string[0], 'text0': string[1], 'text1': string[2]}
