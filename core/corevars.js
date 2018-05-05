@@ -7,7 +7,7 @@ module.exports = {
         const exceptions = [
             "y'all",
             "symphogear",
-            "chuck norris"
+            "norris"
         ];
         if (exceptions.indexOf(value) === -1) {
             return false;
