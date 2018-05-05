@@ -6,7 +6,8 @@ module.exports = {
     isException: function (value) {
         const exceptions = [
             "y'all",
-            "symphogear"
+            "symphogear",
+            "chuck norris"
         ];
         if (exceptions.indexOf(value) === -1) {
             return false;

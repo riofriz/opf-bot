@@ -206,6 +206,32 @@ module.exports = {
         } else {
             message.channel.send('Please use **get** or give **make** some parameters. This command makes no sense to me.')
         }
+    },
 
+    chuckNorris: function() {
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let options = {
+            url: 'https://api.chucknorris.io/jokes/random',
+            method: 'GET',
+            headers: headers
+        };
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                let customMeme = json_body['value'];
+                let embed = new Discord.RichEmbed()
+                    .setColor(corevars.randomColor())
+                    .setTitle(customMeme)
+                    .setThumbnail('./asset/icons/chucknorris.gif')
+                    .setFooter(message.author.username);
+                message.channel.send({embed: embed});
+            } else {
+                console.log(error.message);
+            }
+        });
     }
 };
