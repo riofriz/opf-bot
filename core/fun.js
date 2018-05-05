@@ -120,7 +120,8 @@ module.exports = {
     commandsWithNoCommands: function(str) {
         let substrings = [
             "symphogear",
-            "y'all"
+            "y'all",
+            "chuck norris"
         ];
         let result;
         for (let i = 0; i !== substrings.length; i++) {
