@@ -109,8 +109,8 @@ module.exports = {
                     let randomMoves = corevars.getMeRandomElements(moves, 5).replace('undefined', '');
                     let embed = new Discord.RichEmbed()
                         .setThumbnail(url=thumb)
-                        .setTitle(name)
-                        .addField('ID:', name)
+                        .addField('Name:', name)
+                        .addField('ID:', id)
                         .addField('Type:', types)
                         .addField('Random Moves:', randomMoves.replace('-', ' '))
                         .setColor(corevars.randomColor())
