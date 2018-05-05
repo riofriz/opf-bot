@@ -5,6 +5,8 @@ const Discord = require('discord.js');
 const fs = require('fs');
 let qs = require('qs');
 let https = require('https');
+let Pastee = require('pastee');
+let paste = new Pastee(process.env.PASTEBIN);
 
 module.exports = {
 
@@ -108,36 +110,41 @@ module.exports = {
     spoilerTag: function(commandPrefix, message, args) {
         let string = message.content.toLowerCase().replace(commandPrefix+'spoiler', '').split(':');
         if (string.length === 2) {
-            let query = qs.stringify({
-                key: process.env.PASTEBIN,
-                sections:[{
-                    "name":"Section1",
-                    "syntax":"autodetect",
-                    "contents": string[1]
-                }],
-                description: string[0]
+            // Submit a normal paste
+            paste.submit(string[1], function(err, res) {
+                console.log(res);
             });
 
-            let req = https.request({
-                host: 'https://api.paste.ee',
-                path: '/v1/pastes',
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': query.length,
-                    'X-Auth-Token': process.env.PASTEBIN
-                }
-            }, function (res) {
-                let data = '';
-                res.on('data', function (chunk) {
-                    data += chunk;
-                });
-                res.on('end', function () {
-                    message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n' + string[0] + ': ' + data);
-                });
-            });
-            req.write(query);
-            req.end();
+            // let query = qs.stringify({
+            //     key: process.env.PASTEBIN,
+            //     sections:[{
+            //         "name":"Section1",
+            //         "syntax":"autodetect",
+            //         "contents": string[1]
+            //     }],
+            //     description: string[0]
+            // });
+            //
+            // let req = https.request({
+            //     host: 'https://api.paste.ee',
+            //     path: '/v1/pastes',
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded',
+            //         'Content-Length': query.length,
+            //         'X-Auth-Token': process.env.PASTEBIN
+            //     }
+            // }, function (res) {
+            //     let data = '';
+            //     res.on('data', function (chunk) {
+            //         data += chunk;
+            //     });
+            //     res.on('end', function () {
+            //         message.channel.send('```diff\n- ⚠️SPOILER ⚠️```\n' + string[0] + ': ' + data);
+            //     });
+            // });
+            // req.write(query);
+            // req.end();
         } else {
             message.channel.send('Sorry, wrong syntax.. try again opf-<spoilerargument>:<spoilercontent>');
         }
