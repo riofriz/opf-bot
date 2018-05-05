@@ -120,7 +120,8 @@ module.exports = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Content-Length': query.length
+                    'Content-Length': query.length,
+                    'X-Auth-Token': process.env.PASTEBIN
                 }
             }, function (res) {
                 let data = '';
@@ -153,7 +154,8 @@ module.exports = {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Content-Length': query.length
+                        'Content-Length': query.length,
+                        'X-Auth-Token': process.env.PASTEBIN
                     }
                 }, function (res) {
                     let data = '';
