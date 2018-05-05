@@ -72,5 +72,31 @@ module.exports = {
                 }
             }
         });
+    },
+    pokemon: function(message, args) {
+        //
+        let string = '';
+        let title;
+        let messageToSend;
+        let alternatives = '';
+        for (let i = 0; i !== args.length; i++) {
+            string += args[i] + ' ';
+        }
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let options = {
+            url: 'https://pokeapi.co/api/v2/pokemon',
+            method: 'GET',
+            headers: headers,
+            qs: {'format': 'json', 'query': string}
+        };
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                console.log(json_body['id'])
+            }
+        });
     }
 };

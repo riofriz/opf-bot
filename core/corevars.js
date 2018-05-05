@@ -34,7 +34,8 @@ module.exports = {
             "sgame",
             "q",
             "spoiler",
-            "spoilalert"
+            "spoilalert",
+            "pokemon"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
