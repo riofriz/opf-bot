@@ -3,7 +3,11 @@ let corevars = require('./corevars');
 
 module.exports = {
     translateText: function(message, args) {
-        let string = args.split('>');
+        let string;
+        for (let i = 0; i !== args.length; i++) {
+            string += args[i] + ' ';
+        }
+        string = string.split('>');
         translate(string[1], {to: string[0]}).then(res => {
             console.log(res.text);
             //=> I speak English
