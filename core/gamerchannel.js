@@ -113,7 +113,6 @@ module.exports = {
                         .addField('ID:', name)
                         .addField('Type:', types)
                         .setColor(corevars.randomColor())
-                        .setURL(siteurl);
                     message.channel.send({embed: embed});
                 }
             } else {
