@@ -12,7 +12,9 @@ let gamerchannel = require('./core/gamerchannel');
 // Let's call discord now.
 const client = new Discord.Client();
 
-const commandPrefix = "opf-" || "op-" || "o-";
+//const commandPrefix = "opf-" || "op-" || "o-";
+
+
 
 // OPFBOT READY? GOOO
 client.on("ready", () => {
@@ -23,6 +25,14 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
     "use strict";
+
+    if (isArray(message.split('opf-'))) {
+        const commandPrefix = 'opf-';
+    } else if (isArray(message.split('op-'))) {
+        const commandPrefix = 'op-';
+    } else if (isArray(message.split('o-'))) {
+        const commandPrefix = 'o-';
+    }
 
     //Declares Command variable
     let command = message.content.toLowerCase();
