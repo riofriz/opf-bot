@@ -210,7 +210,7 @@ module.exports = {
         }
     },
 
-    chuckNorris: function() {
+    chuckNorris: function(message) {
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
