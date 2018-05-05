@@ -101,9 +101,11 @@ module.exports = {
                             types += json_body['types'][key]['type']['name']+' ';
                         }
                     }
+                    var counter = 0;
                     for (let key in json_body['moves']) {
                         if (json_body['moves'].hasOwnProperty(key)) {
-                            moves[key] = json_body['moves'][key]['move']['name'];
+                            moves[counter] = json_body['moves'][key]['move']['name'];
+                            counter++;
                         }
                     }
                     console.log(moves);
