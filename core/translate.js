@@ -7,7 +7,7 @@ module.exports = {
         for (let i = 0; i !== args.length; i++) {
             string += args[i] + ' ';
         }
-        string = string.split('>');
+        string = string.replace('undefined', '').split('>');
         translate(string[1], {to: string[0]}).then(res => {
             console.log(res.text);
             //=> I speak English
