@@ -11,6 +11,8 @@ let gamerchannel = require('./core/gamerchannel');
 
 // Let's call discord now.
 const client = new Discord.Client();
+let commandPrefix;
+
 
 //const commandPrefix = "opf-" || "op-" || "o-";
 
