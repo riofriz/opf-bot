@@ -86,7 +86,7 @@ client.on("message", (message) => {
         if (message.channel.name === 'multi-lingual-channel') {
             translate.translateText(message, args);
         } else {
-            message.channel.send('Naaah.. just speak english in here.');
+            message.channel.send('Naaah.. just speak english in here. try this in #multi-lingual-channel');
         }
     }
 
@@ -136,14 +136,18 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === 'meme') {
-        fun.getMeme(message, args);
+        if (message.channel.name === 'pokemon_channel') {
+            fun.getMeme(message, args);
+        } else {
+            message.channel.send('Sorry, this is not allowed in here. try in #memes');
+        }
     }
 
     if (commandWithArgs === 'pokemon') {
         if (message.channel.name === 'pokemon_channel') {
             gamerchannel.pokemon(message, args);
         } else {
-            message.channel.send('Sorry, this is not allowed in here.');
+            message.channel.send('Sorry, this is not allowed in here. try in #pokemon_channel');
         }
     }
 
@@ -152,7 +156,7 @@ client.on("message", (message) => {
         if (message.channel.name === 'gamers-general') {
             gamerchannel.gamesearch(message, args);
         } else {
-            message.channel.send('Sorry, this is not allowed in here.');
+            message.channel.send('Sorry, this is not allowed in here. try in #gamers-general');
         }
     }
 

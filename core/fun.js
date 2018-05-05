@@ -153,7 +153,6 @@ module.exports = {
                     let json_body = JSON.parse(body);
                     for (let key in json_body['data']['memes']) {
                         if (json_body['data']['memes'].hasOwnProperty(key)) {
-                            console.log(json_body['data']['memes'][key]);
                             memeArray.push({
                                 url: json_body['data']['memes'][key]['url'],
                                 id: json_body['data']['memes'][key]['id'],
@@ -167,6 +166,8 @@ module.exports = {
                         .setImage(memeArray[randomNumber]['url'])
                         .setFooter(memeArray[randomNumber]['id']+' - '+memeArray[randomNumber]['name']);
                     message.channel.send({embed: embed});
+                } else {
+                    console.log(error.message);
                 }
             });
 
