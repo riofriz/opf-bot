@@ -229,7 +229,7 @@ module.exports = {
                 let embed = new Discord.RichEmbed()
                     .setColor(corevars.randomColor())
                     .setTitle(customMeme)
-                    .setThumbnail('./asset/icons/chucknorris.gif')
+                    .setThumbnail('asset/icons/chucknorris.gif')
                     .setFooter(message.author.username);
                 message.channel.send({embed: embed});
             } else {
