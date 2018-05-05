@@ -37,6 +37,7 @@ module.exports = {
             "spoiler",
             "spoilalert",
             "pokemon",
+            "meme"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

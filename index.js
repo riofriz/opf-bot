@@ -135,6 +135,10 @@ client.on("message", (message) => {
         fun.garchu(client, message, args);
     }
 
+    if (commandWithArgs === 'meme') {
+        fun.getMeme(message, args);
+    }
+
     if (commandWithArgs === 'pokemon') {
         if (message.channel.name === 'pokemon_channel') {
             gamerchannel.pokemon(message, args);
