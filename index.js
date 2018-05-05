@@ -38,8 +38,6 @@ client.on("message", (message) => {
         commandPrefix = 'opf-';
     }
 
-    console.log(commandPrefix);
-
     //Declares Command variable
     let command = message.content.toLowerCase();
     command = command.slice(commandPrefix.length);
