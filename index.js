@@ -16,6 +16,8 @@ let variousapi = require('./core/variousapi');
 const client = new Discord.Client();
 // let commandPrefix = 'opf-' || 'op-' || 'o-';
 let commandPrefix = '';
+let allowed = false;
+let notification = true;
 
 //const commandPrefix = "opf-" || "op-" || "o-";
 
@@ -30,7 +32,6 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
     "use strict";
-    let allowed = false;
 
     if (message.content.toLowerCase().includes('opf-')) {
         commandPrefix = 'opf-';
@@ -45,8 +46,7 @@ client.on("message", (message) => {
 
     //Declares Command variable
     let command = message.content.toLowerCase();
-    command = command.split(commandPrefix);
-    command = command[command.length-1].trim();
+    command = command.slice(commandPrefix.length);
 
     //Declares args and command with args variable
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
@@ -54,15 +54,19 @@ client.on("message", (message) => {
 
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all") {
         allowed = true;
+        notification = false;
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
         allowed = true;
+        notification = false;
         message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
         allowed = true;
+        notification = false;
         fun.chuckNorris(message);
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@!415230548248887296>") {
         allowed = true;
+        notification = false;
         fun.dontTagMe(message);
     }
 
@@ -70,7 +74,7 @@ client.on("message", (message) => {
     if(corecommands.globalCheck(client, commandPrefix, message, allowed)) {
 
         //If command is not in available commands and user is not mentioned returns fun message.
-        if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user)) {
+        if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && notification !== false) {
             message.channel.send(message.author+' <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250>');
         }
 
