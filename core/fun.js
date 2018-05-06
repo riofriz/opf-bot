@@ -327,7 +327,7 @@ module.exports = {
                 let json_body = JSON.parse(body);
                 let randomNumber = Math.floor(Math.random()*json_body['results'].length);
                 let embed = new Discord.RichEmbed()
-                    .setTitle('This spot is reserved for something special, is WIP, in the meantime enjoy a lovely gif.')
+                    .setTitle('Enjoy this cute gif.. for now.. <:tsun:432123531443175425>')
                     .setColor(corevars.randomColor())
                     .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
                 message.channel.send({embed: embed});
