@@ -245,6 +245,7 @@ module.exports = {
         if (randomNumber <= 5) {
             ptff = '<:pfft:393455142239862795>';
         }
+        console.log(args[0]);
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
         }
