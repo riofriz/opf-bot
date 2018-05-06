@@ -128,7 +128,7 @@ client.on("message", (message) => {
     }
 
     if (command === "yomama") {
-        yomomma.yomama(message);
+        yomomma.yomama(message, args);
     }
 
     if (commandWithArgs === "howlong") {

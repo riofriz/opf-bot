@@ -3,7 +3,7 @@ module.exports = {
      * @param value
      * @returns {boolean}
      */
-    yomama: function (message) {
+    yomama: function (message, args) {
         let yomamma = [
             "Yo mama is so fat that her bellybutton gets home 15 minutes before she does.",
             "Yo mama is so fat that when she was diagnosed with a flesh-eating disease, the doctor gave her ten years to live.",
@@ -1046,6 +1046,11 @@ module.exports = {
             "Yo mama's like a puppy... everybody wants to give her a hug."
         ];
         let randomNumber = Math.floor(Math.random()*yomamma.length);
-        message.channel.send(yomamma[randomNumber]);
+
+        if (typeof args[0] !== 'undefined') {
+            message.channel.send(yomamma[randomNumber]);
+        } else {
+            args[0]+', '+message.channel.send(yomamma[randomNumber]);
+        }
     }
 };
