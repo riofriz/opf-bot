@@ -159,7 +159,7 @@ module.exports = {
                     }
                 }
                 if(counter < 10) {
-                    message.channel.send(counter);
+                    console.log(counter);
                 }
                 return counter;
             });
