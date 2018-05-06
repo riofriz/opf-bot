@@ -263,9 +263,9 @@ module.exports = {
         }
         if (typeof args[0] !== 'undefined') {
             mention = args[0];
-            if (message.isMentioned('408255473821679617') && message.author.id !== '408255473821679617') {
+            if (mention.trim() === '<@408255473821679617>' && message.author.id !== '408255473821679617') {
                 dick = mention+' = 8=======================================================D ';
-            } else if (message.isMentioned('273453235287883776')) {
+            } else if (mention.trim() === '<@273453235287883776>' || mention.trim() === '<@!273453235287883776>') {
                 dick = mention+' = {(\')}';
             } else {
                 dick = mention+' = 8'+bodystr+'D '+ptff;
