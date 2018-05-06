@@ -140,15 +140,16 @@ module.exports = {
         let counter = 0;
         message.channel.fetchMessages({limit: 10})
             .then(messages => {
-                for (let i = 0; i !== messages.length; i++) {
-                    if (messages[i].isMentioned('408255473821679617')) {
-                        counter++;
-                    }
-                }
-                if(counter < 10) {
-                    message.channel.send(counter);
-                }
-                return counter;
+                // for (let i = 0; i !== messages.length; i++) {
+                //     if (messages[i].content.isMentioned('408255473821679617')) {
+                //         counter++;
+                //     }
+                // }
+                // if(counter < 10) {
+                //     message.channel.send(counter);
+                // }
+                // return counter;
+                console.log(messages);
             });
     }
 };
