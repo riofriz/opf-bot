@@ -251,6 +251,8 @@ module.exports = {
         if (typeof args[0] !== 'undefined') {
             mention = args[0];
             dick = mention+' = 8'+bodystr+'D '+ptff;
+        } else if (args[0] === '<!@408255473821679617>') {
+            dick = mention+' = 8==========================================D ';
         } else {
             dick = '8'+bodystr+'D '+ptff;
         }
