@@ -87,7 +87,7 @@ client.on("message", (message) => {
     // }
 
     //Checks if starts with prefix and commands are enabled. If false returns nothing.
-    if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.startsWith(commandPrefix)) {
+    if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.toLowerCase().startsWith(commandPrefix)) {
 
         //If command is not in available commands and user is not mentioned returns fun message.
         if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && notification !== false) {
