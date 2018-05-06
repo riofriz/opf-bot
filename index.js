@@ -57,18 +57,21 @@ client.on("message", (message) => {
         allowed = true;
         notification = false;
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
-    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
         allowed = true;
         notification = false;
         let embed = new Discord.RichEmbed()
             .setTitle('mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right?')
             .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
         message.channel.send({embed: embed});
-    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
         allowed = true;
         notification = false;
         fun.chuckNorris(message);
-    } else if (message.isMentioned('415230548248887296')) {
+    }
+    if (message.isMentioned('415230548248887296')) {
         allowed = true;
         notification = false;
         fun.dontTagMe(message);
