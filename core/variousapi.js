@@ -52,7 +52,7 @@ module.exports = {
                                 id = json_body['results'][key].id;
                                 urlName = name.split(" ").join("-");
                                 siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+urlName.toLowerCase();
-                                adult = json_body['results'][key].adult;
+                                adult = json_body['results'][key]['adult'];
 
                                 if (typeof json_body['results'][key]['poster_path'] !== 'undefined' && json_body['results'][key]['poster_path'] !== null) {
                                     thumb = 'https://image.tmdb.org/t/p/w500'+json_body['results'][key]['poster_path'];
