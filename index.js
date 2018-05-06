@@ -209,7 +209,7 @@ client.on("message", (message) => {
 
         // USER SPECIFIC
         if (command === 'grin') {
-            message.channel.send('I am reserving this spot for something special.')
+            fun.onlyForGrin(message);
         }
     }
 
