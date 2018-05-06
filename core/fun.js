@@ -251,7 +251,7 @@ module.exports = {
         if (typeof args[0] !== 'undefined') {
             mention = args[0];
             if (mention.trim() === '<@408255473821679617>' && message.author.id !== '408255473821679617') {
-                dick = mention+' = 8==========================================D ';
+                dick = mention+' = 8=======================================================D ';
             } else {
                 dick = mention+' = 8'+bodystr+'D '+ptff;
             }
