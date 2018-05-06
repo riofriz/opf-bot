@@ -25,7 +25,7 @@ let commandPrefix;
 client.on("ready", () => {
     console.log("Bot started!");
     client.user.setUsername("OPF MegaBot");
-    client.user.setPresence({ game: { name: 'o- / op- / op-f . Try me!' } });
+    client.user.setPresence({ game: { name: 'o- / op- / opf- . Try me!' } });
 });
 
 client.on("message", (message) => {
