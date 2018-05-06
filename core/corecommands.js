@@ -137,16 +137,18 @@ module.exports = {
     },
 
     tooManyTags: function(message) {
-        // message.channel.fetchMessages({limit: 10})
-        //     .then(messages => {
-        //         const fetchedMsg = messages.first(); // messages is a collection!)
-        //         // do something with it
-        //         fetchedMsg.edit("This fetched message was edited");
-        //     });
-
-        if (message.isMentioned('408255473821679617')) {
-            message.channel.send('works!');
-            return 10;
-        }
+        let counter = 0;
+        message.channel.fetchMessages({limit: 10})
+            .then(messages => {
+                for (let i = 0; i !== messages.length; i++) {
+                    if (messages[i].isMentioned('408255473821679617')) {
+                        counter++;
+                    }
+                }
+                if(counter < 10) {
+                    message.channel.send(counter);
+                }
+                return counter;
+            });
     }
 };
