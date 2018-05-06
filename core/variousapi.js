@@ -77,7 +77,7 @@ module.exports = {
                             .setColor(corevars.randomColor())
                             .setURL(siteurl);
                         message.channel.send({embed: embed});
-                        if (adult === true) {
+                        if (adult === 'true') {
                             message.channel.send('<:pfft:393455142239862795>');
                         }
                     } else {
