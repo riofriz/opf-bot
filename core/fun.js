@@ -236,16 +236,24 @@ module.exports = {
         });
     },
 
-    howlong: function(message) {
+    howlong: function(message, args) {
         let bodystr = '';
         let randomNumber = Math.floor(Math.random()*30);
         let ptff = '';
+        let mention = '';
+        let dick;
         if (randomNumber <= 5) {
             ptff = '<:pfft:393455142239862795>';
         }
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
         }
-        message.channel.send('8'+bodystr+'D '+ptff);
+        if (args[0] !== '') {
+            mention = args[0];
+            dick = mention+' = 8'+bodystr+'D '+ptff;
+        } else {
+            dick = '8'+bodystr+'D '+ptff;
+        }
+        message.channel.send(dick);
     }
 };
