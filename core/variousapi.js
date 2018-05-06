@@ -29,6 +29,12 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
+                let titleTag = '';
+                if (media == 'movie') {
+                    titleTag = 'title';
+                } else {
+                    titleTag = 'original_name';
+                }
                 let name = '';
                 let desc = '';
                 let thumb = '';
@@ -39,8 +45,8 @@ module.exports = {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
                             console.log(json_body['results']);
-                            if (json_body['results'][key].title.toLowerCase().trim() === string.toLowerCase().trim()) {
-                                name = json_body['results'][key].title;
+                            if (json_body['results'][key][titleTag].toLowerCase().trim() === string.toLowerCase().trim()) {
+                                name = json_body['results'][key][titleTag];
                                 desc = striptags(json_body['results'][key].overview);
                                 id = json_body['results'][key].id;
                                 siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+name.replace(' ', '-').toLowerCase();
@@ -51,8 +57,8 @@ module.exports = {
                                     thumb = 'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png';
                                 }
                             } else {
-                                if (typeof json_body['results'][key]['name'] !== 'undefined') {
-                                    aliases += json_body['results'][key].title + '\n';
+                                if (typeof json_body['results'][key][titleTag] !== 'undefined') {
+                                    aliases += json_body['results'][key][titleTag] + '\n';
                                 }
                             }
                         }
