@@ -308,5 +308,35 @@ module.exports = {
             let randomOne = Math.floor(Math.random() * threats.length);
             message.channel.send(intro + threats[randomOne]);
         }
+    },
+
+    onlyForGrin: function(message) {
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let options = {
+            url: 'https://api.tenor.com/v1/random',
+            method: 'GET',
+            headers: headers,
+            qs: {'key': process.env.TENOR, 'q': 'anime-kawaii'}
+        };
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                for (let key in json_body['results']) {
+                    if (json_body['results'].hasOwnProperty(key)) {
+                        let embed = new Discord.RichEmbed()
+                            .setTitle('This spot is reserved for something special, is WIP, in the meantime enjoy a lovely gif.')
+                            .setColor(corevars.randomColor())
+                            .setImage(json_body['results'][0]['url']);
+                        message.channel.send({embed: embed});
+                    }
+                }
+            } else {
+                console.log(error.message);
+            }
+        });
     }
 };
