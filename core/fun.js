@@ -325,13 +325,11 @@ module.exports = {
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
-                if (json_body['results'].hasOwnProperty(key)) {
-                    let embed = new Discord.RichEmbed()
-                        .setTitle('This spot is reserved for something special, is WIP, in the meantime enjoy a lovely gif.')
-                        .setColor(corevars.randomColor())
-                        .setImage(json_body['results'][0]['url']);
-                    message.channel.send({embed: embed});
-                }
+                let embed = new Discord.RichEmbed()
+                    .setTitle('This spot is reserved for something special, is WIP, in the meantime enjoy a lovely gif.')
+                    .setColor(corevars.randomColor())
+                    .setImage(json_body['results'][0]['url']);
+                message.channel.send({embed: embed});
             } else {
                 console.log(error.message);
             }
