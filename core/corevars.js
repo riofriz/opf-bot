@@ -43,7 +43,8 @@ module.exports = {
             "yomama",
             "howlong",
             "movie",
-            "series"
+            "series",
+            "whops"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

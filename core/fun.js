@@ -270,5 +270,16 @@ module.exports = {
             dick = '8'+bodystr+'D '+ptff;
         }
         message.channel.send(dick);
+    },
+
+    whops: function(message) {
+        let whops = [
+        "I didn't want to be a toy",
+        "I didn't do it for the joy",
+        "I just wanted you to enjoy",
+        "My darling"
+        ];
+        let randomOne = Math.floor(Math.random() * whops.length);
+        message.channel.send(whops[randomOne]);
     }
 };

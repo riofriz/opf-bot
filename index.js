@@ -156,6 +156,10 @@ client.on("message", (message) => {
         }
     }
 
+    if (commandWithArgs === 'whops') {
+        fun.whops(message);
+    }
+
     if (commandWithArgs === 'pokemon') {
         if (message.channel.name === 'pokemon_channel') {
             gamerchannel.pokemon(message, args);
