@@ -248,7 +248,7 @@ module.exports = {
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
         }
-        if (args[0] !== '') {
+        if (typeof args[0] !== 'undefined') {
             mention = args[0];
             dick = mention+' = 8'+bodystr+'D '+ptff;
         } else {
