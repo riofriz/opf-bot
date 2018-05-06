@@ -136,32 +136,32 @@ module.exports = {
             });
     },
 
-    tooManyTags: function(message) {
-        let counter = 0;
-        let firstChar = '';
-        if (message.content.includes("<@")) {
-            firstChar = '<@';
-        } else if (message.content.includes("<!@")) {
-            firstChar = '<!@';
-        }
-
-        message.channel.fetchMessages({limit: 10})
-            .then(messages => {
-                for (let key in messages) {
-                    if (messages.hasOwnProperty(key)) {
-                        if (key <= 10) {
-                            console.log(messages[key].content);
-                            let subStr = messages[key].content.match(firstChar + "(.*)>");
-                            if (messages[key].isMentioned(subStr)) {
-                                counter++;
-                            }
-                        }
-                    }
-                }
-                if(counter < 10) {
-                    console.log(counter);
-                }
-                return counter;
-            });
-    }
+    // tooManyTags: function(message) {
+    //     let counter = 0;
+    //     let firstChar = '';
+    //     if (message.content.includes("<@")) {
+    //         firstChar = '<@';
+    //     } else if (message.content.includes("<!@")) {
+    //         firstChar = '<!@';
+    //     }
+    //
+    //     message.channel.fetchMessages({limit: 10})
+    //         .then(messages => {
+    //             for (let key in messages) {
+    //                 if (messages.hasOwnProperty(key)) {
+    //                     if (key <= 10) {
+    //                         console.log(messages[key].content);
+    //                         let subStr = messages[key].content.match(firstChar + "(.*)>");
+    //                         if (messages[key].isMentioned(subStr)) {
+    //                             counter++;
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //             if(counter < 10) {
+    //                 console.log(counter);
+    //             }
+    //             return counter;
+    //         });
+    // }
 };

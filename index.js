@@ -76,9 +76,9 @@ client.on("message", (message) => {
         fun.messageOnQuote(message);
     }
 
-    if (corecommands.tooManyTags(message) >= 10) {
-        message.channel.send(fun.dontTagMe(message));
-    }
+    // if (corecommands.tooManyTags(message) >= 10) {
+    //     message.channel.send(fun.dontTagMe(message));
+    // }
 
     //Checks if starts with prefix and commands are enabled. If false returns nothing.
     if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.startsWith(commandPrefix)) {
