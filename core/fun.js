@@ -281,5 +281,27 @@ module.exports = {
         ];
         let randomOne = Math.floor(Math.random() * whops.length);
         message.channel.send(whops[randomOne]);
+    },
+
+    dontTagMe: function(message) {
+        let intro = 'If you tag <@415230548248887296> again '
+        let threats = [
+        "I will get my first period teacher to go and bore the crap out of you until your ears bleed and make you listen to every horrible song ever made until finally your head pops if you don't shut up. If that doesn't work (or does but then doesn't kill you, yet) then I will get every single fan of every famous pop artist and tell them you made a threat and an actual plan to assassinate their idol and make them chase you until you break your legs and then they will finally take your dead body and throw it off the tower of which one of the records were made in. After, I will get Burnie to play the dubstep hipster cat on replay for hours, have Miles do the Bane voice, and Kara's annoying turkey playing on and on at the same time until you take the gun in front of you, and put your self out of annoying misery",
+        "I will dress you as a lettuce and feed you to the snails, it will be a very slow death..",
+        "Ill shove my shoe straight down your throat then rip out your intestines and strangle you with it until you pass out , when you wake up you'll be strapped in a metal bed with saws on each limb , slowly , each limb gets cut , and i come up with a chain saw and slowly cut your throat so i can get my shoe again cause im going out with some friends",
+        "I'll slit your throat and smoke weed with your windpipe",
+        "I will delete your hard drive.",
+        "I'll beat you to death with a spoon.",
+        "I will donkey punch you so hard that your eyeballs will pop out of their sockets and then I'll shove them down your throat and choke you with them!",
+        "I'm going to count to 5...If I get to three and you're still here I will crush your skull. If I get to four... I'll rip out all of your limbs, slowly. And then I'll cautrerize the stumps. If I get to five...I'm going to throw your torso threw that wall down 20 stories and then...then I'll jump down myself to see if you're alive. And if you are...I'll finish the job. Slowly.",
+        "I'll skin you alive with a cheese grater and draw pictures on what's left with a sharpie",
+        "I'll rip out your tongue, cut your arm off with it, and beat you to death with the arm.",
+        "I will smear your insides with tuna, hang a fishing hook down your throat, and hook out your organs one by one..",
+        "I'm going to grill your piles, and serve them up as jumbo hot dogs to your mum and dad.",
+        "I'm gonna rip your small intestine out your mouth, and rip your large intestine out your butt, and use you as a skipping rope."
+        ];
+        let randomOne = Math.floor(Math.random() * threats.length);
+        message.channel.send(intro+threats[randomOne]);
+
     }
 };

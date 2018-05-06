@@ -7,7 +7,8 @@ module.exports = {
         const exceptions = [
             "y'all",
             "symphogear",
-            "norris"
+            "norris",
+            "<@415230548248887296>"
         ];
         if (exceptions.indexOf(value) === -1) {
             return false;
