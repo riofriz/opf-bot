@@ -40,7 +40,8 @@ module.exports = {
                 let thumb = '';
                 let aliases = '';
                 let id = '';
-                let siteurl;
+                let siteurl = '';
+                let urlName = '';
                 if (json_body['total_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
@@ -48,7 +49,8 @@ module.exports = {
                                 name = json_body['results'][key][titleTag];
                                 desc = striptags(json_body['results'][key].overview);
                                 id = json_body['results'][key].id;
-                                siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+name.replace(' ', '-').toLowerCase();
+                                urlName = name.replace(' ', '-');
+                                siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+urlName.replace(' ', '-').toLowerCase();
 
                                 if (typeof json_body['results'][key]['poster_path'] !== 'undefined' && json_body['results'][key]['poster_path'] !== null) {
                                     thumb = 'https://image.tmdb.org/t/p/w500'+json_body['results'][key]['poster_path'];
@@ -71,7 +73,7 @@ module.exports = {
                             .setImage(url = thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())
-                            .setFooter(siteurl);
+                            .setURL(siteurl);
                         message.channel.send({embed: embed});
                     } else {
                         message.channel.send('Mhhh.. maybe you could try this instead? \n ```' + aliases + '```');
