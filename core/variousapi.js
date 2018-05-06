@@ -38,6 +38,7 @@ module.exports = {
                 if (json_body['total_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
+                            console.log(json_body['results']);
                             if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key].name;
                                 desc = striptags(json_body['results'][key].overview);
