@@ -242,7 +242,6 @@ module.exports = {
         let ptff = '';
         let mention = '';
         let dick;
-        let riofriz = args[0].trim().replace('<@');
         if (randomNumber <= 5) {
             ptff = '<:pfft:393455142239862795>';
         }
@@ -250,11 +249,13 @@ module.exports = {
             bodystr += '=';
         }
         console.log(args[0]);
-        if (typeof args[0] !== 'undefined' && riofriz.trim().replace('>') !== '408255473821679617') {
+        if (typeof args[0] !== 'undefined') {
             mention = args[0];
-            dick = mention+' = 8'+bodystr+'D '+ptff;
-        } else if (riofriz.trim().replace('>') === '408255473821679617') {
-            dick = mention+' = 8==========================================D ';
+            if (mention.trim() === '<@408255473821679617>') {
+                dick = mention+' = 8==========================================D ';
+            } else {
+                dick = mention+' = 8'+bodystr+'D '+ptff;
+            }
         } else {
             dick = '8'+bodystr+'D '+ptff;
         }
