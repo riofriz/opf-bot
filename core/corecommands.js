@@ -138,18 +138,26 @@ module.exports = {
 
     tooManyTags: function(message) {
         let counter = 0;
+        let firstChar = '';
+        if (message.content.includes("<@")) {
+            firstChar = '<@';
+        } else if (message.content.includes("<!@")) {
+            firstChar = '<!@';
+        }
+
         message.channel.fetchMessages({limit: 10})
             .then(messages => {
-                // for (let i = 0; i !== messages.length; i++) {
-                //     if (messages[i].content.isMentioned('408255473821679617')) {
-                //         counter++;
-                //     }
-                // }
-                // if(counter < 10) {
-                //     message.channel.send(counter);
-                // }
-                // return counter;
-                console.log(messages);
+                for (let i = 0; i !== 10; i++) {
+                    console.log(messages[i].content);
+                    let subStr = messages[i].content.match(firstChar+"(.*)>");
+                    if (messages[i].isMentioned(subStr)) {
+                        counter++;
+                    }
+                }
+                if(counter < 10) {
+                    message.channel.send(counter);
+                }
+                return counter;
             });
     }
 };
