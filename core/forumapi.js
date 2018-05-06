@@ -84,7 +84,7 @@ module.exports = {
         // let json = JSON.stringify(obj);
         // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
         let obj;
-        fs.readFile('logs/opfusers.json', 'utf8', function readFileCallback(err, data){
+        fs.readFile('logs/opfusers.json', 'utf8', function (err, data){
             if (err){
                 console.log(err);
             } else {
