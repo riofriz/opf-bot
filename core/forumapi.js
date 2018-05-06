@@ -84,21 +84,21 @@ module.exports = {
         let obj = {
                 table: []
             };
-        let json = JSON.stringify(obj);
-        let arg = args[0].trim();
-        let userid = message.author.id.trim();
-        fs.readFile(
-            'logs/opfusers.json', 'utf8', function callback(err, data){
-            if (err){
-                console.log(err);
-            } else {
-                obj = JSON.parse(data); //now it an object
-                obj.table.push({"id": userid, 'forumname': arg}); //add some data
-                json = JSON.stringify(obj); //convert it back to json
-                fs.writeFile('logs/opfusers.json', json, callback); // write it back
-                message.channel.send('Ok, '+message.author+' i\'ll remember you are '+arg+' on the forum.');
-            }
-        });
+        // let json = JSON.stringify(obj);
+        // let arg = args[0].trim();
+        // let userid = message.author.id.trim();
+        // fs.readFile(
+        //     'logs/opfusers.json', 'utf8', function callback(err, data){
+        //     if (err){
+        //         console.log(err);
+        //     } else {
+        //         obj = JSON.parse(data); //now it an object
+        //         obj.table.push({"id": userid, 'forumname': arg}); //add some data
+        //         json = JSON.stringify(obj); //convert it back to json
+        //         fs.writeFile('logs/opfusers.json', json, callback); // write it back
+        //         message.channel.send('Ok, '+message.author+' i\'ll remember you are '+arg+' on the forum.');
+        //     }
+        // });
     },
 
     /**
