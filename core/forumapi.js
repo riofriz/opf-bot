@@ -71,11 +71,31 @@ module.exports = {
      * @param args
      */
     username: function(message, args) {
-        let logger = fs.createWriteStream('logs/log.txt', {
-            flags: 'a' // 'a' means appending (old data will be preserved)
+        // let logger = fs.createWriteStream('logs/log.txt', {
+        //     flags: 'a' // 'a' means appending (old data will be preserved)
+        // });
+        // logger.write(message.author+' - '+args[0]+'\n');
+        // message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
+
+        // let obj = {
+        //     table: []
+        // };
+        // obj.table.push(message.author = [{'forumname':args0}]);
+        // let json = JSON.stringify(obj);
+        // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
+        let obj;
+        fs.readFile('logs/opfusers.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            } else {
+                obj = JSON.parse(data); //now it an object
+                obj.table.push(message.author = [{'forumname':args0}]); //add some data
+                json = JSON.stringify(obj); //convert it back to json
+                fs.writeFile('log/opfusers.json', json, 'utf8', callback); // write it back
+                message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
+            }
         });
-        logger.write(message.author+' - '+args[0]+'\n');
-        message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
+
     },
 
     /**
@@ -94,10 +114,8 @@ module.exports = {
             fileLineArray.push(line);
         });
         lineReader.on('close', function(){
-            console.log(fileLineArray);
             for(let i = 0; i !== fileLineArray.length; i++){
                 wordIs = fileLineArray[i];
-                console.log('nick = '+wordIs);
                 if(wordIs.includes(args[0]) === true){
                     let nickArray = wordIs.split(" ");
                     if (nickArray[0] === args[0]) {
