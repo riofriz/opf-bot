@@ -87,11 +87,11 @@ client.on("message", (message) => {
     }
 
     if (commandWithArgs === "t") {
-        if (message.channel.name === 'multi-lingual-channel') {
+        //if (message.channel.name === 'multi-lingual-channel') {
             translate.translateText(message, args);
-        } else {
-            message.channel.send('Naaah.. just speak english in here. try this in #multi-lingual-channel');
-        }
+        //} else {
+        //    message.channel.send('Naaah.. just speak english in here. try this in #multi-lingual-channel');
+        //}
     }
 
     if (commandWithArgs === 'spoiler') {
