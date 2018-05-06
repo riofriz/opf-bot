@@ -10,6 +10,7 @@ let fun = require('./core/fun');
 let gamerchannel = require('./core/gamerchannel');
 let translate = require('./core/translate');
 let yomomma = require('./core/yomomma');
+let variousapi = require('./core/variousapi');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -170,6 +171,14 @@ client.on("message", (message) => {
         } else {
             message.channel.send('Sorry, this is not allowed in here. try in #gamers-general');
         }
+    }
+
+    // INFO SEARCH
+    if (commandWithArgs === 'movie') {
+        variousapi.mediaSearch(message, args, 'movie')
+    }
+    if (commandWithArgs === 'series') {
+        variousapi.mediaSearch(message, args, 'tv')
     }
 
 });

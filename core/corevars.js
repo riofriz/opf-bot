@@ -41,7 +41,9 @@ module.exports = {
             "pokemon",
             "meme",
             "yomama",
-            "howlong"
+            "howlong",
+            "movie",
+            "series"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
