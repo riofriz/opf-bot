@@ -63,7 +63,7 @@ client.on("message", (message) => {
         let embed = new Discord.RichEmbed()
             .setTitle('mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right?')
             .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
-        message.channel.send({embed: embed})
+        message.channel.send({embed: embed});
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
         allowed = true;
         notification = false;
