@@ -49,8 +49,8 @@ module.exports = {
                                 name = json_body['results'][key][titleTag];
                                 desc = striptags(json_body['results'][key].overview);
                                 id = json_body['results'][key].id;
-                                urlName = name.replace(' ', '-');
-                                siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+urlName.replace(' ', '-').toLowerCase();
+                                urlName = name.split(" ").join("-");
+                                siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+urlName.toLowerCase();
 
                                 if (typeof json_body['results'][key]['poster_path'] !== 'undefined' && json_body['results'][key]['poster_path'] !== null) {
                                     thumb = 'https://image.tmdb.org/t/p/w500'+json_body['results'][key]['poster_path'];
@@ -68,8 +68,6 @@ module.exports = {
                         desc = 'Sorry, short description is not available.'
                     }
                     if (name !== '') {
-                        message.channel.send(escape(name));
-                        message.channel.send(escape(siteurl));
                         let embed = new Discord.RichEmbed()
                             .setThumbnail(url = 'https://cdn2.iconfinder.com/data/icons/app-types-in-grey/128/info_512pxGREY.png')
                             .setImage(url = thumb)
