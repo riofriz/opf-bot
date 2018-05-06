@@ -245,14 +245,13 @@ module.exports = {
         if (randomNumber <= 5) {
             ptff = '<:pfft:393455142239862795>';
         }
-        console.log(args[0]);
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
         }
         if (typeof args[0] !== 'undefined') {
             mention = args[0];
             dick = mention+' = 8'+bodystr+'D '+ptff;
-        } else if (args[0] === '<!@408255473821679617>') {
+        } else if (args[0] === '<@408255473821679617>') {
             dick = mention+' = 8==========================================D ';
         } else {
             dick = '8'+bodystr+'D '+ptff;
