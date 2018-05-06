@@ -3,13 +3,7 @@ const Discord = require('discord.js');
 let Parser = require('rss-parser');
 let parser = new Parser();
 let fs = require('fs')
-let fileLineArray = [];
-let lineReader = require('readline').createInterface({
-    input: require('fs').createReadStream('logs/log.txt')
-});
-lineReader.on('line', function (line) {
-    fileLineArray.push(line);
-});
+
 
 module.exports = {
     /**
@@ -91,8 +85,15 @@ module.exports = {
      */
     whois: function(message, args) {
         let nick = '';
+        let fileLineArray = [];
+        let lineReader = require('readline').createInterface({
+            input: require('fs').createReadStream('logs/log.txt')
+        });
+        lineReader.on('line', function (line) {
+            fileLineArray.push(line);
+        });
         lineReader.on('close', function(){
-            for(let i=0; i<fileLineArray.length;i++){
+            for(let i=0; i<=fileLineArray.length;i++){
                 let wordIs = fileLineArray[i];
                 if(wordIs.includes(args[0]) === true){
                     let nickArray = wordIs.split(" ");
