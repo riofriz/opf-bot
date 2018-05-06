@@ -248,7 +248,6 @@ module.exports = {
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
         }
-        console.log(args[0]);
         if (typeof args[0] !== 'undefined') {
             mention = args[0];
             if (mention.trim() === '<@408255473821679617>') {
