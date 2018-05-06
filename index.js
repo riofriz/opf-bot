@@ -46,7 +46,7 @@ client.on("message", (message) => {
     //Declares Command variable
     let command = message.content.toLowerCase();
     command = command.split(commandPrefix);
-    command = command[1].trim();
+    command = command[command.length-1].trim();
 
     //Declares args and command with args variable
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
