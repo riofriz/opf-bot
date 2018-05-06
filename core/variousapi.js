@@ -70,7 +70,6 @@ module.exports = {
                         desc = 'Sorry, short description is not available.'
                     }
                     if (name !== '') {
-                        message.channel.send(adult);
                         let embed = new Discord.RichEmbed()
                             .setThumbnail(url = 'https://cdn2.iconfinder.com/data/icons/app-types-in-grey/128/info_512pxGREY.png')
                             .setImage(url = thumb)
