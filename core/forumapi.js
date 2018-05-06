@@ -95,8 +95,9 @@ module.exports = {
         });
         lineReader.on('close', function(){
             console.log(fileLineArray);
-            for(let i=0; i<=fileLineArray.length;i++){
+            for(let i=0; i<=fileLineArray.length; i++){
                 wordIs = fileLineArray[i];
+                console.log('nick = '+wordIs);
                 if(wordIs.includes(args[0]) === true){
                     let nickArray = wordIs.split(" ");
                     if (nickArray[0] === args[0]) {
