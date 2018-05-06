@@ -65,7 +65,7 @@ client.on("message", (message) => {
         allowed = true;
         notification = false;
         fun.chuckNorris(message);
-    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@!415230548248887296>" || fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@415230548248887296>") {
+    } else if (message.isMentioned('415230548248887296')) {
         allowed = true;
         notification = false;
         fun.dontTagMe(message);
