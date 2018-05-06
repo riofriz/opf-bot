@@ -328,7 +328,7 @@ module.exports = {
                 let embed = new Discord.RichEmbed()
                     .setTitle('This spot is reserved for something special, is WIP, in the meantime enjoy a lovely gif.')
                     .setColor(corevars.randomColor())
-                    .setImage(json_body['results'][0]['media']['gif']);
+                    .setImage(json_body['results'][0]['media']['gif']['url']);
                 message.channel.send({embed: embed});
             } else {
                 console.log(error.message);
