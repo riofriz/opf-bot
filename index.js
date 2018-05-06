@@ -60,7 +60,10 @@ client.on("message", (message) => {
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
         allowed = true;
         notification = false;
-        message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
+        let embed = new Discord.RichEmbed()
+            .setTitle('mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right?')
+            .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
+        message.channel.send({embed: embed})
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
         allowed = true;
         notification = false;
