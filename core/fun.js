@@ -286,7 +286,7 @@ module.exports = {
 
     dontTagMe: function(message) {
         if (message.author.id !== '441203112460681216') {
-            let intro = 'If you tag <@!415230548248887296> again';
+            let intro = 'If you tag her again';
             let threats = [
                 "I will get my first period teacher to go and bore the crap out of you until your ears bleed and make you listen to every horrible song ever made until finally your head pops if you don't shut up. If that doesn't work (or does but then doesn't kill you, yet) then I will get every single fan of every famous pop artist and tell them you made a threat and an actual plan to assassinate their idol and make them chase you until you break your legs and then they will finally take your dead body and throw it off the tower of which one of the records were made in. After, I will get Burnie to play the dubstep hipster cat on replay for hours, have Miles do the Bane voice, and Kara's annoying turkey playing on and on at the same time until you take the gun in front of you, and put your self out of annoying misery",
                 "I will dress you as a lettuce and feed you to the snails, it will be a very slow death..",
