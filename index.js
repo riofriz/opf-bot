@@ -188,9 +188,6 @@ client.on("message", (message) => {
         if (commandWithArgs === 'series') {
             variousapi.mediaSearch(message, args, 'tv')
         }
-        if (command === 'tellme') {
-            message.author.send('tell me what?');
-        }
     }
 
 });

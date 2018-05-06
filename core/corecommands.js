@@ -59,7 +59,7 @@ module.exports = {
             .setFooter("Your lovable OPF MegaBot")
             .setColor(corevars.randomColor());
 
-        message.channel.send({embed: embed});
+        message.author.send({embed: embed});
     },
 
     /**
