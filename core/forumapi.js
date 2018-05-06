@@ -90,9 +90,9 @@ module.exports = {
                 console.log(err);
             } else {
                 obj = JSON.parse(data); //now it an object
-                obj.table.push({'id':message.author.id,'forumname':args[0]}); //add some data
+                obj.table.push({'id': message.author.id, 'forumname': args[0]}); //add some data
                 let json = JSON.stringify(obj); //convert it back to json
-                fs.writeFile('logs/opfusers.json', json, 'utf8', callback); // write it back
+                fs.writeFile('logs/opfusers.json', json, callback); // write it back
                 message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
             }
         });
