@@ -1047,7 +1047,7 @@ module.exports = {
         ];
         let randomNumber = Math.floor(Math.random()*yomamma.length);
 
-        if (typeof args[0] !== 'undefined') {
+        if (typeof args[0] === 'undefined') {
             message.channel.send(yomamma[randomNumber]);
         } else {
             args[0]+', '+message.channel.send(yomamma[randomNumber]);
