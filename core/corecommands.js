@@ -147,11 +147,15 @@ module.exports = {
 
         message.channel.fetchMessages({limit: 10})
             .then(messages => {
-                for (let i = 0; i !== 10; i++) {
-                    console.log(messages[i].content);
-                    let subStr = messages[i].content.match(firstChar+"(.*)>");
-                    if (messages[i].isMentioned(subStr)) {
-                        counter++;
+                for (let key in messages) {
+                    if (messages.hasOwnProperty(key)) {
+                        if (key <= 10) {
+                            console.log(messages[key].content);
+                            let subStr = messages[key].content.match(firstChar + "(.*)>");
+                            if (messages[key].isMentioned(subStr)) {
+                                counter++;
+                            }
+                        }
                     }
                 }
                 if(counter < 10) {
