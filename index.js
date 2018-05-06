@@ -189,7 +189,7 @@ client.on("message", (message) => {
             variousapi.mediaSearch(message, args, 'tv')
         }
         if (command === 'tellme') {
-            message.author.id.send('tell me what?');
+            message.author.send('tell me what?');
         }
     }
 
