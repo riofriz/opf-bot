@@ -46,7 +46,7 @@ module.exports = {
                                 siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+name.replace(' ', '-').toLowerCase();
 
                                 if (typeof json_body['results'][key]['poster_path'] !== 'undefined' && json_body['results'][key]['poster_path'] !== null) {
-                                    thumb = 'https://image.tmdb.org/t/p/w500' . json_body['results'][key]['poster_path'];
+                                    thumb = 'https://image.tmdb.org/t/p/w500'+json_body['results'][key]['poster_path'];
                                 } else {
                                     thumb = 'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png';
                                 }
