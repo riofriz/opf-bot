@@ -122,7 +122,8 @@ module.exports = {
             "symphogear",
             "y'all",
             "norris",
-            "<@!415230548248887296>"
+            "<@!415230548248887296>",
+            "<@415230548248887296>"
         ];
         let result;
         let string;
