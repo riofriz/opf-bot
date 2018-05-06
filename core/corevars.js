@@ -27,7 +27,8 @@ module.exports = {
             "howlong",
             "movie",
             "series",
-            "whops"
+            "whops",
+            "grin"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

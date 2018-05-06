@@ -205,6 +205,11 @@ client.on("message", (message) => {
         if (commandWithArgs === 'series') {
             variousapi.mediaSearch(message, args, 'tv')
         }
+
+        // USER SPECIFIC
+        if (command === 'grin') {
+            message.channel.send('I am reserving this spot for something special.')
+        }
     }
 
 });
