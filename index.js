@@ -131,8 +131,8 @@ client.on("message", (message) => {
         yomomma.yomama(message);
     }
 
-    if (command === "howlong") {
-        fun.howlong(message);
+    if (commandWithArgs === "howlong") {
+        fun.howlong(message, args);
     }
 
     if (commandWithArgs === 'nsfw') {
