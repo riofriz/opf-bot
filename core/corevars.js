@@ -8,8 +8,7 @@ module.exports = {
             "y'all",
             "symphogear",
             "norris",
-            "<@!415230548248887296>",
-            "testriotest"
+            "<@!415230548248887296>"
         ];
         if (exceptions.indexOf(value) === -1) {
             return false;
