@@ -62,7 +62,7 @@ module.exports = {
                     }
                     if (name !== '') {
                         let embed = new Discord.RichEmbed()
-                            .setThumbnail(url=thumb)
+                            .setThumbnail(url='https://cdn2.iconfinder.com/data/icons/app-types-in-grey/128/info_512pxGREY.png')
                             .setImage(url=thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())

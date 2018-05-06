@@ -136,6 +136,10 @@ module.exports = {
         return result;
     },
 
+    /**
+     * @param message
+     * @param args
+     */
     getMeme: function(message, args) {
         let memeArray = [];
         if (args[0] === 'get') {
@@ -210,6 +214,9 @@ module.exports = {
         }
     },
 
+    /**
+     * @param message
+     */
     chuckNorris: function(message) {
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
@@ -236,6 +243,10 @@ module.exports = {
         });
     },
 
+    /**
+     * @param message
+     * @param args
+     */
     howlong: function(message, args) {
         let bodystr = '';
         let randomNumber = Math.floor(Math.random()*30);

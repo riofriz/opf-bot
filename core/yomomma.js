@@ -1,7 +1,7 @@
 module.exports = {
     /**
      * @param value
-     * @returns {boolean}
+     * @returns {yo mamma is so fat!!}
      */
     yomama: function (message, args) {
         let yomamma = [
