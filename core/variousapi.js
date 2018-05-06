@@ -72,7 +72,7 @@ module.exports = {
                             .setImage(url = thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())
-                            .setURL(siteurl);
+                            //.setURL(siteurl);
                         message.channel.send({embed: embed});
                     } else {
                         message.channel.send('Mhhh.. maybe you could try this instead? \n ```' + aliases + '```');
