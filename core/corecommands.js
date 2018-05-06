@@ -21,7 +21,6 @@ module.exports = {
         (
             !allowed === true
             && !message.isMentioned(client.user)
-            //&& corevars.isException(fun.commandsWithNoCommands(message.content.toLowerCase())) === false
         ) { return false;
         } else { return true;
         }
@@ -134,6 +133,15 @@ module.exports = {
                 }).catch(err => {
                     console.log(err);
                 });
+            });
+    },
+
+    tooManyTags: function(message, args) {
+        message.channel.fetchMessages({around: "352292052538753025", limit: 1})
+            .then(messages => {
+                const fetchedMsg = messages.first(); // messages is a collection!)
+                // do something with it
+                fetchedMsg.edit("This fetched message was edited");
             });
     }
 };

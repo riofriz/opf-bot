@@ -3,24 +3,6 @@ module.exports = {
      * @param value
      * @returns {boolean}
      */
-    isException: function (value) {
-        const exceptions = [
-            "y'all",
-            "symphogear",
-            "norris",
-            "<@!415230548248887296>"
-        ];
-        if (exceptions.indexOf(value) === -1) {
-            return false;
-        } else {
-            return true;
-        }
-    },
-
-    /**
-     * @param value
-     * @returns {boolean}
-     */
     isAvailable: function (value) {
         const commandsArray = [
             'hello',
