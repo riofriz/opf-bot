@@ -250,7 +250,7 @@ module.exports = {
             bodystr += '=';
         }
         console.log(args[0]);
-        if (typeof args[0] !== 'undefined') {
+        if (typeof args[0] !== 'undefined' && riofriz.trim().replace('>') !== '408255473821679617') {
             mention = args[0];
             dick = mention+' = 8'+bodystr+'D '+ptff;
         } else if (riofriz.trim().replace('>') === '408255473821679617') {
