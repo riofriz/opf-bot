@@ -30,7 +30,7 @@ module.exports = {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 let titleTag = '';
-                if (media == 'movie') {
+                if (media === 'movie') {
                     titleTag = 'original_title';
                 } else {
                     titleTag = 'original_name';
