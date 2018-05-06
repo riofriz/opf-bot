@@ -70,14 +70,13 @@ client.on("message", (message) => {
         fun.dontTagMe(message);
     }
 
+    //If command is not in available commands and user is not mentioned returns fun message.
+    if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && notification !== false) {
+        message.channel.send(message.author+' <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250>');
+    }
+
     //Checks if starts with prefix, bot is mentioned and commands are exceptions. If false returns nothing.
-    if(corecommands.globalCheck(client, commandPrefix, message, allowed)) {
-
-        //If command is not in available commands and user is not mentioned returns fun message.
-        if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && notification !== false) {
-            message.channel.send(message.author+' <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250>');
-        }
-
+    if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.startsWith(commandPrefix)) {
         // CORE COMMANDS
 
         if (command === 'who\'s boss') {
