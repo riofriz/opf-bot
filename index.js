@@ -69,7 +69,7 @@ client.on("message", (message) => {
     if(corecommands.globalCheck(client, commandPrefix, message, allowed)) {
 
         //If command is not in available commands and user is not mentioned returns fun message.
-        if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && corevars.isException(fun.commandsWithNoCommands(message.content.toLowerCase())) === false) {
+        if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user)) {
             message.channel.send(message.author+' <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250>');
         }
 
