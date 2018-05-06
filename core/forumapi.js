@@ -84,14 +84,14 @@ module.exports = {
         // let json = JSON.stringify(obj);
         // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
         let obj;
-        fs.readFile('logs/opfusers.json', 'utf8', function readFileCallback(err, data){
+        fs.readFile('logs/opfusers.json', 'utf8', function callback(err, data){
             if (err){
                 console.log(err);
             } else {
                 obj = JSON.parse(data); //now it an object
                 obj.table.push(message.author = [{'forumname':args[0]}]); //add some data
                 json = JSON.stringify(obj); //convert it back to json
-                fs.writeFile('log/opfusers.json', json, 'utf8'); // write it back
+                fs.writeFile('log/opfusers.json', json, 'utf8', callback); // write it back
                 message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
             }
         });
