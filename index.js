@@ -51,6 +51,19 @@ client.on("message", (message) => {
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
 
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all") {
+        allowed = true;
+        message.channel.send("You know, every time you say *y'all* Grin dies inside.");
+    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
+        allowed = true;
+        message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
+    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
+        allowed = true;
+        fun.chuckNorris(message);
+    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@!415230548248887296>") {
+        allowed = true;
+        fun.dontTagMe(message);
+    }
 
     //Checks if starts with prefix, bot is mentioned and commands are exceptions. If false returns nothing.
     if(corecommands.globalCheck(client, commandPrefix, message, allowed)) {
@@ -66,24 +79,9 @@ client.on("message", (message) => {
             corecommands.credits(message);
         }
 
-        if(command === "hello"){
+        if(command === "hello") {
             corecommands.helloMessage(message);
         }
-
-        if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all") {
-            allowed = true;
-            message.channel.send("You know, every time you say *y'all* Grin dies inside.");
-        } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
-            allowed = true;
-            message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
-        } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
-            allowed = true;
-            fun.chuckNorris(message);
-        } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@!415230548248887296>") {
-            allowed = true;
-            fun.dontTagMe(message);
-        }
-
 
         if(command === "help" || command === ''){
             corecommands.help(commandPrefix, message);
