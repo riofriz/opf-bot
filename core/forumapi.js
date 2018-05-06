@@ -89,12 +89,13 @@ module.exports = {
         let lineReader = require('readline').createInterface({
             input: require('fs').createReadStream('logs/log.txt')
         });
+        let wordIs = '';
         lineReader.on('line', function (line) {
             fileLineArray.push(line);
         });
         lineReader.on('close', function(){
             for(let i=0; i<=fileLineArray.length;i++){
-                let wordIs = fileLineArray[i];
+                wordIs = fileLineArray[i];
                 if(wordIs.includes(args[0]) === true){
                     let nickArray = wordIs.split(" ");
                     if (nickArray[0] === args[0]) {
