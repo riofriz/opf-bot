@@ -76,7 +76,7 @@ client.on("message", (message) => {
         message.channel.send("mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right? <:rip:433296953208471592>");
     } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
         fun.chuckNorris(message);
-    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@415230548248887296>") {
+    } else if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "<@!415230548248887296>") {
         fun.dontTagMe(message);
     }
 
