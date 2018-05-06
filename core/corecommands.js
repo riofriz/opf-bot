@@ -136,12 +136,17 @@ module.exports = {
             });
     },
 
-    tooManyTags: function(message, args) {
-        message.channel.fetchMessages({around: "352292052538753025", limit: 1})
-            .then(messages => {
-                const fetchedMsg = messages.first(); // messages is a collection!)
-                // do something with it
-                fetchedMsg.edit("This fetched message was edited");
-            });
+    tooManyTags: function(message) {
+        // message.channel.fetchMessages({limit: 10})
+        //     .then(messages => {
+        //         const fetchedMsg = messages.first(); // messages is a collection!)
+        //         // do something with it
+        //         fetchedMsg.edit("This fetched message was edited");
+        //     });
+
+        if (message.isMentioned('408255473821679617')) {
+            message.channel.send('works!');
+            return 10;
+        }
     }
 };

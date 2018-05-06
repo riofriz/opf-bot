@@ -52,6 +52,7 @@ client.on("message", (message) => {
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
 
+    // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all") {
         allowed = true;
         notification = false;
@@ -70,11 +71,16 @@ client.on("message", (message) => {
         fun.dontTagMe(message);
     }
 
+    // REACTS IF BOT IS TAGGED
     if (message.isMentioned(client.user) && message.author !== client.user) {
         fun.messageOnQuote(message);
     }
 
-    //Checks if starts with prefix, bot is mentioned and commands are exceptions. If false returns nothing.
+    if (corecommands.tooManyTags(message) >= 10) {
+        message.channel.send(fun.dontTagMe(message));
+    }
+
+    //Checks if starts with prefix and commands are enabled. If false returns nothing.
     if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.startsWith(commandPrefix)) {
 
         //If command is not in available commands and user is not mentioned returns fun message.
@@ -196,6 +202,7 @@ client.on("message", (message) => {
     }
 
 });
+
 client.login(process.env.BOT_TOKEN);
 
 
