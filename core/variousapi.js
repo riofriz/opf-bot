@@ -31,7 +31,7 @@ module.exports = {
                 let json_body = JSON.parse(body);
                 let titleTag = '';
                 if (media == 'movie') {
-                    titleTag = 'title';
+                    titleTag = 'original_title';
                 } else {
                     titleTag = 'original_name';
                 }
