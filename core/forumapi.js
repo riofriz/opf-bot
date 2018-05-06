@@ -94,6 +94,7 @@ module.exports = {
             fileLineArray.push(line);
         });
         lineReader.on('close', function(){
+            console.log(fileLineArray);
             for(let i=0; i<=fileLineArray.length;i++){
                 wordIs = fileLineArray[i];
                 if(wordIs.includes(args[0]) === true){
