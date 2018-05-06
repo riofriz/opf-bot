@@ -106,6 +106,7 @@ client.on("message", (message) => {
 
         if(command === "help" || command === ''){
             corecommands.help(commandPrefix, message);
+            corecommands.deleteMessage(message);
         }
 
         if (commandWithArgs === "q") {
