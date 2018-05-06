@@ -15,7 +15,7 @@ let variousapi = require('./core/variousapi');
 // Let's call discord now.
 const client = new Discord.Client();
 // let commandPrefix = 'opf-' || 'op-' || 'o-';
-let commandPrefix;
+let commandPrefix = '';
 
 //const commandPrefix = "opf-" || "op-" || "o-";
 
@@ -40,9 +40,6 @@ client.on("message", (message) => {
         allowed = true;
     } else if (message.content.toLowerCase().includes('o-')) {
         commandPrefix = 'o-';
-        allowed = true;
-    } else {
-        commandPrefix = 'opf-';
         allowed = true;
     }
 
