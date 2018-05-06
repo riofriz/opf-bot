@@ -44,7 +44,6 @@ module.exports = {
                 if (json_body['total_results'] > 0) {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
-                            console.log(json_body['results']);
                             if (json_body['results'][key][titleTag].toLowerCase().trim() === string.toLowerCase().trim()) {
                                 name = json_body['results'][key][titleTag];
                                 desc = striptags(json_body['results'][key].overview);
@@ -72,7 +71,7 @@ module.exports = {
                             .setImage(url = thumb)
                             .addField(name, desc)
                             .setColor(corevars.randomColor())
-                            //.setURL(siteurl);
+                            .setFooter(siteurl);
                         message.channel.send({embed: embed});
                     } else {
                         message.channel.send('Mhhh.. maybe you could try this instead? \n ```' + aliases + '```');
