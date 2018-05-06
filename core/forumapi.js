@@ -77,13 +77,14 @@ module.exports = {
         // logger.write(message.author+' - '+args[0]+'\n');
         // message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
 
-        // let obj = {
-        //     table: []
-        // };
+        //
         // obj.table.push(message.author = [{'forumname':args0}]);
         // let json = JSON.stringify(obj);
         // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
-        let obj;
+        let obj = {
+                table: []
+            };
+        let json = JSON.stringify(obj);
         let arg = args[0].trim();
         let userid = message.author.id.trim();
         fs.readFile(
@@ -92,9 +93,9 @@ module.exports = {
                 console.log(err);
             } else {
                 obj = JSON.parse(data); //now it an object
-                obj.table.push({'id': userid, 'forumname': arg}); //add some data
-                let j = JSON.stringify(obj); //convert it back to json
-                fs.writeFile('logs/opfusers.json', j, callback); // write it back
+                obj.table.push({"id": userid, 'forumname': arg}); //add some data
+                json = JSON.stringify(obj); //convert it back to json
+                fs.writeFile('logs/opfusers.json', json, callback); // write it back
                 message.channel.send('Ok, '+message.author+' i\'ll remember you are '+arg+' on the forum.');
             }
         });
