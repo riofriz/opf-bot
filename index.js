@@ -127,7 +127,7 @@ client.on("message", (message) => {
         fun.love(message, args);
     }
 
-    if (command === "yomama") {
+    if (commandWithArgs === "yomama") {
         yomomma.yomama(message, args);
     }
 
