@@ -16,12 +16,12 @@ module.exports = {
      * @param message
      * @returns {boolean}
      */
-    globalCheck: function(client, commandPrefix, message) {
+    globalCheck: function(client, commandPrefix, message, allowed) {
         if
         (
-            !message.content.toLowerCase().startsWith(commandPrefix)
+            !allowed === true
             && !message.isMentioned(client.user)
-            && corevars.isException(fun.commandsWithNoCommands(message.content.toLowerCase())) === false
+            //&& corevars.isException(fun.commandsWithNoCommands(message.content.toLowerCase())) === false
         ) { return false;
         } else { return true;
         }
