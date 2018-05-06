@@ -39,8 +39,8 @@ module.exports = {
                     for (let key in json_body['results']) {
                         if (json_body['results'].hasOwnProperty(key)) {
                             console.log(json_body['results']);
-                            if (json_body['results'][key].name.toLowerCase().trim() === string.toLowerCase().trim()) {
-                                name = json_body['results'][key].name;
+                            if (json_body['results'][key].title.toLowerCase().trim() === string.toLowerCase().trim()) {
+                                name = json_body['results'][key].title;
                                 desc = striptags(json_body['results'][key].overview);
                                 id = json_body['results'][key].id;
                                 siteurl = 'https://www.themoviedb.org/tv/'+id+'-'+name.replace(' ', '-').toLowerCase();
@@ -52,7 +52,7 @@ module.exports = {
                                 }
                             } else {
                                 if (typeof json_body['results'][key]['name'] !== 'undefined') {
-                                    aliases += json_body['results'][key].name + '\n';
+                                    aliases += json_body['results'][key].title + '\n';
                                 }
                             }
                         }
