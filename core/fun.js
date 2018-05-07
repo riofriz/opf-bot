@@ -342,7 +342,7 @@ module.exports = {
         let embed = new Discord.RichEmbed()
             .setTitle('Tell me darliiiiing')
             .setColor(corevars.randomColor())
-            .setThumbnail('http://104.131.78.209/bot/asset/img/grinbunny.png');
+            .setImage('https://data.whicdn.com/images/306191217/original.gif');
         message.channel.send({embed: embed});
     }
 };
