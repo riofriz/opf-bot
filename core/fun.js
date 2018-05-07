@@ -123,7 +123,8 @@ module.exports = {
             "y'all",
             "norris",
             "<@!415230548248887296>",
-            "<@415230548248887296>"
+            "<@415230548248887296>",
+            "darling"
         ];
         let result;
         let string;
@@ -335,5 +336,13 @@ module.exports = {
                 console.log(error.message);
             }
         });
+    },
+
+    darling: function(message) {
+        let embed = new Discord.RichEmbed()
+            .setTitle('Tell me darliiiiing')
+            .setColor(corevars.randomColor())
+            .setThumbnail();
+        message.channel.send({embed: embed});
     }
 };

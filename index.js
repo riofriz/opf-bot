@@ -66,6 +66,9 @@ client.on("message", (message) => {
             .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
         message.channel.send({embed: embed});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
+        fun.darling(message);
+    }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
         allowed = true;
         notification = false;
