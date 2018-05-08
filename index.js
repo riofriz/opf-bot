@@ -69,7 +69,7 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
         fun.darling(message);
     }
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh my god") {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "omg") {
         fun.ezekiel(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
