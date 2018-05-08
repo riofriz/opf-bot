@@ -121,7 +121,7 @@ module.exports = {
         let substrings = [
             "symphogear",
             "y'all",
-            "norris",
+            "chuck norris",
             "<@!415230548248887296>",
             "<@415230548248887296>",
             "darling",
