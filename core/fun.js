@@ -125,7 +125,7 @@ module.exports = {
             "<@!415230548248887296>",
             "<@415230548248887296>",
             "darling",
-            "omg"
+            "oh my god"
         ];
         let result;
         let string;
