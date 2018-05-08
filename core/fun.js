@@ -125,16 +125,19 @@ module.exports = {
             "<@!415230548248887296>",
             "<@415230548248887296>",
             "darling",
-            "oh my god"
+            "omg"
         ];
         let result;
         let string;
         for (let i = 0; i !== substrings.length; i++) {
-            string = str.split(' ');
-            for (let j = 0; j !== string.length; j++) {
-                if (string[j] === substrings[i]) {
-                    result = string[j];
-                }
+            // string = str.split(' ');
+            // for (let j = 0; j !== string.length; j++) {
+            //     if (string[j] === substrings[i]) {
+            //         result = string[j];
+            //     }
+            // }
+            if (str.includes(substrings[i])) {
+                result = substrings[i];
             }
         }
         return result;
