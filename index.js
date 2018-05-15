@@ -214,6 +214,10 @@ client.on("message", (message) => {
         if (command === 'grin') {
             fun.onlyForGrin(message);
         }
+
+        if (command === 'bikki') {
+            message.channel.send('<:BikkiBerserk:254211431610843136>');
+        }
     }
 
 });

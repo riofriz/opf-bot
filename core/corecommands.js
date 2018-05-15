@@ -8,6 +8,7 @@ let https = require('https');
 const PasteeAPI = require('pastee-api');
 let Pastee = new PasteeAPI(process.env.PASTEBIN);
 
+
 module.exports = {
 
     /**
@@ -134,7 +135,7 @@ module.exports = {
                     console.log(err);
                 });
             });
-    },
+    }
 
     // tooManyTags: function(message) {
     //     let counter = 0;
