@@ -53,7 +53,7 @@ client.on("message", (message) => {
     const commandWithArgs = args.shift().toLowerCase();
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all") {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') {
         allowed = true;
         notification = false;
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
@@ -69,7 +69,10 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
         fun.darling(message);
     }
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "norris") {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh my god") {
+        fun.ezekiel(message);
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "chuck norris") {
         allowed = true;
         notification = false;
         fun.chuckNorris(message);

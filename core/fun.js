@@ -121,19 +121,23 @@ module.exports = {
         let substrings = [
             "symphogear",
             "y'all",
-            "norris",
+            "chuck norris",
             "<@!415230548248887296>",
             "<@415230548248887296>",
-            "darling"
+            "darling",
+            "oh my god"
         ];
         let result;
         let string;
         for (let i = 0; i !== substrings.length; i++) {
-            string = str.split(' ');
-            for (let j = 0; j !== string.length; j++) {
-                if (string[j] === substrings[i]) {
-                    result = string[j];
-                }
+            // string = str.split(' ');
+            // for (let j = 0; j !== string.length; j++) {
+            //     if (string[j] === substrings[i]) {
+            //         result = string[j];
+            //     }
+            // }
+            if (str.includes(substrings[i])) {
+                result = substrings[i];
             }
         }
         return result;
@@ -343,6 +347,17 @@ module.exports = {
             .setTitle('Tell me darliiiiing')
             .setColor(corevars.randomColor())
             .setImage('https://data.whicdn.com/images/306191217/original.gif');
+        message.channel.send({embed: embed});
+    },
+
+    ezekiel: function(message) {
+        let title = "**Ezekiel 25:17.** - The path of the righteous man.";
+        let passage = "\"The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness. For he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know I am the Lord when I lay my vengeance upon you.\""
+
+        let embed = new Discord.RichEmbed()
+            .addField(title, passage)
+            .setColor(corevars.randomColor())
+            .setThumbnail('http://photo.cultjer.com/img/cache/width/1000/ug_photo/2014_04/pulp_fiction120140422171446.jpg');
         message.channel.send({embed: embed});
     }
 };
