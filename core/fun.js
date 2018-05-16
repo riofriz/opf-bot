@@ -383,8 +383,11 @@ module.exports = {
     },
 
     zak: function(message) {
+        let timeout = [
+            1000, 5000, 9000, 15000, 55000, 946000, 7000, 234232, 5343, 10, 5324254, 53444254
+        ];
         setTimeout(function() {
             message.channel.send('NIK')
-        }, 2000);
+        }, timeout[randomOne]);
     }
 };
