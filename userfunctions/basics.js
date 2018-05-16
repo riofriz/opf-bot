@@ -22,6 +22,7 @@ module.exports = {
                         { "id" : message.author.id },
                         { $set: { "id":message.author.id, "triggeredCommands":commands } },
                         {upsert: true},
+                        {multi: true},
                         function(err) {}
                     );
                 }
@@ -37,21 +38,14 @@ module.exports = {
                     commands = doc.triggeredCommands;
                     if (typeof commands === 'undefined') {
                         commands = 0;
-                        db.Users.update(
-                            { "id" : message.author.id },
-                            { $set: { "id" : message.author.id, "triggeredCommands":commands } },
-                            {upsert: true},
-                            function(err) {}
-                        );
-                    } else {
-                        db.Users.update(
-                            { "id" : message.author.id },
-                            { $set: { "id" : message.author.id, "triggeredCommands":commands+1 } },
-                            {upsert: true},
-                            function(err) {}
-                        );
                     }
-
+                    db.Users.update(
+                        { "id" : message.author.id },
+                        { $set: { "id" : message.author.id, "triggeredCommands":commands+1 } },
+                        {upsert: true},
+                        {multi: true},
+                        function(err) {}
+                    );
                 }
             });
         } catch (e){ console.log(e); }
@@ -71,6 +65,7 @@ module.exports = {
                             { "id" : message.author.id },
                             { $set: { "id" : message.author.id, "triggeredCommands":commands } },
                             {upsert: true},
+                            {multi: true},
                             function(err) {}
                         );
                     } else {
