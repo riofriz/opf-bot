@@ -10,9 +10,16 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 module.exports = {
     saveusers: function(message) {
         try {
+            let user = db.inventory.find( { "id": message.author.id } );
+            let commands;
+            if (typeof user.triggeredCommands !== 'undefined') {
+                commands = user.triggeredCommands;
+            } else {
+                commands = 0;
+            }
             db.Users.update(
                 { "id" : message.author.id },
-                { "id" : message.author.id, "nick" : message.author.username, "botrank" : 0 },
+                { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
                 {upsert: true},
                 function(err) {}
             );
