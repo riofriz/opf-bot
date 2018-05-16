@@ -183,18 +183,18 @@ module.exports = {
     balance: function(message) {
         let berries;
         try {
-                db.Users.findOne({"id": user}, function (err, doc) {
-                        if (doc) {
-                            if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
-                                berries = doc.claims.berries;
-                                message.channel.send('Your current balance is: ' + berries+'*B*');
-                            } else {
-                                message.channel.send('Your balance is still 0*B*');
-                            }
+            db.Users.findOne({"id": message.author.id}, function (err, doc) {
+                    if (doc) {
+                        if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
+                            berries = doc.claims.berries;
+                            message.channel.send('Your current balance is: ' + berries+'*B*');
                         } else {
-                            message.channel.send('Whops.. there might have been an error.');
+                            message.channel.send('Your balance is still 0*B*');
                         }
-                });
+                    } else {
+                        message.channel.send('Whops.. there might have been an error.');
+                    }
+            });
             }
          catch (e){ console.log(e); }
     }
