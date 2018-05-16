@@ -10,17 +10,16 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 module.exports = {
     saveusers: function(message) {
         try {
-            let user = db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
+            let commands;
+            db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
-                    console.log(doc);
+                    commands = doc.triggeredCommands;
                 }
             });
 
-            let commands;
             console.log(user);
-            if (typeof user.triggeredCommands !== 'undefined') {
-                console.log(user.triggeredCommands);
-                commands = user.triggeredCommands;
+            if (typeof commands !== 'undefined') {
+                console.log(commands);
             } else {
                 commands = 0;
             }
