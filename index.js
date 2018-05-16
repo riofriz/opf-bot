@@ -115,7 +115,7 @@ client.on("message", (message) => {
             corecommands.helloMessage(message);
         }
 
-        if(command === "help" || command === ''){
+        if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-'){
             corecommands.help(commandPrefix, message);
             corecommands.deleteMessage(message);
         }
