@@ -135,6 +135,8 @@ module.exports = {
                     if (doc.hasOwnProperty('claims.latestClaim')) {
                         latestClaim = doc.claims.latestClaim;
                         if (today.toDateString() !== latestClaim.toDateString()) {
+                            console.log(today.toDateString());
+                            console.log(latestClaim.toDateString());
                             let berries = Math.random() * 250;
                             berries = Math.floor(berries);
                             db.Users.update(
