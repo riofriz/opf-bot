@@ -46,6 +46,7 @@ client.on("message", (message) => {
     }
 
     basiclogics.saveusers(message);
+    basiclogics.increaseCommands(message, 1);
 
     //Declares Command variable
     let command = message.content.toLowerCase();
@@ -73,7 +74,7 @@ client.on("message", (message) => {
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
         fun.darling(message);
-        basiclogics.increaseCommands(message);
+        basiclogics.increaseCommands(message, 1);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh my god") {
         fun.ezekiel(message);
@@ -92,7 +93,7 @@ client.on("message", (message) => {
         allowed = true;
         notification = false;
         fun.zak(message);
-        basiclogics.increaseCommands(message);
+        basiclogics.increaseCommands(message, 1);
     }
     if (message.isMentioned('415230548248887296')) {
         allowed = true;
@@ -129,29 +130,29 @@ client.on("message", (message) => {
 
         if (command === 'who\'s boss') {
             corecommands.credits(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if(command === "hello") {
             corecommands.helloMessage(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-'){
             corecommands.help(commandPrefix, message);
             corecommands.deleteMessage(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === "q") {
             corecommands.quoteMessage(commandPrefix, message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 3);
         }
 
         if (commandWithArgs === "t") {
             //if (message.channel.name === 'multi-lingual-channel') {
                 translate.translateText(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 2);
             //} else {
             //    message.channel.send('Naaah.. just speak english in here. try this in #multi-lingual-channel');
             //}
@@ -160,66 +161,66 @@ client.on("message", (message) => {
         if (commandWithArgs === 'spoiler') {
             corecommands.spoilerTag(commandPrefix, message, args);
             corecommands.deleteMessage(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 4);
         }
 
         if (commandWithArgs === 'spoilalert') {
             corecommands.editMessageToSpoiler(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 4);
         }
 
         // FORUM API
 
         if (commandWithArgs === "latest") {
             forumapi.latestCommands(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 5);
         }
 
         if (commandWithArgs === "username") {
             forumapi.username(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === 'whois') {
             forumapi.whois(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         // FUN COMMANDS
 
         if (commandWithArgs === "love") {
             fun.love(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === "yomama") {
             yomomma.yomama(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === "howlong") {
             fun.howlong(message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === 'nsfw') {
             fun.nsfw(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (command === 'muhahaha') {
             fun.evilLaugh(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === 'garchu') {
             fun.garchu(client, message, args);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === 'poets') {
             fun.poets(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 2);
         }
 
         if (commandWithArgs === 'meme') {
@@ -228,12 +229,12 @@ client.on("message", (message) => {
             } else {
                 message.channel.send('Sorry, this is not allowed in here. try in #memes');
             }
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 2);
         }
 
         if (commandWithArgs === 'whops') {
             fun.whops(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         if (commandWithArgs === 'pokemon') {
@@ -242,7 +243,7 @@ client.on("message", (message) => {
             } else {
                 message.channel.send('Sorry, this is not allowed in here. try in #pokemon_channel');
             }
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 3);
         }
 
         // GAMERS
@@ -252,34 +253,34 @@ client.on("message", (message) => {
             } else {
                 message.channel.send('Sorry, this is not allowed in here. try in #gamers-general');
             }
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 3);
         }
 
         // INFO SEARCH
         if (commandWithArgs === 'movie') {
             variousapi.mediaSearch(message, args, 'movie');
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 3);
         }
         if (commandWithArgs === 'series') {
             variousapi.mediaSearch(message, args, 'tv');
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 3);
         }
 
         // USER SPECIFIC
         if (command === 'grin') {
             fun.onlyForGrin(message);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 2);
         }
 
         if (command === 'bikki') {
             message.channel.send('<:BikkiBerserk:254211431610843136>');
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
 
         //USER INTERACTION WITH BOT
         if (commandWithArgs === 'rank') {
             basiclogics.rank(message, args, client);
-            basiclogics.increaseCommands(message);
+            basiclogics.increaseCommands(message, 1);
         }
     }
 

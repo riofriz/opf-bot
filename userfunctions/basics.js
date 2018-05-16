@@ -35,7 +35,7 @@ module.exports = {
         } catch (e){ console.log(e); }
     },
 
-    increaseCommands: function(message) {
+    increaseCommands: function(message, qty) {
         try {
             let commands;
             let rank;
@@ -44,7 +44,7 @@ module.exports = {
                     commands = doc.triggeredCommands;
                     user = message.author;
                     if (typeof commands !== 'undefined') {
-                        rank = commands/25;
+                        rank = commands/250;
                         if (rank % 1 === 0 && commands !== 1 && commands !== 0) {
                             let embed = new Discord.RichEmbed()
                                 .setThumbnail(url=user.avatarURL)
@@ -57,7 +57,7 @@ module.exports = {
                     }
                     db.Users.update(
                         { "id" : message.author.id },
-                        { $set: { "id" : message.author.id, "triggeredCommands":commands+1 } },
+                        { $set: { "id" : message.author.id, "triggeredCommands":commands+qty } },
                         {upsert: true},
                         function(err) {}
                     );
