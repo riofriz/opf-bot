@@ -11,10 +11,19 @@ module.exports = {
     saveusers: function(message) {
         try {
             let commands;
+            let rank;
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     if (typeof commands !== 'undefined') {
+                        if (commands%25 === 0) {
+                            rank = commands/25;
+                            let embed = new Discord.RichEmbed()
+                                .setThumbnail(url=message.author.avatarURL)
+                                .addField('Your rank', Math.floor(rank))
+                                .setColor(corevars.randomColor());
+                            message.channel.send({embed: embed});
+                        }
                     } else {
                         commands = 0;
                     }
@@ -25,6 +34,7 @@ module.exports = {
                         function(err) {}
                     );
                 } else {
+                    commands = 0;
                     db.Users.insert( { "id":message.author.id, "triggeredCommands":commands } );
                 }
             });
