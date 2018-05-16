@@ -131,9 +131,9 @@ module.exports = {
             let latestClaim;
             let todayNoHours = today.setHours(0, 0, 0, 0);
             db.Users.findOne({"id": message.author.id}, function (err, doc) {
-                latestClaim = doc.claims.latestClaim;
                 if (doc) {
-                    if (typeof latestClaim !== 'undefined') {
+                    if (doc.hasOwnProperty('claims.latestClaim')) {
+                        latestClaim = doc.claims.latestClaim;
                         if (today.toDateString() !== latestClaim.toDateString()) {
                             let berries = Math.random() * 250;
                             berries = Math.floor(berries);
@@ -147,6 +147,14 @@ module.exports = {
                         } else {
                             message.channel.send('Sorry, you already claimed for today.');
                         }
+                    } else {
+                        db.Users.update(
+                            {"id": message.author.id},
+                            {$set: {"id": message.author.id, "claims": {"latestClaim": todayNoHours, "berries" : berries}}},
+                            {upsert: true},
+                            function (err) {}
+                        );
+                        message.channel.send('Congrats, you received '+berries+'B');
                     }
                 }
             });
