@@ -134,9 +134,9 @@ module.exports = {
                 if (doc) {
                     if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
                         latestClaim = doc.claims.latestClaim;
-                        if (today.toDateString() !== latestClaim.toDateString()) {
-                            console.log(today.toDateString());
-                            console.log(latestClaim.toDateString());
+                        if (today !== latestClaim) {
+                            console.log(today);
+                            console.log(latestClaim);
                             let berries = Math.random() * 250;
                             berries = Math.floor(berries);
                             db.Users.update(
