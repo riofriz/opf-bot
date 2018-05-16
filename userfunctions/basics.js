@@ -119,5 +119,36 @@ module.exports = {
                 }
             });
         } catch (e){ console.log(e); }
-    }
+    },
+
+    /**
+     * @param message
+     * @param args
+     */
+    claim: function(message) {
+        try {
+            let today = new Date();
+            let todayNoHours = today.setHours(0, 0, 0, 0);
+            db.Users.findOne({"id": message.author.id}, function (err, doc) {
+                let latestClaim = doc.claims.latestClaim;
+                if (doc) {
+                    if (typeof latestClaim !== 'undefined') {
+                        if (today.toDateString() !== latestClaim.toDateString()) {
+                            let berries = Math.random() * 250;
+                            berries = Math.floor(berries);
+                            db.Users.update(
+                                {"id": message.author.id},
+                                {$set: {"id": message.author.id, "claims": {"latestClaim": todayNoHours, "berries" : berries}}},
+                                {upsert: true},
+                                function (err) {}
+                            );
+                            message.channel.send('Congrats, you received '+berries+'B');
+                        } else {
+                            message.channel.send('Sorry, you already claimed for today.');
+                        }
+                    }
+                }
+            });
+        } catch (e){ console.log(e); }
+    },
 };
