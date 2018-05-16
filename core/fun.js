@@ -388,9 +388,10 @@ module.exports = {
         ];
         let randomOne = Math.floor(Math.random() * timeout.length);
         let randomNumber = timeout[randomOne];
-        console.log(randomNumber);
+        console.log('Zak '+randomNumber);
         setTimeout(function() {
-            message.channel.send('Nik')
+            message.channel.send('Nik - '+'<@'+message.author.id+'>');
+            console.log('Nik '+message.author.id);
         }, randomNumber);
     }
 };
