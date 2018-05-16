@@ -128,9 +128,10 @@ module.exports = {
     claim: function(message) {
         try {
             let today = new Date();
+            let latestClaim;
             let todayNoHours = today.setHours(0, 0, 0, 0);
             db.Users.findOne({"id": message.author.id}, function (err, doc) {
-                let latestClaim = doc.claims.latestClaim;
+                latestClaim = doc.claims.latestClaim;
                 if (doc) {
                     if (typeof latestClaim !== 'undefined') {
                         if (today.toDateString() !== latestClaim.toDateString()) {
