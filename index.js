@@ -33,8 +33,6 @@ client.on("ready", () => {
 client.on("message", (message) => {
     "use strict";
 
-    let messageArray = message.content.split[' '];
-
     if (message.content.toLowerCase().includes('opf-')) {
         commandPrefix = 'opf-';
         allowed = true;
@@ -53,6 +51,8 @@ client.on("message", (message) => {
     //Declares args and command with args variable
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
+
+    let messageArray = command.split[' '];
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
