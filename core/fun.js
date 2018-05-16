@@ -388,10 +388,20 @@ module.exports = {
         // ];
         // let randomOne = Math.floor(Math.random() * timeout.length);
         // let randomNumber = timeout[randomOne];
-        console.log('Zak '+randomNumber+' '+message.author.id);
+
+        let ms = Math.random() * 100000000;
+        let sec = Math.floor(ms / 1000);
+        let min = Math.floor(sec / 60);
+        let hour = Math.floor(min / 60);
+        sec = sec % 60;
+        min = min % 60;
+        hour = hour % 24;
+
+        console.log('Zak '+randomNumber+' '+message.author.id+' '+hour+'h-'+min+'m-'+sec+'s');
+
         setTimeout(function() {
-            message.channel.send('Nik - '+'<@'+message.author.id+'>');
-            console.log('Nik '+message.author.id);
-        }, Math.random() * 100000000);
+            message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
+            console.log('Nik '+message.author.id+' '+hour+'h-'+min+'m-'+sec+'s');
+        }, ms);
     }
 };
