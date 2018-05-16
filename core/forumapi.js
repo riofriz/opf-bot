@@ -78,6 +78,7 @@ module.exports = {
                 for (let i = 0; i !== args.length; i++) {
                     string += args[i] + ' ';
                 }
+                string = string.replace('undefined', '');
                 db.Users.findOne({"id": message.author.id}, function (err, doc) {
                     if (doc) {
                         db.Users.update(
