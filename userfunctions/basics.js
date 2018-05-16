@@ -8,6 +8,10 @@ let mongojs = require('mongojs');
 let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Users']);
 
 module.exports = {
+
+    /**
+     * @param message
+     */
     saveusers: function(message) {
         try {
             let commands;
@@ -35,6 +39,10 @@ module.exports = {
         } catch (e){ console.log(e); }
     },
 
+    /**
+     * @param message
+     * @param qty
+     */
     increaseCommands: function(message, qty) {
         try {
             let commands;
@@ -67,6 +75,11 @@ module.exports = {
         } catch (e){ console.log(e); }
     },
 
+    /**
+     * @param message
+     * @param args
+     * @param Client
+     */
     rank: function(message, args, Client) {
         try {
             let commands;
@@ -123,29 +136,28 @@ module.exports = {
 
     /**
      * @param message
-     * @param args
      */
     claim: function(message) {
         try {
             let today = new Date();
             let latestClaim;
+            let ownedBerries;
             let todayNoHours = today.setHours(0, 0, 0, 0);
             db.Users.findOne({"id": message.author.id}, function (err, doc) {
                 if (doc) {
                     if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
                         latestClaim = doc.claims.latestClaim;
+                        ownedBerries = doc.claims.berries;
                         if (todayNoHours !== latestClaim) {
-                            console.log(today);
-                            console.log(latestClaim);
                             let berries = Math.random() * 250;
                             berries = Math.floor(berries);
                             db.Users.update(
                                 {"id": message.author.id},
-                                {$set: {"id": message.author.id, "claims": {"latestClaim": todayNoHours, "berries" : berries}}},
+                                {$set: {"id": message.author.id, "claims": {"latestClaim": todayNoHours, "berries" : ownedBerries+berries}}},
                                 {upsert: true},
                                 function (err) {}
                             );
-                            message.channel.send('Congrats, you received '+berries+'B');
+                            message.channel.send('Congrats, you received '+berries+'*B*');
                         } else {
                             message.channel.send('Sorry, you already claimed for today.');
                         }
@@ -158,10 +170,32 @@ module.exports = {
                             {upsert: true},
                             function (err) {}
                         );
-                        message.channel.send('Congrats, you received '+berries+'B');
+                        message.channel.send('Congrats, you received '+berries+'*B*');
                     }
                 }
             });
         } catch (e){ console.log(e); }
     },
+
+    /**
+     * @param message
+     */
+    balance: function(message) {
+        let berries;
+        try {
+                db.Users.findOne({"id": user}, function (err, doc) {
+                        if (doc) {
+                            if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
+                                berries = doc.claims.berries;
+                                message.channel.send('Your current balance is: ' + berries+'*B*');
+                            } else {
+                                message.channel.send('Your balance is still 0*B*');
+                            }
+                        } else {
+                            message.channel.send('Whops.. there might have been an error.');
+                        }
+                });
+            }
+         catch (e){ console.log(e); }
+    }
 };
