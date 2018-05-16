@@ -148,6 +148,8 @@ module.exports = {
                             message.channel.send('Sorry, you already claimed for today.');
                         }
                     } else {
+                        let berries = Math.random() * 250;
+                        berries = Math.floor(berries);
                         db.Users.update(
                             {"id": message.author.id},
                             {$set: {"id": message.author.id, "claims": {"latestClaim": todayNoHours, "berries" : berries}}},
