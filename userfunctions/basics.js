@@ -22,7 +22,6 @@ module.exports = {
                         { "id" : message.author.id },
                         { $set: { "id":message.author.id, "triggeredCommands":commands } },
                         {upsert: true},
-                        {multi: true},
                         function(err) {}
                     );
                 }
@@ -43,7 +42,6 @@ module.exports = {
                         { "id" : message.author.id },
                         { $set: { "id" : message.author.id, "triggeredCommands":commands+1 } },
                         {upsert: true},
-                        {multi: true},
                         function(err) {}
                     );
                 }
@@ -65,7 +63,6 @@ module.exports = {
                             { "id" : message.author.id },
                             { $set: { "id" : message.author.id, "triggeredCommands":commands } },
                             {upsert: true},
-                            {multi: true},
                             function(err) {}
                         );
                     } else {
