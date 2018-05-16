@@ -383,15 +383,15 @@ module.exports = {
     },
 
     zak: function(message) {
-        let timeout = [
-            40000, 90000, 100000, 1000, 5000, 9000, 15000, 55000, 946000, 7000, 234232, 5343, 10, 5324254, 53444254, 2934342, 34141141, 11312321, 535224, 73431213, 2229993, 60493
-        ];
-        let randomOne = Math.floor(Math.random() * timeout.length);
-        let randomNumber = timeout[randomOne];
+        // let timeout = [
+        //     40000, 90000, 100000, 1000, 5000, 9000, 15000, 55000, 946000, 7000, 234232, 5343, 10, 5324254, 53444254, 2934342, 34141141, 11312321, 535224, 73431213, 2229993, 60493
+        // ];
+        // let randomOne = Math.floor(Math.random() * timeout.length);
+        // let randomNumber = timeout[randomOne];
         console.log('Zak '+randomNumber+' '+message.author.id);
         setTimeout(function() {
             message.channel.send('Nik - '+'<@'+message.author.id+'>');
             console.log('Nik '+message.author.id);
-        }, randomNumber);
+        }, Math.random() * 100000000);
     }
 };
