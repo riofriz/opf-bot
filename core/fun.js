@@ -126,7 +126,8 @@ module.exports = {
             "<@415230548248887296>",
             "darling",
             "oh my god",
-            "luv u"
+            "luv u",
+            "zak"
         ];
         let result;
         let string;
@@ -379,6 +380,11 @@ module.exports = {
         } else {
             message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
         }
+    },
 
+    zak: function(message) {
+        setTimeout(function() {
+            message.channel.send('NIK')
+        }, 2000);
     }
 };

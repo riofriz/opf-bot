@@ -82,6 +82,11 @@ client.on("message", (message) => {
         notification = false;
         fun.luvU(message);
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "zak") {
+        allowed = true;
+        notification = false;
+        fun.zak(message);
+    }
     if (message.isMentioned('415230548248887296')) {
         allowed = true;
         notification = false;
