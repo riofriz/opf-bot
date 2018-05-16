@@ -132,7 +132,7 @@ module.exports = {
             let todayNoHours = today.setHours(0, 0, 0, 0);
             db.Users.findOne({"id": message.author.id}, function (err, doc) {
                 if (doc) {
-                    if (doc.hasOwnProperty('claims.latestClaim')) {
+                    if (doc.toObject().hasOwnProperty('claims.latestClaim')) {
                         latestClaim = doc.claims.latestClaim;
                         if (today.toDateString() !== latestClaim.toDateString()) {
                             console.log(today.toDateString());
