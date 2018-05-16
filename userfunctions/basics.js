@@ -40,7 +40,6 @@ module.exports = {
             let commands;
             let rank;
             let user;
-            console.log(qty);
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
@@ -92,7 +91,11 @@ module.exports = {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     rank = commands/250;
-                    howMuchLeft = commands%250;
+                    if (commands > 250) {
+                        howMuchLeft = 250 * Math.ceil(commands / 250);
+                    } else {
+                        howMuchLeft = 250-commands;
+                    }
                     if (typeof commands === 'undefined') {
                         commands = 0;
                         db.Users.update(
