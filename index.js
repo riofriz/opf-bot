@@ -248,6 +248,11 @@ client.on("message", (message) => {
         if (command === 'bikki') {
             message.channel.send('<:BikkiBerserk:254211431610843136>');
         }
+
+        //USER INTERACTION WITH BOT
+        if (command === 'rank') {
+            basiclogics.rank(message);
+        }
     }
 
 });

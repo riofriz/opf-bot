@@ -29,5 +29,31 @@ module.exports = {
                 }
             });
         } catch (e){ console.log(e); }
+    },
+
+    rank: function(message) {
+        try {
+            let commands;
+            let rank
+            db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
+                if(doc) {
+                    commands = doc.triggeredCommands;
+                    rank = commands%50;
+                    console.log(rank);
+                    if (typeof commands === 'undefined') {
+                        commands = 0;
+                        db.Users.update(
+                            { "id" : message.author.id },
+                            { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
+                            {upsert: true},
+                            function(err) {}
+                        );
+                    } else {
+                        message.channel.send('You\'r rank is: '+Math.floor(rank));
+                    }
+
+                }
+            });
+        } catch (e){ console.log(e); }
     }
 };
