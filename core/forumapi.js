@@ -118,9 +118,11 @@ module.exports = {
                         opfusername = doc.opfusername;
                         if (typeof opfusername !== 'undefined' && opfusername !== '') {
                             message.channel.send('This user is *'+opfusername+'* on the forum.');
+                        } else {
+                            message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(');
                         }
                     } else {
-                        message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(')
+                        message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(');
                     }
                 });
             } else {
