@@ -12,7 +12,7 @@ module.exports = {
         try {
             let user = db.Users.find( { "id": message.author.id } );
             let commands;
-            console.log(user.triggeredCommands);
+            console.log(user);
             if (typeof user.triggeredCommands !== 'undefined') {
                 console.log(user.triggeredCommands);
                 commands = user.triggeredCommands;
