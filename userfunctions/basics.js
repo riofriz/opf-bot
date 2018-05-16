@@ -5,7 +5,7 @@ let https = require('https');
 let qs = require('qs');
 let request = require('request');
 let mongojs = require('mongojs');
-let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds117540.mlab.com:17540/opfbot', ['Movies']);
+let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds117540.mlab.com:17540/opfmegabot', ['Users']);
 
 module.exports = {
     saveusers: function(message) {
