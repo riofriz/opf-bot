@@ -31,10 +31,38 @@ module.exports = {
         } catch (e){ console.log(e); }
     },
 
+    increaseCommands: function(message) {
+        try {
+            let commands;
+            db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
+                if(doc) {
+                    commands = doc.triggeredCommands;
+                    if (typeof commands === 'undefined') {
+                        commands = 0;
+                        db.Users.update(
+                            { "id" : message.author.id },
+                            { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
+                            {upsert: true},
+                            function(err) {}
+                        );
+                    } else {
+                        db.Users.update(
+                            { "id" : message.author.id },
+                            { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands+1 },
+                            {upsert: true},
+                            function(err) {}
+                        );
+                    }
+
+                }
+            });
+        } catch (e){ console.log(e); }
+    },
+
     rank: function(message) {
         try {
             let commands;
-            let rank
+            let rank;
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
@@ -49,7 +77,7 @@ module.exports = {
                             function(err) {}
                         );
                     } else {
-                        message.channel.send('You\'r rank is: '+Math.floor(rank));
+                        message.channel.send('Your rank is: '+Math.floor(rank));
                     }
 
                 }
