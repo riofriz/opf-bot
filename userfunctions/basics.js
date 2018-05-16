@@ -25,7 +25,7 @@ module.exports = {
                         function(err) {}
                     );
                 } else {
-                    db.Movies.insert( { "id":message.author.id, "triggeredCommands":commands } );
+                    db.Users.insert( { "id":message.author.id, "triggeredCommands":commands } );
                 }
             });
         } catch (e){ console.log(e); }
