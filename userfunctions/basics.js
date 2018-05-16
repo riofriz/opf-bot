@@ -12,14 +12,15 @@ module.exports = {
         try {
             let commands;
             let rank;
+            let user = message.author;
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     if (typeof commands !== 'undefined') {
-                        if (commands%25 === 0) {
+                        if (commands%25 === 0 || commands !== 0) {
                             rank = commands/25;
                             let embed = new Discord.RichEmbed()
-                                .setThumbnail(url=message.author.avatarURL)
+                                .setThumbnail(url=user.avatarURL)
                                 .addField('Your rank', Math.floor(rank))
                                 .setColor(corevars.randomColor());
                             message.channel.send({embed: embed});
