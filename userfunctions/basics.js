@@ -49,11 +49,20 @@ module.exports = {
         } catch (e){ console.log(e); }
     },
 
-    rank: function(message) {
+    rank: function(message, args) {
         try {
             let commands;
             let rank;
-            db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
+            let user;
+            if (args[0]) {
+                let firstStrip = args[0].trim().replace('<@', '');
+                let secondStrip = firstStrip.replace('>', '');
+                let thirdStrip = secondStrip.replace('!', '');
+                user = thirdStrip;
+            } else {
+                user = message.author.id;
+            }
+            db.Users.findOne({ "id" : user }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     rank = commands/25;

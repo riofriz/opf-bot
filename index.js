@@ -277,8 +277,8 @@ client.on("message", (message) => {
         }
 
         //USER INTERACTION WITH BOT
-        if (command === 'rank') {
-            basiclogics.rank(message);
+        if (commandWithArgs === 'rank') {
+            basiclogics.rank(message, args);
             basiclogics.increaseCommands(message);
         }
     }
