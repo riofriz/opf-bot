@@ -13,7 +13,6 @@ module.exports = {
             db.Users.update( { "id" : message.author.id }, { "id" : message.author.id },
                     { "id" : message.author.id, "nick" : message.author.username, "botrank" : 0 }, {upsert: true}, function(err) {}
             );
-        }
-        catch (e){ console.log(e); }
+        } catch (e){ console.log(e); }
     }
 };
