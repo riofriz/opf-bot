@@ -42,6 +42,7 @@ module.exports = {
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
+                    user = message.author;
                     if (typeof commands !== 'undefined') {
                         rank = commands/25;
                         if (rank % 1 === 0) {
