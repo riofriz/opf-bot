@@ -2,8 +2,9 @@ let corevars = require('./corevars');
 const Discord = require('discord.js');
 let Parser = require('rss-parser');
 let parser = new Parser();
-let fs = require('fs')
-
+let fs = require('fs');
+let mongojs = require('mongojs');
+let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Users']);
 
 module.exports = {
     /**
@@ -71,34 +72,27 @@ module.exports = {
      * @param args
      */
     username: function(message, args) {
-        // let logger = fs.createWriteStream('logs/log.txt', {
-        //     flags: 'a' // 'a' means appending (old data will be preserved)
-        // });
-        // logger.write(message.author+' - '+args[0]+'\n');
-        // message.channel.send('Ok, '+message.author+' i\'ll remember you are '+args[0]+' on the forum.');
-
-        //
-        // obj.table.push(message.author = [{'forumname':args0}]);
-        // let json = JSON.stringify(obj);
-        // fs.writeFile('myjsonfile.json', json, 'utf8', callback);
-        let obj = {
-                table: []
-            };
-        // let json = JSON.stringify(obj);
-        // let arg = args[0].trim();
-        // let userid = message.author.id.trim();
-        // fs.readFile(
-        //     'logs/opfusers.json', 'utf8', function callback(err, data){
-        //     if (err){
-        //         console.log(err);
-        //     } else {
-        //         obj = JSON.parse(data); //now it an object
-        //         obj.table.push({"id": userid, 'forumname': arg}); //add some data
-        //         json = JSON.stringify(obj); //convert it back to json
-        //         fs.writeFile('logs/opfusers.json', json, callback); // write it back
-        //         message.channel.send('Ok, '+message.author+' i\'ll remember you are '+arg+' on the forum.');
-        //     }
-        // });
+        try {
+            if (args[0]) {
+                let string;
+                for (let i = 0; i !== args.length; i++) {
+                    string += args[i] + ' ';
+                }
+                db.Users.findOne({"id": message.author.id}, function (err, doc) {
+                    if (doc) {
+                        db.Users.update(
+                            {"id": message.author.id},
+                            {$set: {"id": message.author.id, "opfusername": string}},
+                            {upsert: true},
+                            function (err) {}
+                        );
+                        message.channel.send('Thanks, i will remember that you are '+string+' on the forum.');
+                    }
+                });
+            } else {
+                message.channel.send('Sorry, you didn\'t specify any username.');
+            }
+        } catch (e){ console.log(e); }
     },
 
     /**
@@ -107,34 +101,28 @@ module.exports = {
      * @param args
      */
     whois: function(message, args) {
-        let nick = '';
-        let fileLineArray = [];
-        let lineReader = require('readline').createInterface({
-            input: require('fs').createReadStream('logs/log.txt')
-        });
-        let wordIs = '';
-        lineReader.on('line', function (line) {
-            fileLineArray.push(line);
-        });
-        lineReader.on('close', function(){
-            for(let i = 0; i !== fileLineArray.length; i++){
-                wordIs = fileLineArray[i];
-                if(wordIs.includes(args[0]) === true){
-                    let nickArray = wordIs.split(" ");
-                    if (nickArray[0] === args[0]) {
-                        nick = ':mag: I guess '+nickArray[2]+' is the person you are looking for :mag:';
-                    } else if (nickArray[2] === args[0]) {
-                        nick = ':mag: I guess '+nickArray[0]+' is the person you are looking for :mag:';
-                    } else {
-                        nick = '';
+        let firstStrip;
+        let secondStrip;
+        let thirdStrip;
+        let user;
+        let opfusername;
+        try {
+            if (args[0]) {
+                firstStrip = args[0].trim().replace('<@', '');
+                secondStrip = firstStrip.replace('>', '');
+                thirdStrip = secondStrip.replace('!', '');
+                user = thirdStrip;
+                db.Users.findOne({"id": user}, function (err, doc) {
+                    if (doc) {
+                        opfusername = doc.opfusername;
+                        if (typeof opfusername !== 'undefined' && opfusername !== '') {
+                            message.channel.send('This user is '+opfusername+' on the forum.');
+                        }
                     }
-                }
-            }
-            if (nick !== '') {
-                message.channel.send(nick);
+                });
             } else {
-                message.channel.send('I honestly have no idea who '+args[0]+' is.. ¯\\_(ツ)_/¯');
+                message.channel.send('Sorry, you didn\'t specify any valid user.');
             }
-        });
+        } catch (e){ console.log(e); }
     }
 };

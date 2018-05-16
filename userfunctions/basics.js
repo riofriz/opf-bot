@@ -29,7 +29,7 @@ module.exports = {
                     );
                 } else {
                     commands = 0;
-                    db.Users.insert( { "id":message.author.id, "triggeredCommands":commands } );
+                    db.Users.insert( { "id":message.author.id, "triggeredCommands":commands, "opfusername":"" } );
                 }
             });
         } catch (e){ console.log(e); }
