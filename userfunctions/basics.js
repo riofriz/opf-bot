@@ -134,7 +134,7 @@ module.exports = {
                 if (doc) {
                     if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
                         latestClaim = doc.claims.latestClaim;
-                        if (today !== latestClaim) {
+                        if (todayNoHours !== latestClaim) {
                             console.log(today);
                             console.log(latestClaim);
                             let berries = Math.random() * 250;
