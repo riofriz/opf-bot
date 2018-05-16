@@ -49,18 +49,24 @@ module.exports = {
         } catch (e){ console.log(e); }
     },
 
-    rank: function(message, args) {
+    rank: function(message, args, Client) {
         try {
             let commands;
             let rank;
             let user;
+            let pre;
+            let firstStrip;
+            let secondStrip;
+            let thirdStrip;
             if (args[0]) {
-                let firstStrip = args[0].trim().replace('<@', '');
-                let secondStrip = firstStrip.replace('>', '');
-                let thirdStrip = secondStrip.replace('!', '');
+                firstStrip = args[0].trim().replace('<@', '');
+                secondStrip = firstStrip.replace('>', '');
+                thirdStrip = secondStrip.replace('!', '');
                 user = thirdStrip;
+                pre = 'User\'s rank';
             } else {
                 user = message.author.id;
+                pre = 'Your rank';
             }
             db.Users.findOne({ "id" : user }, function(err, doc) {
                 if(doc) {
@@ -75,7 +81,14 @@ module.exports = {
                             function(err) {}
                         );
                     } else {
-                        message.channel.send('Your rank is: '+Math.floor(rank));
+                        Client.fetchUser(user).then(myUser => {
+                            let embed = new Discord.RichEmbed()
+                                .setThumbnail(url=myUser.avatarURL)
+                                .addField(pre, Math.floor(rank))
+                                .setColor(corevars.randomColor())
+                                .setFooter("Your lovable opfbot.");
+                            message.channel.send({embed: embed});
+                        });
                     }
 
                 }
