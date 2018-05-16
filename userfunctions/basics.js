@@ -89,7 +89,7 @@ module.exports = {
             db.Users.findOne({ "id" : user }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
-                    rank = commands/25;
+                    rank = commands/250;
                     if (typeof commands === 'undefined') {
                         commands = 0;
                         db.Users.update(
