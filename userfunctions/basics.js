@@ -45,12 +45,11 @@ module.exports = {
                     if (typeof commands !== 'undefined') {
                         rank = commands/25;
                         if (rank % 1 === 0) {
-                            console.log(rank);
-                            // let embed = new Discord.RichEmbed()
-                            //     .setThumbnail(url=user.avatarURL)
-                            //     .addField('Your rank', Math.floor(rank))
-                            //     .setColor(corevars.randomColor());
-                            // message.channel.send({embed: embed});
+                            let embed = new Discord.RichEmbed()
+                                .setThumbnail(url=user.avatarURL)
+                                .addField('Your rank', Math.floor(rank))
+                                .setColor(corevars.randomColor());
+                            message.channel.send({embed: embed});
                         }
                     } else {
                         commands = 0;
