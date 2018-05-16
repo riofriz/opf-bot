@@ -17,15 +17,7 @@ module.exports = {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     if (typeof commands !== 'undefined') {
-                        rank = commands/25;
-                        if (rank % 1 === 0) {
-                            console.log(rank);
-                            // let embed = new Discord.RichEmbed()
-                            //     .setThumbnail(url=user.avatarURL)
-                            //     .addField('Your rank', Math.floor(rank))
-                            //     .setColor(corevars.randomColor());
-                            // message.channel.send({embed: embed});
-                        }
+
                     } else {
                         commands = 0;
                     }
@@ -46,10 +38,21 @@ module.exports = {
     increaseCommands: function(message) {
         try {
             let commands;
+            let rank;
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
-                    if (typeof commands === 'undefined') {
+                    if (typeof commands !== 'undefined') {
+                        rank = commands/25;
+                        if (rank % 1 === 0) {
+                            console.log(rank);
+                            // let embed = new Discord.RichEmbed()
+                            //     .setThumbnail(url=user.avatarURL)
+                            //     .addField('Your rank', Math.floor(rank))
+                            //     .setColor(corevars.randomColor());
+                            // message.channel.send({embed: embed});
+                        }
+                    } else {
                         commands = 0;
                     }
                     db.Users.update(
