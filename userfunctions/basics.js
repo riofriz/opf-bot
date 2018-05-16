@@ -9,11 +9,11 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 
 module.exports = {
     saveusers: function(message) {
-        try {    db.Users.replaceOne(
-            { "id" : message.author.id },
-            { "id" : message.author.id, "nick" : message.author.username, "botrank" : 0 },
-            { upsert: true }
-        );
+        try {
+            db.Users.update( { "id" : message.author.id }, { "id" : message.author.id },
+                    { "id" : message.author.id, "nick" : message.author.username, "botrank" : 0 },
+                    { upsert: true }, true
+            );
         }
         catch (e){ console.log(e); }
     }
