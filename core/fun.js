@@ -397,11 +397,11 @@ module.exports = {
         min = min % 60;
         hour = hour % 24;
 
-        console.log('Zak '+ms+' '+message.author.id+' '+hour+'h-'+min+'m-'+sec+'s');
+        console.log('Zak '+ms+' '+message.author.name+' '+hour+'h-'+min+'m-'+sec+'s');
 
         setTimeout(function() {
             message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
-            console.log('Nik '+message.author.id+' '+hour+'h-'+min+'m-'+sec+'s');
+            console.log('Nik '+message.author.name+' '+hour+'h-'+min+'m-'+sec+'s');
         }, ms);
     }
 };
