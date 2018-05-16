@@ -20,7 +20,7 @@ module.exports = {
                     }
                     db.Users.update(
                         { "id" : message.author.id },
-                        { "id" : message.author.id, "triggeredCommands":commands },
+                        { $set: { "id":message.author.id, "triggeredCommands":commands } },
                         {upsert: true},
                         function(err) {}
                     );
@@ -39,14 +39,14 @@ module.exports = {
                         commands = 0;
                         db.Users.update(
                             { "id" : message.author.id },
-                            { "id" : message.author.id, "triggeredCommands":commands },
+                            { $set: { "id" : message.author.id, "triggeredCommands":commands } },
                             {upsert: true},
                             function(err) {}
                         );
                     } else {
                         db.Users.update(
                             { "id" : message.author.id },
-                            { "id" : message.author.id, "triggeredCommands":commands+1 },
+                            { $set: { "id" : message.author.id, "triggeredCommands":commands+1 } },
                             {upsert: true},
                             function(err) {}
                         );
@@ -69,7 +69,7 @@ module.exports = {
                         commands = 0;
                         db.Users.update(
                             { "id" : message.author.id },
-                            { "id" : message.author.id, "triggeredCommands":commands },
+                            { $set: { "id" : message.author.id, "triggeredCommands":commands } },
                             {upsert: true},
                             function(err) {}
                         );
