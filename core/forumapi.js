@@ -87,7 +87,7 @@ module.exports = {
                             {upsert: true},
                             function (err) {}
                         );
-                        message.channel.send('Thanks, i will remember that you are '+string+' on the forum.');
+                        message.channel.send('Thanks, i will remember that you are *'+string+'* on the forum.');
                     }
                 });
             } else {
@@ -117,7 +117,7 @@ module.exports = {
                     if (doc) {
                         opfusername = doc.opfusername;
                         if (typeof opfusername !== 'undefined' && opfusername !== '') {
-                            message.channel.send('This user is '+opfusername+' on the forum.');
+                            message.channel.send('This user is *'+opfusername+'* on the forum.');
                         }
                     }
                 });
