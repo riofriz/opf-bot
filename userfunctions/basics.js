@@ -11,8 +11,7 @@ module.exports = {
     saveusers: function(message) {
         try {
             db.Users.update( { "id" : message.author.id }, { "id" : message.author.id },
-                    { "id" : message.author.id, "nick" : message.author.username, "botrank" : 0 },
-                    { upsert: true }, true
+                    { "id" : message.author.id, "nick" : message.author.username, "botrank" : 0 }, true
             );
         }
         catch (e){ console.log(e); }
