@@ -369,11 +369,17 @@ module.exports = {
         if (message.author.id !== riofriz && message.author.id !== grin) {
             message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
         }
+        console.log(message.content);
         if (message.author.id === grin) {
             if (message.content.toLowercase.contains('<@408255473821679617>')) {
                 message.channel.send('He totally luv u back <3');
             } else {
                 message.channel.send('I\'ll allow it only if is for riofriz.');
+            }
+        }
+        if (message.author.id === riofriz) {
+            if (message.content.toLowerCase().contains('<@273453235287883776>') || message.content.toLowerCase().contains('<@!273453235287883776>')) {
+                message.channel.send('awwwwwww so damn sweet.');
             }
         }
     }
