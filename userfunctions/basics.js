@@ -14,21 +14,20 @@ module.exports = {
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
+                    console.log(commands);
+                    if (typeof commands !== 'undefined') {
+                        console.log(commands);
+                    } else {
+                        commands = 0;
+                    }
+                    db.Users.update(
+                        { "id" : message.author.id },
+                        { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
+                        {upsert: true},
+                        function(err) {}
+                    );
                 }
             });
-
-            console.log(commands);
-            if (typeof commands !== 'undefined') {
-                console.log(commands);
-            } else {
-                commands = 0;
-            }
-            db.Users.update(
-                { "id" : message.author.id },
-                { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
-                {upsert: true},
-                function(err) {}
-            );
         } catch (e){ console.log(e); }
     }
 };
