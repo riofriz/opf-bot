@@ -364,8 +364,12 @@ module.exports = {
 
     luvU: function(message) {
         let riofriz = '408255473821679617';
-        if (message.author.id !== '408255473821679617') {
+        let grin = '273453235287883776';
+        if (message.author.id !== riofriz && message.author.id !== grin) {
             message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
+        }
+        if (message.author.id === grin) {
+            message.channel.send('If is for riofriz i\'ll allow it.');
         }
     }
 };
