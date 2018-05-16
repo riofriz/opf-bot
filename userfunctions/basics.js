@@ -45,7 +45,7 @@ module.exports = {
                     user = message.author;
                     if (typeof commands !== 'undefined') {
                         rank = commands/25;
-                        if (rank % 1 === 0 && commands !== 1) {
+                        if (rank % 1 === 0 && commands !== 1 && commands !== 0) {
                             let embed = new Discord.RichEmbed()
                                 .setThumbnail(url=user.avatarURL)
                                 .addField('Your rank', Math.floor(rank))
