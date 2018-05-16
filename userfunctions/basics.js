@@ -93,6 +93,7 @@ module.exports = {
                     rank = commands/250;
                     if (commands > 250) {
                         howMuchLeft = 250 * Math.ceil(commands / 250);
+                        howMuchLeft = howMuchLeft-commands;
                     } else {
                         howMuchLeft = 250-commands;
                     }
