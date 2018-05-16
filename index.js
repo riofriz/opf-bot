@@ -287,6 +287,11 @@ client.on("message", (message) => {
             basiclogics.claim(message);
             basiclogics.increaseCommands(message, 4);
         }
+
+        if (command === 'balance') {
+            basiclogics.balance(message);
+            basiclogics.increaseCommands(message, 1);
+        }
     }
 
 });

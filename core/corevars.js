@@ -31,7 +31,8 @@ module.exports = {
             "grin",
             "poets",
             "rank",
-            "claim"
+            "claim",
+            "balance"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
