@@ -10,7 +10,10 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 module.exports = {
     saveusers: function(message) {
         try {
-            let user = db.Users.find({} , {"id" : message.author.id } );
+            let user = db.Users.find(
+                {id : message.author.id }
+            );
+
             let commands;
             console.log(user);
             if (typeof user.triggeredCommands !== 'undefined') {
