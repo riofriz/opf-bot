@@ -104,7 +104,7 @@ client.on("message", (message) => {
         message.channel.send('Yes, comma. Mother fuckin\' comma.');
     }
 
-    if (messageArray.length > 20 && !messageArray.indexOf(',')) {
+    if (messageArray.length > 25 && messageArray.indexOf(',') !== -1) {
         message.channel.send('Yes, comma. Mother fuckin\' comma.');
     }
 
