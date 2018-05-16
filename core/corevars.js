@@ -28,7 +28,8 @@ module.exports = {
             "movie",
             "series",
             "whops",
-            "grin"
+            "grin",
+            "poets"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

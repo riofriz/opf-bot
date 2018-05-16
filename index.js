@@ -196,6 +196,10 @@ client.on("message", (message) => {
             fun.garchu(client, message, args);
         }
 
+        if (commandWithArgs === 'poets') {
+            fun.poets(message);
+        }
+
         if (commandWithArgs === 'meme') {
             if (message.channel.name === 'memes') {
                 fun.getMeme(message, args);

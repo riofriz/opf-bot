@@ -403,5 +403,28 @@ module.exports = {
             message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
             console.log('Nik '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
         }, ms);
+    },
+
+    poets: function(message) {
+        let quotes = [
+            "Try me again. \n- *riofriz* **May, 2018**",
+            "When someone lick your tears, it's heartwarming. \n- *Grin* **May, 2018**",
+            "BLACK HOLE. \n- *Stom* chaser **May, 2018**",
+            "Don't come. \n- *Grin* **May, 2018**",
+            "Grin, I'm cXming for you. \n- *Chaudfontaine* **May, 2018**",
+            "Please do. \n- *Grin* **May, 2018**",
+            "Is Marco wet? \n- *Chaudfontaine* **May, 2018**",
+            "Ah, yes! No, no! \n- *Storm chaser*, **May, 2018**",
+            "...you bring there girl there. \n- *Grin* **May, 2018**",
+            "you're such an inspirement for all curvy headed men ❤ \n- *Mapache* **May, 2018**",
+            "The fontaine of my Chaud, drink it. \n- *Chaudfontaine* **May, 2018**",
+            "chats die when the MVPs leave \n- *Sprasle* **May, 2018**"
+        ];
+        let randomOne = Math.floor(Math.random() * quotes.length);
+
+        let embed = new Discord.RichEmbed()
+            .setTitle(quotes[randomOne])
+            .setColor(corevars.randomColor())
+        message.channel.send({embed: embed});
     }
 };
