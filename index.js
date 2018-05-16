@@ -53,7 +53,7 @@ client.on("message", (message) => {
     const commandWithArgs = args.shift().toLowerCase();
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216' && message.author.id !== '146822995908755456') {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
         allowed = true;
         notification = false;
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
