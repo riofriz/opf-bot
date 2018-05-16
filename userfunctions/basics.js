@@ -18,7 +18,7 @@ module.exports = {
                     commands = doc.triggeredCommands;
                     if (typeof commands !== 'undefined') {
                         rank = commands/25;
-                        if (rank % 1 !== 0) {
+                        if (rank % 1 === 0) {
                             console.log(rank);
                             // let embed = new Discord.RichEmbed()
                             //     .setThumbnail(url=user.avatarURL)
