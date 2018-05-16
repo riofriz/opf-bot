@@ -389,7 +389,7 @@ module.exports = {
         // let randomOne = Math.floor(Math.random() * timeout.length);
         // let randomNumber = timeout[randomOne];
 
-        let ms = Math.random() * 18000000;
+        let ms = Math.random() * 7222222;
         let sec = Math.floor(ms / 1000);
         let min = Math.floor(sec / 60);
         let hour = Math.floor(min / 60);

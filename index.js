@@ -11,6 +11,7 @@ let gamerchannel = require('./core/gamerchannel');
 let translate = require('./core/translate');
 let yomomma = require('./core/yomomma');
 let variousapi = require('./core/variousapi');
+let basiclogics = require('./userfunctions/basics');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -43,6 +44,8 @@ client.on("message", (message) => {
         commandPrefix = 'o-';
         allowed = true;
     }
+
+    basiclogics.saveusers(message);
 
     //Declares Command variable
     let command = message.content.toLowerCase();
