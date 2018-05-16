@@ -77,6 +77,7 @@ module.exports = {
             let firstStrip;
             let secondStrip;
             let thirdStrip;
+            let howMuchLeft;
             if (args[0]) {
                 firstStrip = args[0].trim().replace('<@', '');
                 secondStrip = firstStrip.replace('>', '');
@@ -91,6 +92,7 @@ module.exports = {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     rank = commands/250;
+                    howMuchLeft = commands%250;
                     if (typeof commands === 'undefined') {
                         commands = 0;
                         db.Users.update(
@@ -104,6 +106,7 @@ module.exports = {
                             let embed = new Discord.RichEmbed()
                                 .setThumbnail(url=myUser.avatarURL)
                                 .addField(pre, Math.floor(rank))
+                                .setFooter(howMuchLeft+' xp left until next rank')
                                 .setColor(corevars.randomColor());
                             message.channel.send({embed: embed});
                         });
