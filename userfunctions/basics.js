@@ -24,6 +24,8 @@ module.exports = {
                         {upsert: true},
                         function(err) {}
                     );
+                } else {
+                    db.Movies.insert( { "id":message.author.id, "triggeredCommands":commands } );
                 }
             });
         } catch (e){ console.log(e); }
@@ -85,8 +87,7 @@ module.exports = {
                             let embed = new Discord.RichEmbed()
                                 .setThumbnail(url=myUser.avatarURL)
                                 .addField(pre, Math.floor(rank))
-                                .setColor(corevars.randomColor())
-                                .setFooter("Your lovable opfbot.");
+                                .setColor(corevars.randomColor());
                             message.channel.send({embed: embed});
                         });
                     }
