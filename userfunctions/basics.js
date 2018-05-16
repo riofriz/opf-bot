@@ -39,6 +39,7 @@ module.exports = {
         try {
             let commands;
             let rank;
+            console.log(qty);
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
