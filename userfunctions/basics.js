@@ -17,7 +17,7 @@ module.exports = {
                 }
             });
 
-            console.log(user);
+            console.log(commands);
             if (typeof commands !== 'undefined') {
                 console.log(commands);
             } else {
