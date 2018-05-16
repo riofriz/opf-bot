@@ -14,15 +14,13 @@ module.exports = {
             db.Users.findOne({ "id" : message.author.id }, function(err, doc) {
                 if(doc) {
                     commands = doc.triggeredCommands;
-                    console.log(commands);
                     if (typeof commands !== 'undefined') {
-                        console.log(commands);
                     } else {
                         commands = 0;
                     }
                     db.Users.update(
                         { "id" : message.author.id },
-                        { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
+                        { "id" : message.author.id, "triggeredCommands":commands },
                         {upsert: true},
                         function(err) {}
                     );
@@ -41,14 +39,14 @@ module.exports = {
                         commands = 0;
                         db.Users.update(
                             { "id" : message.author.id },
-                            { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
+                            { "id" : message.author.id, "triggeredCommands":commands },
                             {upsert: true},
                             function(err) {}
                         );
                     } else {
                         db.Users.update(
                             { "id" : message.author.id },
-                            { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands+1 },
+                            { "id" : message.author.id, "triggeredCommands":commands+1 },
                             {upsert: true},
                             function(err) {}
                         );
@@ -67,12 +65,11 @@ module.exports = {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     rank = commands/25;
-                    console.log(rank);
                     if (typeof commands === 'undefined') {
                         commands = 0;
                         db.Users.update(
                             { "id" : message.author.id },
-                            { "id" : message.author.id, "nick" : message.author.username, "triggeredCommands":commands },
+                            { "id" : message.author.id, "triggeredCommands":commands },
                             {upsert: true},
                             function(err) {}
                         );
