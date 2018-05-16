@@ -33,6 +33,8 @@ client.on("ready", () => {
 client.on("message", (message) => {
     "use strict";
 
+    let messageArray = message.content.split[' '];
+
     if (message.content.toLowerCase().includes('opf-')) {
         commandPrefix = 'opf-';
         allowed = true;
@@ -99,6 +101,10 @@ client.on("message", (message) => {
     }
 
     if(message.content.endsWith(',')) {
+        message.channel.send('Yes, comma. Mother fuckin\' comma.');
+    }
+
+    if (messageArray.length > 20 && !messageArray.indexOf(',')) {
         message.channel.send('Yes, comma. Mother fuckin\' comma.');
     }
 

@@ -390,7 +390,7 @@ module.exports = {
         let randomNumber = timeout[randomOne];
         console.log(randomNumber);
         setTimeout(function() {
-            message.channel.send('NIK')
+            message.channel.send('Nik')
         }, randomNumber);
     }
 };
