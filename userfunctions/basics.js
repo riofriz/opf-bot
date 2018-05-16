@@ -17,10 +17,9 @@ module.exports = {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     if (typeof commands !== 'undefined') {
-                        if (parseInt(commands)%25 === 0 || commands !== 0) {
-                            rank = parseInt(commands)/25;
-                            let average= parseInt(commands)%25;
-                            console.log(average);
+                        rank = commands/25;
+                        if (rank % 1 !== 0) {
+                            console.log(rank);
                             // let embed = new Discord.RichEmbed()
                             //     .setThumbnail(url=user.avatarURL)
                             //     .addField('Your rank', Math.floor(rank))
