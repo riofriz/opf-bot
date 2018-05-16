@@ -365,7 +365,7 @@ module.exports = {
 
     luvU: function(message) {
         let riofriz = '408255473821679617';
-        let grin = '273453235287883776'
+        let grin = '273453235287883776';
         console.log(message.content);
         if (message.author.id === grin) {
             if (message.content.toLowercase.includes('<@408255473821679617>') || message.content.toLowercase.includes('<@!408255473821679617>')) {
