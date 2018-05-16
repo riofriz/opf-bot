@@ -98,6 +98,10 @@ client.on("message", (message) => {
         fun.messageOnQuote(message);
     }
 
+    if(message.content.endsWith(',')) {
+        message.channel.send('Yes, comma. Mother fuckin\' comma.');
+    }
+
     // if (corecommands.tooManyTags(message) >= 10) {
     //     message.channel.send(fun.dontTagMe(message));
     // }
