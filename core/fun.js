@@ -65,7 +65,7 @@ module.exports = {
                     m.delete();
                 });
         } else {
-            message.channel.send('na na.. not allowed <:pfft:393455142239862795>');
+            message.channel.send('na na.. not allowed <:pfft:445023527888748544>');
         }
     },
 
@@ -85,7 +85,7 @@ module.exports = {
      */
     garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
-            message.channel.send('whops.. you can\'t.. <:pfft:393455142239862795>');
+            message.channel.send('whops.. you can\'t.. <:pfft:445023527888748544>');
         } else if (message.author.id === '273453235287883776') {
             message.channel.send('I\'m sorry Grin.. Can\'t let you use this command.. P..p..please understand..');
         } else {
@@ -125,7 +125,8 @@ module.exports = {
             "<@!415230548248887296>",
             "<@415230548248887296>",
             "darling",
-            "oh my god"
+            "oh my god",
+            "luv u"
         ];
         let result;
         let string;
@@ -261,7 +262,7 @@ module.exports = {
         let mention = '';
         let dick;
         if (randomNumber <= 5) {
-            ptff = '<:pfft:393455142239862795>';
+            ptff = '<:pfft:445023527888748544>';
         }
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
@@ -359,5 +360,12 @@ module.exports = {
             .setColor(corevars.randomColor())
             .setThumbnail('http://photo.cultjer.com/img/cache/width/1000/ug_photo/2014_04/pulp_fiction120140422171446.jpg');
         message.channel.send({embed: embed});
+    },
+
+    luvU: function(message) {
+        let riofriz = '408255473821679617';
+        if (message.author.id !== '408255473821679617') {
+            message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
+        }
     }
 };

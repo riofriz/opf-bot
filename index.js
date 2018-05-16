@@ -77,6 +77,11 @@ client.on("message", (message) => {
         notification = false;
         fun.chuckNorris(message);
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "luv u") {
+        allowed = true;
+        notification = false;
+        fun.luvU(message);
+    }
     if (message.isMentioned('415230548248887296')) {
         allowed = true;
         notification = false;

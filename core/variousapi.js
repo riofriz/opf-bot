@@ -78,7 +78,7 @@ module.exports = {
                             .setURL(siteurl);
                         message.channel.send({embed: embed});
                         if (adult === true) {
-                            message.channel.send('<:pfft:393455142239862795>');
+                            message.channel.send('<:pfft:445023527888748544>');
                         }
                     } else {
                         message.channel.send('Mhhh.. maybe you could try this instead? \n ```' + aliases + '```');
