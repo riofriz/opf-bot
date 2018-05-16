@@ -17,13 +17,14 @@ module.exports = {
                 if(doc) {
                     commands = doc.triggeredCommands;
                     if (typeof commands !== 'undefined') {
-                        if (commands%25 === 0 || commands !== 0) {
-                            rank = commands/25;
-                            let embed = new Discord.RichEmbed()
-                                .setThumbnail(url=user.avatarURL)
-                                .addField('Your rank', Math.floor(rank))
-                                .setColor(corevars.randomColor());
-                            message.channel.send({embed: embed});
+                        if (parseInt(commands)%25 === 0 || commands !== 0) {
+                            rank = parseInt(commands)/25;
+                            console.log(parseInt(commands)%25);
+                            // let embed = new Discord.RichEmbed()
+                            //     .setThumbnail(url=user.avatarURL)
+                            //     .addField('Your rank', Math.floor(rank))
+                            //     .setColor(corevars.randomColor());
+                            // message.channel.send({embed: embed});
                         }
                     } else {
                         commands = 0;
