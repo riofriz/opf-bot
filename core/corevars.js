@@ -30,7 +30,8 @@ module.exports = {
             "whops",
             "grin",
             "poets",
-            "rank"
+            "rank",
+            "claim"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

@@ -282,6 +282,11 @@ client.on("message", (message) => {
             basiclogics.rank(message, args, client);
             basiclogics.increaseCommands(message, 1);
         }
+
+        if (command === 'claim') {
+            basiclogics.claim(message);
+            basiclogics.increaseCommands(message, 4);
+        }
     }
 
 });
