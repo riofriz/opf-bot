@@ -387,8 +387,10 @@ module.exports = {
             1000, 5000, 9000, 15000, 55000, 946000, 7000, 234232, 5343, 10, 5324254, 53444254
         ];
         let randomOne = Math.floor(Math.random() * timeout.length);
+        let randomNumber = timeout[randomOne];
+        console.log(randomNumber);
         setTimeout(function() {
             message.channel.send('NIK')
-        }, timeout[randomOne]);
+        }, randomNumber);
     }
 };
