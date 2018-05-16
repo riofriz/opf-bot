@@ -119,6 +119,8 @@ module.exports = {
                         if (typeof opfusername !== 'undefined' && opfusername !== '') {
                             message.channel.send('This user is *'+opfusername+'* on the forum.');
                         }
+                    } else {
+                        message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(')
                     }
                 });
             } else {
