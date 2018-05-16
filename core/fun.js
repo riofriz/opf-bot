@@ -126,7 +126,8 @@ module.exports = {
             "<@415230548248887296>",
             "darling",
             "oh my god",
-            "luv u"
+            "luv u",
+            "luv u <@408255473821679617>"
         ];
         let result;
         let string;
@@ -369,7 +370,11 @@ module.exports = {
             message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
         }
         if (message.author.id === grin) {
-            message.channel.send('If is for riofriz i\'ll allow it.');
+            if (message.content.toLowercase.contains('<@408255473821679617>')) {
+                message.channel.send('He totally luv u back <3');
+            } else {
+                message.channel.send('I\'ll allow it only if is for riofriz.');
+            }
         }
     }
 };
