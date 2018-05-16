@@ -52,7 +52,7 @@ client.on("message", (message) => {
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
 
-    let messageArray = command.split(' ');
+    let messageArray = message.content.split(' ');
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
@@ -104,7 +104,7 @@ client.on("message", (message) => {
         message.channel.send('Yes, comma. Mother fuckin\' comma.');
     }
 
-    if (messageArray.length > 25 && command.includes(',') === false) {
+    if (messageArray.length > 25 && message.content.includes(',') === false) {
         message.channel.send('Yes, comma. Mother fuckin\' comma.');
     }
 
