@@ -53,10 +53,6 @@ client.on("message", (message) => {
     const commandWithArgs = args.shift().toLowerCase();
 
     let messageArray = message.content.split(' ');
-    console.log(messageArray.length);
-    if (message.content.includes(',') === false) {
-        console.log('there is no comma');
-    }
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
