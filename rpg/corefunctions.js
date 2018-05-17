@@ -25,8 +25,8 @@ module.exports = {
                                     Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (fontbig) {
                                         dimg.resize(114, 107);
                                         delimg.composite(dimg, 60, 86);
-                                        delimg.print(fontbig, 55, 200, ""+message.author.username+"");
-                                        delimg.print(fontbig, 75, 300, ""+berries+"B");
+                                        delimg.print(font, 55, 200, ""+message.author.username+"");
+                                        delimg.print(fontbig, 78, 280, ""+berries+"B");
                                         delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                                         message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
                                     });
