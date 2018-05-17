@@ -12,6 +12,7 @@
     "discord.js": "^11.3.2",
     "dotenv": "^5.0.1",
     "google-translate-api": "^2.3.0",
+    "jimp": "^0.2.28",
     "mongodb": "^3.1.0-beta4",
     "mongojs": "^2.5.0",
     "pastee-api": "0.0.5",
