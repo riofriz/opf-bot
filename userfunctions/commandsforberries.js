@@ -16,7 +16,7 @@ module.exports = {
               string += args[i] + ' ';
           }
           if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
-              return message.channel.send('I don\'t have permission to change your nickname!');
+              message.channel.send('I don\'t have permission to change your nickname!');
           } else {
               message.member.setNickname(string);
           }
