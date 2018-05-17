@@ -22,14 +22,14 @@ module.exports = {
                     .composite(thumb, 25, 20)
                     .crop( 0, 0, 0, 0 )
                     .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
-                        err ? console.log(err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
+                        err ? console.log('this error is clone: '+err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
                     });
             })
             .then(function() {
                 message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
             })
             .catch(function (err){
-                console.log(err);
+                console.log('this error is final catch: '+err);
             });
     }
 
