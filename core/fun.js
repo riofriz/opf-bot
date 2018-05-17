@@ -469,7 +469,7 @@ module.exports = {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
                     let result;
-                    let counter = 0;
+                    let counter = 1;
                     for (let i = 0; i !== json_body.length; i++) {
                         result += json_body[i]['word'];
                         if (json_body.length !== counter) {
