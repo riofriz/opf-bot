@@ -32,10 +32,10 @@ module.exports = {
                 dimg.resize(114, 107);
                 delimg.composite(dimg, 62, 86);
                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
-                    delimg.print(font, 20, 200, message.author.nickname);
+                    delimg.print(font, 20, 200, ''+message.author.nickname+'');
                 });
                 delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
-                message.channel.send('http://104.131.78.209/bot/rpg/userimages/'+message.author.id+'.jpg');
+                message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
             });
         }).catch(err => {
             message.channel.send("An error occured!~\n```js\n" + err + "```");
