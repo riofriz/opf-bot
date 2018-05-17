@@ -306,8 +306,8 @@ client.on("message", (message) => {
         }
 
         //RPG
-        if (command === 'wantedme') {
-            rpgcore.wantedme(message);
+        if (command === 'oprank') {
+            rpgcore.oprank(message);
         }
     }
 

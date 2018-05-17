@@ -34,7 +34,7 @@ module.exports = {
             "claim",
             "balance",
             "nick",
-            "wantedme"
+            "oprank"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

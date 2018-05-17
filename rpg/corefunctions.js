@@ -10,15 +10,19 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 
 module.exports = {
 
-    wantedme: function(message) {
+    oprank: function(message) {
 
         let berries;
         let username = message.author.username;
+        let commands;
+        let rank;
         try {
             db.Users.findOne({"id": message.author.id}, function (err, doc) {
                 if (doc) {
                     if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
                         berries = doc.claims.berries;
+                        commands = doc.triggeredCommands;
+                        rank = commands/250;
 
                         Jimp.read(__dirname+"/userimages/emptywanted.png").then(function (delimg) {
                             Jimp.read(message.author.avatarURL).then(function(dimg) {
@@ -28,6 +32,7 @@ module.exports = {
                                         delimg.composite(dimg, 78, 130);
                                         delimg.print(fontbig, 43, 440, ""+username.toUpperCase()+"");
                                         delimg.print(fontbig, 78, 500, ""+berries+"");
+                                        delimg.print(fonthuge, 300, 440, ""+Math.floor(rank)+"");
                                         delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                                         message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
                                     });
