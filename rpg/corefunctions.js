@@ -23,10 +23,10 @@ module.exports = {
                             Jimp.read(message.author.avatarURL).then(function(dimg) {
                                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
                                     Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (fontbig) {
-                                        dimg.resize(214, 207);
-                                        delimg.composite(dimg, 60, 86);
+                                        dimg.resize(314, 307);
+                                        delimg.composite(dimg, 65, 86);
                                         delimg.print(font, 55, 200, ""+message.author.username+"");
-                                        delimg.print(fontbig, 78, 280, ""+berries+"B");
+                                        delimg.print(fontbig, 78, 350, ""+berries+"");
                                         delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                                         message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
                                     });
