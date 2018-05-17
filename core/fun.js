@@ -446,6 +446,12 @@ module.exports = {
     },
 
     rhyme: function(message, args) {
+        let string;
+        for (let i = 0; i !== args.length; i++) {
+            string += args[i] + ' ';
+        }
+        string = string.replace('undefined', '');
+        string = string.trim();
 
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
@@ -463,12 +469,6 @@ module.exports = {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
                     let result;
-                    let string;
-                    for (let i = 0; i !== args.length; i++) {
-                        string += args[i] + ' ';
-                    }
-                    string = string.replace('undefined', '');
-                    string = string.trim();
                     for (let i = 0; i !== json_body.length; i++) {
                         result += json_body[i]['word'];
                         if (json_body.length === i - 1) {
