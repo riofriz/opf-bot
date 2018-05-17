@@ -20,6 +20,7 @@ module.exports = {
             .then(function (image) {
                 image.clone()
                     .composite(thumb, 25, 20)
+                    .crop( 0, 0, 0, 0 )
                     .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
                         err ? console.log(err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
                     });
