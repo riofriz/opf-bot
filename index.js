@@ -300,7 +300,7 @@ client.on("message", (message) => {
         }
 
         if (commandWithArgs === 'nick') {
-            commandsforberries.changenick(message, args);
+            commandsforberries.changenick(message, args, client);
             basiclogics.increaseCommands(message, 1);
         }
     }

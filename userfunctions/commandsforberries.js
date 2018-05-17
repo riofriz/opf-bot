@@ -9,7 +9,7 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 
 module.exports = {
 
-  changenick: function (message, args) {
+  changenick: function (message, args, client) {
       let string;
       if (args[0]) {
           for (let i = 0; i !== args.length; i++) {
@@ -22,9 +22,11 @@ module.exports = {
           } else {
               try {
                   message.member.setNickname(string);
+                  client.on("unhandledRejection", function(promise, reason){
+                      message.channel.send('You are too powerful for my to change your nick. Sorry Master.');
+                  });
               } catch (e){
                   console.log(e);
-                  message.channel.send('You are too powerful for my to change your nick. Sorry Master.');
               }
           }
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
