@@ -43,9 +43,9 @@ module.exports = {
                                         Jimp.loadFont(__dirname + '/fonts/wanted.fnt').then(function (fontbig) {
                                             dimg.resize(254, 247);
                                             delimg.composite(dimg, 78, 130);
-                                            delimg.print(fontbig, 43, 440, ""+username.toUpperCase()+"");
-                                            delimg.print(fontbig, 78, 500, ""+berries+"");
-                                            delimg.print(fonthuge, 285, 440, ""+Math.floor(rank)+"");
+                                            delimg.print(fontbig, 43, 437, ""+username.toUpperCase()+"");
+                                            delimg.print(fontbig, 78, 498, ""+berries+"");
+                                            delimg.print(fonthuge, 285, 442, ""+Math.floor(rank)+"");
                                             delimg.write(__dirname + '/userimages/'+user+'.jpg');
                                             message.channel.send({file: __dirname + '/userimages/'+user+'.jpg'});
                                         });
