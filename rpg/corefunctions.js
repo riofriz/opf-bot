@@ -17,8 +17,9 @@ module.exports = {
         });
 
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg').then(function (image) {
-            image.quality(60)
-                .write(message.author.id+'.jpg');
+            image.quality(100)
+                .composite(thumb, 25, 20)
+                .write(__dirname + '/userimages/'+message.author.id+'.jpg');
         }).catch(function (err) {
             console.error(err);
         });
