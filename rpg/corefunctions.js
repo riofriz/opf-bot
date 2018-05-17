@@ -39,8 +39,8 @@ module.exports = {
                             let username = myUser.username;
                             Jimp.read(__dirname+"/userimages/emptywanted.png").then(function (delimg) {
                                 Jimp.read(myUser.avatarURL).then(function(dimg) {
-                                    Jimp.loadFont(__dirname + '/userimages/wanted.fnt').then(function (fonthuge) {
-                                        Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (fontbig) {
+                                    Jimp.loadFont(__dirname + '/fonts/wanted-64.fnt').then(function (fonthuge) {
+                                        Jimp.loadFont(__dirname + '/fonts/wanted.fnt').then(function (fontbig) {
                                             dimg.resize(254, 247);
                                             delimg.composite(dimg, 78, 130);
                                             delimg.print(fontbig, 43, 440, ""+username.toUpperCase()+"");
