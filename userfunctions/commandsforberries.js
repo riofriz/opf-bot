@@ -28,6 +28,8 @@ module.exports = {
                       if (doc) {
                           if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
                               berries = doc.claims.berries;
+                              let balanceReturn = 50-berries;
+                              let balanceLeft = berries-50;
                               if (berries >= 50) {
                                   message.member.setNickname(string).catch(err => {
                                       console.log(err);
@@ -36,13 +38,13 @@ module.exports = {
                                   });
                                   db.Users.update(
                                       {"id": message.author.id},
-                                      {$set: {"id": message.author.id, "claims": {"berries" : berries-50}}},
+                                      {$set: {"id": message.author.id, "claims": {"berries" : balanceReturn}}},
                                       {upsert: true},
                                       function (err) {}
                                   );
-                                  message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+berries-50+'*B*');
+                                  message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+balanceReturn+'*B*');
                               } else {
-                                  message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+50-berries);
+                                  message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+balanceLeft);
                               }
                           } else {
                               message.channel.send('Your balance is still 0*B* claim some with o-claim');
