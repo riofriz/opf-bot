@@ -15,12 +15,15 @@ module.exports = {
           for (let i = 0; i !== args.length; i++) {
               string += args[i] + ' ';
           }
-          if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
-          message.member.setNickname(string);
-
+          if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
+              return message.channel.send('I don\'t have permission to change your nickname!');
+          } else {
+              message.member.setNickname(string);
+          }
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
           message.channel.send('no argument passed');
       }
+
   }
 };
