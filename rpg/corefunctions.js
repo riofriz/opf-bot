@@ -33,7 +33,7 @@ module.exports = {
                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
                     delimg.print(font, 20, 100, "test string");
                 });
-                delimg.composite(dimg, 62, 86);
+                //delimg.composite(dimg, 62, 86);
                 delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                 message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
             });
