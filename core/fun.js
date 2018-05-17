@@ -470,9 +470,9 @@ module.exports = {
                     let json_body = JSON.parse(body);
                     let result;
                     let counter = 1;
-                    for (let i = 0; i !== json_body.length; i++) {
-                        if (json_body[i]['word'].hasOwnProperty(key)) {
-                            result += json_body[i]['word'];
+                    for (let key in json_body) {
+                        if (json_body.hasOwnProperty(key)) {
+                            result += json_body[key]['word'];
                             if (json_body.length !== counter) {
                                 result += ' , ';
                             }
