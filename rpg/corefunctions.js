@@ -15,8 +15,8 @@ module.exports = {
             err ? console.log('logo err' + err) : console.log('logo created');
             return img;
         });
-        
-        Jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg').then(function (image) {
+
+        jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg').then(function (image) {
             image.quality(60)
                 .write(message.author.id+'.jpg');
         }).catch(function (err) {
