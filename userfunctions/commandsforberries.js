@@ -10,17 +10,19 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 module.exports = {
   changenick: function (message, args) {
 
-      
-          // let string;
-          // for (let i = 0; i !== args.length; i++) {
-          //     string += args[i] + ' ';
-          // }
-
+      if (args[0]) {
+          let string;
+          for (let i = 0; i !== args.length; i++) {
+              string += args[i] + ' ';
+          }
           if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
-          message.member.setNickname(args[0]);
-
+          message.member.setNickname(string);
 
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
+      } else {
+          console.log(message.guild.me.hasPermission('MANAGE_NICKNAMES'));
+          message.channel.send('no argument passed');
+      }
 
   }
 };
