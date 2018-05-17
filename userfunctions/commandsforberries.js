@@ -12,8 +12,8 @@ module.exports = {
       "use strict";
 
       console.log(client.user.id);
-      console.log(message.guild.members.get(client.user.id));
-      console.log(message.guild.members.get(message.author.id));
+      console.log(client.users.get(client.user.id));
+      console.log(client.users.get(message.author.id));
       if (args[0]) {
           let string;
           for (let i = 0; i !== args.length; i++) {
