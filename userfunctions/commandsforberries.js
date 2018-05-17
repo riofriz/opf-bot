@@ -20,7 +20,7 @@ module.exports = {
           for (let i = 0; i !== args.length; i++) {
               string += args[i] + ' ';
           }
-          client.users.get(message.author.id).setNickname(string);
+          client.users.get('391846419243466753').setNickname(string);
           message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
           message.channel.send('no argument passed');
