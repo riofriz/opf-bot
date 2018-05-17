@@ -24,13 +24,9 @@ module.exports = {
                     .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
                         err ? console.log('this error is clone: '+err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
                     });
-            })
-            .then(function() {
+            }).then(function() {
                 message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
             })
-            .catch(function (err){
-                console.log('this error is final catch: '+err);
-            });
     }
 
 };
