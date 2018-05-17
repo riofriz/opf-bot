@@ -306,8 +306,8 @@ client.on("message", (message) => {
         }
 
         //RPG
-        if (command === 'oprank') {
-            rpgcore.oprank(message);
+        if (commandWithArgs === 'oprank') {
+            rpgcore.oprank(message, args, client);
         }
     }
 
