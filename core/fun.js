@@ -469,11 +469,13 @@ module.exports = {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
                     let result;
+                    let counter = 0;
                     for (let i = 0; i !== json_body.length; i++) {
                         result += json_body[i]['word'];
-                        if (json_body.length !== i-2) {
-                            result += ', ';
+                        if (json_body.length !== counter) {
+                            result += ' , ';
                         }
+                        counter++;
                     }
                     message.channel.send(result.replace('undefined', '').trim());
                 } else {
