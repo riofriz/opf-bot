@@ -27,13 +27,13 @@ module.exports = {
         // });
 
 
-        Jimp.read("http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg").then(function (delimg) {
+        Jimp.read(__dirname+"/userimages/emptywanted.jpg").then(function (delimg) {
             Jimp.read(message.author.avatarURL).then(function(dimg) {
                 dimg.resize(114, 107);
-                delimg.composite(dimg, 62, 86);
                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
                     delimg.print(font, 20, 100, "test string");
                 });
+                delimg.composite(dimg, 62, 86);
                 delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                 message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
             });
