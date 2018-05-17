@@ -21,8 +21,8 @@ module.exports = {
               message.channel.send('I don\'t have permission to change your nickname!');
           } else {
               try {
-                  message.member.setNickname(string);
-                  client.on("UnhandledPromiseRejectionWarning", function(promise, reason){
+                  message.member.setNickname(string).catch(err => {
+                      console.log(err);
                       message.channel.send('You are too powerful for my to change your nick. Sorry Master.');
                   });
               } catch (e){
