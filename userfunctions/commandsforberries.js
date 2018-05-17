@@ -20,8 +20,13 @@ module.exports = {
           for (let i = 0; i !== args.length; i++) {
               string += args[i] + ' ';
           }
-          client.users.get('391846419243466753').setNickname(string);
-          message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
+
+          message.guild.member(message.client.user).setNickname(args.newNickname).then(member => {
+              message.reply(`nice one!`);
+              message.client.logger.info(`nice one on the '${message.guild.name}' guild`);
+          });
+
+          // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
           message.channel.send('no argument passed');
       }
