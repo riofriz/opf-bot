@@ -471,14 +471,14 @@ module.exports = {
                     let result;
                     let counter = 1;
                     for (let i = 0; i !== json_body.length; i++) {
-                        if (json_body['data']['memes'].hasOwnProperty(key)) {
+                        if (json_body[i]['word'].hasOwnProperty(key)) {
                             result += json_body[i]['word'];
                             if (json_body.length !== counter) {
                                 result += ' , ';
                             }
                             counter++;
                         } else {
-                            result = 'What does that mean? <:lul:423899879371177996>'
+                            result = 'Can\'t find it :( <:lul:423899879371177996>';
                         }
                     }
                     message.channel.send(result.replace('undefined', '').trim());
