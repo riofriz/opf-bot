@@ -5,6 +5,9 @@ let https = require('https');
 let qs = require('qs');
 let request = require('request');
 let mongojs = require('mongojs');
+
+let rpgcore = require('../rpg/corefunctions');
+
 let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Users']);
 
 module.exports = {
@@ -43,7 +46,7 @@ module.exports = {
      * @param message
      * @param qty
      */
-    increaseCommands: function(message, qty) {
+    increaseCommands: function(message, qty, args='', Client='') {
         try {
             let commands;
             let rank;
@@ -60,6 +63,8 @@ module.exports = {
                                 .addField('Your rank', Math.floor(rank))
                                 .setColor(corevars.randomColor());
                             message.channel.send({embed: embed});
+
+                            rpgcore.oprank(message, args, Client)
                         }
                     } else {
                         commands = 0;

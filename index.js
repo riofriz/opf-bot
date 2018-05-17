@@ -50,9 +50,6 @@ client.on("message", (message) => {
         allowed = true;
     }
 
-    basiclogics.saveusers(message);
-    basiclogics.increaseCommands(message, 1);
-
     //Declares Command variable
     let command = message.content.toLowerCase();
     command = command.slice(commandPrefix.length);
@@ -60,6 +57,9 @@ client.on("message", (message) => {
     //Declares args and command with args variable
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
+
+    basiclogics.saveusers(message);
+    basiclogics.increaseCommands(message, 1, args, client);
 
     let messageArray = message.content.split(' ');
 

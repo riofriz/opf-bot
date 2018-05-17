@@ -11,7 +11,6 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 module.exports = {
 
     oprank: function(message, args, Client) {
-
         let berries;
         let commands;
         let rank;
