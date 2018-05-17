@@ -19,11 +19,11 @@ module.exports = {
                     if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
                         berries = doc.claims.berries;
 
-                        Jimp.read(__dirname+"/userimages/emptywanted.jpg").then(function (delimg) {
+                        Jimp.read(__dirname+"/userimages/emptywanted.png").then(function (delimg) {
                             Jimp.read(message.author.avatarURL).then(function(dimg) {
                                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
                                     Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (fontbig) {
-                                        dimg.resize(114, 107);
+                                        dimg.resize(214, 207);
                                         delimg.composite(dimg, 60, 86);
                                         delimg.print(font, 55, 200, ""+message.author.username+"");
                                         delimg.print(fontbig, 78, 280, ""+berries+"B");
