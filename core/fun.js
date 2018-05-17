@@ -468,7 +468,7 @@ module.exports = {
             if (args[0]) {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
-                    let result;
+                    let result = 'Can\'t find it :( <:lul:423899879371177996>';
                     let counter = 1;
                     for (let key in json_body) {
                         if (json_body.hasOwnProperty(key)) {
@@ -477,8 +477,6 @@ module.exports = {
                                 result += ' , ';
                             }
                             counter++;
-                        } else {
-                            result = 'Can\'t find it :( <:lul:423899879371177996>';
                         }
                     }
                     message.channel.send(result.replace('undefined', '').trim());
