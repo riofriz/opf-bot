@@ -471,11 +471,15 @@ module.exports = {
                     let result;
                     let counter = 1;
                     for (let i = 0; i !== json_body.length; i++) {
-                        result += json_body[i]['word'];
-                        if (json_body.length !== counter) {
-                            result += ' , ';
+                        if (json_body['data']['memes'].hasOwnProperty(key)) {
+                            result += json_body[i]['word'];
+                            if (json_body.length !== counter) {
+                                result += ' , ';
+                            }
+                            counter++;
+                        } else {
+                            result = 'What does that mean? <:lul:423899879371177996>'
                         }
-                        counter++;
                     }
                     message.channel.send(result.replace('undefined', '').trim());
                 } else {
