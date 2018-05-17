@@ -468,10 +468,13 @@ module.exports = {
             if (args[0]) {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
-                    let result = 'Can\'t find it :( <:lul:423899879371177996>';
+                    let result = 'Can\'t find it :(';
                     let counter = 1;
                     for (let key in json_body) {
                         if (json_body.hasOwnProperty(key)) {
+                            if (counter === 1) {
+                                result = '';
+                            }
                             result += json_body[key]['word'];
                             if (json_body.length !== counter) {
                                 result += ' , ';
