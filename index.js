@@ -13,6 +13,7 @@ let yomomma = require('./core/yomomma');
 let variousapi = require('./core/variousapi');
 let basiclogics = require('./userfunctions/basics');
 let commandsforberries = require('./userfunctions/commandsforberries');
+let rpgcore = require('./rpg/corefunctions');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -302,6 +303,11 @@ client.on("message", (message) => {
         if (commandWithArgs === 'nick') {
             commandsforberries.changenick(message, args, client);
             basiclogics.increaseCommands(message, 1);
+        }
+
+        //RPG
+        if (command === 'wantedme') {
+            rpgcore.wantedme(message);
         }
     }
 

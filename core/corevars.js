@@ -33,7 +33,8 @@ module.exports = {
             "rank",
             "claim",
             "balance",
-            "nick"
+            "nick",
+            "wantedme"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

@@ -15,15 +15,17 @@ module.exports = {
             err ? console.log('logo err' + err) : console.log('logo created');
             return img;
         });
-        jimp.read('/userimages/emptywanted.jpg')
+        jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg')
             .then(function (image) {
                 image.clone()
                     .resize(805,jimp.AUTO)
                     .crop(0,0,805,450)
                     .composite(logo, 25, 20)
-                    .write(__dirname + '/public/tmp/slider-01.jpg', function (err, success) { err ? console.log(err) : console.log('image resized and saved successfully\n'+success)});
+                    .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) { err ? console.log(err) : console.log('image resized and saved successfully\n'+success)});
             })
-            .then(function() { res.redirect('/'); })
+            .then(function() {
+                message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
+            })
             .catch(function (err){
                 console.log(err);
             });
