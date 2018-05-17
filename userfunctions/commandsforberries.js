@@ -20,9 +20,7 @@ module.exports = {
 
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
-          console.log(message.guild.me.hasPermission('MANAGE_NICKNAMES'));
           message.channel.send('no argument passed');
       }
-
   }
 };
