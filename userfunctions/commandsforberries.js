@@ -33,15 +33,18 @@ module.exports = {
                               if (berries >= 50) {
                                   message.member.setNickname(string).catch(err => {
                                       console.log(err);
-                                      message.channel.send('You are too powerful for me to change your nick. Sorry Master.');
-                                      return;
                                   });
-                                  db.Users.update(
-                                      {"id": message.author.id},
-                                      {$set: {"id": message.author.id, "claims": {"berries" : balanceLeft}}},
-                                      {upsert: true},
-                                      function (err) {}
-                                  );
+                                  if(!message.member.roles.find("name", "Pirate Queen") || !message.member.roles.find("name", "Celestial Dragon") || !message.member.roles.find("name", "Yonko") || !message.member.roles.find("name", "Permissions")){
+                                      db.Users.update(
+                                          {"id": message.author.id},
+                                          {$set: {"id": message.author.id, "claims": {"berries" : balanceLeft}}},
+                                          {upsert: true},
+                                          function (err) {}
+                                      );
+                                  } else {
+                                      message.channel.send('You are too powerful for me to change your nick. Sorry Master.');
+                                  }
+
                                   message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+balanceLeft+'*B*');
                               } else {
                                   message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+balanceReturn);
