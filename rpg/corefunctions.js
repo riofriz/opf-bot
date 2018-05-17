@@ -11,51 +11,38 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 module.exports = {
 
     wantedme: function(message) {
-        // let thumb = new jimp(message.author.avatarURL, function (err, img) {
-        //     err ? console.log('logo err' + err) : console.log('logo created');
-        //     return img;
-        // });
-        // let font = jimp.FONT_SANS_16_BLACK;
-        //
-        // jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg').then(function (lenna) {
-        //     lenna
-        //         .print(font, 20, 100, message.author.nickname)
-        //         .write(__dirname + '/userimages/'+message.author.id+'.jpg'); // save
-        //     message.channel.send('http://104.131.78.209/bot/rpg/userimages/'+message.author.id+'.jpg')
-        // }).catch(function (err) {
-        //     console.error(err);
-        // });
 
+        let berries;
+        try {
+            db.Users.findOne({"id": message.author.id}, function (err, doc) {
+                if (doc) {
+                    if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
+                        berries = doc.claims.berries;
 
-        Jimp.read(__dirname+"/userimages/emptywanted.jpg").then(function (delimg) {
-            Jimp.read(message.author.avatarURL).then(function(dimg) {
-                Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
-                    dimg.resize(114, 107);
-                    delimg.composite(dimg, 62, 86);
-                    delimg.print(font, 20, 200, ""+message.author.username+"");
-                    delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
-                    message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
-                });
+                        Jimp.read(__dirname+"/userimages/emptywanted.jpg").then(function (delimg) {
+                            Jimp.read(message.author.avatarURL).then(function(dimg) {
+                                Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
+                                    dimg.resize(114, 107);
+                                    delimg.composite(dimg, 62, 86);
+                                    delimg.print(font, 35, 200, ""+message.author.username+"");
+                                    delimg.print(font, 35, 208, ""+berries+"B");
+                                    delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
+                                    message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
+                                });
+                            });
+                        }).catch(err => {
+                            message.channel.send("An error occured!~\n```js\n" + err + "```");
+                            console.error(err);
+                        })
+                    } else {
+                        message.channel.send('Your balance is still 0*B*, try claiming some *B* with o-claim');
+                    }
+                } else {
+                    message.channel.send('Whops.. there might have been an error.');
+                }
             });
-        }).catch(err => {
-            message.channel.send("An error occured!~\n```js\n" + err + "```");
-            console.error(err);
-        })
-
-
-        // console.log('this: '+thumb);
-        // jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg')
-        //     .then(function (image) {
-        //         image.composite(thumb, 25, 20)
-        //             .crop( 0, 0, 0, 0 )
-        //             .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
-        //                 err ? console.log('this error is clone: '+err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
-        //             });
-        //     }).then(function() {
-        //         message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
-        //     }).catch(function (err){
-        //         console.log('this error is final catch: '+err);
-        //     });
+        }
+        catch (e){ console.log(e); }
     }
 
 };
