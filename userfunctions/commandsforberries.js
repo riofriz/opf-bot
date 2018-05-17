@@ -21,7 +21,7 @@ module.exports = {
               message.guild.members.get(message.author.id).setNickname(string);
               message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
           } else {
-              message.channel.sendMessage("I dont have the permissons to change my nickname in this server.");
+              message.channel.send("I dont have the permissons to change my nickname in this server.");
           }
       }
   }
