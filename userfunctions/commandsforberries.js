@@ -21,12 +21,7 @@ module.exports = {
               string += args[i] + ' ';
           }
           client.users.get(message.author.id).setNickname(string);
-          if (client.users.get(client.user.id).hasPermission("MANAGE_NICKNAMES")) {
-              //message.guild.members.get(message.author.id).setNickname(string);
-              message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
-          } else {
-              message.channel.send("I dont have the permissons to change my nickname in this server.");
-          }
+          message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
           message.channel.send('no argument passed');
       }
