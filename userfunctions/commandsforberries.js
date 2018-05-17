@@ -34,7 +34,7 @@ module.exports = {
                                   message.member.setNickname(string).catch(err => {
                                       console.log(err);
                                   });
-                                  if(!message.member.roles.find("name", "Pirate Queen") || !message.member.roles.find("name", "Celestial Dragon") || !message.member.roles.find("name", "Yonko") || !message.member.roles.find("name", "Permissions")){
+                                  if(!message.member.roles.has('391555666315313152') || !message.member.roles.find("name", "Celestial Dragon") || !message.member.roles.find("name", "Yonko") || !message.member.roles.find("name", "Permissions") || !message.member.roles.has('441201107612467200')){
                                       db.Users.update(
                                           {"id": message.author.id},
                                           {$set: {"id": message.author.id, "claims": {"berries" : balanceLeft}}},
