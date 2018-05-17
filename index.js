@@ -59,7 +59,7 @@ client.on("message", (message) => {
     const commandWithArgs = args.shift().toLowerCase();
 
     basiclogics.saveusers(message);
-    basiclogics.increaseCommands(message, 1, args, client);
+    basiclogics.increaseCommands(message, 1);
 
     let messageArray = message.content.split(' ');
 

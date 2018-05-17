@@ -46,7 +46,7 @@ module.exports = {
      * @param message
      * @param qty
      */
-    increaseCommands: function(message, qty, args='', Client='') {
+    increaseCommands: function(message, qty) {
         try {
             let commands;
             let rank;
@@ -63,8 +63,6 @@ module.exports = {
                                 .addField('Your rank', Math.floor(rank))
                                 .setColor(corevars.randomColor());
                             message.channel.send({embed: embed});
-
-                            rpgcore.oprank(message, args, Client)
                         }
                     } else {
                         commands = 0;
