@@ -38,13 +38,13 @@ module.exports = {
                                   });
                                   db.Users.update(
                                       {"id": message.author.id},
-                                      {$set: {"id": message.author.id, "claims": {"berries" : balanceReturn}}},
+                                      {$set: {"id": message.author.id, "claims": {"berries" : balanceLeft}}},
                                       {upsert: true},
                                       function (err) {}
                                   );
-                                  message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+balanceReturn+'*B*');
+                                  message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+balanceLeft+'*B*');
                               } else {
-                                  message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+balanceLeft);
+                                  message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+balanceReturn);
                               }
                           } else {
                               message.channel.send('Your balance is still 0*B* claim some with o-claim');
