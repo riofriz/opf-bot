@@ -18,8 +18,7 @@ module.exports = {
         console.log('this: '+thumb);
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg')
             .then(function (image) {
-                image.clone()
-                    .composite(thumb, 25, 20)
+                image.composite(thumb, 25, 20)
                     .crop( 0, 0, 0, 0 )
                     .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
                         err ? console.log('this error is clone: '+err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
