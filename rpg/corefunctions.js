@@ -23,9 +23,9 @@ module.exports = {
                             Jimp.read(message.author.avatarURL).then(function(dimg) {
                                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
                                     dimg.resize(114, 107);
-                                    delimg.composite(dimg, 62, 86);
+                                    delimg.composite(dimg, 60, 86);
                                     delimg.print(font, 35, 200, ""+message.author.username+"");
-                                    delimg.print(font, 35, 208, ""+berries+"B");
+                                    delimg.print(font, 65, 300, ""+berries+"B");
                                     delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                                     message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
                                 });
