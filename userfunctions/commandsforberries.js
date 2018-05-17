@@ -38,7 +38,7 @@ module.exports = {
                                       {upsert: true},
                                       function (err) {}
                                   );
-                                  message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+berries-50+'*B*');
+                                  message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+berries+'*B*');
                               } else {
                                   message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+50-berries);
                               }
