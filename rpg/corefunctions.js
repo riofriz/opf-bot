@@ -39,7 +39,7 @@ module.exports = {
                             let username = myUser.username;
                             Jimp.read(__dirname+"/userimages/emptywanted.png").then(function (delimg) {
                                 Jimp.read(myUser.avatarURL).then(function(dimg) {
-                                    Jimp.loadFont(Jimp.FONT_SANS_64_BLACK).then(function (fonthuge) {
+                                    Jimp.loadFont(__dirname + '/userimages/wanted.fnt').then(function (fonthuge) {
                                         Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (fontbig) {
                                             dimg.resize(254, 247);
                                             delimg.composite(dimg, 78, 130);
