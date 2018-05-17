@@ -18,8 +18,6 @@ module.exports = {
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg')
             .then(function (image) {
                 image.clone()
-                    .resize(805,jimp.AUTO)
-                    .crop(0,0,805,450)
                     .composite(thumb, 25, 20)
                     .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
                         err ? console.log(err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
