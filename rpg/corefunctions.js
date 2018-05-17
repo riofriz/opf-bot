@@ -20,8 +20,10 @@ module.exports = {
                 image.clone()
                     .resize(805,jimp.AUTO)
                     .crop(0,0,805,450)
-                    .composite(logo, 25, 20)
-                    .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) { err ? console.log(err) : console.log('image resized and saved successfully\n'+success)});
+                    .composite(thumb, 25, 20)
+                    .write(__dirname + '/userimages/'+message.author.id+'.jpg', function (err, success) {
+                        err ? console.log(err) : message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
+                    });
             })
             .then(function() {
                 message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
