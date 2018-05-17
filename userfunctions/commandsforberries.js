@@ -20,7 +20,12 @@ module.exports = {
           if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
               message.channel.send('I don\'t have permission to change your nickname!');
           } else {
-              message.member.setNickname(string);
+              try {
+                  message.member.setNickname(string);
+              } catch (e){
+                  console.log(e);
+                  message.channel.send('You are too powerful for my to change your nick. Sorry Master.');
+              }
           }
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
