@@ -13,12 +13,12 @@ module.exports = {
 
       console.log(client.user.id);
       console.log(message.guild.members.get(client.user.id));
+      console.log(message.guild.members.get(message.author.id));
       if (args[0]) {
           let string;
           for (let i = 0; i !== args.length; i++) {
               string += args[i] + ' ';
           }
-          console.log(message.guild.members.get(message.author.id));
           message.guild.members.get(message.author.id).setNickname(string);
           if (message.guild.members.get(client.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(client.user.id).hasPermission("CHANGE_NICKNAME")) {
               message.guild.members.get(message.author.id).setNickname(string);
