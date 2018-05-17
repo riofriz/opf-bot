@@ -114,7 +114,7 @@ client.on("message", (message) => {
     }
 
     if (messageArray.length > 25 && message.content.includes(',') === false) {
-        if (message.content.includes('?') === false || message.content.includes(';') === false || message.content.includes('!') === false || message.content.includes('.') === false) {
+        if (message.content.includes('?') === false && message.content.includes(';') === false && message.content.includes('!') === false && message.content.includes('.') === false) {
             message.channel.send('Grammar. Mother fuckin\' GRAMMAR.');
         }
     }
