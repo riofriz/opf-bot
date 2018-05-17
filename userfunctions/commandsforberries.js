@@ -21,9 +21,9 @@ module.exports = {
               string += args[i] + ' ';
           }
 
-          message.guild.member(message.client.user).setNickname(args.newNickname).then(member => {
-              message.channel.send(`nice one!`);
-          });
+          if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
+          message.member.setNickname(string);
+
 
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
       } else {
