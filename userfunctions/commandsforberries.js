@@ -19,9 +19,9 @@ module.exports = {
           for (let i = 0; i !== args.length; i++) {
               string += args[i] + ' ';
           }
-          message.guild.members.get(message.author.id).setNickname(string);
+          //message.guild.members.get(message.author.id).setNickname(string);
           if (message.guild.members.get(client.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(client.user.id).hasPermission("CHANGE_NICKNAME")) {
-              message.guild.members.get(message.author.id).setNickname(string);
+              //message.guild.members.get(message.author.id).setNickname(string);
               message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
           } else {
               message.channel.send("I dont have the permissons to change my nickname in this server.");
