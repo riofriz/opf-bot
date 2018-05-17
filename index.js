@@ -299,7 +299,7 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, 1);
         }
 
-        if (command === 'nick') {
+        if (commandWithArgs === 'nick') {
             commandsforberries.changenick(message, args);
             basiclogics.increaseCommands(message, 1);
         }
