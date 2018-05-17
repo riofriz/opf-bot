@@ -16,6 +16,7 @@ module.exports = {
               string += args[i] + ' ';
           }
           string = string.replace('undefined', '');
+          string = string.trim();
           console.log(message.guild.me.hasPermission('MANAGE_NICKNAMES'));
           if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) {
               message.channel.send('I don\'t have permission to change your nickname!');
@@ -31,6 +32,7 @@ module.exports = {
                                   message.member.setNickname(string).catch(err => {
                                       console.log(err);
                                       message.channel.send('You are too powerful for me to change your nick. Sorry Master.');
+                                      return;
                                   });
                                   db.Users.update(
                                       {"id": message.author.id},
