@@ -423,9 +423,15 @@ module.exports = {
         message.channel.send(quotes[randomOne]);
     },
 
-    boobslap: function(message) {
+    boobslap: function(message, args) {
         let image;
+        let string;
 
+        if (args[0]) {
+            string = '<@'+message.author.id+'> boob slapped '+args[0];
+        } else {
+            string = 'SELF BOOB SLAP INCOMING!';
+        }
         if (message.channel.name === 'nsfw') {
             image = 'https://i.pinimg.com/originals/ac/40/cc/ac40ccb3730ab7e950373e7805e34efe.gif'
         } else {
@@ -434,7 +440,7 @@ module.exports = {
 
         let embed = new Discord.RichEmbed()
             .setImage(image)
-            .setColor(corevars.randomColor())
-        message.channel.send({embed: embed});
+            .setColor(corevars.randomColor());
+        message.channel.send(string+'\n'+{embed: embed});
     }
 };

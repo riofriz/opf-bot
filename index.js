@@ -253,8 +253,8 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, 3);
         }
 
-        if (command === 'boobslap') {
-            fun.boobslap(message);
+        if (commandWithArgs === 'boobslap') {
+            fun.boobslap(message, args);
         }
 
         // GAMERS
