@@ -471,7 +471,7 @@ module.exports = {
                     let result;
                     for (let i = 0; i !== json_body.length; i++) {
                         result += json_body[i]['word'];
-                        if (json_body.length === i - 1) {
+                        if (json_body.length !== i-1) {
                             result += ', ';
                         }
                     }
