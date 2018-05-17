@@ -421,5 +421,15 @@ module.exports = {
         ];
         let randomOne = Math.floor(Math.random() * quotes.length);
         message.channel.send(quotes[randomOne]);
+    },
+
+    boobslap: function(message) {
+        let nsfwimage = 'https://i.pinimg.com/originals/ac/40/cc/ac40ccb3730ab7e950373e7805e34efe.gif';
+        let normalimage = 'http://i.imgur.com/7frjZnG.gif';
+        if (message.channel.name === 'nsfw') {
+             message.channel.send(nsfwimage);
+        } else {
+            message.channel.send(normalimage);
+        }
     }
 };

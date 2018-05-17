@@ -253,6 +253,10 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, 3);
         }
 
+        if (command === 'boobslap') {
+            fun.boobslap(message);
+        }
+
         // GAMERS
         if (commandWithArgs === 'sgame') {
             if (message.channel.name === 'gamers-general') {
