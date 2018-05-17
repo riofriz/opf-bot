@@ -12,6 +12,7 @@ let translate = require('./core/translate');
 let yomomma = require('./core/yomomma');
 let variousapi = require('./core/variousapi');
 let basiclogics = require('./userfunctions/basics');
+let commandsforberries = require('./userfunctions/commandsforberries');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -295,6 +296,11 @@ client.on("message", (message) => {
 
         if (command === 'balance') {
             basiclogics.balance(message);
+            basiclogics.increaseCommands(message, 1);
+        }
+
+        if (command === 'nick') {
+            commandsforberries.changenick(message);
             basiclogics.increaseCommands(message, 1);
         }
     }
