@@ -22,8 +22,7 @@ module.exports = {
           }
 
           message.guild.member(message.client.user).setNickname(args.newNickname).then(member => {
-              message.reply(`nice one!`);
-              message.client.logger.info(`nice one on the '${message.guild.name}' guild`);
+              message.channel.send(`nice one!`);
           });
 
           // message.channel.send('<@'+message.author.id+'> Your username has been changed to: '+string);
