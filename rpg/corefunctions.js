@@ -28,26 +28,26 @@ module.exports = {
             } else {
                 user = message.author.id;
             }
-            db.Users.findOne({"id": message.author.id}, function (err, doc) {
-                if (doc) {
-                    if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
-                        berries = doc.claims.berries;
-                        commands = doc.triggeredCommands;
-                        rank = commands/250;
+            Client.fetchUser(user).then(myUser => {
+                db.Users.findOne({"id": user}, function (err, doc) {
+                    if (doc) {
+                        if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
+                            berries = doc.claims.berries;
+                            commands = doc.triggeredCommands;
+                            rank = commands / 250;
 
-                        Client.fetchUser(user).then(myUser => {
                             let username = myUser.username;
-                            Jimp.read(__dirname+"/userimages/emptywanted.png").then(function (delimg) {
-                                Jimp.read(myUser.avatarURL).then(function(dimg) {
+                            Jimp.read(__dirname + "/userimages/emptywanted.png").then(function (delimg) {
+                                Jimp.read(myUser.avatarURL).then(function (dimg) {
                                     Jimp.loadFont(__dirname + '/fonts/wanted-64.fnt').then(function (fonthuge) {
                                         Jimp.loadFont(__dirname + '/fonts/wanted.fnt').then(function (fontbig) {
                                             dimg.resize(254, 247);
                                             delimg.composite(dimg, 78, 130);
-                                            delimg.print(fontbig, 43, 437, ""+username.toUpperCase()+"");
-                                            delimg.print(fontbig, 78, 498, ""+berries+"");
-                                            delimg.print(fonthuge, 285, 445, ""+Math.floor(rank)+"");
-                                            delimg.write(__dirname + '/userimages/'+user+'.jpg');
-                                            message.channel.send({file: __dirname + '/userimages/'+user+'.jpg'});
+                                            delimg.print(fontbig, 43, 437, "" + username.toUpperCase() + "");
+                                            delimg.print(fontbig, 78, 498, "" + berries + "");
+                                            delimg.print(fonthuge, 285, 445, "" + Math.floor(rank) + "");
+                                            delimg.write(__dirname + '/userimages/' + user + '.jpg');
+                                            message.channel.send({file: __dirname + '/userimages/' + user + '.jpg'});
                                         });
                                     });
                                 });
@@ -55,14 +55,14 @@ module.exports = {
                                 message.channel.send("Whops.. that didn't work for some weird reason.");
                                 console.error(err);
                             })
-                        });
 
+                        } else {
+                            message.channel.send('Your balance is still 0*B*, try claiming some *B* with o-claim');
+                        }
                     } else {
-                        message.channel.send('Your balance is still 0*B*, try claiming some *B* with o-claim');
+                        message.channel.send('Whops.. there might have been an error.');
                     }
-                } else {
-                    message.channel.send('Whops.. there might have been an error.');
-                }
+                });
             });
         }
         catch (e){ console.log(e); }
