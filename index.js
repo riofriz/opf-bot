@@ -114,7 +114,9 @@ client.on("message", (message) => {
     }
 
     if (messageArray.length > 25 && message.content.includes(',') === false) {
-        message.channel.send('Yes, comma. Mother fuckin\' comma.');
+        if (message.content.includes('?') === false || message.content.includes(';') === false || message.content.includes('!') === false || message.content.includes('.') === false) {
+            message.channel.send('Grammar. Mother fuckin\' GRAMMAR.');
+        }
     }
 
     // if (corecommands.tooManyTags(message) >= 10) {
@@ -141,7 +143,7 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, 1);
         }
 
-        if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-'){
+        if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-' || message.content === '+'){
             corecommands.help(commandPrefix, message);
             corecommands.deleteMessage(message);
             basiclogics.increaseCommands(message, 1);
