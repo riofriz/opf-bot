@@ -447,11 +447,13 @@ module.exports = {
 
     rhyme: function(message, args) {
         let string;
-        for (let i = 0; i !== args.length; i++) {
-            string += args[i] + ' ';
+        if (args[0]) {
+            for (let i = 0; i !== args.length; i++) {
+                string += args[i] + ' ';
+            }
+            string = string.replace('undefined', '');
+            string = string.trim();
         }
-        string = string.replace('undefined', '');
-        string = string.trim();
 
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
