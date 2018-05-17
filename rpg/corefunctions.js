@@ -15,6 +15,7 @@ module.exports = {
             err ? console.log('logo err' + err) : console.log('logo created');
             return img;
         });
+        message.channel.send(thumb);
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg')
             .then(function (image) {
                 image.clone()
