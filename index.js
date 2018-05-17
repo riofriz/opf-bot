@@ -313,6 +313,10 @@ client.on("message", (message) => {
         if (commandWithArgs === 'oprank') {
             rpgcore.oprank(message, args, client);
         }
+
+        if(commandWithArgs === 'rhyme') {
+            fun.rhyme(message, args);
+        }
     }
 
 });

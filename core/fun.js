@@ -443,5 +443,45 @@ module.exports = {
             .setColor(corevars.randomColor());
         message.channel.send(string);
         message.channel.send({embed: embed});
+    },
+
+    rhyme: function(message, args) {
+
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let options = {
+            url: 'http://api.datamuse.com/words',
+            method: 'GET',
+            headers: headers,
+            qs: {'rel_rhy': string}
+        };
+
+        request(options, function (error, response, body) {
+            if (args[0]) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    let result;
+                    let string;
+                    for (let i = 0; i !== args.length; i++) {
+                        string += args[i] + ' ';
+                    }
+                    string = string.replace('undefined', '');
+                    string = string.trim();
+                    for (let i = 0; i !== json_body.length; i++) {
+                        result += json_body[i]['word'];
+                        if (json_body.length === i - 1) {
+                            result += ', ';
+                        }
+                    }
+                    message.channel.send(result.replace('undefined', '').trim());
+                } else {
+                    console.log(error.message);
+                }
+            } else {
+                message.channel.send('Nothing rhymes with nothing.. <:lul:423899879371177996>')
+            }
+        });
     }
 };
