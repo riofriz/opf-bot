@@ -15,7 +15,7 @@ module.exports = {
             err ? console.log('logo err' + err) : console.log('logo created');
             return img;
         });
-        console.log(thumb);
+        console.log('this: '+thumb);
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg')
             .then(function (image) {
                 image.clone()
@@ -26,7 +26,9 @@ module.exports = {
                     });
             }).then(function() {
                 message.channel.send(__dirname+'/userimages/'+message.author.id+'jpg');
-            })
+            }).catch(function (err){
+                console.log('this error is final catch: '+err);
+            });
     }
 
 };
