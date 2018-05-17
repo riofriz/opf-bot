@@ -15,10 +15,13 @@ module.exports = {
             err ? console.log('logo err' + err) : console.log('logo created');
             return img;
         });
+        let font = jimp.FONT_SANS_16_BLACK;
 
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg').then(function (lenna) {
-            lenna.write(__dirname + '/userimages/'+message.author.id+'.jpg'); // save
-            message.channel.send('there: '+__dirname + '/userimages/'+message.author.id+'.jpg')
+            lenna
+                .print(font, 20, 100, message.author.nickname)
+                .write(__dirname + '/userimages/'+message.author.id+'.jpg'); // save
+            message.channel.send('http://104.131.78.209/bot/rpg/userimages/'+message.author.id+'.jpg')
         }).catch(function (err) {
             console.error(err);
         });
