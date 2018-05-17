@@ -31,30 +31,22 @@ module.exports = {
                               let balanceReturn = 50-berries;
                               let balanceLeft = berries-50;
                               if (berries >= 50) {
-
-                                  let promise1 = new Promise(function(resolve, reject) {
-                                      message.member.setNickname(string);
+                                  let bool = true;
+                                  message.member.setNickname(string).catch(err => {
+                                      console.log(err);
+                                      message.channel.send('You are too powerful for me to change your nick. Sorry Master.');
+                                      bool = false;
+                                  });
+                                  if (bool !== false) {
                                       db.Users.update(
                                           {"id": message.author.id},
-                                          {$set: {"id": message.author.id, "claims": {"berries" : balanceLeft}}},
+                                          {$set: {"id": message.author.id, "claims": {"berries": balanceLeft}}},
                                           {upsert: true},
-                                          function (err) {}
+                                          function (err) {
+                                          }
                                       );
-                                      message.channel.send('Your nick has been updated to *'+string+'* and your balance is now '+balanceLeft+'*B*');
-                                  });
-
-                                  promise1.catch(function(error) {
-                                      console.log(error);
-                                      message.channel.send('You are too powerful for me to change your nick. Sorry Master.');
-                                  });
-
-
-                                  // message.member.setNickname(string).catch(err => {
-                                  //     console.log(err);
-                                  //     message.channel.send('You are too powerful for me to change your nick. Sorry Master.');
-                                  //     return;
-                                  // });
-
+                                      message.channel.send('Your nick has been updated to *' + string + '* and your balance is now ' + balanceLeft + '*B*');
+                                  }
                               } else {
                                   message.channel.send('Sorry, your balance is not enough to change nickname. Missing *B* :'+balanceReturn);
                               }
