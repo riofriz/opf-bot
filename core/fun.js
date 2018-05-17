@@ -424,12 +424,17 @@ module.exports = {
     },
 
     boobslap: function(message) {
-        let nsfwimage = 'https://i.pinimg.com/originals/ac/40/cc/ac40ccb3730ab7e950373e7805e34efe.gif';
-        let normalimage = 'http://i.imgur.com/7frjZnG.gif';
+        let image;
+
         if (message.channel.name === 'nsfw') {
-             message.channel.send(nsfwimage);
+            image = 'https://i.pinimg.com/originals/ac/40/cc/ac40ccb3730ab7e950373e7805e34efe.gif'
         } else {
-            message.channel.send(normalimage);
+            image = 'http://i.imgur.com/7frjZnG.gif';
         }
+
+        let embed = new Discord.RichEmbed()
+            .setImage(image)
+            .setColor(corevars.randomColor())
+        message.channel.send({embed: embed});
     }
 };
