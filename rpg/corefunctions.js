@@ -22,12 +22,14 @@ module.exports = {
                         Jimp.read(__dirname+"/userimages/emptywanted.jpg").then(function (delimg) {
                             Jimp.read(message.author.avatarURL).then(function(dimg) {
                                 Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
-                                    dimg.resize(114, 107);
-                                    delimg.composite(dimg, 60, 86);
-                                    delimg.print(font, 35, 200, ""+message.author.username+"");
-                                    delimg.print(font, 65, 300, ""+berries+"B");
-                                    delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
-                                    message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
+                                    Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (fontbig) {
+                                        dimg.resize(114, 107);
+                                        delimg.composite(dimg, 60, 86);
+                                        delimg.print(fontbig, 55, 200, ""+message.author.username+"");
+                                        delimg.print(fontbig, 75, 300, ""+berries+"B");
+                                        delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
+                                        message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
+                                    });
                                 });
                             });
                         }).catch(err => {
