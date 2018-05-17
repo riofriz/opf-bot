@@ -29,10 +29,10 @@ module.exports = {
 
         Jimp.read(__dirname+"/userimages/emptywanted.jpg").then(function (delimg) {
             Jimp.read(message.author.avatarURL).then(function(dimg) {
-                Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
+                Jimp.loadFont(Jimp.FONT_SANS_16_BLACK).then(function (font) {
                     dimg.resize(114, 107);
                     delimg.composite(dimg, 62, 86);
-                    delimg.print(font, 20, 100, "test string"+message.author.nickname+"");
+                    delimg.print(font, 20, 250, ""+message.author.nickname+"");
                     delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                     message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
                 });
