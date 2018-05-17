@@ -11,9 +11,14 @@
   "dependencies": {
     "discord.js": "^11.3.2",
     "dotenv": "^5.0.1",
+    "google-translate-api": "^2.3.0",
     "mongodb": "^3.1.0-beta4",
     "mongojs": "^2.5.0",
+    "pastee-api": "0.0.5",
+    "qs": "^6.5.2",
+    "request": "^2.86.0",
     "rss-parser": "^3.1.2",
+    "striptags": "^3.1.1",
     "xml2json": "^0.11.2",
     "xmlhttprequest": "^1.8.0"
   }
