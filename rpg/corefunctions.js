@@ -18,6 +18,7 @@ module.exports = {
 
         jimp.read('http://104.131.78.209/bot/rpg/userimages/emptywanted.jpg').then(function (lenna) {
             lenna.write(__dirname + '/userimages/'+message.author.id+'.jpg'); // save
+            message.channel.send('there: '+__dirname + '/userimages/'+message.author.id+'.jpg')
         }).catch(function (err) {
             console.error(err);
         });
