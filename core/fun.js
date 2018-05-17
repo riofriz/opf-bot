@@ -441,6 +441,7 @@ module.exports = {
         let embed = new Discord.RichEmbed()
             .setImage(image)
             .setColor(corevars.randomColor());
-        message.channel.send(string+'\n'+{embed: embed});
+        message.channel.send(string);
+        message.channel.send({embed: embed});
     }
 };
