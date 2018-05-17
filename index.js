@@ -43,6 +43,9 @@ client.on("message", (message) => {
     } else if (message.content.toLowerCase().includes('o-')) {
         commandPrefix = 'o-';
         allowed = true;
+    } else if (message.content.toLowerCase().includes('+')) {
+        commandPrefix = '+';
+        allowed = true;
     }
 
     basiclogics.saveusers(message);
