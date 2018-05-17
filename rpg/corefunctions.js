@@ -32,7 +32,7 @@ module.exports = {
                                         delimg.composite(dimg, 78, 130);
                                         delimg.print(fontbig, 43, 440, ""+username.toUpperCase()+"");
                                         delimg.print(fontbig, 78, 500, ""+berries+"");
-                                        delimg.print(fonthuge, 300, 440, ""+Math.floor(rank)+"");
+                                        delimg.print(fonthuge, 285, 440, ""+Math.floor(rank)+"");
                                         delimg.write(__dirname + '/userimages/'+message.author.id+'.jpg');
                                         message.channel.send({file: __dirname + '/userimages/'+message.author.id+'.jpg'});
                                     });
