@@ -69,8 +69,9 @@ module.exports = {
     },
 
     loot: function(message, talkedRecently) {
+        let timeout = setTimeout(function() {}, 300000 * 1000);
         if (talkedRecently.has(message.author.id)) {
-            message.channel.send("Wait a bit before using this again.");
+            message.channel.send("Wait a bit before using this again. Time left: "+Math.ceil((timeout._idleStart + timeout._idleTimeout - Date.now()) / 1000));
         } else {
             // the user can type the command ... your command code goes here :)
             try {
@@ -131,7 +132,7 @@ module.exports = {
             setTimeout(() => {
                 // Removes the user from the set after a minute
                 talkedRecently.delete(message.author.id);
-            }, 15000);
+            }, 300000);
         }
     }
 
