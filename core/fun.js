@@ -501,5 +501,26 @@ module.exports = {
                 message.channel.send('Nothing rhymes with nothing.. <:lul:423899879371177996>')
             }
         });
+    },
+
+    prank: function(message, args) {
+        let channels = [
+            'nsfw',
+            'pokemon_channel',
+            'news',
+            'memes'
+        ];
+        let user;
+        if (args[0]) {
+            let firstStrip = args[0].replace('<@', '');
+            let secondStrip = firstStrip.replace('>', '');
+            user = secondStrip.replace('!', '');
+            user = user.trim();
+        } else {
+            user = message.author.id;
+            user = user.trim();
+        }
+        let randomNumber = Math.floor(Math.random()*channels.length);
+        message.guild.channels.find('name', channels[randomNumber]).message('<@'+user+'> <:pfft:445023527888748544>');
     }
 };

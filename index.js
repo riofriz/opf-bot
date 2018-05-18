@@ -257,6 +257,10 @@ client.on("message", (message) => {
             fun.boobslap(message, args);
         }
 
+        if(commandWithArgs === 'prank') {
+            fun.prank(message, args)
+        }
+
         // GAMERS
         if (commandWithArgs === 'sgame') {
             if (message.channel.name === 'gamers-general') {

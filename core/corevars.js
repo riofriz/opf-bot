@@ -37,7 +37,8 @@ module.exports = {
             "oprank",
             "boobslap",
             "rhyme",
-            "niichan"
+            "niichan",
+            "prank"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
