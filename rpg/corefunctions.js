@@ -99,8 +99,8 @@ module.exports = {
                         console.log(randomNumber);
                         if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims') && JSON.parse(JSON.stringify(doc)).hasOwnProperty('inventory')) {
                             ownedBerries = doc.claims.berries;
-                            ownedWood = doc.inventory.Wood;
-                            ownedIron = doc.claims.Iron;
+                            ownedWood = doc.inventory.wood;
+                            ownedIron = doc.inventory.iron;
                         }
                         if (randomNumber < 7) {
                             let wheretoloot = somesomething[randomNumber];
@@ -111,8 +111,8 @@ module.exports = {
                                         "berries": parseInt(ownedBerries)+parseInt(berries)
                                     },
                                     "inventory" : {
-                                        "wood":parseInt(ownedWood)+parseInt(wood),
-                                        "iron":parseInt(ownedIron)+parseInt(iron)
+                                        "wood": parseInt(ownedWood)+parseInt(wood),
+                                        "iron": parseInt(ownedIron)+parseInt(iron)
                                     }
                                 }
                                 },
