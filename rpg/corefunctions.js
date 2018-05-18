@@ -69,8 +69,6 @@ module.exports = {
     },
 
     loot: function(message, talkedRecently) {
-        let randomNumber = Math.floor() * 7;
-        randomNumber = Math.floor(randomNumber);
         if (talkedRecently.has(message.author.id)) {
             message.channel.send("Wait a bit before using this again.");
         } else {
@@ -78,6 +76,8 @@ module.exports = {
             try {
                 db.Users.findOne({"id": message.author.id}, function (err, doc) {
                     if (doc) {
+                        let randomNumber = Math.random() * 7;
+                        randomNumber = Math.floor(randomNumber);
                         let somesomething = [
                             'under *a bush*',
                             'in *a dumpster*',
