@@ -96,8 +96,8 @@ module.exports = {
                         berries = Math.floor(berries);
                         wood = Math.floor(berries);
                         iron = Math.floor(berries);
-
-                        if (randomNumber <= 6) {
+                        console.log(randomNumber);
+                        if (randomNumber < 7) {
                             let wheretoloot = somesomething[randomNumber];
                             db.Users.update(
                                 {"id": message.author.id},
