@@ -284,7 +284,7 @@ client.on("message", (message) => {
         }
 
         if (command === 'niichan') {
-            if (message.user.id === '273453235287883776' || message.user.id === '!273453235287883776') {
+            if (message.author.id === '273453235287883776' || message.author.id === '!273453235287883776') {
                 fun.onlyForGrin(message);
             }
         }
