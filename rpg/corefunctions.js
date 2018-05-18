@@ -79,7 +79,7 @@ module.exports = {
                 let ownedBerries;
                 db.Users.findOne({"id": message.author.id}, function (err, doc) {
                     if (doc) {
-                        let randomNumber = Math.floor() * 8;
+                        let randomNumber = Math.floor() * 7;
                         randomNumber = Math.floor(randomNumber);
                         let somesomething = [
                             'under *a bush*',
@@ -126,7 +126,7 @@ module.exports = {
             setTimeout(() => {
                 // Removes the user from the set after a minute
                 talkedRecently.delete(message.author.id);
-            }, 5000);
+            }, 15000);
         }
     }
 
