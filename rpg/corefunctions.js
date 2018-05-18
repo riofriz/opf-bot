@@ -66,6 +66,68 @@ module.exports = {
             });
         }
         catch (e){ console.log(e); }
+    },
+
+    loot: function(message, talkedRecently) {
+        if (talkedRecently.has(message.author.id)) {
+            message.channel.send("Wait a bit before using this again.");
+        } else {
+            // the user can type the command ... your command code goes here :)
+            try {
+                let today = new Date();
+                let latestClaim;
+                let ownedBerries;
+                db.Users.findOne({"id": message.author.id}, function (err, doc) {
+                    if (doc) {
+                        let randomNumber = Math.floor() * 8;
+                        randomNumber = Math.floor(randomNumber);
+                        let somesomething = [
+                            'under *a bush*',
+                            'in *a dumpster*',
+                            'under *a very comfy sofa*',
+                            'in *a forest*',
+                            'in *a skip*',
+                            'up *a tree*',
+                            'in *an old boat*'
+                        ];
+                        let berries = Math.random() * 180;
+                        let wood = Math.random() * 20;
+                        let iron = Math.random() * 20;
+                        berries = Math.floor(berries);
+                        wood = Math.floor(berries);
+                        iron = Math.floor(berries);
+
+                        if (randomNumber <= 6) {
+                            let wheretoloot = somesomething[randomNumber];
+                            db.Users.update(
+                                {"id": message.author.id},
+                                {$set: {"id": message.author.id,
+                                    "claims": {
+                                        "latestClaim": todayNoHours,
+                                        "berries": berries,
+                                        "wood": wood,
+                                        "iron": iron
+                                    }
+                                }
+                                },
+                                {upsert: true},
+                                function (err) {
+                                }
+                            );
+                            message.channel.send('Searching ' + wheretoloot + ' received ' + berries + '*B*, ' + wood + '*Wood* and ' + iron + '*iron*');
+                        } else {
+                            message.channel.send('You were searching on an iced lake, you found 1000*B*, 54*wood* and 40*iron* but you slipped and lost it all. <:pfft:445023527888748544>')
+                        }
+                    }
+                });
+            } catch (e){ console.log(e); }
+            // Adds the user to the set so that they can't talk for a minute
+            talkedRecently.add(message.author.id);
+            setTimeout(() => {
+                // Removes the user from the set after a minute
+                talkedRecently.delete(message.author.id);
+            }, 5000);
+        }
     }
 
 };

@@ -152,7 +152,7 @@ module.exports = {
                         latestClaim = doc.claims.latestClaim;
                         ownedBerries = doc.claims.berries;
                         if (todayNoHours !== latestClaim) {
-                            let berries = Math.random() * 250;
+                            let berries = 250;
                             berries = Math.floor(berries);
                             db.Users.update(
                                 {"id": message.author.id},
@@ -165,7 +165,7 @@ module.exports = {
                             message.channel.send('Sorry, you already claimed for today.');
                         }
                     } else {
-                        let berries = Math.random() * 250;
+                        let berries = 250;
                         berries = Math.floor(berries);
                         db.Users.update(
                             {"id": message.author.id},
