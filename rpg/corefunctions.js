@@ -87,22 +87,32 @@ module.exports = {
                             'up *a tree*',
                             'in *an old boat*'
                         ];
+                        let ownedBerries = 0;
+                        let ownedWood = 0;
+                        let ownedIron = 0;
                         let berries = Math.random() * 180;
                         let wood = Math.random() * 20;
                         let iron = Math.random() * 20;
                         berries = Math.floor(berries);
-                        wood = Math.floor(berries);
-                        iron = Math.floor(berries);
+                        wood = Math.floor(wood);
+                        iron = Math.floor(wood);
                         console.log(randomNumber);
+                        if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims') && JSON.parse(JSON.stringify(doc)).hasOwnProperty('inventory')) {
+                            ownedBerries = doc.claims.berries;
+                            ownedWood = doc.inventory.Wood;
+                            ownedIron = doc.claims.Iron;
+                        }
                         if (randomNumber < 7) {
                             let wheretoloot = somesomething[randomNumber];
                             db.Users.update(
                                 {"id": message.author.id},
                                 {$set: {"id": message.author.id,
                                     "claims": {
-                                        "berries": berries,
-                                        "wood": wood,
-                                        "iron": iron
+                                        "berries": ownedBerries+berries
+                                    },
+                                    "inventory" : {
+                                        "wood":ownedWood+wood,
+                                        "iron":ownedIron+iron
                                     }
                                 }
                                 },
