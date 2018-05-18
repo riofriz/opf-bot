@@ -505,10 +505,16 @@ module.exports = {
 
     prank: function(message, args) {
         let channels = [
-            'nsfw',
             'pokemon_channel',
             'news',
-            'memes'
+            'memes',
+            'chatteroni',
+            'multi-lingual-channel',
+            'bot-spam',
+            'music',
+            'gamers-general',
+            'quiz-channel',
+            'fanart'
         ];
         let user;
         if (args[0]) {
@@ -521,6 +527,8 @@ module.exports = {
             user = user.trim();
         }
         let randomNumber = Math.floor(Math.random()*channels.length);
-        message.guild.channels.find('name', channels[randomNumber]).send('<@'+user+'> <:pfft:445023527888748544>');
+        message.guild.channels.find('name', channels[randomNumber]).send('<@'+user+'> <:pfft:445023527888748544>').catch(
+            message.channel.send('That user does not exist')
+        )
     }
 };

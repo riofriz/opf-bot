@@ -258,7 +258,9 @@ client.on("message", (message) => {
         }
 
         if(commandWithArgs === 'prank') {
-            fun.prank(message, args)
+            fun.prank(message, args);
+            corecommands.deleteMessage(message);
+            basiclogics.increaseCommands(message, 3);
         }
 
         // GAMERS
@@ -322,10 +324,12 @@ client.on("message", (message) => {
         //RPG
         if (commandWithArgs === 'oprank') {
             rpgcore.oprank(message, args, client);
+            basiclogics.increaseCommands(message, 2);
         }
 
         if(commandWithArgs === 'rhyme') {
             fun.rhyme(message, args);
+            basiclogics.increaseCommands(message, 2);
         }
     }
 
