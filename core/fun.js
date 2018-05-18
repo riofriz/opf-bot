@@ -527,8 +527,11 @@ module.exports = {
             user = user.trim();
         }
         let randomNumber = Math.floor(Math.random()*channels.length);
-        message.guild.channels.find('name', channels[randomNumber]).send('<@'+user+'> <:pfft:445023527888748544>').catch(err => {
+        try {
+            message.guild.channels.find('name', channels[randomNumber]).send('<@' + user + '> <:pfft:445023527888748544>')
+        }
+        catch (err) {
             console.log(err);
-        });
+        }
     }
 };
