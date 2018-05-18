@@ -69,18 +69,15 @@ module.exports = {
     },
 
     loot: function(message, talkedRecently) {
+        let randomNumber = Math.floor() * 7;
+        randomNumber = Math.floor(randomNumber);
         if (talkedRecently.has(message.author.id)) {
             message.channel.send("Wait a bit before using this again.");
         } else {
             // the user can type the command ... your command code goes here :)
             try {
-                let today = new Date();
-                let latestClaim;
-                let ownedBerries;
                 db.Users.findOne({"id": message.author.id}, function (err, doc) {
                     if (doc) {
-                        let randomNumber = Math.floor() * 7;
-                        randomNumber = Math.floor(randomNumber);
                         let somesomething = [
                             'under *a bush*',
                             'in *a dumpster*',
@@ -111,8 +108,7 @@ module.exports = {
                                 }
                                 },
                                 {upsert: true},
-                                function (err) {
-                                }
+                                function (err) {}
                             );
                             message.channel.send('Searching ' + wheretoloot + ' received ' + berries + '*B*, ' + wood + '*Wood* and ' + iron + '*iron*');
                         } else {
