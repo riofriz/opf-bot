@@ -322,6 +322,9 @@ module.exports = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
 
+        let user = message.author.id;
+        let string;
+
         let options = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
@@ -329,12 +332,18 @@ module.exports = {
             qs: {'key': process.env.TENOR, 'q': 'anime-kawaii'}
         };
 
+        if (user === '273453235287883776' || user === '!273453235287883776') {
+            string = 'ONIII-CHAAAN! ^_^';
+        } else {
+            string = 'Enjoy this cute gif.. <:tsun:432123531443175425>'
+        }
+
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 let json_body = JSON.parse(body);
                 let randomNumber = Math.floor(Math.random()*json_body['results'].length);
                 let embed = new Discord.RichEmbed()
-                    .setTitle('Enjoy this cute gif.. for now.. <:tsun:432123531443175425>')
+                    .setTitle(string)
                     .setColor(corevars.randomColor())
                     .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
                 message.channel.send({embed: embed});

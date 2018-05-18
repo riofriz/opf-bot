@@ -283,6 +283,12 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, 2);
         }
 
+        if (command === 'niichan') {
+            if (message.user.id === '273453235287883776' || message.user.id === '!273453235287883776') {
+                fun.onlyForGrin(message);
+            }
+        }
+
         if (command === 'bikki') {
             message.channel.send('<:BikkiBerserk:254211431610843136>');
             basiclogics.increaseCommands(message, 1);
