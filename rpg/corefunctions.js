@@ -140,7 +140,7 @@ module.exports = {
                         setTimeout(() => {
                             // Removes the user from the set after a minute
                             if (rank <= 5) {
-                                message.aurhor.send('You can loot again!');
+                                message.author.send('You can loot again!');
                             }
                             talkedRecently.delete(message.author.id);
                         }, cooldown);
