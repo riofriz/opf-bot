@@ -100,7 +100,6 @@ module.exports = {
                                 {"id": message.author.id},
                                 {$set: {"id": message.author.id,
                                     "claims": {
-                                        "latestClaim": todayNoHours,
                                         "berries": berries,
                                         "wood": wood,
                                         "iron": iron
