@@ -69,9 +69,8 @@ module.exports = {
     },
 
     loot: function(message, talkedRecently) {
-        let timeout = setTimeout(function() {}, 300000 * 1000);
         if (talkedRecently.has(message.author.id)) {
-            message.channel.send("Wait a bit before using this again. Time left: "+Math.ceil((timeout._idleStart + timeout._idleTimeout - Date.now()) / 1000));
+            message.channel.send("The higher your rank, the less you'll have to wait until the next loot. \nUntil you are rank 5, i'll send you a message when you can loot again.\nAfter that you are on your own!");
         } else {
             // the user can type the command ... your command code goes here :)
             try {
@@ -91,13 +90,25 @@ module.exports = {
                         let ownedBerries = 0;
                         let ownedWood = 0;
                         let ownedIron = 0;
+                        let commands = doc.triggeredCommands;
+                        let rank = commands/250;
+                        let cooldown;
+                        rank = Math.floor(rank);
                         let berries = Math.random() * 180;
                         let wood = Math.random() * 20;
                         let iron = Math.random() * 20;
                         berries = Math.floor(berries);
                         wood = Math.floor(wood);
                         iron = Math.floor(iron);
-                        console.log(randomNumber);
+                        if (rank <= 5) {
+                            cooldown = 300000;
+                        } else if (rank > 5 && rank <= 8) {
+                            cooldown = 200000;
+                        } else if (rank > 8 && rank <= 10) {
+                            cooldown = 60000;
+                        } else {
+                            cooldown = 30000;
+                        }
                         if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims') && JSON.parse(JSON.stringify(doc)).hasOwnProperty('inventory')) {
                             ownedBerries = doc.claims.berries;
                             ownedWood = doc.inventory.wood;
@@ -124,15 +135,18 @@ module.exports = {
                         } else {
                             message.channel.send('You were searching on an iced lake, you found 1000*B*, 54*wood* and 40*iron* but you slipped and lost it all. <:pfft:445023527888748544>')
                         }
+                        // Adds the user to the set so that they can't talk for a minute
+                        talkedRecently.add(message.author.id);
+                        setTimeout(() => {
+                            // Removes the user from the set after a minute
+                            if (rank <= 5) {
+                                message.aurhor.send('You can loot again!');
+                            }
+                            talkedRecently.delete(message.author.id);
+                        }, cooldown);
                     }
                 });
             } catch (e){ console.log(e); }
-            // Adds the user to the set so that they can't talk for a minute
-            talkedRecently.add(message.author.id);
-            setTimeout(() => {
-                // Removes the user from the set after a minute
-                talkedRecently.delete(message.author.id);
-            }, 300000);
         }
     }
 
