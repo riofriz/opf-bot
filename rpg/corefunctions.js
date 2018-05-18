@@ -95,7 +95,7 @@ module.exports = {
                         let iron = Math.random() * 20;
                         berries = Math.floor(berries);
                         wood = Math.floor(wood);
-                        iron = Math.floor(wood);
+                        iron = Math.floor(iron);
                         console.log(randomNumber);
                         if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims') && JSON.parse(JSON.stringify(doc)).hasOwnProperty('inventory')) {
                             ownedBerries = doc.claims.berries;
@@ -108,11 +108,11 @@ module.exports = {
                                 {"id": message.author.id},
                                 {$set: {"id": message.author.id,
                                     "claims": {
-                                        "berries": ownedBerries+berries
+                                        "berries": parseInt(ownedBerries)+parseInt(berries)
                                     },
                                     "inventory" : {
-                                        "wood":ownedWood+wood,
-                                        "iron":ownedIron+iron
+                                        "wood":parseInt(ownedWood)+parseInt(wood),
+                                        "iron":parseInt(ownedIron)+parseInt(iron)
                                     }
                                 }
                                 },
