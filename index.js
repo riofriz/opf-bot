@@ -20,6 +20,7 @@ let pvp = require('./rpg/pvp');
 const client = new Discord.Client();
 // let commandPrefix = 'opf-' || 'op-' || 'o-';
 let commandPrefix = '';
+let rpgPrefix = 'orpg-';
 let allowed = false;
 let notification = true;
 
@@ -53,6 +54,10 @@ client.on("message", (message) => {
         allowed = true;
     } else if (message.content.toLowerCase().includes('+')) {
         commandPrefix = '+';
+        allowed = true;
+    }
+
+    if (message.content.toLowerCase().includes(rpgPrefix)) {
         allowed = true;
     }
 
@@ -135,9 +140,9 @@ client.on("message", (message) => {
     if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.toLowerCase().startsWith(commandPrefix)) {
 
         //If command is not in available commands and user is not mentioned returns fun message.
-        if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && notification !== false) {
-            message.channel.send(message.author+' <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250>');
-        }
+        // if (corevars.isAvailable(commandWithArgs) === false && corevars.isAvailable(command) === false && !message.isMentioned(client.user) && notification !== false) {
+        //     message.channel.send(message.author+' <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250> <:ping:432976718010122250>');
+        // }
 
         // CORE COMMANDS
 
@@ -327,17 +332,20 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        //RPG
-        if (commandWithArgs === 'oprank') {
-            rpgcore.oprank(message, args, client);
-            basiclogics.increaseCommands(message, randomRankIncrease);
-        }
-
         if(commandWithArgs === 'rhyme') {
             fun.rhyme(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === 'oprank') {
+            rpgcore.oprank(message, args, client);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+    }
+
+    //RPG COMMANDS
+
+    if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.toLowerCase().startsWith(commandPrefix)) {
         if(command === 'loot') {
             rpgcore.loot(message, talkedRecently);
             basiclogics.increaseCommands(message, randomRankIncrease);
