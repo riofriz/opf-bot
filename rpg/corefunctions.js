@@ -82,7 +82,7 @@ module.exports = {
     loot: function(message, talkedRecently) {
         if (message.channel.name === 'discord-rpg' || message.channel.name === 'gamers-channel' || message.channel.name === 'bot-spam') {
             if (talkedRecently.has(message.author.id)) {
-                message.channel.send("The higher your rank, the less you'll have to wait until the next loot. \nUntil you are rank 5, i'll send you a message when you can loot again.\nAfter that you are on your own!");
+                return message.channel.send("The higher your rank, the less you'll have to wait until the next loot. \nUntil you are rank 5, i'll send you a message when you can loot again.\nAfter that you are on your own!");
             } else {
                 // the user can type the command ... your command code goes here :)
                 try {
