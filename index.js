@@ -369,6 +369,8 @@ client.on("message", (message) => {
 
         if(rpgCommand === "help" || message.content === 'r-' || message.content === 'rp-' || message.content === 'rpg-'){
             rpgcore.help(rpgPrefix, message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+            corecommands.deleteMessage(message);
         }
     }
 
