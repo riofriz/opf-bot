@@ -112,15 +112,21 @@ module.exports = {
                             berries = Math.floor(berries);
                             wood = Math.floor(wood);
                             iron = Math.floor(iron);
-                            if (rank <= 5) {
-                                cooldown = 300000;
-                            } else if (rank > 5 && rank <= 8) {
-                                cooldown = 200000;
-                            } else if (rank > 8 && rank <= 10) {
-                                cooldown = 60000;
-                            } else {
-                                cooldown = 30000;
+                            switch (rank) {
+                                case rank <= 5: cooldown = 300000; break;
+                                case rank > 5 && rank <= 8: cooldown = 200000; break;
+                                case rank > 8 && rank <= 10: cooldown = 60000; break;
+                                case rank > 10: cooldown = 60000; break;
                             }
+                            // if (rank <= 5) {
+                            //     cooldown = 300000;
+                            // } else if (rank > 5 && rank <= 8) {
+                            //     cooldown = 200000;
+                            // } else if (rank > 8 && rank <= 10) {
+                            //     cooldown = 60000;
+                            // } else {
+                            //     cooldown = 30000;
+                            // }
                             if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims') && JSON.parse(JSON.stringify(doc)).hasOwnProperty('inventory')) {
                                 ownedBerries = doc.claims.berries;
                                 ownedWood = doc.inventory.wood;
