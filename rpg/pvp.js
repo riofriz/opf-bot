@@ -56,8 +56,6 @@ module.exports = {
                     db.Users.findOne({"id": attacker}, function (err, attacker) {
                         if (attacker) {
                             let attackerOwnedBerries = attacker.claims.berries;
-                            console.log(attackerOwnedBerries);
-                            console.log(bet);
                             if (attackerOwnedBerries < bet) {
                                 message.channel.send('You can\'t afford that much.. Unless you are cheating <:pfft:445023527888748544>');
                             } else {
