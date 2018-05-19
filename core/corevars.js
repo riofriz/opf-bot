@@ -41,7 +41,9 @@ module.exports = {
             "prank",
             "loot",
             "mobfight",
-            "lelolelo"
+            "lelolelo",
+            "jacky",
+            "neechan"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

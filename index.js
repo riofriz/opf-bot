@@ -333,6 +333,17 @@ client.on("message", (message) => {
             }
         }
 
+        if (command === 'jacky') {
+            fun.onlyForJacky(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (command === 'neechan') {
+            if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {
+                fun.onlyForJacky(message);
+            }
+        }
+
         if (command === 'bikki') {
             message.channel.send('<:BikkiBerserk:254211431610843136>');
             basiclogics.increaseCommands(message, randomRankIncrease);

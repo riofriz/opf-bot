@@ -355,6 +355,42 @@ module.exports = {
         });
     },
 
+    onlyForJacky: function(message) {
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let user = message.author.id;
+        let string;
+
+        let options = {
+            url: 'https://api.tenor.com/v1/random',
+            method: 'GET',
+            headers: headers,
+            qs: {'key': process.env.TENOR, 'q': 'guy-anime'}
+        };
+
+        if (user === '171344312234278913' || user === '!171344312234278913') {
+            string = 'ONEEE-CHAAAN! ^_^';
+        } else {
+            string = 'Enjoy this cute gif.. <:yay2:446663893511569428>'
+        }
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
+                let embed = new Discord.RichEmbed()
+                    .setTitle(string)
+                    .setColor(corevars.randomColor())
+                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                message.channel.send({embed: embed});
+            } else {
+                console.log(error.message);
+            }
+        });
+    },
+
     darling: function(message) {
         let embed = new Discord.RichEmbed()
             .setTitle('Tell me darliiiiing')
