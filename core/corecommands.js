@@ -31,9 +31,7 @@ module.exports = {
      * @param message
      */
     helloMessage: function(message) {
-        if (typeof blockedArray === 'undefined') {
-            let blockedArray = [];
-        }
+        let blockedArray = [];
         let index = blockedArray.indexOf(message.author.id);
         if (index > -1) {
             message.channel.send('sorry, cooldown.');
