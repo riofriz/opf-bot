@@ -71,7 +71,7 @@ module.exports = {
                                         .setColor(corevars.randomColor());
                                 } else {
                                     embed = new Discord.RichEmbed()
-                                        .setThumbnail(url=__dirname + '/dices/' + diceroll + '.png')
+                                        .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setColor(corevars.randomColor());
                                 }
                                 message.channel.send({embed: embed});
