@@ -362,7 +362,7 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (rpgCommand === 'mobfight') {
+        if (rpgCommandWithArgs === 'mobfight') {
             pvp.mobfight(message, rpgargs, talkedRecently);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
