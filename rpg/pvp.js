@@ -56,7 +56,7 @@ module.exports = {
                         let bet = parseInt(args[0].trim());
                         db.Users.findOne({"id": attacker}, function (err, attacker) {
                             if (attacker) {
-                                if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('claims')) {
+                                if (JSON.parse(JSON.stringify(attacker)).hasOwnProperty('claims')) {
                                     let attackerOwnedBerries = attacker.claims.berries;
                                     if (attackerOwnedBerries < bet) {
                                         message.channel.send('You can\'t afford that much.. Unless you are cheating <:pfft:445023527888748544>');
