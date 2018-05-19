@@ -128,6 +128,11 @@ client.on("message", (message) => {
         notification = false;
         fun.ohno(message)
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh, hi mark") {
+        allowed = true;
+        notification = false;
+        fun.himark(message)
+    }
     if (message.isMentioned('415230548248887296')) {
         allowed = true;
         notification = false;

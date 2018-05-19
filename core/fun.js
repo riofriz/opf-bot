@@ -127,7 +127,9 @@ module.exports = {
             "darling",
             "oh my god",
             "luv u",
-            "zak"
+            "zak",
+            "oh nooooo",
+            "oh, hi mark"
         ];
         let result;
         let string;
@@ -379,6 +381,12 @@ module.exports = {
     ohno: function(message) {
         let embed = new Discord.RichEmbed()
             .setImage('http://i0.kym-cdn.com/photos/images/original/000/781/010/887.gif');
+        message.channel.send({embed: embed});
+    },
+
+    himark: function(message) {
+        let embed = new Discord.RichEmbed()
+            .setImage('https://media2.giphy.com/media/l0HUldzuCa0S16SkM/giphy.gif');
         message.channel.send({embed: embed});
     },
 
