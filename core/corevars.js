@@ -42,7 +42,7 @@ module.exports = {
             "loot",
             "mobfight",
             "lelolelo",
-            "jacky",
+            "neko",
             "neechan"
         ];
         if (commandsArray.indexOf(value) === -1) {

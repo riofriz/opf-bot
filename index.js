@@ -333,7 +333,7 @@ client.on("message", (message) => {
             }
         }
 
-        if (command === 'jacky') {
+        if (command === 'neko') {
             fun.onlyForJacky(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
