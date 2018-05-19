@@ -58,23 +58,27 @@ client.on("message", (message) => {
     }
 
     if (message.content.toLowerCase().includes('rpg-')) {
-        commandPrefix = 'rpg-';
+        rpgPrefix = 'rpg-';
         allowed = true;
     } else if (message.content.toLowerCase().includes('rp-')) {
-        commandPrefix = 'rp-';
+        rpgPrefix = 'rp-';
         allowed = true;
     } else if (message.content.toLowerCase().includes('r-')) {
-        commandPrefix = 'r-';
+        rpgPrefix = 'r-';
         allowed = true;
     }
 
     //Declares Command variable
     let command = message.content.toLowerCase();
+    let rpgCommand;
     command = command.slice(commandPrefix.length);
+    rpgCommand = command.slice(rpgPrefix.length);
 
     //Declares args and command with args variable
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
+    const rpgargs = message.content.slice(rpgPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
+    const rpgCommandWithArgs = args.shift().toLowerCase();
 
     basiclogics.saveusers(message);
     basiclogics.increaseCommands(message, 1);
@@ -353,17 +357,17 @@ client.on("message", (message) => {
     //RPG COMMANDS
 
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
-        if (command === 'loot') {
+        if (rpgCommand === 'loot') {
             rpgcore.loot(message, talkedRecently);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (commandWithArgs === 'mobfight') {
-            pvp.mobfight(message, args, talkedRecently);
+        if (rpgCommand === 'mobfight') {
+            pvp.mobfight(message, rpgargs, talkedRecently);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if(command === "help" || message.content === 'r-' || message.content === 'rp-' || message.content === 'rpg-'){
+        if(rpgCommand === "help" || message.content === 'r-' || message.content === 'rp-' || message.content === 'rpg-'){
             rpgcore.help(rpgPrefix, message);
         }
     }
