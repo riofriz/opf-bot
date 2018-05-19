@@ -49,7 +49,7 @@ module.exports = {
             message.channel.send("Need to recharge stamina. Estimated total cooldown: 10s.");
         } else {
             if (args[0]) {
-                if (typeof parseInt(args[0].trim()) === 'number') {
+                if (typeof args[0].trim() === 'number') {
                     let attacker = message.author.id;
                     db.Users.findOne({"id": attacker}, function (err, attacker) {
                         if (attacker) {
@@ -63,7 +63,7 @@ module.exports = {
                                 let embed;
                                 if (diceroll !== 7 || diceroll !== 8) {
                                     embed = new Discord.RichEmbed()
-                                        .setThumbnail(url=__dirname + '/dices/' + diceroll + '.png')
+                                        .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setColor(corevars.randomColor());
                                 } else {
                                     embed = new Discord.RichEmbed()
