@@ -62,10 +62,10 @@ module.exports = {
                                 message.channel.send('You can\'t afford that much.. Unless you are cheating <:pfft:445023527888748544>');
                             } else {
                                 //BATTLE COMMAND IN HERE.
-                                let diceroll = Math.random() * 8;
+                                let diceroll = Math.random() * 12;
                                 diceroll = Math.floor(diceroll);
                                 let embed;
-                                if (diceroll !== 7 || diceroll !== 8) {
+                                if (diceroll > 6) {
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setColor(corevars.randomColor());
