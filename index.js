@@ -24,7 +24,8 @@ let rpgPrefix = '';
 let allowed = false;
 let notification = true;
 
-const talkedRecently = new Set();
+const talkedRecentlyMob = new Set();
+const talkedRecentlyLoots = new Set();
 
 let randomRankIncrease = Math.random() * 7;
 randomRankIncrease = Math.floor(randomRankIncrease);
@@ -358,12 +359,12 @@ client.on("message", (message) => {
 
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
         if (rpgCommand === 'loot') {
-            rpgcore.loot(message, talkedRecently);
+            rpgcore.loot(message, talkedRecentlyLoots);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if (rpgCommandWithArgs === 'mobfight') {
-            pvp.mobfight(message, rpgargs, talkedRecently);
+            pvp.mobfight(message, rpgargs, talkedRecentlyMob);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
