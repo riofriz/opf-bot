@@ -82,10 +82,10 @@ module.exports = {
                                 else if (randomNumber === 4) {image = 'marine.png'}
                                 else if (randomNumber === 5) {image = 'foxy.jpg'}
 
-                                let sentence;
+                                let sentence = '';
+                                let winnings;
 
-                                if (diceroll > 6) {
-                                    let winnings;
+                                if (diceroll <= 6) {
                                     if (diceroll === 1){winnings = (16.666 / 100) * args[0]; sentence = 'You almost lost.. This is mostly a consolation price.'}
                                     else if (diceroll === 2){winnings = (33.332 / 100) * args[0]; sentence = 'You can tell you have some experience.. still, close one!'}
                                     else if (diceroll === 3){winnings = (49.998 / 100) * args[0]; sentence = 'You put up a good fight, boss!'}
@@ -99,7 +99,6 @@ module.exports = {
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
                                         .setColor(corevars.randomColor());
                                 } else {
-                                    let winnings;
                                     let newdice;
                                     if (diceroll === 7){winnings = (16.666 / 100) * args[0]; newdice = 1; sentence = 'You almost won.. but then again, you didn\'t.'}
                                     else if (diceroll === 8){winnings = (33.332 / 100) * args[0]; newdice = 2; sentence = 'I am starting to doubt you have any experience at all'}
@@ -110,8 +109,7 @@ module.exports = {
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
-                                        .setTitle('You are now attacking '+mobs[randomNumber]+'.')
-                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a '+diceroll+'. '+sentence)
+                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a '+newdice+'. '+sentence)
                                         .addField('WHAT HAVE YOU DONE!!', 'You just lost '+winnings+'*B*')
                                         .setColor(corevars.randomColor());
                                 }
