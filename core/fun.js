@@ -372,19 +372,19 @@ module.exports = {
         // message.channel.send({embed: embed});
 
         let embed = new Discord.RichEmbed()
-            .addImage('http://i0.kym-cdn.com/photos/images/original/000/972/842/1aa.gif');
+            .setImage('http://i0.kym-cdn.com/photos/images/original/000/972/842/1aa.gif');
         message.channel.send({embed: embed});
     },
 
     ohno: function(message) {
         let embed = new Discord.RichEmbed()
-            .addImage('http://i0.kym-cdn.com/photos/images/original/000/781/010/887.gif');
+            .setImage('http://i0.kym-cdn.com/photos/images/original/000/781/010/887.gif');
         message.channel.send({embed: embed});
     },
 
     lelolelo: function(message) {
         let embed = new Discord.RichEmbed()
-            .addImage('http://i.imgur.com/0yr0PMy.gif');
+            .setImage('http://i.imgur.com/0yr0PMy.gif');
         message.channel.send({embed: embed});
     },
 
