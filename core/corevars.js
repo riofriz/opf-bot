@@ -39,7 +39,7 @@ module.exports = {
             "rhyme",
             "niichan",
             "prank",
-            "loot",
+            "search",
             "mobfight",
             "lelolelo"
         ];
