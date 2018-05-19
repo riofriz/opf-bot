@@ -39,7 +39,8 @@ module.exports = {
             "rhyme",
             "niichan",
             "prank",
-            "loot"
+            "loot",
+            "mobfight"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

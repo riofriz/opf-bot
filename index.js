@@ -14,6 +14,7 @@ let variousapi = require('./core/variousapi');
 let basiclogics = require('./userfunctions/basics');
 let commandsforberries = require('./userfunctions/commandsforberries');
 let rpgcore = require('./rpg/corefunctions');
+let pvp = require('./rpg/pvp');
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -340,6 +341,10 @@ client.on("message", (message) => {
         if(command === 'loot') {
             rpgcore.loot(message, talkedRecently);
             //basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if(commandWithArgs === 'mobfight') {
+            pvp.mobfight(message, args, talkedRecently);
         }
     }
 
