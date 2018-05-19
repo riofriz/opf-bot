@@ -350,7 +350,7 @@ client.on("message", (message) => {
 
         if (command === 'neechan') {
             if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {
-                fun.onlyForJacky(message);
+                fun.jacky(message);
             }
         }
 
