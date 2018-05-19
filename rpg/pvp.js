@@ -52,7 +52,7 @@ module.exports = {
                 let pattern = /^[0-9]*$/g;
                 if (args[0].match(pattern)) {
                     let attacker = message.author.id;
-                    let bet = parseInt(args[1]);
+                    let bet = parseInt(args[1].trim());
                     db.Users.findOne({"id": attacker}, function (err, attacker) {
                         if (attacker) {
                             let attackerOwnedBerries = attacker.claims.berries;
