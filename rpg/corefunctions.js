@@ -10,6 +10,17 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 
 module.exports = {
 
+    help: function(commandPrefix, message) {
+        let embed = new Discord.RichEmbed()
+            .addField(commandPrefix+"help", "Sends this help embed")
+            .addField(commandPrefix+"loot", "Loots bellies, wood and iron.")
+            .addField(commandPrefix+"mobfight <bellies_to_bet>", "Fights a random mob. BEWARE: you win/lose according to the bellies you bet and the dice result")
+                .setTitle("Bot RPG commands:")
+            .setFooter("Your lovable OPF MegaBot")
+            .setColor(corevars.randomColor());
+        message.author.send({embed: embed});
+    },
+
     oprank: function(message, args, Client) {
         let berries;
         let commands;

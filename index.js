@@ -362,6 +362,10 @@ client.on("message", (message) => {
             pvp.mobfight(message, args, talkedRecently);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
+
+        if(command === "help" || message.content === 'r-' || message.content === 'rp-' || message.content === 'rpg-'){
+            rpgcore.help(rpgPrefix, message);
+        }
     }
 
 });
