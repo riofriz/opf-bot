@@ -334,9 +334,15 @@ client.on("message", (message) => {
         }
 
         if (command === 'neko') {
-            fun.onlyForJacky(message);
+            fun.neko(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
+
+        if (command === 'jacky') {
+            fun.jacky(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
 
         if (command === 'neechan') {
             if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {
