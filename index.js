@@ -345,7 +345,7 @@ client.on("message", (message) => {
 
     //RPG COMMANDS
 
-    if(corecommands.globalCheck(client, commandPrefix, message, allowed) && message.content.toLowerCase().startsWith(commandPrefix)) {
+    if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
         if(command === 'loot') {
             rpgcore.loot(message, talkedRecently);
             basiclogics.increaseCommands(message, randomRankIncrease);
