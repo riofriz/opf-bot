@@ -112,12 +112,6 @@ module.exports = {
                             berries = Math.floor(berries);
                             wood = Math.floor(wood);
                             iron = Math.floor(iron);
-                            // switch (rank) {
-                            //     case rank <= 5: cooldown = 300000; break;
-                            //     case rank > 5 && rank <= 8: cooldown = 200000; break;
-                            //     case rank > 8 && rank <= 10: cooldown = 60000; break;
-                            //     case rank > 10: cooldown = 60000; break;
-                            // }
                             if (rank <= 5) {
                                 cooldown = 300000;
                             } else if (rank > 5 && rank <= 8) {
