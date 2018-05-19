@@ -49,7 +49,8 @@ module.exports = {
             message.channel.send("Need to recharge stamina. Estimated total cooldown: 10s.");
         } else {
             if (args[0]) {
-                if (typeof args[0].trim() === 'number') {
+                let pattern = /^[0-9]*$/g;
+                if (args[0].match(pattern)) {
                     let attacker = message.author.id;
                     db.Users.findOne({"id": attacker}, function (err, attacker) {
                         if (attacker) {
