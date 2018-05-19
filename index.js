@@ -123,6 +123,11 @@ client.on("message", (message) => {
         fun.zak(message);
         basiclogics.increaseCommands(message, randomRankIncrease);
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh noooooo") {
+        allowed = true;
+        notification = false;
+        fun.ohno(message)
+    }
     if (message.isMentioned('415230548248887296')) {
         allowed = true;
         notification = false;
@@ -240,6 +245,11 @@ client.on("message", (message) => {
 
         if (command === 'muhahaha') {
             fun.evilLaugh(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (command === 'lelolelo') {
+            fun.lelolelo(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 

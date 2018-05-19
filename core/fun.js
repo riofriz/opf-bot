@@ -362,13 +362,29 @@ module.exports = {
     },
 
     ezekiel: function(message) {
-        let title = "**Ezekiel 25:17.** - The path of the righteous man.";
-        let passage = "\"The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness. For he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know I am the Lord when I lay my vengeance upon you.\""
+        // let title = "**Ezekiel 25:17.** - The path of the righteous man.";
+        // let passage = "\"The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness. For he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know I am the Lord when I lay my vengeance upon you.\""
+        //
+        // let embed = new Discord.RichEmbed()
+        //     .addField(title, passage)
+        //     .setColor(corevars.randomColor())
+        //     .setThumbnail('http://photo.cultjer.com/img/cache/width/1000/ug_photo/2014_04/pulp_fiction120140422171446.jpg');
+        // message.channel.send({embed: embed});
 
         let embed = new Discord.RichEmbed()
-            .addField(title, passage)
-            .setColor(corevars.randomColor())
-            .setThumbnail('http://photo.cultjer.com/img/cache/width/1000/ug_photo/2014_04/pulp_fiction120140422171446.jpg');
+            .addImage('http://i0.kym-cdn.com/photos/images/original/000/972/842/1aa.gif');
+        message.channel.send({embed: embed});
+    },
+
+    ohno: function(message) {
+        let embed = new Discord.RichEmbed()
+            .addImage('http://i0.kym-cdn.com/photos/images/original/000/781/010/887.gif');
+        message.channel.send({embed: embed});
+    },
+
+    lelolelo: function(message) {
+        let embed = new Discord.RichEmbed()
+            .addImage('http://i.imgur.com/0yr0PMy.gif');
         message.channel.send({embed: embed});
     },
 
