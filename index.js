@@ -385,6 +385,7 @@ client.on("message", (message) => {
         }
 
         if (rpgCommandWithArgs === 'mobfight') {
+            cooldown = 5000;
             if (talkedRecently.has(message.author.id)) {
                 message.channel.send("Need to recharge stamina. Estimated total cooldown: 10s.");
             } else {
