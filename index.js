@@ -20,7 +20,7 @@ let pvp = require('./rpg/pvp');
 const client = new Discord.Client();
 // let commandPrefix = 'opf-' || 'op-' || 'o-';
 let commandPrefix = '';
-let rpgPrefix = 'orpg-';
+let rpgPrefix = '';
 let allowed = false;
 let notification = true;
 
@@ -57,7 +57,14 @@ client.on("message", (message) => {
         allowed = true;
     }
 
-    if (message.content.toLowerCase().includes(rpgPrefix)) {
+    if (message.content.toLowerCase().includes('rpg-')) {
+        commandPrefix = 'rpg-';
+        allowed = true;
+    } else if (message.content.toLowerCase().includes('rp-')) {
+        commandPrefix = 'rp-';
+        allowed = true;
+    } else if (message.content.toLowerCase().includes('r-')) {
+        commandPrefix = 'r-';
         allowed = true;
     }
 
