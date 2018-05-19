@@ -343,6 +343,10 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (command === 'riofriz') {
+            fun.jacky(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
 
         if (command === 'neechan') {
             if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {

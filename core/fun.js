@@ -384,6 +384,36 @@ module.exports = {
         });
     },
 
+    riofriz: function(message) {
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let user = message.author.id;
+        let string;
+
+        let options = {
+            url: 'https://api.tenor.com/v1/random',
+            method: 'GET',
+            headers: headers,
+            qs: {'key': process.env.TENOR, 'q': 'onizuka'}
+        };
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
+                let embed = new Discord.RichEmbed()
+                    .setColor(corevars.randomColor())
+                    .setTitle("GREAT!")
+                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                message.channel.send({embed: embed});
+            } else {
+                console.log(error.message);
+            }
+        });
+    },
+
     neko: function(message) {
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
