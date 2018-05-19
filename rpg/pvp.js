@@ -52,10 +52,11 @@ module.exports = {
                 let pattern = /^[0-9]*$/g;
                 if (args[0].match(pattern)) {
                     let attacker = message.author.id;
+                    let bet = parseInt(args[1]);
                     db.Users.findOne({"id": attacker}, function (err, attacker) {
                         if (attacker) {
                             let attackerOwnedBerries = attacker.claims.berries;
-                            if (attackerOwnedBerries < args[1]) {
+                            if (attackerOwnedBerries < bet) {
                                 message.channel.send('You can\'t afford that much.. Unless you are cheating <:pfft:445023527888748544>');
                             } else {
                                 //BATTLE COMMAND IN HERE.
