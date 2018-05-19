@@ -330,6 +330,8 @@ client.on("message", (message) => {
         if (command === 'niichan') {
             if (message.author.id === '273453235287883776' || message.author.id === '!273453235287883776') {
                 fun.onlyForGrin(message);
+            } else {
+                fun.rickroll(message);
             }
         }
 

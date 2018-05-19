@@ -414,6 +414,13 @@ module.exports = {
         });
     },
 
+    rickroll: function(message) {
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .setImage('https://media.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif');
+        message.channel.send({embed: embed});
+    },
+
     mama: function(message) {
         let embed = new Discord.RichEmbed()
             .setColor(corevars.randomColor())
