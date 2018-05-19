@@ -77,10 +77,10 @@ module.exports = {
                                 let image;
                                 if (randomNumber === 0) {image = 'pirate.jpg'}
                                 else if (randomNumber === 1) {image = 'fishman.png'}
-                                else if (randomNumber === 3) {image = 'bountyhunter.png'}
-                                else if (randomNumber === 4) {image = 'seamonster.png'}
-                                else if (randomNumber === 5) {image = 'marine.png'}
-                                else if (randomNumber === 6) {image = 'foxy.jpg'}
+                                else if (randomNumber === 2) {image = 'bountyhunter.png'}
+                                else if (randomNumber === 3) {image = 'seamonster.png'}
+                                else if (randomNumber === 4) {image = 'marine.png'}
+                                else if (randomNumber === 5) {image = 'foxy.jpg'}
 
                                 if (diceroll > 6) {
                                     let winnings;
