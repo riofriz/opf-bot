@@ -353,14 +353,18 @@ client.on("message", (message) => {
     //RPG COMMANDS
 
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
-        if(command === 'loot') {
-            rpgcore.loot(message, talkedRecently);
-            basiclogics.increaseCommands(message, randomRankIncrease);
-        }
+        if (message.channel.name === 'discord-rpg' || message.channel.name === 'gamers-channel' || message.channel.name === 'bot-spam') {
+            if (command === 'loot') {
+                rpgcore.loot(message, talkedRecently);
+                basiclogics.increaseCommands(message, randomRankIncrease);
+            }
 
-        if(commandWithArgs === 'mobfight') {
-            pvp.mobfight(message, args, talkedRecently);
-            basiclogics.increaseCommands(message, randomRankIncrease);
+            if (commandWithArgs === 'mobfight') {
+                pvp.mobfight(message, args, talkedRecently);
+                basiclogics.increaseCommands(message, randomRankIncrease);
+            }
+        } else {
+            message.channel.send('This command can be used only in the channels: <#391590887475642368> , <#439686510703411201> , <#391584272844324868>');
         }
     }
 
