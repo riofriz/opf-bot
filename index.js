@@ -78,7 +78,7 @@ client.on("message", (message) => {
     const args = message.content.slice(commandPrefix.length).trim().split(/ +/g);
     const rpgargs = message.content.slice(rpgPrefix.length).trim().split(/ +/g);
     const commandWithArgs = args.shift().toLowerCase();
-    const rpgCommandWithArgs = args.shift().toLowerCase();
+    const rpgCommandWithArgs = rpgargs.shift().toLowerCase();
 
     basiclogics.saveusers(message);
     basiclogics.increaseCommands(message, 1);
