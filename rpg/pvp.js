@@ -62,6 +62,7 @@ module.exports = {
                                 //BATTLE COMMAND IN HERE.
                                 let diceroll = Math.random() * 12;
                                 diceroll = Math.floor(diceroll);
+                                if (diceroll === 0) {diceroll = 1}
                                 let embed;
                                 let mobs = [
                                     'a *pirate*',
