@@ -414,6 +414,13 @@ module.exports = {
         });
     },
 
+    mama: function(message) {
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .setImage('http://24.media.tumblr.com/8bcfa67fd56db0085af62e4fb2e08a92/tumblr_msifvprvL61ss73zlo1_500.gif');
+        message.channel.send({embed: embed});
+    },
+
     neko: function(message) {
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',

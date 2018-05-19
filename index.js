@@ -354,6 +354,11 @@ client.on("message", (message) => {
             }
         }
 
+        if(command === 'mama') {
+            fun.mama(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (command === 'bikki') {
             message.channel.send({file: __dirname + '/customemoji/bikki.png'});
             basiclogics.increaseCommands(message, randomRankIncrease);
