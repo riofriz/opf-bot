@@ -364,7 +364,7 @@ client.on("message", (message) => {
                 basiclogics.increaseCommands(message, randomRankIncrease);
             }
         } else {
-            message.channel.send('This command can be used only in the channels: <#391590887475642368> , <#439686510703411201> , <#391584272844324868>');
+            message.channel.send('RPG commands are only available in this channels: <#391590887475642368> , <#439686510703411201> , <#391584272844324868>');
         }
     }
 
