@@ -344,7 +344,7 @@ client.on("message", (message) => {
         }
 
         if (command === 'riofriz') {
-            fun.jacky(message);
+            fun.riofriz(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
