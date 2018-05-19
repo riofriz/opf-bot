@@ -355,7 +355,7 @@ client.on("message", (message) => {
         }
 
         if (command === 'bikki') {
-            message.channel.send('<:BikkiBerserk:254211431610843136>');
+            message.channel.send({file: __dirname + '/customemoji/bikki.png'});
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
