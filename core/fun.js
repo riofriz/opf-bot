@@ -128,7 +128,7 @@ module.exports = {
             "oh my god",
             "luv u",
             "zak",
-            "oh nooooo",
+            "oh noooooo",
             "oh, hi mark"
         ];
         let result;
