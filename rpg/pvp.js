@@ -92,9 +92,10 @@ module.exports = {
                                     else if (diceroll === 4){winnings = (66.664 / 100) * args[0]; sentence = 'You will make a fine pirate one day!'}
                                     else if (diceroll === 5){winnings = (83.33 / 100) * args[0]; sentence = 'Snap! you almost got a perfect there.. keep the good work up!'}
                                     else if (diceroll === 6){winnings = args[0]; sentence = 'PERFECT SCORE! Bonus xp applied!'}
+                                    winnings = Math.floor(winnings);
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
-                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a '+diceroll+'. '+sentence)
+                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a **Black '+diceroll+'**. '+sentence)
                                         .addField('Set reward', 'You have earned '+winnings+'*B*')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
                                         .setColor(corevars.randomColor());
@@ -106,10 +107,11 @@ module.exports = {
                                     else if (diceroll === 10){winnings = (66.664 / 100) * args[0]; newdice = 4; sentence = 'Maybe is time to give up for a while.. you know.. you are wasting money here..'}
                                     else if (diceroll === 11){winnings = (83.33 / 100) * args[0]; newdice = 5; sentence = 'Daaaaamn.. I can see pieces of you here, there and there!'}
                                     else if (diceroll === 12){winnings = args[0]; newdice = 6; sentence = 'SHOCKING. There is literally nothing left of you.'}
+                                    winnings = Math.floor(winnings);
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
-                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a '+newdice+'. '+sentence)
+                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a **Red '+newdice+'**. '+sentence)
                                         .addField('WHAT HAVE YOU DONE!!', 'You just lost '+winnings+'*B*')
                                         .setColor(corevars.randomColor());
                                 }
