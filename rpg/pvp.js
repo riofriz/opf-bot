@@ -84,6 +84,7 @@ module.exports = {
 
                                 let sentence = '';
                                 let winnings;
+                                let winOrLost = '';
 
                                 if (diceroll <= 6) {
                                     if (diceroll === 1){winnings = (16.666 / 100) * args[0]; sentence = 'You almost lost.. This is mostly a consolation price.'}
@@ -96,9 +97,10 @@ module.exports = {
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a **Black '+diceroll+'**. '+sentence)
-                                        .addField('Set reward', 'You have earned '+winnings+'*B*')
+                                        .addField('Set reward', 'You have earned **'+winnings+'***B*')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
                                         .setColor(corevars.randomColor());
+                                    winOrLost = 'win';
                                 } else {
                                     let newdice;
                                     if (diceroll === 7){winnings = (16.666 / 100) * args[0]; newdice = 1; sentence = 'You almost won.. but then again, you didn\'t.'}
@@ -112,8 +114,24 @@ module.exports = {
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
                                         .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a **Red '+newdice+'**. '+sentence)
-                                        .addField('WHAT HAVE YOU DONE!!', 'You just lost '+winnings+'*B*')
+                                        .addField('WHAT HAVE YOU DONE!!', 'You just lost **'+winnings+'***B*')
                                         .setColor(corevars.randomColor());
+                                    winOrLost = 'lost'
+                                }
+                                if (winOrLost === 'win') {
+                                    db.Users.update(
+                                        {"id": message.author.id},
+                                        {$set: {"id": message.author.id, "claims": {"berries" : attackerOwnedBerries+winnings}}},
+                                        {upsert: true},
+                                        function (err) {}
+                                    );
+                                } else {
+                                    db.Users.update(
+                                        {"id": message.author.id},
+                                        {$set: {"id": message.author.id, "claims": {"berries" : attackerOwnedBerries-winnings}}},
+                                        {upsert: true},
+                                        function (err) {}
+                                    );
                                 }
                                 message.channel.send({embed: embed});
                             }

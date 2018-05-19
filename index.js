@@ -340,11 +340,12 @@ client.on("message", (message) => {
 
         if(command === 'loot') {
             rpgcore.loot(message, talkedRecently);
-            //basiclogics.increaseCommands(message, randomRankIncrease);
+            basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if(commandWithArgs === 'mobfight') {
             pvp.mobfight(message, args, talkedRecently);
+            basiclogics.increaseCommands(message, randomRankIncrease);
         }
     }
 
