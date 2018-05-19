@@ -62,7 +62,7 @@ module.exports = {
                                 message.channel.send('You can\'t afford that much.. Unless you are cheating <:pfft:445023527888748544>');
                             } else {
                                 //BATTLE COMMAND IN HERE.
-                                let diceroll = Math.random() * 12;
+                                let diceroll = Math.random() * 9;
                                 diceroll = Math.floor(diceroll);
                                 let embed;
                                 if (diceroll > 6) {
