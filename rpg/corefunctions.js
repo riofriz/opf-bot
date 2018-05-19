@@ -81,9 +81,7 @@ module.exports = {
 
     loot: function(message, talkedRecently) {
         if (message.channel.name === 'discord-rpg' || message.channel.name === 'gamers-channel' || message.channel.name === 'bot-spam') {
-            if (talkedRecently.has(message.author.id)) {
-                return message.channel.send("The higher your rank, the less you'll have to wait until the next loot. \nUntil you are rank 5, i'll send you a message when you can loot again.\nAfter that you are on your own!");
-            } else {
+                //return message.channel.send("The higher your rank, the less you'll have to wait until the next loot. \nUntil you are rank 5, i'll send you a message when you can loot again.\nAfter that you are on your own!");
                 // the user can type the command ... your command code goes here :)
                 try {
                     db.Users.findOne({"id": message.author.id}, function (err, doc) {
@@ -152,19 +150,11 @@ module.exports = {
                             }
                             // Adds the user to the set so that they can't talk for a bit
                             talkedRecently.add(message.author.id);
-                            setTimeout(() => {
-                                // Removes the user from the set after a minute
-                                if (rank <= 5) {
-                                    message.author.send('You can loot again!');
-                                }
-                                talkedRecently.delete(message.author.id);
-                            }, cooldown);
                         }
                     });
                 } catch (e) {
                     console.log(e);
                 }
-            }
         } else {
             message.channel.send('RPG commands are only available in this channels: <#391590887475642368> , <#439686510703411201> , <#391584272844324868>');
         }

@@ -46,9 +46,6 @@ module.exports = {
 
     mobfight: function (message, args, talkedRecently) {
         if (message.channel.name === 'discord-rpg' || message.channel.name === 'gamers-channel' || message.channel.name === 'bot-spam') {
-            if (talkedRecently.has(message.author.id)) {
-                message.channel.send("Need to recharge stamina. Estimated total cooldown: 10s.");
-            } else {
                 if (args[0]) {
                     let pattern = /^[0-9]*$/g;
                     if (args[0].match(pattern)) {
@@ -205,10 +202,6 @@ module.exports = {
                                         message.channel.send({embed: embed});
                                     }
                                     talkedRecently.add(message.author.id);
-                                    setTimeout(() => {
-                                        // Removes the user from the set after a minute
-                                        talkedRecently.delete(message.author.id);
-                                    }, 10000);
                                 }
                             } else {
                                 message.channel.send('Before starting betting, please claim some *B* with ``o-claim``.')
@@ -220,7 +213,6 @@ module.exports = {
                 } else {
                     message.channel.send('You didn\'t specify a price.');
                 }
-            }
         } else {
             message.channel.send('RPG commands are only available in this channels: <#391590887475642368> , <#439686510703411201> , <#391584272844324868>');
         }

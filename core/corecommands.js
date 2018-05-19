@@ -31,20 +31,7 @@ module.exports = {
      * @param message
      */
     helloMessage: function(message) {
-        let blockedArray = [];
-        let index = blockedArray.indexOf(message.author.id);
-        if (index > -1) {
-            message.channel.send('sorry, cooldown.');
-        } else {
-            message.channel.send(corevars.randomHello() + ' ' + message.author);
-        }
-
-        blockedArray.push(message.author.id);
-        setTimeout(function(){
-            if (index > -1) {
-                blockedArray.splice(index, 1);
-            }
-        },5000)
+        message.channel.send(corevars.randomHello()+' '+message.author);
     },
 
     /**

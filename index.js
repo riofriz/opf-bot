@@ -15,6 +15,7 @@ let basiclogics = require('./userfunctions/basics');
 let commandsforberries = require('./userfunctions/commandsforberries');
 let rpgcore = require('./rpg/corefunctions');
 let pvp = require('./rpg/pvp');
+let cooldown = 5000;
 
 // Let's call discord now.
 const client = new Discord.Client();
@@ -24,8 +25,7 @@ let rpgPrefix = '';
 let allowed = false;
 let notification = true;
 
-const talkedRecentlyMob = new Set();
-const talkedRecentlyLoots = new Set();
+const talkedRecently = new Set();
 
 let randomRankIncrease = Math.random() * 7;
 randomRankIncrease = Math.floor(randomRankIncrease);
@@ -375,13 +375,22 @@ client.on("message", (message) => {
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
 
         if (rpgCommand === 'loot') {
-            rpgcore.loot(message, talkedRecentlyLoots);
-            basiclogics.increaseCommands(message, randomRankIncrease);
+            let cooldown = 300000;
+            if (talkedRecently.has(message.author.id)) {
+                message.channel.send("Hey hey hey.. slow down tiger. Estimated total cooldown: 5m.");
+            } else {
+                rpgcore.loot(message, talkedRecently);
+                basiclogics.increaseCommands(message, randomRankIncrease);
+            }
         }
 
         if (rpgCommandWithArgs === 'mobfight') {
-            pvp.mobfight(message, rpgargs, talkedRecentlyMob);
-            basiclogics.increaseCommands(message, randomRankIncrease);
+            if (talkedRecently.has(message.author.id)) {
+                message.channel.send("Need to recharge stamina. Estimated total cooldown: 10s.");
+            } else {
+                pvp.mobfight(message, rpgargs, talkedRecently);
+                basiclogics.increaseCommands(message, randomRankIncrease);
+            }
         }
 
         if(rpgCommand === "help" || message.content === 'r-' || message.content === 'rp-' || message.content === 'rpg-'){
@@ -390,6 +399,11 @@ client.on("message", (message) => {
             corecommands.deleteMessage(message);
         }
     }
+
+    setTimeout(() => {
+        // Removes the user from the set after a minute
+        talkedRecently.delete(message.author.id);
+    }, cooldown);
 
 });
 
