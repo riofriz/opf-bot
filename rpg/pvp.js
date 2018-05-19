@@ -82,31 +82,37 @@ module.exports = {
                                 else if (randomNumber === 4) {image = 'marine.png'}
                                 else if (randomNumber === 5) {image = 'foxy.jpg'}
 
+                                let sentence;
+
                                 if (diceroll > 6) {
                                     let winnings;
-                                    if (diceroll === 1){winnings = (16.666 / 100) * args[0];}
-                                    else if (diceroll === 2){winnings = (33.332 / 100) * args[0];}
-                                    else if (diceroll === 3){winnings = (49.998 / 100) * args[0];}
-                                    else if (diceroll === 4){winnings = (66.664 / 100) * args[0];}
-                                    else if (diceroll === 5){winnings = (83.33 / 100) * args[0];}
-                                    else if (diceroll === 6){winnings = args[0];}
+                                    if (diceroll === 1){winnings = (16.666 / 100) * args[0]; sentence = 'You almost lost.. This is mostly a consolation price.'}
+                                    else if (diceroll === 2){winnings = (33.332 / 100) * args[0]; sentence = 'You can tell you have some experience.. still, close one!'}
+                                    else if (diceroll === 3){winnings = (49.998 / 100) * args[0]; sentence = 'You put up a good fight, boss!'}
+                                    else if (diceroll === 4){winnings = (66.664 / 100) * args[0]; sentence = 'You will make a fine pirate one day!'}
+                                    else if (diceroll === 5){winnings = (83.33 / 100) * args[0]; sentence = 'Snap! you almost got a perfect there.. keep the good work up!'}
+                                    else if (diceroll === 6){winnings = args[0]; sentence = 'PERFECT SCORE! Bonus xp applied!'}
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
-                                        .setTitle('You are now attacking '+mobs[randomNumber]+'.')
+                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a '+diceroll+'. '+sentence)
+                                        .addField('Set reward', 'You have earned '+winnings+'*B*')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
                                         .setColor(corevars.randomColor());
                                 } else {
                                     let winnings;
-                                    if (diceroll === 1){winnings = (16.666 / 100) * args[0];}
-                                    else if (diceroll === 2){winnings = (33.332 / 100) * args[0];}
-                                    else if (diceroll === 3){winnings = (49.998 / 100) * args[0];}
-                                    else if (diceroll === 4){winnings = (66.664 / 100) * args[0];}
-                                    else if (diceroll === 5){winnings = (83.33 / 100) * args[0];}
-                                    else if (diceroll === 6){winnings = args[0];}
+                                    let newdice;
+                                    if (diceroll === 7){winnings = (16.666 / 100) * args[0]; newdice = 1; sentence = 'You almost won.. but then again, you didn\'t.'}
+                                    else if (diceroll === 8){winnings = (33.332 / 100) * args[0]; newdice = 2; sentence = 'I am starting to doubt you have any experience at all'}
+                                    else if (diceroll === 9){winnings = (49.998 / 100) * args[0]; newdice = 3; sentence = 'Wow.. you got slaughtered there!'}
+                                    else if (diceroll === 10){winnings = (66.664 / 100) * args[0]; newdice = 4; sentence = 'Maybe is time to give up for a while.. you know.. you are wasting money here..'}
+                                    else if (diceroll === 11){winnings = (83.33 / 100) * args[0]; newdice = 5; sentence = 'Daaaaamn.. I can see pieces of you here, there and there!'}
+                                    else if (diceroll === 12){winnings = args[0]; newdice = 6; sentence = 'SHOCKING. There is literally nothing left of you.'}
                                     embed = new Discord.RichEmbed()
                                         .setThumbnail(url='http://104.131.78.209/bot/rpg/dices/' + diceroll + '.png')
                                         .setImage('http://104.131.78.209/bot/rpg/mobs/'+image)
                                         .setTitle('You are now attacking '+mobs[randomNumber]+'.')
+                                        .addField('You are now attacking '+mobs[randomNumber]+'.', 'You roll a '+diceroll+'. '+sentence)
+                                        .addField('WHAT HAVE YOU DONE!!', 'You just lost '+winnings+'*B*')
                                         .setColor(corevars.randomColor());
                                 }
                                 message.channel.send({embed: embed});
