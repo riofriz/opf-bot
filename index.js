@@ -353,11 +353,17 @@ client.on("message", (message) => {
             rpgcore.oprank(message, args, client);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
+
+        if (command === 'loot') {
+            rpgcore.loot(message, talkedRecentlyLoots);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
     }
 
     //RPG COMMANDS
 
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
+
         if (rpgCommand === 'loot') {
             rpgcore.loot(message, talkedRecentlyLoots);
             basiclogics.increaseCommands(message, randomRankIncrease);

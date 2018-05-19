@@ -126,7 +126,7 @@ module.exports = {
                                 ownedWood = doc.inventory.wood;
                                 ownedIron = doc.inventory.iron;
                             }
-                            if (randomNumber < 7) {
+                            if (randomNumber <= 6) {
                                 let wheretoloot = somesomething[randomNumber];
                                 db.Users.update(
                                     {"id": message.author.id},
@@ -150,7 +150,7 @@ module.exports = {
                             } else {
                                 message.channel.send('You were searching on an iced lake, you found 1000*B*, 54*wood* and 40*iron* but you slipped and lost it all. <:pfft:445023527888748544>')
                             }
-                            // Adds the user to the set so that they can't talk for a minute
+                            // Adds the user to the set so that they can't talk for a bit
                             talkedRecently.add(message.author.id);
                             setTimeout(() => {
                                 // Removes the user from the set after a minute
