@@ -20,7 +20,8 @@ module.exports = {
             "yohohoho",
             "bwahahaha",
             "gyahahaha",
-            "fuffuffuffu"
+            "fuffuffuffu",
+            "horohorohoro"
         ];
         let result;
         let string;
