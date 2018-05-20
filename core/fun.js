@@ -649,7 +649,7 @@ module.exports = {
                 if (message.isMentioned('425640277794095104')) { // behnam
                     finalResult = 'Nope!! **0%**'
                 }
-                if (message.isMentioned('273453235287883776') && args[1] === 'bikki') {
+                if (message.isMentioned('273453235287883776') && args[2] === 'bikki') {
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
