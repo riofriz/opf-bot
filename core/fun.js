@@ -599,7 +599,7 @@ module.exports = {
 
             if (string.toLowerCase().includes('x')) {
 
-                let users = string.split('x');
+                let users = string.toLowerCase().split('x');
                 let user1 = users[0].trim();
                 let user2 = users[1].trim();
                 let percentage = Math.floor(Math.random() * 104);
