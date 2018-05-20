@@ -133,11 +133,11 @@ client.on("message", (message) => {
         notification = false;
         fun.himark(message)
     }
-    if (message.isMentioned('415230548248887296')) {
-        allowed = true;
-        notification = false;
-        fun.dontTagMe(message);
-    }
+    // if (message.isMentioned('415230548248887296')) {
+    //     allowed = true;
+    //     notification = false;
+    //     fun.dontTagMe(message);
+    // }
 
     // REACTS IF BOT IS TAGGED
     if (message.isMentioned(client.user) && message.author !== client.user) {
