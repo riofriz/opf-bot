@@ -628,6 +628,12 @@ module.exports = {
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) {
                     finalResult = 'I am not powerful enough to mesure such big love!!'
                 }
+                if (message.isMentioned('434009741832880128') && message.isMentioned('118473291504549893')) {
+                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                }
+                if (message.isMentioned('173598881609678848') && message.isMentioned('171344312234278913')) {
+                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                }
 
                 message.channel.send(finalResult);
             } else {
