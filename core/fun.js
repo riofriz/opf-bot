@@ -634,6 +634,9 @@ module.exports = {
                 if (message.isMentioned('173598881609678848') && message.isMentioned('171344312234278913')) {
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
+                if (message.isMentioned('415230548248887296') && message.isMentioned('408255473821679617')) {
+                    finalResult = 'INTIMACY+++++';
+                }
 
                 message.channel.send(finalResult);
             } else {
