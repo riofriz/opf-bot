@@ -404,7 +404,7 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'ranma'}
+            qs: {'key': process.env.TENOR, 'q': 'Urusei%20Lum'}
         };
 
         request(options, function (error, response, body) {
@@ -413,7 +413,7 @@ module.exports = {
                 let randomNumber = Math.floor(Math.random()*json_body['results'].length);
                 let embed = new Discord.RichEmbed()
                     .setColor(corevars.randomColor())
-                    .setTitle("GREAT!")
+                    .setTitle("DAAAAARLIIIIING!")
                     .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
                 message.channel.send({embed: embed});
             } else {
