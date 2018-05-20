@@ -60,7 +60,7 @@ module.exports = {
                         if (rank % 1 === 0 && commands !== 1 && commands !== 0) {
                             let embed = new Discord.RichEmbed()
                                 .setThumbnail(url=user.avatarURL)
-                                .addField('Your rank', Math.floor(rank))
+                                .addField('You ranked up!', '**'+Math.floor(rank)+'**')
                                 .setColor(corevars.randomColor());
                             message.channel.send({embed: embed});
                         }
