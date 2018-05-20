@@ -155,7 +155,7 @@ client.on("message", (message) => {
         }
     }
 
-    laughters.oplaughters(message);
+    laughters.oplaughters(message.content.toLowerCase());
 
     // if (corecommands.tooManyTags(message) >= 10) {
     //     message.channel.send(fun.dontTagMe(message));
