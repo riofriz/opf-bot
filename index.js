@@ -356,6 +356,11 @@ client.on("message", (message) => {
             }
         }
 
+        if (commandWithArgs === 'ship') {
+            fun.ship(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if(command === 'mama') {
             fun.mama(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
