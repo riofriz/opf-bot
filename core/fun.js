@@ -339,7 +339,7 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'oniichan'}
+            qs: {'key': process.env.TENOR, 'q': 'tsundere'}
         };
 
         if (user === '273453235287883776' || user === '!273453235287883776') {
