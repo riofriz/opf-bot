@@ -359,6 +359,11 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (command === 'anja') {
+            fun.anja(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (command === 'riofriz') {
             fun.riofriz(message);
             basiclogics.increaseCommands(message, randomRankIncrease);

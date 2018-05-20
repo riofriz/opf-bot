@@ -45,6 +45,7 @@ module.exports = {
             "neko",
             "jacky",
             "riofriz",
+            "anja",
             "neechan",
             "mama",
             "trap",
