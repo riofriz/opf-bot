@@ -141,9 +141,9 @@ client.on("message", (message) => {
     // }
 
     // REACTS IF BOT IS TAGGED
-    if (message.isMentioned(client.user) && message.author !== client.user) {
-        fun.messageOnQuote(message);
-    }
+    // if (message.isMentioned(client.user) && message.author !== client.user) {
+    //     fun.messageOnQuote(message);
+    // }
 
     if (message.content.endsWith(',')) {
         message.channel.send('Yum!! That comma at the end looks tasty!');
