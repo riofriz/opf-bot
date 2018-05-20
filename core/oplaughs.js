@@ -9,7 +9,7 @@ module.exports = {
      * @param str
      * @returns {*}
      */
-    oplaughters: function (str) {
+    oplaughters: function (str, message) {
         let substrings = [
             "kishishishi",
             "gurararara",
@@ -25,7 +25,7 @@ module.exports = {
             }
         }
         if (str.includes(result)) {
-            str.channel.send({file: __dirname + '/oplaughters/' + result + '.gif'})
+            message.channel.send({file: __dirname + '/oplaughters/' + result + '.gif'})
         }
     }
 };
