@@ -15,6 +15,7 @@ let basiclogics = require('./userfunctions/basics');
 let commandsforberries = require('./userfunctions/commandsforberries');
 let rpgcore = require('./rpg/corefunctions');
 let pvp = require('./rpg/pvp');
+let laughters = require('./core/oplaughs');
 let cooldown = 5000;
 
 // Let's call discord now.
@@ -153,6 +154,8 @@ client.on("message", (message) => {
             message.channel.send('Grammar. Mother fuckin\' GRAMMAR.');
         }
     }
+
+    laughters.oplaughters(message);
 
     // if (corecommands.tooManyTags(message) >= 10) {
     //     message.channel.send(fun.dontTagMe(message));
