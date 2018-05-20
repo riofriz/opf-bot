@@ -16,7 +16,10 @@ module.exports = {
             "shishishishi",
             "shurororo",
             "zeehahaha",
-            "yohohoho"
+            "yohohoho",
+            "bwahahaha",
+            "gyahahaha",
+            "fuffuffuffu"
         ];
         let result;
         let string;
