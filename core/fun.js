@@ -639,7 +639,7 @@ module.exports = {
                 finalResult = 'Affinity: **' + percentage + '%** ' + progressbar;
 
                 if (percentage > 100) {
-                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                    finalResult = 'I am not powerful enough to measure such big love!!'
                 }
 
                 if (percentage === 0) {
