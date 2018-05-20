@@ -646,9 +646,6 @@ module.exports = {
                 if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x vesi
                     finalResult = 'Nope!! **0%**'
                 }
-                if (message.isMentioned('425640277794095104') && message.isMentioned('420614484105887744')) {
-                    finalResult = 'It was for your joy.. My darliing.';
-                }
 
                 message.channel.send(finalResult);
             } else {
