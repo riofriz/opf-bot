@@ -606,7 +606,7 @@ module.exports = {
                 let progressbar;
                 let finalResult;
                 if (percentage <= 10) {
-                    progressbar = '``[=                        >``';
+                    progressbar = '``[=                        ]``';
                 }
                 else if (percentage > 10 && percentage <= 20) {
                     progressbar = '``[===                      ]``';
