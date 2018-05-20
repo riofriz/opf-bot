@@ -14,6 +14,7 @@ module.exports = {
             "gurararara",
             "shishishishi",
             "kishishishi",
+            "dereshishi",
             "shurororo",
             "zeehahaha",
             "yohohoho",
@@ -23,12 +24,16 @@ module.exports = {
         ];
         let result;
         let string;
+        let zeroone = Math.floor(Math.random() * 1.9);
         for (let i = 0; i !== substrings.length; i++) {
             if (str.includes(substrings[i])) {
                 result = substrings[i];
             }
         }
         if (str.includes(result)) {
+            if (result = 'dereshishi') {
+                result = result+zeroone;
+            }
             message.channel.send({file: __dirname + '/oplaughters/' + result + '.gif'})
         }
     }
