@@ -404,7 +404,7 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'mapache'}
+            qs: {'key': process.env.TENOR, 'q': 'racoon'}
         };
 
         request(options, function (error, response, body) {
