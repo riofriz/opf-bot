@@ -629,10 +629,10 @@ module.exports = {
                     finalResult = 'I am not powerful enough to mesure such big love!!'
                 }
                 if (message.isMentioned('434009741832880128') && message.isMentioned('118473291504549893')) {
-                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                    finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
                 if (message.isMentioned('173598881609678848') && message.isMentioned('171344312234278913')) {
-                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                    finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
 
                 message.channel.send(finalResult);
