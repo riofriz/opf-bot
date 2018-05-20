@@ -586,18 +586,18 @@ module.exports = {
             let percentage = Math.floor(Math.random() * 102);
             let progressbar;
             let finalResult;
-            if (percentage <= 10) { progressbar = '|=                   |'; }
-            else if (percentage > 10 && percentage <= 20) { progressbar = '|===                      |'; }
-            else if (percentage > 20 && percentage <= 30) { progressbar = '|======                   |'; }
-            else if (percentage > 30 && percentage <= 40) { progressbar = '|=========                |'; }
-            else if (percentage > 40 && percentage <= 50) { progressbar = '|===========              |'; }
-            else if (percentage > 50 && percentage <= 60) { progressbar = '|===============          |'; }
-            else if (percentage > 60 && percentage <= 70) { progressbar = '|==================       |'; }
-            else if (percentage > 70 && percentage <= 80) { progressbar = '|=====================    |'; }
-            else if (percentage > 80 && percentage <= 90) { progressbar = '|=======================  |'; }
-            else if (percentage > 90 && percentage <= 100) { progressbar = '|=========================|'; }
+            if (percentage <= 10) { progressbar = '``<=                        >'``; }
+            else if (percentage > 10 && percentage <= 20) { progressbar = '``<===                      >``'; }
+            else if (percentage > 20 && percentage <= 30) { progressbar = '``<======                   >``'; }
+            else if (percentage > 30 && percentage <= 40) { progressbar = '``<=========                >``'; }
+            else if (percentage > 40 && percentage <= 50) { progressbar = '``<===========              >``'; }
+            else if (percentage > 50 && percentage <= 60) { progressbar = '``<===============          >``'; }
+            else if (percentage > 60 && percentage <= 70) { progressbar = '``<==================       >``'; }
+            else if (percentage > 70 && percentage <= 80) { progressbar = '``<=====================    >``'; }
+            else if (percentage > 80 && percentage <= 90) { progressbar = '``<=======================  >``'; }
+            else if (percentage > 90 && percentage <= 100) { progressbar = '``<=========================>``'; }
 
-            finalResult = 'Affinity: '+progressbar+' - '+percentage;
+            finalResult = 'Affinity: '+progressbar+' '+percentage;
 
             if (percentage > 100) {finalResult = 'I am not powerful enough to mesure such big love!!'}
 
