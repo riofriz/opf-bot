@@ -619,7 +619,7 @@ module.exports = {
                     progressbar = '``[=========================]``';
                 }
 
-                finalResult = 'Affinity: ' + percentage + '% ' + progressbar;
+                finalResult = 'Affinity: **' + percentage + '% '** + progressbar;
 
                 if (percentage > 100) {
                     finalResult = 'I am not powerful enough to mesure such big love!!'
@@ -634,7 +634,7 @@ module.exports = {
                 message.channel.send('Mmmh.. there was a mistake, the command is: o-ship @user1 x @user2..');
             }
         } else {
-            message.channel.send('Mmmh.. there was a mistake, the command is: o-ship @user1 x @user2..');
+            message.channel.send('Self esteem boost up: affinity **100%** for yourself!! ``[=========================]``');
         }
     },
 
