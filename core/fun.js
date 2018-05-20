@@ -628,25 +628,25 @@ module.exports = {
                     finalResult = 'Nope!! **0%**'
                 }
 
-                if (message.isMentioned('425640277794095104')) {
+                if (message.isMentioned('425640277794095104')) { // behnam
                     finalResult = 'Nope!! **0%**'
                 }
-                if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) {
+                if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
                     finalResult = 'I am not powerful enough to mesure such big love!!'
                 }
-                if (message.isMentioned('434009741832880128') && message.isMentioned('118473291504549893')) {
+                if (message.isMentioned('434009741832880128') && message.isMentioned('118473291504549893')) { //jacky x sam
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
-                if (message.isMentioned('173598881609678848') && message.isMentioned('171344312234278913')) {
+                if (message.isMentioned('173598881609678848') && message.isMentioned('171344312234278913')) { // Thomas x blossom
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
-                if (message.isMentioned('415230548248887296') && message.isMentioned('408255473821679617')) {
+                if (message.isMentioned('415230548248887296') && message.isMentioned('408255473821679617')) { // riofriz x 10th
                     finalResult = 'INTIMACY+++++';
                 }
-                if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) {
+                if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x vesi
                     finalResult = 'Nope!! **0%**'
                 }
-                if (message.isMentioned('420614484105887744') && message.isMentioned('447560682150297601')) {
+                if (message.isMentioned('425640277794095104') && message.isMentioned('420614484105887744')) {
                     finalResult = 'It was for your joy.. My darliing.';
                 }
 
