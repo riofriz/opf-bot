@@ -11,9 +11,9 @@ module.exports = {
      */
     oplaughters: function (str, message) {
         let substrings = [
-            "kishishishi",
             "gurararara",
             "shishishishi",
+            "kishishishi",
             "shurororo",
             "zeehahaha",
             "yohohoho",
