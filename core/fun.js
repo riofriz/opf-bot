@@ -646,6 +646,9 @@ module.exports = {
                 if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) {
                     finalResult = 'Nope!! **0%**'
                 }
+                if (message.isMentioned('420614484105887744') && message.isMentioned('447560682150297601')) {
+                    finalResult = 'It was for your joy.. My darliing.';
+                }
 
                 message.channel.send(finalResult);
             } else {
