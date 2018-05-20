@@ -587,7 +587,7 @@ module.exports = {
         let firstStrip;
         let secondStrip;
         let user;
-        if (args[0] && !args[3]) {
+        if (args[0]) {
             for (let i = 0; i !== args.length; i++) {
                 firstStrip = args[i].replace('<@', '');
                 secondStrip = firstStrip.replace('>', '');
@@ -649,7 +649,10 @@ module.exports = {
                 if (message.isMentioned('425640277794095104')) { // behnam
                     finalResult = 'Nope!! **0%**'
                 }
-                if (message.isMentioned('273453235287883776') && args[2] === 'bikki') {
+                if (message.isMentioned('273453235287883776') && args[2] === 'bikki') { //grin x bikki
+                    finalResult = 'Affinity: **100%** ``[=========================]``';
+                }
+                if (message.isMentioned('273453235287883776') && string.toLowerCase().includes("neko's voice")) { //grin x neko's voice
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
@@ -664,7 +667,7 @@ module.exports = {
                 if (message.isMentioned('415230548248887296') && message.isMentioned('408255473821679617')) { // riofriz x 10th
                     finalResult = 'INTIMACY+++++';
                 }
-                if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x vesi
+                if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x zibo
                     finalResult = 'Nope!! **0%**'
                 }
 
