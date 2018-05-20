@@ -304,6 +304,11 @@ client.on("message", (message) => {
             fun.boobslap(message, args);
         }
 
+        if (command === 'nosebleed') {
+            fun.nosebleed(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if(commandWithArgs === 'prank') {
             fun.prank(message, args);
             corecommands.deleteMessage(message);

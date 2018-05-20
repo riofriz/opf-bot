@@ -47,7 +47,8 @@ module.exports = {
             "riofriz",
             "neechan",
             "mama",
-            "trap"
+            "trap",
+            "nosebleed"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
