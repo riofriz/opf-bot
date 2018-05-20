@@ -274,6 +274,7 @@ client.on("message", (message) => {
         if (commandWithArgs === 'trap') {
             fun.trap(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
+            corecommands.deleteMessage(message);
         }
 
         if (commandWithArgs === 'meme') {
