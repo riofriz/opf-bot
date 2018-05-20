@@ -597,7 +597,7 @@ module.exports = {
             else if (percentage > 80 && percentage <= 90) { progressbar = '``<=======================  >``'; }
             else if (percentage > 90 && percentage <= 100) { progressbar = '``<=========================>``'; }
 
-            finalResult = 'Affinity: '+progressbar+' '+percentage;
+            finalResult = 'Affinity: '+percentage+'% '+progressbar;
 
             if (percentage > 100) {finalResult = 'I am not powerful enough to mesure such big love!!'}
 
