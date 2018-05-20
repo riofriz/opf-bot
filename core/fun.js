@@ -624,7 +624,13 @@ module.exports = {
                 if (percentage > 100) {
                     finalResult = 'I am not powerful enough to mesure such big love!!'
                 }
+                if (percentage > 0) {
+                    finalResult = 'Nope!! **0%**'
+                }
 
+                if (message.isMentioned('425640277794095104')) {
+                    finalResult = 'Nope!! **0%**'
+                }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) {
                     finalResult = 'I am not powerful enough to mesure such big love!!'
                 }
