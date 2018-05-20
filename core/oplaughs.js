@@ -15,7 +15,7 @@ module.exports = {
             "gurararara",
             "shishishishi",
             "shurororo",
-            "zezhahaha",
+            "zeehahaha",
             "yohohoho"
         ];
         let result;
