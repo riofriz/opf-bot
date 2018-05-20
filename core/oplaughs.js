@@ -31,7 +31,7 @@ module.exports = {
             }
         }
         if (str.includes(result)) {
-            if (result = 'dereshishi') {
+            if (result === 'dereshishi') {
                 result = result+zeroone;
             }
             message.channel.send({file: __dirname + '/oplaughters/' + result + '.gif'})
