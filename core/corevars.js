@@ -46,7 +46,8 @@ module.exports = {
             "jacky",
             "riofriz",
             "neechan",
-            "mama"
+            "mama",
+            "trap"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

@@ -271,6 +271,11 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === 'trap') {
+            fun.trap(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (commandWithArgs === 'meme') {
             if (message.channel.name === 'memes') {
                 fun.getMeme(message, args);

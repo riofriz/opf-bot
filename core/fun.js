@@ -225,6 +225,14 @@ module.exports = {
         }
     },
 
+    trap: function(message) {
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .setImage('https://media.giphy.com/media/8McNH1aXZnVyE/giphy.gif')
+            .setFooter(message.author.username);
+        message.channel.send({embed: embed});
+    },
+
     /**
      * @param message
      */
@@ -559,7 +567,16 @@ module.exports = {
             '"...you bring there girl there. \n- **Grin** *May, 2018*"',
             '"you\'re such an inspirement for all curvy headed men ❤ \n- **Mapache** *May, 2018*"',
             '"The fontaine of my Chaud, drink it. \n- **Chaudfontaine** *May, 2018*"',
-            '"chats die when the MVPs leave \n- **Sprasle** *May, 2018*"'
+            '"chats die when the MVPs leave \n- **Sprasle** *May, 2018*"',
+            '"Hard G or soft G?" \n- **X Drake** *May, 2018*',
+            '"I had a crush on the muscle smurf." \n- **Mapache** *Jul 30, 2015*,',
+            '"I forgive but never forget." \n- **Tony** *Jun 18, 2015*',
+            '"Even Usopp is more badass than me." \n- **Cobain**, *2015*',
+            '"Is that really how you\'re supposed to say Memes? Meams" \n- **Tony**, *2015*',
+            '"Everyone has a big dick." \n- **Egameca** *Aug 02, 2015* \n"(slap on your chest) right here, in your heart."\n- **Egameca** *Aug 02, 2015*",',
+            '"Meh meh I thought that was what everyone says." \n- **Tony** *Aug, 2015*',
+
+
         ];
         let randomOne = Math.floor(Math.random() * quotes.length);
         message.channel.send(quotes[randomOne]);
