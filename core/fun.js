@@ -1,5 +1,4 @@
 let corevars = require('./corevars');
-let corecommands = require('./corecommands');
 const Discord = require('discord.js');
 let https = require('https');
 let qs = require('qs');
