@@ -455,10 +455,12 @@ module.exports = {
 
             request(options, function (error, response, body) {
                 if (!error && response.statusCode === 200) {
-                    let json_body = JSON.parse(body);
-                    let randomNumber = Math.floor(Math.random() * json_body['videos'].length);
-                    if (json_body['videos'][randomNumber].hasOwnProperty('video')) {
-                        message.channel.send(json_body['videos'][randomNumber]['video']['url'] + ' <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                    if (json_body['count'] > 0) {
+                        let json_body = JSON.parse(body);
+                        let randomNumber = Math.floor(Math.random() * json_body['videos'].length);
+                        if (json_body['videos'][randomNumber].hasOwnProperty('video')) {
+                            message.channel.send(json_body['videos'][randomNumber]['video']['url'] + ' <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                        }
                     } else {
                         message.channel.send('Whops.. sorry little pervert, couldn\'t find what you were looking for.. <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
                         console.log(json_body['videos'][0]['video']);
