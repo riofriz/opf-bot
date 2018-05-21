@@ -97,6 +97,15 @@ module.exports = {
 
         youtubeSearch(query, options, function(err, results) {
             if(err) return console.log(err);
+
+            try {
+                let json_body = JSON.parse(results);
+                let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                message.channel.send(results[randomNumber]['link']);
+            } catch (e) {
+                message.channel.send('Whops.. Not found..')
+            }
+
             console.log(results);
         });
     },
