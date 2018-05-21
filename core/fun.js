@@ -624,7 +624,6 @@ module.exports = {
         for (let i = 0; i !== customEmojis.length; i++) {
             if (str.includes(':'+customEmojis[i]+':')) {
                 result = customEmojis[i];
-                console.log(result);
             }
         }
         if (result === 'pWdiepie') {
@@ -632,12 +631,14 @@ module.exports = {
         } else {
             extension = '.png';
         }
-        if (str.includes(':'+result+':')) {
+        if (str.includes(':'+result+':') && str.includes('``:'+result+':``')) {
             message.channel.send({file: __dirname + '/customemoji/' + result + extension});
-            message.channel.fetchMessage(message.id)
-                .then(m => {
-                    m.delete();
-                });
+            if (message.author.id !== '441203112460681216') {
+                message.channel.fetchMessage(message.id)
+                    .then(m => {
+                        m.delete();
+                    });
+            }
         }
     },
 
