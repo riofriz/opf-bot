@@ -155,7 +155,7 @@ module.exports = {
             '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
             '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
             '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'};
 
         message.channel.send(string);
     },
