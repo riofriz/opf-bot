@@ -90,7 +90,7 @@ module.exports = {
         query = query.replace('undefined', '');
         query = query.trim();
 
-        console.log(youtubeSearch(youtubeApiKey, query));
+        console.log(youtubeSearch(youtubeApiKey, query, callback));
     },
 
     /**
