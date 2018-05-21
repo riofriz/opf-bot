@@ -90,7 +90,13 @@ module.exports = {
         query = query.replace('undefined', '');
         query = query.trim();
 
-        console.log(youtubeSearch(youtubeApiKey, query, callback));
+        const options = {
+            q:query,
+            part:'snippet',
+            type:'video'
+        };
+
+        console.log(youtubeSearch(youtubeApiKey, options));
     },
 
     /**
