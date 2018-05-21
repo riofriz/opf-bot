@@ -99,7 +99,7 @@ module.exports = {
             if(err) return console.log(err);
 
             try {
-                let json_body = JSON.parse(results);
+                let json_body = JSON.parse(JSON.stringify(results));
                 let randomNumber = Math.floor(Math.random() * json_body['results'].length);
                 message.channel.send(results[randomNumber]['link']);
             } catch (e) {
