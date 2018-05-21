@@ -3,26 +3,11 @@ module.exports = {
      * @param value
      * @returns {boolean}
      */
-    isException: function (value) {
-        const exceptions = [
-            "y'all",
-            "symphogear"
-        ];
-        if (exceptions.indexOf(value) === -1) {
-            return false;
-        } else {
-            return true;
-        }
-    },
-
-    /**
-     * @param value
-     * @returns {boolean}
-     */
     isAvailable: function (value) {
         const commandsArray = [
             'hello',
             'help',
+            '',
             'latest',
             'love',
             'username',
@@ -32,7 +17,39 @@ module.exports = {
             "who's boss",
             "garchu",
             "sgame",
-            "q"
+            "q",
+            "t",
+            "spoiler",
+            "spoilalert",
+            "pokemon",
+            "meme",
+            "yomama",
+            "howlong",
+            "movie",
+            "series",
+            "whops",
+            "grin",
+            "poets",
+            "rank",
+            "claim",
+            "balance",
+            "nick",
+            "oprank",
+            "boobslap",
+            "rhyme",
+            "niichan",
+            "prank",
+            "loot",
+            "mobfight",
+            "lelolelo",
+            "neko",
+            "jacky",
+            "riofriz",
+            "anja",
+            "neechan",
+            "mama",
+            "trap",
+            "nosebleed"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;
@@ -93,6 +110,23 @@ module.exports = {
         let url = 'https://opforum.net/'+section+'/index.rss';
         return url;
     },
+
+    /**
+     * @param sourceArray
+     * @param neededElements
+     * @returns {string}
+     */
+    getMeRandomElements: function(sourceArray, neededElements) {
+        let result;
+        for (let i = 0; i < neededElements; i++) {
+            if (i !== neededElements-1) {
+                result += sourceArray[Math.floor(Math.random()*sourceArray.length)]+', ';
+            } else {
+                result += sourceArray[Math.floor(Math.random()*sourceArray.length)];
+            }
+        }
+        return result;
+    }
 
 
 
