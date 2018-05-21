@@ -103,7 +103,8 @@ module.exports = {
                 let randomNumber = Math.floor(Math.random() * json_body['results'].length);
                 message.channel.send(results[randomNumber]['link']);
             } catch (e) {
-                message.channel.send('Whops.. Not found..')
+                message.channel.send('Whops.. Not found..');
+                console.log(e);
             }
 
             console.log(results);
