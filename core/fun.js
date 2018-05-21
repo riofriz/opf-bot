@@ -463,7 +463,6 @@ module.exports = {
                         }
                     } else {
                         message.channel.send('Whops.. sorry little pervert, couldn\'t find what you were looking for.. <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
-                        console.log(json_body['videos'][0]['video']);
                     }
                 } else {
                     console.log(error.message);
