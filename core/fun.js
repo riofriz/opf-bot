@@ -617,7 +617,7 @@ module.exports = {
             'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
             'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
             'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
-            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie'
+            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot'
         ];
         let result;
         let extension;
@@ -626,7 +626,7 @@ module.exports = {
                 result = customEmojis[i];
             }
         }
-        if (result === 'pWdiepie') {
+        if (result === 'pWdiepie' || result === 'megarot') {
             extension = '.gif';
         } else {
             extension = '.png';
