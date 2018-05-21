@@ -631,7 +631,7 @@ module.exports = {
         } else {
             extension = '.png';
         }
-        if (str.includes(':'+result+':') && str.includes('``:'+result+':``')) {
+        if (str.includes(':'+result+':') && str.includes('``:'+result+':``') === false) {
             message.channel.send({file: __dirname + '/customemoji/' + result + extension});
             if (message.author.id !== '441203112460681216') {
                 message.channel.fetchMessage(message.id)
