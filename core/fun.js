@@ -692,21 +692,26 @@ module.exports = {
             headers: headers,
             qs: {'key': process.env.TENOR, 'q': 'hacker'}
         };
+
+        if (user === '156476072777482240' || user === '!156476072777482240') {
+            string = '01110100 01110010 01110101 01110100 01101000 00100000 01101001 01110011 00101100 00100000 01101001 00100000 01100100 01101111 01101110 00100111 01110100 00100000 01110010 01101111 01111000';
+        } else {
             string = '01110000 01110101 01101101 01110000 01101011 01101001 01101110 00100000 01110010 01101111 01111000 00101110';
-            request(options, function (error, response, body) {
-                if (!error && response.statusCode === 200) {
-                    let json_body = JSON.parse(body);
-                    let randomNumber = Math.floor(Math.random()*json_body['results'].length);
-                    let embed = new Discord.RichEmbed()
-                        .setTitle(string)
-                        .setColor(corevars.randomColor())
-                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
-                    message.channel.send({embed: embed});
-                } else {
-                    console.log(error.message);
-                }
-            });
-        
+        }
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
+                let embed = new Discord.RichEmbed()
+                    .setTitle(string)
+                    .setColor(corevars.randomColor())
+                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                message.channel.send({embed: embed});
+            } else {
+                console.log(error.message);
+            }
+        });
     },
 
     darling: function(message) {
