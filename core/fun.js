@@ -415,7 +415,7 @@ module.exports = {
     gif: function(message, args) {
         let query;
         if (!args[0]) {
-            query = 'rick roll';
+            query = 'rickroll';
         } else {
             for (let i = 0; i !== args.length; i++) {
                 query += args[i] + ' ';
