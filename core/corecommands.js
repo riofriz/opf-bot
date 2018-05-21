@@ -159,7 +159,7 @@ module.exports = {
         for (let i = 0; i !== customEmojis.length; i++) {
             finalString += string[i]+' ';
             if (counter !== customEmojis.length) {finalString += '- '}
-            if (i %3 === 0) {
+            if (i %3 === 0 && i !== 0) {
                 finalString += '\n';
             }
         }
