@@ -447,8 +447,7 @@ module.exports = {
                 qs: {
                     'data': 'redtube.Videos.searchVideos',
                     'output': 'json',
-                    'search': 'hard',
-                    'tags[]': query,
+                    'search': query,
                     'thumbsize': 'medium'
                 }
             };
