@@ -461,6 +461,7 @@ module.exports = {
                         message.channel.send(json_body['videos'][randomNumber]['video']['url'] + ' <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
                     } else {
                         message.channel.send('Whops.. sorry little pervert, couldn\'t find what you were looking for.. <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                        console.log(json_body);
                     }
                 } else {
                     console.log(error.message);
