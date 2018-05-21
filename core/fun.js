@@ -360,15 +360,8 @@ module.exports = {
 
     onlyForGrin: function(message) {
         let query;
-        if (!args[0]) {
-            query = 'anime-blush';
-        } else {
-            for (let i = 0; i !== args.length; i++) {
-                query += args[i] + ' ';
-            }
-            query = query.replace('undefined', '');
-            query = query.trim();
-        }
+        query = 'anime-blush';
+
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
