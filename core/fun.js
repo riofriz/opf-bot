@@ -625,6 +625,7 @@ module.exports = {
         for (let i = 0; i !== customEmojis.length; i++) {
             if (message.includes(':'+customEmojis[i]+':')) {
                 result = customEmojis[i];
+                console.log(result);
             }
         }
         if (result === 'pWdiepie') {
@@ -634,7 +635,7 @@ module.exports = {
         }
         console.log(result);
         if (message.includes(':'+result+':')) {
-            message.channel.send({file: path.resolve(__dirname, '..',+ '/customemoji/' + result + extension)});
+            message.channel.send({file: path.resolve(__dirname + '/customemoji/' + result + extension)});
             console.log(path.resolve(__dirname, '..',+ '/customemoji/' + result + extension));
             corecommands.deleteMessage(message);
         }
