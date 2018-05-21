@@ -696,6 +696,7 @@ module.exports = {
         if (user === '156476072777482240' || user === '!156476072777482240') {
             message.channel.send('This command is too dangerous for you to use.');
         } else {
+            string = '01110000 01110101 01101101 01110000 01101011 01101001 01101110 00100000 01101110 01101111 01110100 00100000 01100001 01101100 01101100 01101111 01110111 01100101 01100100 00101110';
             request(options, function (error, response, body) {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
