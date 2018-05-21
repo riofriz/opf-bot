@@ -618,12 +618,12 @@ module.exports = {
             'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
             'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
             'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
-            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki'
+            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered'
         ];
         let result;
         let extension;
         for (let i = 0; i !== customEmojis.length; i++) {
-            if (message.includes(':'+customEmojis[i]+':')) {
+            if (message.includes(customEmojis[i])) {
                 result = customEmojis[i];
                 console.log(result);
             }
@@ -634,7 +634,7 @@ module.exports = {
             extension = '.png';
         }
         console.log(result);
-        if (message.includes(':'+result+':')) {
+        if (message.includes(result)) {
             message.channel.send({file: path.resolve(__dirname + '/customemoji/' + result + extension)});
             console.log(path.resolve(__dirname, '..',+ '/customemoji/' + result + extension));
             corecommands.deleteMessage(message);
