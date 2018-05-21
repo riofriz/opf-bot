@@ -202,6 +202,10 @@ client.on("message", (message) => {
             //}
         }
 
+        if (command === 'emojihelp') {
+            corecommands.emojiHelp(message);
+        }
+
         if (commandWithArgs === 'spoiler') {
             corecommands.spoilerTag(commandPrefix, message, args);
             corecommands.deleteMessage(message);

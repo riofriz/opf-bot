@@ -135,7 +135,22 @@ module.exports = {
                     console.log(err);
                 });
             });
-    }
+    },
+
+    emojiHelp: function(message) {
+        let customEmojis = [
+            'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
+            'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
+            'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
+            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie'
+        ];
+
+        //{file: __dirname + '/customemoji/pAngel.png'}
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .addField(':pAngel:', {file: __dirname + '/customemoji/pAngel.png'}, true)
+        message.channel.send({embed: embed});
+    },
 
     // tooManyTags: function(message) {
     //     let counter = 0;
