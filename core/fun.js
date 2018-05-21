@@ -327,7 +327,17 @@ module.exports = {
         }
     },
 
-    onlyForGrin: function(message) {
+    onlyForGrin: function(message, args) {
+        let query;
+        if (!args[0]) {
+            query = 'anime-blush';
+        } else {
+            for (let i = 0; i !== args.length; i++) {
+                query += args[i] + ' ';
+            }
+            query = query.replace('undefined', '');
+            query = query.trim();
+        }
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
@@ -339,7 +349,7 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'anime-blush'}
+            qs: {'key': process.env.TENOR, 'q': query}
         };
 
         if (user === '273453235287883776' || user === '!273453235287883776') {
@@ -363,7 +373,17 @@ module.exports = {
         });
     },
 
-    jacky: function(message) {
+    jacky: function(message, args) {
+        let query;
+        if (!args[0]) {
+            query = 'black-butler';
+        } else {
+            for (let i = 0; i !== args.length; i++) {
+                query += args[i] + ' ';
+            }
+            query = query.replace('undefined', '');
+            query = query.trim();
+        }
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
@@ -375,7 +395,7 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'black-butler'}
+            qs: {'key': process.env.TENOR, 'q': query}
         };
 
         request(options, function (error, response, body) {

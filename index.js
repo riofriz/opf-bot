@@ -336,8 +336,8 @@ client.on("message", (message) => {
         }
 
         // USER SPECIFIC
-        if (command === 'grin') {
-            fun.onlyForGrin(message);
+        if (commandWithArgs === 'grin') {
+            fun.onlyForGrin(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
@@ -346,9 +346,9 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (command === 'niichan') {
+        if (commandWithArgs === 'niichan') {
             if (message.author.id === '273453235287883776' || message.author.id === '!273453235287883776') {
-                fun.onlyForGrin(message);
+                fun.onlyForGrin(message, args);
             } else {
                 fun.rickroll(message);
             }
@@ -359,8 +359,8 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (command === 'jacky') {
-            fun.jacky(message);
+        if (commandWithArgs === 'jacky') {
+            fun.jacky(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
@@ -374,9 +374,9 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (command === 'neechan') {
+        if (commandWithArgs === 'neechan') {
             if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {
-                fun.neko(message);
+                fun.neko(message, args);
             }
         }
 
