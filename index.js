@@ -383,8 +383,8 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (command === 'gif') {
-            fun.gif(message);
+        if (commandWithArgs === 'gif') {
+            fun.gif(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
