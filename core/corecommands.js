@@ -158,9 +158,10 @@ module.exports = {
 
         for (let i = 0; i !== customEmojis.length; i++) {
             finalString += string[i]+' ';
-            if (counter !== customEmojis.length) {finalString += '- '}
             if (i %3 === 0 && i !== 0) {
                 finalString += '\n';
+            } else {
+                if (counter !== customEmojis.length) {finalString += '- '}
             }
         }
         message.channel.send(finalString);
