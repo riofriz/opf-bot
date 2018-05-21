@@ -145,19 +145,25 @@ module.exports = {
             'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie'
         ];
 
-        let string =
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
-            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'};
+        let string = [
+            '``:pAngel:``', '``:pAww:``', '``:pBlank:``', '``:pBlind:``', '``:pNoMore:``', '``:pKewl:``', '``:pDuck:``', '``:pDSip:``', '``:pPresent:``', '``:pHappy:``',
+            '``:pCash:``', '``:pMurican:``', '``:pEvil:``', '``:pDerp:``', '``:pDab:``', '``:pNuu:``', '``:pCrayon:``', '``:pAhh:``', '``:pAhhh:``', '``:pWhine:``',
+            '``:pWhut:``', '``:pWoah:``', '``:pSci:``', '``:pDawg:``', '``:pScared:``', '``:pSip:``', '``:pCookie:``', '``:pSleepy:``', '``:pHmm:``', '``:pVampire:``', '``:pepeRope:``',
+            '``:pepeKMS:``', '``:pepeCry:``', '``:pepeAnimu:``', '``:pepeTriggered:``', '``:bikki:``', '``:pWdiepie:``'
+        ];
 
-        message.channel.send(string);
+        let extension;
+        let finalString = '';
+        let counter = 1;
+
+        for (let i = 0; i !== customEmojis.length; i++) {
+            finalString += string[i]+' ';
+            if (counter !== customEmojis.length) {finalString += '- '}
+            if (i %3 === 0) {
+                finalString += '\n';
+            }
+        }
+        message.channel.send(finalString);
     },
 
     // tooManyTags: function(message) {
