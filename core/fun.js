@@ -415,7 +415,7 @@ module.exports = {
     gif: function(message, args) {
         let query;
         if (!args[0]) {
-            query = 'rickroll';
+            query = 'random';
         } else {
             for (let i = 0; i !== args.length; i++) {
                 query += args[i] + ' ';
@@ -437,14 +437,21 @@ module.exports = {
             qs: {'key': process.env.TENOR, 'q': query}
         };
 
+        let tosend;
+
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 try {
                     let json_body = JSON.parse(body);
                     let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    if (query === 'random') {
+                        tosend = 'https://media.giphy.com/media/WCwFvyeb6WJna/giphy.gif';
+                    } else {
+                        tosend = json_body['results'][randomNumber]['media'][0]['gif']['url'];
+                    }
                     let embed = new Discord.RichEmbed()
                         .setColor(corevars.randomColor())
-                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                        .setImage(tosend);
                     message.channel.send({embed: embed});
                 } catch (e) {
                     message.channel.send('Whops.. Not found..')
