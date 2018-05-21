@@ -636,7 +636,10 @@ module.exports = {
         if (str.includes(':'+result+':')) {
             message.channel.send({file: __dirname + '/customemoji/' + result + extension});
             console.log(__dirname + '/customemoji/' + result + extension);
-            corecommands.deleteMessage(message);
+            message.channel.fetchMessage(message.id)
+                .then(m => {
+                    m.delete();
+                });
         }
     },
 
