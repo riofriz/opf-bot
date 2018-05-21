@@ -633,7 +633,7 @@ module.exports = {
             extension = '.png';
         }
         if (message.includes(result)) {
-            message.channel.send({file: path.resolve(__dirname, '..',+ 'customemoji/' + result + extension)});
+            message.channel.send({file: path.resolve(__dirname, '..',+ '/customemoji/' + result + extension)});
             corecommands.deleteMessage(message);
         }
     },
