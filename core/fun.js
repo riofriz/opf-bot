@@ -358,7 +358,7 @@ module.exports = {
         }
     },
 
-    onlyForGrin: function(message, args) {
+    onlyForGrin: function(message) {
         let query;
         if (!args[0]) {
             query = 'anime-blush';
@@ -405,6 +405,49 @@ module.exports = {
                     } else {
                         message.channel.send('Whops.. Not found..')
                     }
+                }
+            } else {
+                console.log(error.message);
+            }
+        });
+    },
+
+    gif: function(message, args) {
+        let query;
+        if (!args[0]) {
+            query = 'rick roll';
+        } else {
+            for (let i = 0; i !== args.length; i++) {
+                query += args[i] + ' ';
+            }
+            query = query.replace('undefined', '');
+            query = query.trim();
+        }
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let user = message.author.id;
+        let string;
+
+        let options = {
+            url: 'https://api.tenor.com/v1/random',
+            method: 'GET',
+            headers: headers,
+            qs: {'key': process.env.TENOR, 'q': query}
+        };
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                try {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                    message.channel.send({embed: embed});
+                } catch (e) {
+                    message.channel.send('Whops.. Not found..')
                 }
             } else {
                 console.log(error.message);

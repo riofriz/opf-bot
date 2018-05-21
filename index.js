@@ -383,6 +383,11 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (command === 'gif') {
+            fun.gif(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (command === 'riofriz') {
             fun.riofriz(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
