@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 let https = require('https');
 let qs = require('qs');
 let request = require('request');
+const youtubeSearch = require('youtube-api-v3-search');
+let youtubeApiKey = process.env.YOUTUBE
 
 module.exports = {
 
@@ -78,6 +80,17 @@ module.exports = {
             .then(m => {
                 m.delete();
             });
+    },
+
+    yt: function(message, args) {
+        let query;
+        for (let i = 0; i !== args.length; i++) {
+            query += args[i] + ' ';
+        }
+        query = query.replace('undefined', '');
+        query = query.trim();
+
+        console.log(youtubeSearch(youtubeApiKey, query));
     },
 
     /**
@@ -579,6 +592,46 @@ module.exports = {
             .setColor(corevars.randomColor())
             .setImage('http://24.media.tumblr.com/8bcfa67fd56db0085af62e4fb2e08a92/tumblr_msifvprvL61ss73zlo1_500.gif');
         message.channel.send({embed: embed});
+    },
+    
+    customEmojis: function(message) {
+        let customEmojis = [
+            'pAngel',
+            'pAww',
+            'pBlank',
+            'pBlind',
+            'pNoMore',
+            'pKewl',
+            'pDuck',
+            'pDSip',
+            'pPresent',
+            'pHappy',
+            'pCash',
+            'pMurican',
+            'pEvil',
+            'pDerp',
+            'pDab',
+            'pNuu',
+            'pCrayon',
+            'pAhh',
+            'pAhhh',
+            'pWhine',
+            'pWhut',
+            'pWoah',
+            'pSci',
+            'pDawg',
+            'pScared',
+            'pSip',
+            'pCookie',
+            'pSleepy',
+            'pHmm',
+            'pVampire',
+            'pepeRope',
+            'pepeKMS',
+            'pepeCry',
+            'pepeAnimu',
+            'pepeTriggered'
+        ];
     },
 
     neko: function(message) {

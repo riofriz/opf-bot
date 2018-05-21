@@ -335,6 +335,10 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if(commandWithArgs === 'yt') {
+            fun.yt(message, args);
+        }
+
         // USER SPECIFIC
         if (commandWithArgs === 'grin') {
             fun.onlyForGrin(message, args);
