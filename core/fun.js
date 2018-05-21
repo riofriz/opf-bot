@@ -84,11 +84,15 @@ module.exports = {
 
     yt: function(message, args) {
         let query;
-        for (let i = 0; i !== args.length; i++) {
-            query += args[i] + ' ';
+        if(args[0]) {
+            for (let i = 0; i !== args.length; i++) {
+                query += args[i] + ' ';
+            }
+            query = query.replace('undefined', '');
+            query = query.trim();
+        } else {
+            query = 'teh_pwnerer - teh noob song (PurePwnage.com)';
         }
-        query = query.replace('undefined', '');
-        query = query.trim();
 
         let options = {
             maxResults: 10,
