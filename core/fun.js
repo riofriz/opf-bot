@@ -635,8 +635,8 @@ module.exports = {
         }
         console.log(result);
         if (str.includes(':'+result+':')) {
-            message.channel.send({file: path.resolve(__dirname + '/customemoji/' + result + extension)});
-            console.log(path.resolve(__dirname, '..',+ '/customemoji/' + result + extension));
+            message.channel.send({file: __dirname + '/customemoji/' + result + extension});
+            console.log(__dirname + '/customemoji/' + result + extension);
             corecommands.deleteMessage(message);
         }
     },
