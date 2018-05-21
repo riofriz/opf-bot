@@ -429,17 +429,16 @@ module.exports = {
                 query = 'hentai';
             } else {
                 for (let i = 0; i !== args.length; i++) {
-                    string += args[i] + ' ';
+                    query += args[i] + ' ';
                 }
-                query = string.replace('undefined', '');
-                query = string.trim();
+                query = query.replace('undefined', '');
+                query = query.trim();
             }
+            let user = message.author.id;
+            let string;
             let headers = {
                 'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
             };
-
-            let user = message.author.id;
-            let string;
 
             let options = {
                 url: 'https://api.redtube.com/',
