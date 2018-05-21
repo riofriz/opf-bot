@@ -623,7 +623,7 @@ module.exports = {
         let result;
         let extension;
         for (let i = 0; i !== customEmojis.length; i++) {
-            if (str.includes(':'+customEmojis[i]+':')) {
+            if (message.includes(':'+customEmojis[i]+':')) {
                 result = substrings[i];
             }
         }
