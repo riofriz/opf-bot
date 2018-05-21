@@ -624,7 +624,7 @@ module.exports = {
         let extension;
         for (let i = 0; i !== customEmojis.length; i++) {
             if (message.includes(':'+customEmojis[i]+':')) {
-                result = substrings[i];
+                result = customEmojis[i];
             }
         }
         if (result === 'pWdiepie') {
