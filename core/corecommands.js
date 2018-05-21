@@ -145,11 +145,19 @@ module.exports = {
             'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie'
         ];
 
-        //{file: __dirname + '/customemoji/pAngel.png'}
-        let embed = new Discord.RichEmbed()
-            .setColor(corevars.randomColor())
-            .addField(':pAngel:', {file: __dirname + '/customemoji/pAngel.png'}, true)
-        message.channel.send({embed: embed});
+        let string =
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+            '``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+' ``:pAngel:`` => '+{file: __dirname + '/customemoji/pAngel.png'}+'\n'+
+
+        message.channel.send(string);
     },
 
     // tooManyTags: function(message) {
