@@ -866,6 +866,9 @@ module.exports = {
                 if (message.isMentioned('273453235287883776') && string.toLowerCase().includes("neko's voice")) { //grin x neko's voice
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
+                if (message.isMentioned('341465382655361035') && string.toLowerCase().includes("grin's voice")) { //neko x grin's voice
+                    finalResult = 'Affinity: **100%** ``[=========================]``';
+                }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
                     finalResult = 'I am not powerful enough to mesure such big love!!'
                 }
