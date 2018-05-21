@@ -614,42 +614,27 @@ module.exports = {
     
     customEmojis: function(message) {
         let customEmojis = [
-            'pAngel',
-            'pAww',
-            'pBlank',
-            'pBlind',
-            'pNoMore',
-            'pKewl',
-            'pDuck',
-            'pDSip',
-            'pPresent',
-            'pHappy',
-            'pCash',
-            'pMurican',
-            'pEvil',
-            'pDerp',
-            'pDab',
-            'pNuu',
-            'pCrayon',
-            'pAhh',
-            'pAhhh',
-            'pWhine',
-            'pWhut',
-            'pWoah',
-            'pSci',
-            'pDawg',
-            'pScared',
-            'pSip',
-            'pCookie',
-            'pSleepy',
-            'pHmm',
-            'pVampire',
-            'pepeRope',
-            'pepeKMS',
-            'pepeCry',
-            'pepeAnimu',
-            'pepeTriggered'
+            'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
+            'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
+            'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
+            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki'
         ];
+        let result;
+        let extension;
+        for (let i = 0; i !== customEmojis.length; i++) {
+            if (str.includes(':'+customEmojis[i]+':')) {
+                result = substrings[i];
+            }
+        }
+        if (result === 'pWdiepie') {
+            extension = '.gif';
+        } else {
+            extension = '.png';
+        }
+        if (str.includes(result)) {
+            message.channel.send({file: path.resolve(__dirname, '..',+ 'customemoji/' + result + extension)});
+            corecommands.deleteMessage(message);
+        }
     },
 
     neko: function(message) {
