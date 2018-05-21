@@ -421,6 +421,57 @@ module.exports = {
         });
     },
 
+    chaud: function(message, args) {
+        //https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=hard&tags[]=hentai&thumbsize=all
+        if (message.channel.name === 'nsfw') {
+            let query;
+            if (!args[0]) {
+                query = 'hentai';
+            } else {
+                for (let i = 0; i !== args.length; i++) {
+                    string += args[i] + ' ';
+                }
+                query = string.replace('undefined', '');
+                query = string.trim();
+            }
+            let headers = {
+                'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+            };
+
+            let user = message.author.id;
+            let string;
+
+            let options = {
+                url: 'https://api.redtube.com/',
+                method: 'GET',
+                headers: headers,
+                qs: {
+                    'data': 'redtube.Videos.searchVideos',
+                    'output': 'json',
+                    'search': 'hard',
+                    'tags[]': query,
+                    'thumbsize': 'medium'
+                }
+            };
+
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    if (json_body['videos'].hasOwnProperty('video')) {
+                        message.channel.send(json_body['videos'][randomNumber]['video']['url'] + ' <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                    } else {
+                        message.channel.send('Whops.. sorry little pervert, couldn\'t find what you were looking for.. <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                    }
+                } else {
+                    console.log(error.message);
+                }
+            });
+        } else {
+            message.channel.send('You wish.. This can only work in <#391591250492391435> <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+        }
+    },
+
     riofriz: function(message) {
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
