@@ -3,8 +3,8 @@ const Discord = require('discord.js');
 let https = require('https');
 let qs = require('qs');
 let request = require('request');
-const youtubeSearch = require('youtube-api-v3-search');
-let youtubeApiKey = process.env.YOUTUBE
+const youtubeSearch = require('youtube-search');
+let youtubeApiKey = process.env.YOUTUBE;
 
 module.exports = {
 
@@ -90,13 +90,15 @@ module.exports = {
         query = query.replace('undefined', '');
         query = query.trim();
 
-        const options = {
-            q:query,
-            part:'snippet',
-            type:'video'
+        let options = {
+            maxResults: 10,
+            key: youtubeApiKey
         };
 
-        console.log(youtubeSearch(youtubeApiKey, options));
+        youtubeSearch(query, options, function(err, results) {
+            if(err) return console.log(err);
+            console.log(results);
+        });
     },
 
     /**
