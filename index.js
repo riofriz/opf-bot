@@ -363,6 +363,11 @@ client.on("message", (message) => {
             }
         }
 
+        if (command === 'pumpkin') {
+            fun.pumpkin(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (command === 'neko') {
             fun.neko(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
