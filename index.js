@@ -374,9 +374,9 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (commandWithArgs === 'neechan') {
+        if (command === 'neechan') {
             if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {
-                fun.neko(message, args);
+                fun.neko(message);
             }
         }
 

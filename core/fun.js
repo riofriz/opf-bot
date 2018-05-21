@@ -360,13 +360,21 @@ module.exports = {
 
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                let json_body = JSON.parse(body);
-                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
-                let embed = new Discord.RichEmbed()
-                    .setTitle(string)
-                    .setColor(corevars.randomColor())
-                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
-                message.channel.send({embed: embed});
+                try {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle(string)
+                        .setColor(corevars.randomColor())
+                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                    message.channel.send({embed: embed});
+                } catch (e) {
+                    if (user === '273453235287883776' || user === '!273453235287883776') {
+                        message.channel.send('Sorry oniichan, i couldn\'t find what you were looking for.. <:tsun:432123531443175425>');
+                    } else {
+                        message.channel.send('Whops.. Not found..')
+                    }
+                }
             } else {
                 console.log(error.message);
             }
@@ -400,12 +408,20 @@ module.exports = {
 
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                let json_body = JSON.parse(body);
-                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
-                let embed = new Discord.RichEmbed()
-                    .setColor(corevars.randomColor())
-                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
-                message.channel.send({embed: embed});
+                try {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                    message.channel.send({embed: embed});
+                } catch (e) {
+                    if (user === '171344312234278913' || user === '!171344312234278913') {
+                        message.channel.send('Sorry neechan, i couldn\'t find what you were looking for.. <:tsun:432123531443175425>');
+                    } else {
+                        message.channel.send('Whops.. Not found..')
+                    }
+                }
             } else {
                 console.log(error.message);
             }
