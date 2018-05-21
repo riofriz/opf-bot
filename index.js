@@ -341,6 +341,11 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === 'chaud') {
+            fun.chaud(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (command === 'niichan') {
             if (message.author.id === '273453235287883776' || message.author.id === '!273453235287883776') {
                 fun.onlyForGrin(message);
