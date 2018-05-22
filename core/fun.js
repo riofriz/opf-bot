@@ -1000,7 +1000,7 @@ module.exports = {
         let string;
 
         if (args[0]) {
-            string = '<@'+message.author.id+'> boob slapped '+args[0];
+            string = '<@'+message.author.id+'> boob hugged '+args[0];
         } else {
             string = 'SELF BOOB HUG INCOMING!';
         }
