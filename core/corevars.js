@@ -49,7 +49,10 @@ module.exports = {
             "neechan",
             "mama",
             "trap",
-            "nosebleed"
+            "nosebleed",
+            "gif",
+            "yt",
+            "boobhug"
         ];
         if (commandsArray.indexOf(value) === -1) {
             return false;

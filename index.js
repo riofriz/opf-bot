@@ -307,6 +307,12 @@ client.on("message", (message) => {
 
         if (commandWithArgs === 'boobslap') {
             fun.boobslap(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (commandWithArgs === 'boobhug') {
+            fun.boobhug(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if (command === 'nosebleed') {

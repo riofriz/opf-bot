@@ -995,6 +995,25 @@ module.exports = {
         message.channel.send({embed: embed});
     },
 
+    boobhug: function(message, args) {
+        let image;
+        let string;
+
+        if (args[0]) {
+            string = '<@'+message.author.id+'> boob slapped '+args[0];
+        } else {
+            string = 'SELF BOOB HUG INCOMING!';
+        }
+
+        image = 'https://cdn.weeb.sh/images/rk6PsvOUM.gif';
+
+        let embed = new Discord.RichEmbed()
+            .setImage(image)
+            .setColor(corevars.randomColor());
+        message.channel.send(string);
+        message.channel.send({embed: embed});
+    },
+
     rhyme: function(message, args) {
         let string;
         if (args[0]) {
