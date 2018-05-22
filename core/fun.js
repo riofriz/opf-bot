@@ -802,19 +802,20 @@ module.exports = {
         let riofriz = '408255473821679617';
         let grin = '273453235287883776';
         console.log(message.content);
+        let string = 'Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it.';
         if (message.author.id === grin) {
             if (message.content.toLowerCase().includes('<@408255473821679617>') || message.content.toLowerCase().includes('<@!408255473821679617>')) {
-                message.channel.send('He totally luv u back <3');
+                string = 'He totally luv u back <3';
             } else {
-                message.channel.send('I\'ll allow it only if is for riofriz.');
+                string = 'I\'ll allow it only if is for riofriz.';
             }
-        } else if (message.author.id === riofriz) {
-            if (message.content.toLowerCase().includes('<@273453235287883776>') || message.content.toLowerCase().includes('<@!273453235287883776>')) {
-                message.channel.send('awwwwwww so damn sweet.');
-            }
-        } else {
-            message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
         }
+        if (message.author.id === riofriz) {
+            if (message.content.toLowerCase().includes('<@273453235287883776>') || message.content.toLowerCase().includes('<@!273453235287883776>')) {
+                string = 'awwwwwww so damn sweet.';
+            }
+        }
+        message.channel.send(string);
     },
 
     zak: function(message) {
