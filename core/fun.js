@@ -801,19 +801,19 @@ module.exports = {
     luvU: function(message) {
         let riofriz = '408255473821679617';
         let grin = '273453235287883776';
-        console.log(message.content);
-        let string = 'Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it.';
+        let string;
         if (message.author.id === grin) {
-            if (message.content.toLowerCase().includes('<@408255473821679617>') || message.content.toLowerCase().includes('<@!408255473821679617>')) {
+            if (message.isMentioned('408255473821679617')) {
                 string = 'He totally luv u back <3';
             } else {
                 string = 'I\'ll allow it only if is for riofriz.';
             }
-        }
-        if (message.author.id === riofriz) {
-            if (message.content.toLowerCase().includes('<@273453235287883776>') || message.content.toLowerCase().includes('<@!273453235287883776>')) {
+        } else if (message.author.id === riofriz) {
+            if (message.isMentioned('<@273453235287883776>')) {
                 string = 'awwwwwww so damn sweet.';
             }
+        } else {
+            string = 'Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it.';
         }
         message.channel.send(string);
     },
