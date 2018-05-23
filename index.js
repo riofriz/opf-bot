@@ -137,6 +137,9 @@ client.on("message", (message) => {
         notification = false;
         fun.himark(message)
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "DUN DUN DUUUN!") {
+        message.channel.send('https://www.youtube.com/watch?v=cphNpqKpKc4');
+    }
     // if (message.isMentioned('415230548248887296')) {
     //     allowed = true;
     //     notification = false;
