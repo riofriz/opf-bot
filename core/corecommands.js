@@ -138,7 +138,7 @@ module.exports = {
     },
 
     ping: function(message, client) {
-        message.channel.send('Pong! 'client.ping + " ms");
+        message.channel.send('Pong! '+client.ping + ' ms');
     },
 
     emojiHelp: function(message) {
