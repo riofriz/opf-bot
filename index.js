@@ -245,6 +245,12 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === "phrasing") {
+            fun.phrasing(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+            corecommands.deleteMessage(message);
+        }
+
         if (commandWithArgs === "yomama") {
             yomomma.yomama(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);

@@ -111,6 +111,15 @@ module.exports = {
         });
     },
 
+    phrasing: function(message) {
+        let gif = 'https://i.imgur.com/i2yYun3.gif';
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .setImage('https://i.imgur.com/i2yYun3.gif');
+        message.channel.send({embed: embed});
+    }
+
+
     /**
      * @param message
      */
