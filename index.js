@@ -470,13 +470,13 @@ client.on("message", (message) => {
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
 
         if (rpgCommand === 'loot') {
-            cooldown = 300000;
-            if (talkedRecently.has(message.author.id)) {
-                message.channel.send("Hey hey hey.. slow down tiger. Estimated total cooldown: 5m.");
-            } else {
+            // cooldown = 300000;
+            // if (talkedRecently.has(message.author.id)) {
+            //     message.channel.send("Hey hey hey.. slow down tiger. Estimated total cooldown: 5m.");
+            // } else {
                 rpgcore.loot(message, talkedRecently);
                 basiclogics.increaseCommands(message, randomRankIncrease);
-            }
+            // }
         }
 
         if (rpgCommandWithArgs === 'mobfight') {
