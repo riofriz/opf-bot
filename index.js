@@ -182,6 +182,10 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if(command === "ping") {
+            corecommands.ping(message);
+        }
+
         if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-' || message.content === '+'){
             corecommands.help(commandPrefix, message);
             corecommands.deleteMessage(message);
