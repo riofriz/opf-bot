@@ -139,7 +139,7 @@ module.exports = {
 
     ping: function(message) {
             message.channel.send('Pong! '+new Date().getTime() - message.createdTimestamp + " ms");
-    }
+    },
 
     emojiHelp: function(message) {
         let customEmojis = [
