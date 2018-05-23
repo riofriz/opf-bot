@@ -101,6 +101,9 @@ client.on("message", (message) => {
             .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
         message.channel.send({embed: embed});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "congratulations") {
+        message.channel.send('https://www.youtube.com/watch?v=wDajqW561KM');
+    }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
         fun.darling(message);
         basiclogics.increaseCommands(message, randomRankIncrease);

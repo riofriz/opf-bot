@@ -168,7 +168,8 @@ module.exports = {
             "luv u",
             "zak",
             "oh noooooo",
-            "oh, hi mark"
+            "oh, hi mark",
+            "congratulations"
         ];
         let result;
         let string;
