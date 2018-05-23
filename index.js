@@ -183,7 +183,7 @@ client.on("message", (message) => {
         }
 
         if(command === "ping") {
-            corecommands.ping(message);
+            corecommands.ping(message, client);
         }
 
         if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-' || message.content === '+'){

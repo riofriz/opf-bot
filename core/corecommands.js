@@ -137,8 +137,8 @@ module.exports = {
             });
     },
 
-    ping: function(message) {
-            message.channel.send('Pong! '+new Date().getTime() - message.createdTimestamp + " ms");
+    ping: function(message, client) {
+        message.channel.send('Pong! 'client.ping + " ms");
     },
 
     emojiHelp: function(message) {
