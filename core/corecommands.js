@@ -148,7 +148,7 @@ module.exports = {
             'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
             'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo', 'asd',
             'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
-            'pepeSmirk', 'tearsofjoy', 'fingerheart'
+            'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
         ];
 
         let string = [
@@ -157,7 +157,7 @@ module.exports = {
             '``:pWhut:``', '``:pWoah:``', '``:pSci:``', '``:pDawg:``', '``:pScared:``', '``:pSip:``', '``:pCookie:``', '``:pSleepy:``', '``:pHmm:``', '``:pVampire:``', '``:pepeRope:``',
             '``:pepeKMS:``', '``:pepeCry:``', '``:pepeAnimu:``', '``:pepeTriggered:``', '``:bikki:``', '``:pWdiepie:``', '``:megarot:``', '``:gtfo:``', '``:gtfo1:``', '``:asd:``',
             '``:pBooli:``', '``:bunbun:``', '``:dead:``', '``:thinkk:``', '``:benice:``', '``:pCop:``', '``:doffy:``', '``:pepeOh:``', '``:pepeSad:``', '``:pepeWhy:``',
-            '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``'
+            '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``', '``:blob:``'
         ];
 
         let extension;
@@ -166,10 +166,10 @@ module.exports = {
 
         for (let i = 0; i !== customEmojis.length; i++) {
             finalString += string[i]+' ';
-            if (i %3 === 0 && i !== 0) {
+            if (i %4 === 0 && i !== 0) {
                 finalString += '\n';
             } else {
-                if (counter !== customEmojis.length) {finalString += '- '}
+                if (counter !== customEmojis.length) {finalString += '- ';}
             }
         }
         message.channel.send(finalString);

@@ -672,7 +672,7 @@ module.exports = {
             'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
             'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo1',
             'asd', 'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
-            'pepeSmirk', 'tearsofjoy', 'fingerheart'
+            'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
         ];
         let result;
         let extension;
@@ -681,7 +681,7 @@ module.exports = {
                 result = customEmojis[i];
             }
         }
-        if (result === 'pWdiepie' || result === 'megarot' || result === 'asd') {
+        if (result === 'pWdiepie' || result === 'megarot' || result === 'asd' || result === 'blob') {
             extension = '.gif';
         } else {
             extension = '.png';
