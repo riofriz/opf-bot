@@ -1048,7 +1048,11 @@ module.exports = {
         let randomNumber = Math.floor(Math.random()*yomamma.length);
 
         if (typeof args[0] !== 'undefined') {
-            message.channel.send(args[0]+', '+yomamma[randomNumber]);
+            if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
+                message.channel.send('You mama would be super proud of your love for her <@273453235287883776>');
+            } else {
+                message.channel.send(args[0] + ', ' + yomamma[randomNumber]);
+            }
         } else {
             message.channel.send(yomamma[randomNumber]);
         }

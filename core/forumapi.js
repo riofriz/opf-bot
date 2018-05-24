@@ -117,7 +117,11 @@ module.exports = {
                     if (doc) {
                         opfusername = doc.opfusername;
                         if (typeof opfusername !== 'undefined' && opfusername !== '') {
-                            message.channel.send('This user is *'+opfusername+'* on the forum.');
+                            if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
+                                message.channel.send('A person who really, really loves you! <:pfftbot:449189450094870530>');
+                            } else {
+                                message.channel.send('This user is *' + opfusername + '* on the forum.');
+                            }
                         } else {
                             message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(');
                         }

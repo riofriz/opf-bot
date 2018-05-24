@@ -948,8 +948,12 @@ module.exports = {
                     finalResult = 'Nope!! **0%**'
                 }
 
-                if (message.isMentioned('273453235287883776')) {
+                if (message.isMentioned('273453235287883776')) { //grin dahling
                     finalResult = 'Affinity: DAHLING';
+                }
+
+                if(message.isMentioned('273453235287883776') && message.isMentioned('415230548248887296')) { //grin x 10th
+                    finalResult = 'https://orig00.deviantart.net/31de/f/2012/108/1/a/makorra_ship_by_animewaterfall-d4wnoj7.gif';
                 }
 
                 if (message.isMentioned('273453235287883776') && args[2] === 'bikki') { //grin x bikki
@@ -974,7 +978,7 @@ module.exports = {
                     finalResult = 'INTIMACY+++++';
                 }
                 if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x zibo
-                    finalResult = 'Nope!! **0%**'
+                    finalResult = 'https://media3.giphy.com/media/l2Je3n9VXC8z3baTe/giphy.gif'
                 }
 
                 message.channel.send(finalResult);
@@ -1101,7 +1105,11 @@ module.exports = {
         }
         let randomNumber = Math.floor(Math.random()*channels.length);
         try {
-            message.guild.channels.find('name', channels[randomNumber]).send('<@' + user + '> <:pfft:445023527888748544>')
+            if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
+                message.guild.channels.find('name', channels[randomNumber]).send('I love you, <@' + user + '> - *grin*')
+            } else {
+                message.guild.channels.find('name', channels[randomNumber]).send('<@' + user + '> <:pfft:445023527888748544>')
+            }
         }
         catch (err) {
             console.log(err);
