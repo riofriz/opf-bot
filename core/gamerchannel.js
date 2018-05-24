@@ -114,7 +114,7 @@ module.exports = {
                         }
                         let randomMoves = corevars.getMeRandomElements(moves, 5).replace('undefined', '');
 
-                        if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776') && args[0] === '10') {
+                        if (message.author.id === '273453235287883776' && args[0] === '10') {
                             message.channel.send('10th is a Poke-Cookie who loves you!')
                         } else {
                             let embed = new Discord.RichEmbed()
