@@ -21,7 +21,8 @@ module.exports = {
             "bwahahaha",
             "gyahahaha",
             "fuffuffuffu",
-            "horohorohoro"
+            "horohorohoro",
+            "supeeeeee"
         ];
         let result;
         let string;
