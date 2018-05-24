@@ -1104,12 +1104,16 @@ module.exports = {
             user = user.trim();
         }
         let randomNumber = Math.floor(Math.random()*channels.length);
+        let prankMessage;
         try {
             if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
-                message.guild.channels.find('name', channels[randomNumber]).send('I love you, <@' + user + '> - *grin*')
+                prankMessage = 'I love you, <@' + user + '> - *grin*';
+            } else if ((message.isMentioned('273453235287883776') && message.author.id === '415230548248887296')) {
+                prankMessage = 'U cute, <@' + user + '> - *10th*';
             } else {
-                message.guild.channels.find('name', channels[randomNumber]).send('<@' + user + '> <:pfft:445023527888748544>')
+                prankMessage = '<@' + user + '> <:pfftbot:449189450094870530> <:pfft:445023527888748544>';
             }
+            message.guild.channels.find('name', channels[randomNumber]).send(prankMessage)
         }
         catch (err) {
             console.log(err);
