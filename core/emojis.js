@@ -72,6 +72,9 @@ module.exports = {
             message.channel.send('I can\'t create an empty emoji..');
         } else {
             try {
+                let id = message.author.id;
+                let filter = m => id === m.author.id;
+
                 let options;
                 let query;
 
@@ -83,35 +86,57 @@ module.exports = {
                 query = query.replace('undefined', '').trim();
                 let argsArray = query.split('>');
 
-                function ext(url) {
-                   return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).split('#')[0].substr(url.lastIndexOf("."))
-                }
-                const downloadOptions = {
-                    url: argsArray[1],
-                    dest: __dirname+'/customemoji/'+argsArray[0].trim()+ext(argsArray[1])
-                };
-                async function downloadIMG() {
-                    try {
-                        const { filename, image } = await download.image(downloadOptions);
-                        console.log(filename) // => /path/to/dest/image.jpg
-                    } catch (e) {
-                        throw e
-                    }
-                }
-                downloadIMG();
+                message.channel.send('Are you sure you want to add ``:'+argsArray[0]+':`` with image: ``'+argsArray[1]+'`` ?');
 
-                db.Emojis.findOne({"name": argsArray[0].trim()}, function (err, doc) {
-                    if (doc) {
-                        message.channel.send('Emoji ' + argsArray[0] + ' already exists');
-                    } else {
-                        db.Emojis.insert({
-                            "name": argsArray[0].trim(),
-                            "file": argsArray[0].trim() + ext(argsArray[1]),
-                            "uploadedBy": message.author.id
+                message.channel.awaitMessages(filter, {
+                    max: 1,
+                    time: 10000,
+                    errors: ['time']
+                })
+                    .then(collected => {
+                        collected.forEach(function(convertedArray, key) {
+                            if (convertedArray.content.toLowerCase() === 'yes' || convertedArray.content.toLowerCase() === 'y') {
+                                function ext(url) {
+                                    return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).split('#')[0].substr(url.lastIndexOf("."))
+                                }
+
+                                const downloadOptions = {
+                                    url: argsArray[1],
+                                    dest: __dirname + '/customemoji/' + argsArray[0].trim() + ext(argsArray[1])
+                                };
+
+                                async function downloadIMG() {
+                                    try {
+                                        const {filename, image} = await download.image(downloadOptions);
+                                        console.log(filename) // => /path/to/dest/image.jpg
+                                    } catch (e) {
+                                        throw e
+                                    }
+                                }
+
+                                downloadIMG();
+
+                                db.Emojis.findOne({"name": argsArray[0].trim()}, function (err, doc) {
+                                    if (doc) {
+                                        message.channel.send('Emoji ' + argsArray[0] + ' already exists');
+                                    } else {
+                                        db.Emojis.insert({
+                                            "name": argsArray[0].trim(),
+                                            "file": argsArray[0].trim() + ext(argsArray[1]),
+                                            "uploadedBy": message.author.id
+                                        });
+                                        message.channel.send('Emoji ' + argsArray[0] + ' added!');
+                                    }
+                                });
+                            } else {
+                                message.channel.send('No emoji has been added.');
+                            }
                         });
-                        message.channel.send('Emoji ' + argsArray[0] + ' added!');
-                    }
-                });
+                    })
+                    // .catch is called on error - time up is considered an error (says so in docs)
+                    .catch(collected => {
+                        message.channel.send('No emoji has been added.');
+                    });
             } catch (e) {
                 console.log('error: ' + e);
             }
