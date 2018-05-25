@@ -23,11 +23,12 @@ module.exports = {
             errors: ['time']
         })
             .then(collected => {
-                //console.log(collected);
+                message.channel.send('here\'s your collection');
+                console.log(collected);
             })
             // .catch is called on error - time up is considered an error (says so in docs)
             .catch(collected => {
-                console.log(JSON.parse(collected));
+                console.log(collected);
                 message.channel.send('collected: '+collected.size+' messages');
             });
     }
