@@ -18,7 +18,11 @@ module.exports = {
                         let emojiName = doc.name;
                         let emojiFile = doc.file;
                         if (typeof emojiName.trim() !== 'undefined' && emojiName.trim() !== '') {
-                            message.channel.send({file: __dirname + '/customemoji/' + emojiFile});
+                            //message.channel.send({file: __dirname + '/customemoji/' + emojiFile});
+                            let embed = new Discord.RichEmbed()
+                                .setColor('#36393e')
+                                .setImage({file: __dirname + '/customemoji/' + emojiFile});
+                            message.channel.send({embed: embed});
                             if (message.author.id !== '441203112460681216') {
                                 message.channel.fetchMessage(message.id)
                                     .then(m => {
