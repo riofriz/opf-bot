@@ -9,8 +9,8 @@ let youtubeApiKey = process.env.YOUTUBE;
 module.exports = {
     entervaluetest: function(message) {
         let id = message.author.id;
-        const filter = message => {
-            if (id !== message.author.id) {
+        const filter = m => {
+            if (id !== m.author.id) {
                 return false;
             }
         };
