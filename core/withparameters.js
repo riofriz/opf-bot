@@ -90,7 +90,7 @@ module.exports = {
                                 for (let i = 0; i !== argsArray.length; i++) {
                                     result += '**'+argsArray[i] + '** received **' + countInArray(finalArray, argsArray[i]) + '** votes!\n';
                                 }
-                                if (counter === collected.size) {
+                                if (counter+1 === collected.size) {
                                     message.channel.send('There were '+collected.size+' entries! \n\n'+result);
                                 }
                                 console.log(counter +' - '+collected.size);
