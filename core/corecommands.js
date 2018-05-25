@@ -7,6 +7,8 @@ let qs = require('qs');
 let https = require('https');
 const PasteeAPI = require('pastee-api');
 let Pastee = new PasteeAPI(process.env.PASTEBIN);
+let mongojs = require('mongojs');
+let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Emojis']);
 
 
 module.exports = {
@@ -140,6 +142,25 @@ module.exports = {
     ping: function(message, client) {
         message.channel.send('Pong! '+client.ping + ' ms');
     },
+
+    hasEmojiPermission: function(message) {
+        try {
+            db.Emojis.findOne({"doc": "permissions"}, function (err, doc) {
+                if (doc) {
+                    if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('allowed')) {
+                        let users = doc.allowed;
+                        let isAllowed = false;
+                        for (let i=0; i !== users.length; i++) {
+                            if (users[i].user === message.author.id) {
+                                isAllowed = true;
+                            }
+                        }
+                        return isAllowed;
+                    }
+                }
+            });
+        } catch (e){ console.log(e); }
+    }
 
     // tooManyTags: function(message) {
     //     let counter = 0;

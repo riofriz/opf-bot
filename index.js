@@ -486,15 +486,27 @@ client.on("message", (message) => {
         // ADMIN COMMANDS
 
         if(commandWithArgs === 'emojiadd') {
-            emojis.addEmoji(message, args);
+            if (corecommands.hasEmojiPermission(message) === true) {
+                emojis.addEmoji(message, args);
+            } else {
+                message.channel.send('Sorry.. you are not allowed.');
+            }
         }
 
         if(commandWithArgs === 'emojiremove') {
-            emojis.removeEmoji(message, args);
+            if (corecommands.hasEmojiPermission(message) === true) {
+                emojis.removeEmoji(message, args);
+            } else {
+                message.channel.send('Sorry.. you are not allowed.');
+            }
         }
 
         if(commandWithArgs === 'emojipermission') {
-            emojis.emojiPermission(message, args);
+            if (corecommands.hasEmojiPermission(message) === true) {
+                emojis.emojiPermission(message, args);
+            } else {
+                message.channel.send('Sorry.. you are not allowed.');
+            }
         }
     }
 
