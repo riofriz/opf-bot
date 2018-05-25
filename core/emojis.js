@@ -45,7 +45,7 @@ module.exports = {
         try {
             if (/:([\w]+):/g.test(str)) {
                 let search;
-                search = str.trim.replace(':', '');
+                search = str.trim().replace(':', '');
                 db.Emojis.findOne({"name": search}, function (err, doc) {
                     if (doc) {
                         let emojiName = doc.name;
