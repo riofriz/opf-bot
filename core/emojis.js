@@ -58,6 +58,8 @@ module.exports = {
                                     });
                             }
                         }
+                    } else {
+                        console.log('can\'t find it. '+search);
                     }
                 });
             }
