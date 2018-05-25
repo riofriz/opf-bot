@@ -492,6 +492,10 @@ client.on("message", (message) => {
         if(commandWithArgs === 'emojiremove') {
             emojis.removeEmoji(message, args);
         }
+
+        if(commandWithArgs === 'emojipermission') {
+            emojis.emojiPermission(message, args);
+        }
     }
 
     //RPG COMMANDS
