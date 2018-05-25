@@ -180,9 +180,7 @@ module.exports = {
         let string = [];
         let counter = 0;
 
-        console.log(db.Emojidb.find().count());
-
-        db.Emoji.find({}, function(err, docs){
+        db.Emoji.find({}, {uid:1, _id : 0}, function(err, docs){
             if (err) {
                 console.log(err);
                 return;
