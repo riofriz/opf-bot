@@ -186,9 +186,11 @@ module.exports = {
                 return;
             }
             console.log(docs.length);
-            console.log(docs.size);
             docs.forEach(function(doc, index) {
                 string += '``:'+doc.name+':`` - ';
+                if (counter+1 === docs.length) {
+                    message.channel.send(string);
+                }
                 counter++;
             });
         });
