@@ -180,16 +180,15 @@ module.exports = {
         let string = [];
         let counter = 0;
 
-        db.Emoji.find({}, {uid:1, _id : 0}, function(err, docs){
+        let coll = db.Emojis();
+
+        coll.find({}, {uid:1, _id : 0}, function(err, docs){
             if (err) {
                 console.log(err);
                 return;
             }
-            let array = JSON.parse(JSON.stringify(docs));
-            console.log(docs.length);
-            console.log(array.length);
             docs.forEach(function(doc, index) {
-                console.log(doc.name)
+                console.log(index + " key: " + doc.uid)
             });
         });
         //
