@@ -11,17 +11,15 @@ module.exports = {
         let uidHolder = [
             message.author.id
         ];
-        const filter = m => {
-            let id = m.author.id;
-            if (uidHolder.includes(id)) {
-                return true;
-            } else {
+        const filter = message => {
+            let id = message.author.id;
+            if (!uidHolder.includes(id)) {
                 return false;
             }
         };
         message.channel.awaitMessages(filter, {
             max: 1,
-            time: 15000,
+            time: 5000,
             errors: ['time']
         })
             .then(collected => {
