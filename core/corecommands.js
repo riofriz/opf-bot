@@ -145,10 +145,10 @@ module.exports = {
 
     hasEmojiPermission: function(message) {
         try {
-            db.Emojis.findOne({"doc": "permissions"}, function (err, doc) {
-                if (doc) {
-                    if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('allowed')) {
-                        let users = doc.allowed;
+            db.Emojis.findOne({"doc": "permissions"}, function (error, perms) {
+                if (perms) {
+                    if (JSON.parse(JSON.stringify(perms)).hasOwnProperty('allowed')) {
+                        let users = perms.allowed;
                         let isAllowed = false;
                         for (let i=0; i !== users.length; i++) {
                             console.log(users[i].user+' - '+message.author.id);
