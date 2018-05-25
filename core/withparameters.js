@@ -20,7 +20,10 @@ module.exports = {
                 message.channel.send('here\'s your collection');
                 console.log(collected);
                 console.log('AND THEN THIS \n\n\n\n');
-                console.log(collected[id].content);
+
+                collected.forEach(function(guildMember, guildMemberId) {
+                    console.log(guildMemberId, guildMember.content);
+                });
             })
             // .catch is called on error - time up is considered an error (says so in docs)
             .catch(collected => {
