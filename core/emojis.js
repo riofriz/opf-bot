@@ -51,11 +51,11 @@ module.exports = {
         ];
         for (let i = 0; i !== customEmojis.length; i++) {
             try {
-                db.Emojis.findOne({ "name" : customEmojis[i] }, function(err, doc) {
+                db.Users.deleteOne({ "name" : customEmojis[i] }, function(err, doc) {
                     if(doc) {
-                        message.channel.send('Emoji '+customEmojis[i]+' already exists');
+                        message.channel.send('Emoji '+customEmojis[i]+' deleted');
                     } else {
-                        db.Users.insert( { "name":customEmojis[i], "file":customEmojis[i]+".png", "uploadedBy":message.author.id } );
+                        //db.Emojis.insert( { "name":customEmojis[i], "file":customEmojis[i]+".png", "uploadedBy":message.author.id } );
                         message.channel.send('Emoji '+customEmojis[i]+' added!');
                     }
                 });
