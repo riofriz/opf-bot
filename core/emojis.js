@@ -161,24 +161,6 @@ module.exports = {
     },
 
     emojiHelp: function(message) {
-        // let customEmojis = [
-        //     'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
-        //     'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
-        //     'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
-        //     'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo', 'asd',
-        //     'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
-        //     'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
-        // ];
-        //
-        // let string = [
-        //     '``:pAngel:``', '``:pAww:``', '``:pBlank:``', '``:pBlind:``', '``:pNoMore:``', '``:pKewl:``', '``:pDuck:``', '``:pDSip:``', '``:pPresent:``', '``:pHappy:``',
-        //     '``:pCash:``', '``:pMurican:``', '``:pEvil:``', '``:pDerp:``', '``:pDab:``', '``:pNuu:``', '``:pCrayon:``', '``:pAhh:``', '``:pAhhh:``', '``:pWhine:``',
-        //     '``:pWhut:``', '``:pWoah:``', '``:pSci:``', '``:pDawg:``', '``:pScared:``', '``:pSip:``', '``:pCookie:``', '``:pSleepy:``', '``:pHmm:``', '``:pVampire:``', '``:pepeRope:``',
-        //     '``:pepeKMS:``', '``:pepeCry:``', '``:pepeAnimu:``', '``:pepeTriggered:``', '``:bikki:``', '``:pWdiepie:``', '``:megarot:``', '``:gtfo:``', '``:gtfo1:``', '``:asd:``',
-        //     '``:pBooli:``', '``:bunbun:``', '``:dead:``', '``:thinkk:``', '``:benice:``', '``:pCop:``', '``:doffy:``', '``:pepeOh:``', '``:pepeSad:``', '``:pepeWhy:``',
-        //     '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``', '``:blob:``'
-        // ];
-
         let string;
         let counter = 0;
         let coll = db.Emojis;
@@ -196,20 +178,64 @@ module.exports = {
                 counter++;
             });
         });
-        //
-        // let extension;
-        // let finalString = '';
-        // let counter = 1;
-        //
-        // for (let i = 0; i !== customEmojis.length; i++) {
-        //     finalString += string[i]+' ';
-        //     if (i %4 === 0 && i !== 0) {
-        //         finalString += '\n';
-        //     } else {
-        //         if (counter !== customEmojis.length) {finalString += '- ';}
-        //     }
-        // }
-        // message.channel.send(finalString);
     },
+
+    emojiPermission: function(message, args) {
+        if (!args[0]) {
+            message.channel.send('Erhm..')
+        } else {
+            try {
+                db.Emojis.findOne({ "doc" : "permissions" }, function(err, doc) {
+                    if(doc) {
+                        if (args[0] === 'add') {
+                            if (args[1]) {
+                                let firstStrip;
+                                let secondStrip;
+                                let user;
+                                firstStrip = args[i].replace('<@', '');
+                                secondStrip = firstStrip.replace('>', '');
+                                user = secondStrip.replace('!', '');
+                                db.Emojis.update(
+                                    { "doc" : "permissions" },
+                                    {$push: { "allowed" : {user}}},
+                                    function(err) {console.log(err)}
+                                );
+                            } else {
+                                    message.channel.send('You did\'t specify who to add..')
+                            }
+                        } else if (args[0] === 'remove') {
+                            let firstStrip;
+                            let secondStrip;
+                            let user;
+                            firstStrip = args[i].replace('<@', '');
+                            secondStrip = firstStrip.replace('>', '');
+                            user = secondStrip.replace('!', '');
+                            db.Emojis.update(
+                                { "doc" : "permissions" },
+                                { $pull: { "allowed": { user } } },
+                                function(err) {console.log(err)}
+                            );
+                        } else if (args[0] === 'list') {
+                            if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('allowed')) {
+                                let users = doc.allowed;
+                                let allowedUsers = '';
+                                for (let i=0; i !== users.length; i++) {
+                                    allowedUsers += '<@'+users[i]+'> - ';
+                                }
+                                allowedUsers = allowedUsers.replace('undefined', '');
+                                message.channel.send(allowedUsers);
+                            } else {
+                                message.channel.send('there are no allowed users.');
+                            }
+                        } else {
+                            message.channel.send('Invalid argument!!');
+                        }
+                    }
+                });
+            } catch(err) {
+                console.log(err);
+            }
+        }
+    }
 
 };
