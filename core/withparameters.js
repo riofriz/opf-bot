@@ -10,7 +10,7 @@ module.exports = {
     entervaluetest: function(message) {
         const filter = m => m.content <= 100;
         message.channel.awaitMessages(filter, {
-            max: 200,
+            max: 3,
             time: 5000,
             errors: ['time']
         })
@@ -19,8 +19,7 @@ module.exports = {
             })
             // .catch is called on error - time up is considered an error (says so in docs)
             .catch(collected => {
-                console.log(JSON.parse(JSON.stringify(collected)));
-
+                console.log(JSON.parse(collected));
                 message.channel.send('collected: '+collected.size+' messages');
             });
     }
