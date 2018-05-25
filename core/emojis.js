@@ -182,13 +182,13 @@ module.exports = {
 
         let coll = db.Emojis;
 
-        coll.find({}, {uid:1, _id : 0}, function(err, docs){
+        coll.find({}, {_id : 0}, function(err, docs){
             if (err) {
                 console.log(err);
                 return;
             }
             docs.forEach(function(doc, index) {
-                console.log(index + " key: " + doc.uid)
+                console.log(index + " key: " + doc.name)
             });
         });
         //
