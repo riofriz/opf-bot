@@ -177,8 +177,8 @@ module.exports = {
         //     '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``', '``:blob:``'
         // ];
 
-        string = [];
-        counter = 0;
+        let string = [];
+        let counter = 0;
 
         db.Emoji.find().forEach( function(myDoc) {
             //string.push('``:'+myDoc.name+':``');
