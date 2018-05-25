@@ -182,21 +182,17 @@ module.exports = {
 
         console.log(db.Emojidb.find().count());
 
-        db.Emoji.find().forEach( function(myDoc) {
-            //string.push('``:'+myDoc.name+':``');
-            console.log(myDoc.name);
-        });
-
         db.Emoji.find({}, function(err, docs){
             if (err) {
                 console.log(err);
                 return;
             }
             let array = JSON.parse(JSON.stringify(docs));
+            console.log(docs.length);
             console.log(array.length);
-            // docs.forEach(function(doc, index) {
-            //     console.log(doc.name)
-            // });
+            docs.forEach(function(doc, index) {
+                console.log(doc.name)
+            });
         });
         //
         // let extension;
