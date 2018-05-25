@@ -151,7 +151,7 @@ module.exports = {
                         let users = doc.allowed;
                         let isAllowed = false;
                         for (let i=0; i !== users.length; i++) {
-                            console.log(user[i].user+' - '+message.author.id);
+                            console.log(users[i].user+' - '+message.author.id);
                             if (users[i].user === message.author.id) {
                                 isAllowed = true;
                             }
