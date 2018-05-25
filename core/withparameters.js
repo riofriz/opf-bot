@@ -8,14 +8,24 @@ let youtubeApiKey = process.env.YOUTUBE;
 
 module.exports = {
     entervaluetest: function(message) {
-        const filter = m => m.content <= 100;
+        let uidHolder = [
+            message.author.id
+        ];
+        const filter = m => {
+            let id = m.author.id;
+            if (uidHolder.includes(id)) {
+                return true;
+            } else {
+                return false;
+            }
+        };
         message.channel.awaitMessages(filter, {
-            max: 3,
-            time: 5000,
+            max: 1,
+            time: 15000,
             errors: ['time']
         })
             .then(collected => {
-                console.log(collected);
+                //console.log(collected);
             })
             // .catch is called on error - time up is considered an error (says so in docs)
             .catch(collected => {
