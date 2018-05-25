@@ -85,7 +85,7 @@ module.exports = {
                    return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).split('#')[0].substr(url.lastIndexOf("."))
                 }
                 const downloadOptions = {
-                    url: thumb,
+                    url: argsArray[1],
                     dest: 'customEmojis/'+argsArray[0]+ext(argsArray[1])
                 };
                 async function downloadIMG() {
