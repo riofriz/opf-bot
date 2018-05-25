@@ -103,8 +103,8 @@ module.exports = {
                         message.channel.send('Emoji ' + argsArray[0] + ' already exists');
                     } else {
                         db.Emojis.insert({
-                            "name": argsArray[0],
-                            "file": argsArray[0] + ext(argsArray[1]),
+                            "name": argsArray[0].trim(),
+                            "file": argsArray[0].trim() + ext(argsArray[1]),
                             "uploadedBy": message.author.id
                         });
                         message.channel.send('Emoji ' + argsArray[0] + ' added!');
