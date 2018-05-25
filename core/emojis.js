@@ -8,39 +8,6 @@ let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds
 const download = require('image-downloader');
 
 module.exports = {
-
-    // customEmojis: function (str, message) {
-    //     let customEmojis = [
-    //         'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
-    //         'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
-    //         'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
-    //         'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo1',
-    //         'asd', 'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
-    //         'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
-    //     ];
-    //     let result;
-    //     let extension;
-    //     for (let i = 0; i !== customEmojis.length; i++) {
-    //         if (str.includes(':' + customEmojis[i] + ':')) {
-    //             result = customEmojis[i];
-    //         }
-    //     }
-    //     if (result === 'pWdiepie' || result === 'megarot' || result === 'asd' || result === 'blob') {
-    //         extension = '.gif';
-    //     } else {
-    //         extension = '.png';
-    //     }
-    //     if (str.includes(':' + result + ':') && str.includes('``:' + result + ':``') === false) {
-    //         message.channel.send({file: __dirname + '/customemoji/' + result + extension});
-    //         if (message.author.id !== '441203112460681216') {
-    //             message.channel.fetchMessage(message.id)
-    //                 .then(m => {
-    //                     m.delete();
-    //                 });
-    //         }
-    //     }
-    // },
-
     customEmojis: function (str, message) {
         try {
             if (/:([\w]+):/g.test(str)) {
@@ -86,7 +53,7 @@ module.exports = {
                 query = query.replace('undefined', '').trim();
                 let argsArray = query.split('>');
 
-                message.channel.send('Are you sure you want to add ``:'+argsArray[0]+':`` with image: ``'+argsArray[1]+'`` ?');
+                message.channel.send('Are you sure you want to add ``:'+argsArray[0].trim()+':`` with image: ``'+argsArray[1]+'`` ?');
 
                 message.channel.awaitMessages(filter, {
                     max: 1,
@@ -141,6 +108,23 @@ module.exports = {
                 console.log('error: ' + e);
             }
         }
+    },
+
+    removeEmoji: function (message, args) {
+        try {
+            let search;
+            search = args[0].trim().replace(/\:/g, '');
+            db.Emojis.findOne({"name": search}, function (err, doc) {
+                if (doc) {
+                    let emojiName = doc.name;
+                    if (typeof emojiName.trim() !== 'undefined' && emojiName.trim() !== '') {
+                        db.Emojis.remove({"name": search});
+                    }
+                } else {
+                    message.channel.send('Emoji ``:'+args[0].trim()+':`` not found..')
+                }
+            });
+        } catch (e){ console.log(e); }
     },
 
     corefunctionalityWorks: function(message) {
