@@ -75,22 +75,21 @@ module.exports = {
                             let finalArray = [];
                             let result = '';
                             let counter = 0;
+                            function countInArray(array, what) {
+                                var count = 0;
+                                for (var i = 0; i < array.length; i++) {
+                                    if (array[i] === what) {
+                                        count++;
+                                    }
+                                }
+                                return count;
+                            }
                             collected.forEach(function (convertedArray, key) {
                                 finalArray.push(argsArray[parseInt(convertedArray.content)]);
-                                function countInArray(array, what) {
-                                    var count = 0;
-                                    for (var i = 0; i < array.length; i++) {
-                                        if (array[i] === what) {
-                                            count++;
-                                        }
-                                    }
-                                    return count;
-                                }
-
-                                for (let i = 0; i !== argsArray.length; i++) {
-                                    result += '**'+argsArray[i] + '** received **' + countInArray(finalArray, argsArray[i]) + '** votes!\n';
-                                }
                                 if (counter+1 === collected.size) {
+                                    for (let i = 0; i !== argsArray.length; i++) {
+                                        result += '**'+argsArray[i] + '** received **' + countInArray(finalArray, argsArray[i]) + '** votes!\n';
+                                    }
                                     message.channel.send('There were '+collected.size+' entries! \n\n'+result);
                                 }
                                 console.log(counter +' - '+collected.size);
