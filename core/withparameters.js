@@ -9,11 +9,8 @@ let youtubeApiKey = process.env.YOUTUBE;
 module.exports = {
     entervaluetest: function(message) {
         let id = message.author.id;
-        const filter = m => {
-            if (id !== m.author.id) {
-                return false;
-            }
-        };
+        const filter = m => id === m.author.id;
+
         message.channel.awaitMessages(filter, {
             max: 1,
             time: 5000,
