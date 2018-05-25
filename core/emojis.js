@@ -98,7 +98,7 @@ module.exports = {
                 }
                 downloadIMG();
 
-                db.Emojis.findOne({"name": argsArray[0]}, function (err, doc) {
+                db.Emojis.findOne({"name": argsArray[0].trim()}, function (err, doc) {
                     if (doc) {
                         message.channel.send('Emoji ' + argsArray[0] + ' already exists');
                     } else {
