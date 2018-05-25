@@ -45,7 +45,7 @@ module.exports = {
                 }
                 query = query.replace('undefined', '').trim();
                 let excludeQuestion = query.split('>');
-                let argsArray = excludeQuestion[1].split(':');
+                let argsArray = excludeQuestion[1].trim().split(':');
                 for (let i = 0; i !== argsArray.length; i++) {
                     options += 'Enter **'+i+'** for '+argsArray[i] + '\n';
                 }
