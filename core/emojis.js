@@ -111,20 +111,26 @@ module.exports = {
     },
 
     removeEmoji: function (message, args) {
-        try {
-            let search;
-            search = args[0].trim().replace(/\:/g, '');
-            db.Emojis.findOne({"name": search}, function (err, doc) {
-                if (doc) {
-                    let emojiName = doc.name;
-                    if (typeof emojiName.trim() !== 'undefined' && emojiName.trim() !== '') {
-                        db.Emojis.remove({"name": search});
+        if (!args[0]) {
+            message.channel.send('For as powerful as i am, i need at least to know which emoji you want to remove.')
+        } else {
+            try {
+                let search;
+                search = args[0].trim().replace(/\:/g, '');
+                db.Emojis.findOne({"name": search}, function (err, doc) {
+                    if (doc) {
+                        let emojiName = doc.name;
+                        if (typeof emojiName.trim() !== 'undefined' && emojiName.trim() !== '') {
+                            db.Emojis.remove({"name": search});
+                        }
+                    } else {
+                        message.channel.send('Emoji ``:' + args[0].trim() + ':`` not found..')
                     }
-                } else {
-                    message.channel.send('Emoji ``:'+args[0].trim()+':`` not found..')
-                }
-            });
-        } catch (e){ console.log(e); }
+                });
+            } catch (e) {
+                console.log(e);
+            }
+        }
     },
 
     corefunctionalityWorks: function(message) {

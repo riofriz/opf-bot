@@ -480,8 +480,14 @@ client.on("message", (message) => {
             withparameters.poll(message, args);
         }
 
+        // ADMIN COMMANDS
+
         if(commandWithArgs === 'emojiadd') {
             emojis.addEmoji(message, args);
+        }
+
+        if(commandWithArgs === 'emojiremove') {
+            emojis.removeEmoji(message, args);
         }
     }
 
