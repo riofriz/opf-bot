@@ -480,8 +480,8 @@ client.on("message", (message) => {
             withparameters.poll(message, args);
         }
 
-        if(command === 'dbaddemojis') {
-            emojis.fillMongo(message);
+        if(commandWithArgs === 'emojiadd') {
+            emojis.addEmoji(message, args);
         }
     }
 
