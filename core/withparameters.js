@@ -9,7 +9,7 @@ let youtubeApiKey = process.env.YOUTUBE;
 module.exports = {
     corefunctionalityWorks: function(message) {
         let id = message.author.id;
-        const filter = m => id === m.author.id;
+        let filter = m => id === m.author.id;
 
         message.channel.awaitMessages(filter, {
             max: 1,
@@ -52,7 +52,7 @@ module.exports = {
                 options = options.replace('undefined', '');
                 options = options.trim();
                 message.channel.send('OK, **POLL STARTED** by '+message.author.username+'!\nQuestion: **'+excludeQuestion[0]+'\n'+options);
-                const filter = m => {
+                let filter = m => {
                     let id = m.author.id;
                     if (uidHolder.includes(id) || m.content.startsWith > argsArray.length)
                         return false;
@@ -101,9 +101,9 @@ module.exports = {
 
     entervaluetest: function(message) {
         let id = message.author.id;
-        const filter = m => id === m.author.id;
+        let filter = m => id === m.author.id;
 
-        const filter = m => {
+        let filter = m => {
             if (m.content.startsWith('stop'))
                 return false;
             else {
