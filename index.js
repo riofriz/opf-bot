@@ -486,6 +486,7 @@ client.on("message", (message) => {
         // ADMIN COMMANDS
 
         if(commandWithArgs === 'emojiadd') {
+            console.log(corecommands.hasEmojiPermission(message));
             if (corecommands.hasEmojiPermission(message) === true) {
                 emojis.addEmoji(message, args);
             } else {
