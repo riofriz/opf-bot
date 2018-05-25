@@ -189,6 +189,7 @@ module.exports = {
             docs.forEach(function(doc, index) {
                 string += '``:'+doc.name+':`` - ';
                 if (counter+1 === docs.length) {
+                    string = string.replace('undefined', '');
                     message.channel.send(string);
                 }
                 counter++;
