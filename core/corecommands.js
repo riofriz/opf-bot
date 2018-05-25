@@ -156,6 +156,7 @@ module.exports = {
                                 isAllowed = true;
                             }
                         }
+                        console.log(isAllowed);
                         return isAllowed;
                     }
                 }
