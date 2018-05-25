@@ -192,10 +192,11 @@ module.exports = {
                 console.log(err);
                 return;
             }
-            console.log(docs.length);
-            docs.forEach(function(doc, index) {
-                console.log(doc.name)
-            });
+            let array = JSON.parse(JSON.stringify(docs));
+            console.log(array.length);
+            // docs.forEach(function(doc, index) {
+            //     console.log(doc.name)
+            // });
         });
         //
         // let extension;
