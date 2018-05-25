@@ -43,7 +43,7 @@ module.exports = {
 
     customEmojis: function (str, message) {
         try {
-            if (/:([\w]+):/g.test(str)) {
+            if (/;([\w]+);/g.test(str)) {
                 db.Emojis.findOne({"name": str}, function (err, doc) {
                     if (doc) {
                         let emojiName = doc.name;
@@ -52,7 +52,7 @@ module.exports = {
                             message.channel.send({file: __dirname + '/customemoji/' + emojiFile});
                         }
                     } else {
-                        message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(');
+                        message.channel.send('Sorry, i couldn\'t find this emoji in my amazing database. :(');
                     }
                 });
                 if (message.author.id !== '441203112460681216') {
