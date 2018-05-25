@@ -140,6 +140,9 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "dun dun duuun!") {
         message.channel.send('https://www.youtube.com/watch?v=cphNpqKpKc4');
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "akuuuuu") {
+        message.channel.send({file: 'https://wifflegif.com/tags/76512-aku-gifs'});
+    }
     // if (message.isMentioned('415230548248887296')) {
     //     allowed = true;
     //     notification = false;
