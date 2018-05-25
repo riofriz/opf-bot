@@ -70,10 +70,11 @@ module.exports = {
                     })
                     // .catch is called on error - time up is considered an error (says so in docs)
                     .catch(collected => {
+                        console.log(collected);
                         if (collected.size > 0) {
                             let finalArray = [];
                             let result = '';
-                            var counter = 0;
+                            let counter = 0;
                             collected.forEach(function (convertedArray, key) {
                                 finalArray.push(argsArray[parseInt(convertedArray.content)]);
                                 function countInArray(array, what) {
@@ -90,7 +91,7 @@ module.exports = {
                                     result += argsArray[i] + ' received *' + countInArray(argsArray, argsArray[i]) + '* votes!\n';
                                 }
                                 if (counter === collected.size) {
-                                    message.channel.send('There were '+collected.size+' entries! \n\n'+toSend);
+                                    message.channel.send('There were '+collected.size+' entries! \n\n'+result);
                                 } else {
                                     counter++;
                                 }
