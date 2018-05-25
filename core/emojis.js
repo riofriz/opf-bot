@@ -122,9 +122,10 @@ module.exports = {
                         let emojiName = doc.name;
                         if (typeof emojiName.trim() !== 'undefined' && emojiName.trim() !== '') {
                             db.Emojis.remove({"name": search});
+                            message.channel.send('Emoji ``:' + args[0].trim() + ':`` has been fully removed!');
                         }
                     } else {
-                        message.channel.send('Emoji ``:' + args[0].trim() + ':`` not found..')
+                        message.channel.send('Emoji ``:' + args[0].trim() + ':`` not found..');
                     }
                 });
             } catch (e) {
@@ -158,37 +159,45 @@ module.exports = {
     },
 
     emojiHelp: function(message) {
-        let customEmojis = [
-            'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
-            'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
-            'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
-            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo', 'asd',
-            'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
-            'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
-        ];
+        // let customEmojis = [
+        //     'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
+        //     'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
+        //     'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
+        //     'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo', 'asd',
+        //     'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
+        //     'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
+        // ];
+        //
+        // let string = [
+        //     '``:pAngel:``', '``:pAww:``', '``:pBlank:``', '``:pBlind:``', '``:pNoMore:``', '``:pKewl:``', '``:pDuck:``', '``:pDSip:``', '``:pPresent:``', '``:pHappy:``',
+        //     '``:pCash:``', '``:pMurican:``', '``:pEvil:``', '``:pDerp:``', '``:pDab:``', '``:pNuu:``', '``:pCrayon:``', '``:pAhh:``', '``:pAhhh:``', '``:pWhine:``',
+        //     '``:pWhut:``', '``:pWoah:``', '``:pSci:``', '``:pDawg:``', '``:pScared:``', '``:pSip:``', '``:pCookie:``', '``:pSleepy:``', '``:pHmm:``', '``:pVampire:``', '``:pepeRope:``',
+        //     '``:pepeKMS:``', '``:pepeCry:``', '``:pepeAnimu:``', '``:pepeTriggered:``', '``:bikki:``', '``:pWdiepie:``', '``:megarot:``', '``:gtfo:``', '``:gtfo1:``', '``:asd:``',
+        //     '``:pBooli:``', '``:bunbun:``', '``:dead:``', '``:thinkk:``', '``:benice:``', '``:pCop:``', '``:doffy:``', '``:pepeOh:``', '``:pepeSad:``', '``:pepeWhy:``',
+        //     '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``', '``:blob:``'
+        // ];
 
-        let string = [
-            '``:pAngel:``', '``:pAww:``', '``:pBlank:``', '``:pBlind:``', '``:pNoMore:``', '``:pKewl:``', '``:pDuck:``', '``:pDSip:``', '``:pPresent:``', '``:pHappy:``',
-            '``:pCash:``', '``:pMurican:``', '``:pEvil:``', '``:pDerp:``', '``:pDab:``', '``:pNuu:``', '``:pCrayon:``', '``:pAhh:``', '``:pAhhh:``', '``:pWhine:``',
-            '``:pWhut:``', '``:pWoah:``', '``:pSci:``', '``:pDawg:``', '``:pScared:``', '``:pSip:``', '``:pCookie:``', '``:pSleepy:``', '``:pHmm:``', '``:pVampire:``', '``:pepeRope:``',
-            '``:pepeKMS:``', '``:pepeCry:``', '``:pepeAnimu:``', '``:pepeTriggered:``', '``:bikki:``', '``:pWdiepie:``', '``:megarot:``', '``:gtfo:``', '``:gtfo1:``', '``:asd:``',
-            '``:pBooli:``', '``:bunbun:``', '``:dead:``', '``:thinkk:``', '``:benice:``', '``:pCop:``', '``:doffy:``', '``:pepeOh:``', '``:pepeSad:``', '``:pepeWhy:``',
-            '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``', '``:blob:``'
-        ];
+        string = [];
+        counter = 0;
 
-        let extension;
-        let finalString = '';
-        let counter = 1;
-
-        for (let i = 0; i !== customEmojis.length; i++) {
-            finalString += string[i]+' ';
-            if (i %4 === 0 && i !== 0) {
-                finalString += '\n';
-            } else {
-                if (counter !== customEmojis.length) {finalString += '- ';}
-            }
-        }
-        message.channel.send(finalString);
+        db.Emoji.find().forEach( function(myDoc) {
+            //string.push('``:'+myDoc.name+':``');
+            console.log(this.size);
+        });
+        //
+        // let extension;
+        // let finalString = '';
+        // let counter = 1;
+        //
+        // for (let i = 0; i !== customEmojis.length; i++) {
+        //     finalString += string[i]+' ';
+        //     if (i %4 === 0 && i !== 0) {
+        //         finalString += '\n';
+        //     } else {
+        //         if (counter !== customEmojis.length) {finalString += '- ';}
+        //     }
+        // }
+        // message.channel.send(finalString);
     },
 
 };
