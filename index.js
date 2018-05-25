@@ -474,6 +474,10 @@ client.on("message", (message) => {
         if (command === 'testparam') {
             withparameters.entervaluetest(message);
         }
+
+        if(commandWithArgs === 'poll') {
+            withparameters.poll(message, args);
+        }
     }
 
     //RPG COMMANDS
