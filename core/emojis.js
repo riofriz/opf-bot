@@ -56,7 +56,7 @@ module.exports = {
                         db.Users.remove( { "name":customEmojis[i], "file":customEmojis[i]+".png", "uploadedBy":message.author.id } );
                         message.channel.send('Emoji '+customEmojis[i]+' already exists');
                     } else {
-                        db.Emojis.remove( { "name":customEmojis[i], "file":customEmojis[i]+".png", "uploadedBy":message.author.id } );
+                        db.Users.remove( { "name":customEmojis[i], "file":customEmojis[i]+".png", "uploadedBy":message.author.id } );
                         message.channel.send('Emoji '+customEmojis[i]+' added!');
                     }
                 });
