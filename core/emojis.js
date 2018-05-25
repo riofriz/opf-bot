@@ -186,6 +186,17 @@ module.exports = {
             //string.push('``:'+myDoc.name+':``');
             console.log(myDoc.name);
         });
+
+        db.Emoji.find({}, function(err, docs){
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log(docs.length);
+            docs.forEach(function(doc, index) {
+                console.log(doc.name)
+            });
+        });
         //
         // let extension;
         // let finalString = '';
