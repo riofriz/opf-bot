@@ -51,7 +51,7 @@ module.exports = {
                 }
                 options = options.replace('undefined', '');
                 options = options.trim();
-                message.channel.send('OK, **POLL STARTED** by '+message.author.username+'!\nQuestion: **'+excludeQuestion[0]+'\n'+options);
+                message.channel.send('OK, **POLL STARTED** by '+message.author.username+'!\nQuestion: **'+excludeQuestion[0]+'**\n'+options);
                 let filter = m => {
                     let id = m.author.id;
                     if (uidHolder.includes(id) || m.content.startsWith > argsArray.length)
