@@ -180,7 +180,7 @@ module.exports = {
         let string = [];
         let counter = 0;
 
-        let coll = db.Emojis();
+        let coll = db.Emojis;
 
         coll.find({}, {uid:1, _id : 0}, function(err, docs){
             if (err) {
