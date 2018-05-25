@@ -114,8 +114,6 @@ module.exports = {
                                         .catch(collected => {
                                             message.channel.send('No emoji has been added.');
                                         });
-                                } else {
-                                    message.channel.send('Sorry, not allowed..')
                                 }
                             }
                         }
@@ -153,8 +151,6 @@ module.exports = {
                                             message.channel.send('Emoji ``:' + args[0].trim() + ':`` not found..');
                                         }
                                     });
-                                } else {
-                                    message.channel.send('Sorry.. not allowed..')
                                 }
                             }
                         }
