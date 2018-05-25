@@ -20,11 +20,11 @@ module.exports = {
                 message.channel.send('here\'s your collection');
                 console.log(collected);
                 console.log('AND THEN THIS \n\n\n\n');
-                console.log(JSON.parse(JSON.stringify(collected)));
+                console.log(collected.content);
             })
             // .catch is called on error - time up is considered an error (says so in docs)
             .catch(collected => {
-                console.log(collected);
+                console.log(collected.content);
                 message.channel.send('collected: '+collected.size+' messages');
             });
     }
