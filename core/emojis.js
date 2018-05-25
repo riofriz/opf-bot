@@ -194,12 +194,13 @@ module.exports = {
                                 let user;
                                 firstStrip = args[1].replace('<@', '');
                                 secondStrip = firstStrip.replace('>', '');
-                                user = secondStrip.replace('!', '');
+                                user = secondStrip.replace('!', '').trim();
                                 db.Emojis.update(
                                     { "doc" : "permissions" },
                                     {$push: { "allowed" : {user}}},
                                     function(err) {console.log(err)}
                                 );
+                                message.channel.send(args[1].trim()+' has now full emoji permissions.');
                             } else {
                                     message.channel.send('You did\'t specify who to add..')
                             }
@@ -215,6 +216,7 @@ module.exports = {
                                 { $pull: { "allowed": { user } } },
                                 function(err) {console.log(err)}
                             );
+                            message.channel.send(args[1].trim()+' has been removed from the permission list.');
                         } else if (args[0] === 'list') {
                             if (JSON.parse(JSON.stringify(doc)).hasOwnProperty('allowed')) {
                                 let users = doc.allowed;
