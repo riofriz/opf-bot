@@ -184,7 +184,7 @@ module.exports = {
 
         db.Emoji.find().forEach( function(myDoc) {
             //string.push('``:'+myDoc.name+':``');
-            console.log(this.size);
+            console.log(myDoc.name);
         });
         //
         // let extension;
