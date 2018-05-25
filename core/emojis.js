@@ -177,18 +177,19 @@ module.exports = {
         //     '``:pepeSmirk:``', '``:tearsofjoy:``', '``:fingerheart:``', '``:blob:``'
         // ];
 
-        let string = [];
+        let string;
         let counter = 0;
-
         let coll = db.Emojis;
-
         coll.find({}, {_id : 0}, function(err, docs){
             if (err) {
                 console.log(err);
                 return;
             }
+            console.log(docs.length);
+            console.log(docs.size);
             docs.forEach(function(doc, index) {
-                console.log(index + " key: " + doc.name)
+                string += '``:'+doc.name+':`` - ';
+                counter++;
             });
         });
         //
