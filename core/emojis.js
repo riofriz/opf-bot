@@ -86,7 +86,7 @@ module.exports = {
                 }
                 const downloadOptions = {
                     url: argsArray[1],
-                    dest: __dirname+'customemojis/'+argsArray[0].trim()+ext(argsArray[1])
+                    dest: __dirname+'/customemojis/'+argsArray[0].trim()+ext(argsArray[1])
                 };
                 async function downloadIMG() {
                     try {
