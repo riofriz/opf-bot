@@ -54,9 +54,9 @@ module.exports = {
                 message.channel.send('OK, **POLL STARTED** by '+message.author.username+'!\nQuestion: **'+excludeQuestion[0]+'**\n'+options);
                 let filter = m => {
                     let id = m.author.id;
-                    if (uidHolder.includes(id) || m.content.startsWith > argsArray.length)
+                    if (uidHolder.includes(id) || m.content.startsWith > argsArray.length || m.author.id === '441203112460681216') {
                         return false;
-                    else {
+                    } else {
                         uidHolder.push(id);
                         return true;
                     }
@@ -90,11 +90,11 @@ module.exports = {
                                 for (let i = 0; i !== argsArray.length; i++) {
                                     result += argsArray[i] + ' received *' + countInArray(argsArray, argsArray[i]) + '* votes!\n';
                                 }
-                                if (counter === collected.size) {
+                                if (counter !== collected.size) {
                                     message.channel.send('There were '+collected.size+' entries! \n\n'+result);
-                                } else {
-                                    counter++;
                                 }
+                                console.log(counter +' - '+collected.size);
+                                counter++;
                             });
                         }
                     });
