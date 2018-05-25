@@ -44,7 +44,8 @@ module.exports = {
     customEmojis: function (str, message) {
         try {
             if (/:([\w]+):/g.test(str)) {
-                let search = str.replace(':', '');
+                let search;
+                search = str.replace(':', '');
                 search = str.replace(':', '');
                 db.Emojis.findOne({"name": search}, function (err, doc) {
                     if (doc) {
