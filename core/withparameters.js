@@ -67,56 +67,34 @@ module.exports = {
                     errors: ['time']
                 })
                     .then(collected => {
-                        if (collected.size > 0) {
-                            let finalArray = [];
-                            let toSend = tosend => {
-                                let result = '';
-                                collected.forEach(function (convertedArray, key) {
-                                    finalArray.push(argsArray[parseInt(convertedArray.content)]);
-                                    function countInArray(array, what) {
-                                        var count = 0;
-                                        for (var i = 0; i < array.length; i++) {
-                                            if (array[i] === what) {
-                                                count++;
-                                            }
-                                        }
-                                        return count;
-                                    }
-
-                                    for (let i = 0; i !== argsArray.length; i++) {
-                                        result += argsArray[i] + ' received *' + countInArray(argsArray, argsArray[i]) + '* votes!\n';
-                                    }
-                                });
-                                return result;
-                            };
-                            message.channel.send('There were '+collected.size+' entries! \n\n'+toSend);
-                        }
                     })
                     // .catch is called on error - time up is considered an error (says so in docs)
                     .catch(collected => {
                         if (collected.size > 0) {
                             let finalArray = [];
-                            let toSend = tosend => {
-                                let result = '';
-                                collected.forEach(function (convertedArray, key) {
-                                    finalArray.push(argsArray[parseInt(convertedArray.content)]);
-                                    function countInArray(array, what) {
-                                        var count = 0;
-                                        for (var i = 0; i < array.length; i++) {
-                                            if (array[i] === what) {
-                                                count++;
-                                            }
+                            let result = '';
+                            var counter = 0;
+                            collected.forEach(function (convertedArray, key) {
+                                finalArray.push(argsArray[parseInt(convertedArray.content)]);
+                                function countInArray(array, what) {
+                                    var count = 0;
+                                    for (var i = 0; i < array.length; i++) {
+                                        if (array[i] === what) {
+                                            count++;
                                         }
-                                        return count;
                                     }
+                                    return count;
+                                }
 
-                                    for (let i = 0; i !== argsArray.length; i++) {
-                                        result += argsArray[i] + ' received *' + countInArray(argsArray, argsArray[i]) + '* votes!\n';
-                                    }
-                                });
-                                return result;
-                            };
-                            message.channel.send('There were '+collected.size+' entries! \n\n'+toSend);
+                                for (let i = 0; i !== argsArray.length; i++) {
+                                    result += argsArray[i] + ' received *' + countInArray(argsArray, argsArray[i]) + '* votes!\n';
+                                }
+                                if (counter === collected.size) {
+                                    message.channel.send('There were '+collected.size+' entries! \n\n'+toSend);
+                                } else {
+                                    counter++;
+                                }
+                            });
                         }
                     });
             } catch(err) {
