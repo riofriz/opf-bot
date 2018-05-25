@@ -44,8 +44,8 @@ module.exports = {
     customEmojis: function (str, message) {
         try {
             if (/:([\w]+):/g.test(str)) {
-                let search = str.replace(';', '');
-                db.Emojis.findOne({"name": str}, function (err, doc) {
+                let search = str.replace(':', '');
+                db.Emojis.findOne({"name": search}, function (err, doc) {
                     if (doc) {
                         let emojiName = doc.name;
                         let emojiFile = doc.file;
@@ -58,8 +58,6 @@ module.exports = {
                                     });
                             }
                         }
-                    } else {
-                        message.channel.send('Sorry, i couldn\'t find this emoji in my amazing database. :(');
                     }
                 });
             }
