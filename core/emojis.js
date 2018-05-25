@@ -208,7 +208,7 @@ module.exports = {
                             let firstStrip;
                             let secondStrip;
                             let user;
-                            firstStrip = args[i].replace('<@', '');
+                            firstStrip = args[1].replace('<@', '');
                             secondStrip = firstStrip.replace('>', '');
                             user = secondStrip.replace('!', '');
                             db.Emojis.update(
