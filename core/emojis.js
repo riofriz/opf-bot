@@ -53,9 +53,10 @@ module.exports = {
             try {
                 db.Emojis.findOne({ "name" : customEmojis[i] }, function(err, doc) {
                     if(doc) {
-                        message.channel.send('Emoji'+customEmojis[i]+'already exists');
+                        message.channel.send('Emoji '+customEmojis[i]+' already exists');
                     } else {
                         db.Users.insert( { "name":customEmojis[i], "file":customEmojis[i]+".png", "uploadedBy":message.author.id } );
+                        message.channel.send('Emoji '+customEmojis[i]+' added!');
                     }
                 });
             } catch (e){ console.log('error: '+ e); }
