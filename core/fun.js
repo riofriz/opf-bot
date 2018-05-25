@@ -171,7 +171,8 @@ module.exports = {
             "oh, hi mark",
             "congratulations",
             "dun dun duuun!",
-            "akuuuuu"
+            "akuuuuu",
+            "no pizza"
         ];
         let result;
         let string;

@@ -145,6 +145,9 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "akuuuuu") {
         message.channel.send({file: 'http://24.media.tumblr.com/47eabb453963ea60b5c83e7bdc3cbd39/tumblr_mvndk3X7pb1qlsdwvo1_500.gif'});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "no pizza") {
+        message.channel.send({file: 'https://i.imgur.com/fSA2tPt.jpg'})
+    }
     // if (message.isMentioned('415230548248887296')) {
     //     allowed = true;
     //     notification = false;
