@@ -19,6 +19,7 @@ module.exports = {
             })
             // .catch is called on error - time up is considered an error (says so in docs)
             .catch(collected => {
+                console.log(collected);
                 message.channel.send('collected: '+collected.size+' messages');
             });
     }
