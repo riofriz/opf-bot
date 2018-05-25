@@ -26,8 +26,6 @@ module.exports = {
                                     });
                             }
                         }
-                    } else {
-                        console.log('can\'t find it. '+search);
                     }
                 });
             }
@@ -75,7 +73,6 @@ module.exports = {
                                 async function downloadIMG() {
                                     try {
                                         const {filename, image} = await download.image(downloadOptions);
-                                        console.log(filename) // => /path/to/dest/image.jpg
                                     } catch (e) {
                                         throw e
                                     }
@@ -185,7 +182,6 @@ module.exports = {
                 console.log(err);
                 return;
             }
-            console.log(docs.length);
             docs.forEach(function(doc, index) {
                 string += '``:'+doc.name+':`` - ';
                 if (counter+1 === docs.length) {
