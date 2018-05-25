@@ -101,8 +101,6 @@ module.exports = {
 
     entervaluetest: function(message) {
         let id = message.author.id;
-        let filter = m => id === m.author.id;
-
         let filter = m => {
             if (m.content.startsWith('stop'))
                 return false;
