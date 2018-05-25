@@ -118,8 +118,6 @@ module.exports = {
                                     message.channel.send('Sorry, not allowed..')
                                 }
                             }
-                            console.log(isAllowed);
-                            return isAllowed;
                         }
                     }
                 });
@@ -159,8 +157,6 @@ module.exports = {
                                     message.channel.send('Sorry.. not allowed..')
                                 }
                             }
-                            console.log(isAllowed);
-                            return isAllowed;
                         }
                     }
                 });
@@ -226,7 +222,6 @@ module.exports = {
                             let users = doc.allowed;
                             let isAllowed = false;
                             for (let i=0; i !== users.length; i++) {
-                                console.log(users[i].user+' - '+message.author.id);
                                 if (users[i].user === message.author.id) {
                                     if (args[0] === 'add') {
                                         if (args[1]) {
@@ -275,8 +270,6 @@ module.exports = {
                                     }
                                 }
                             }
-                            console.log(isAllowed);
-                            return isAllowed;
                         }
                     }
                 });
