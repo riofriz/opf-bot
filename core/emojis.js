@@ -222,7 +222,7 @@ module.exports = {
                                 let users = doc.allowed;
                                 let allowedUsers = '';
                                 for (let i=0; i !== users.length; i++) {
-                                    allowedUsers += '<@'+users[i]+'> - ';
+                                    allowedUsers += '<@'+users[i].user+'> - ';
                                 }
                                 allowedUsers = allowedUsers.replace('undefined', '');
                                 message.channel.send(allowedUsers);
