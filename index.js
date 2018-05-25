@@ -17,6 +17,7 @@ let rpgcore = require('./rpg/corefunctions');
 let pvp = require('./rpg/pvp');
 let laughters = require('./core/oplaughs');
 let withparameters = require('./core/withparameters');
+let emojis = require('./core/emojis')
 let cooldown = 5000;
 
 // Let's call discord now.
@@ -166,7 +167,7 @@ client.on("message", (message) => {
     }
 
     laughters.oplaughters(message.content.toLowerCase(), message);
-    fun.customEmojis(message.content, message);
+    emojis.customEmojis(message.content, message);
 
     // if (corecommands.tooManyTags(message) >= 10) {
     //     message.channel.send(fun.dontTagMe(message));
@@ -477,6 +478,10 @@ client.on("message", (message) => {
 
         if(commandWithArgs === 'poll') {
             withparameters.poll(message, args);
+        }
+
+        if(command === 'dbaddemojis') {
+            emojis.fillMongo(message);
         }
     }
 
