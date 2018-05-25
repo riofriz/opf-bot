@@ -16,6 +16,7 @@ let commandsforberries = require('./userfunctions/commandsforberries');
 let rpgcore = require('./rpg/corefunctions');
 let pvp = require('./rpg/pvp');
 let laughters = require('./core/oplaughs');
+let withparameters = require('./core/withparameters');
 let cooldown = 5000;
 
 // Let's call discord now.
@@ -468,6 +469,10 @@ client.on("message", (message) => {
         if (commandWithArgs === 'oprank') {
             rpgcore.oprank(message, args, client);
             basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (command === 'testparam') {
+            withparameters.entervaluetest(message);
         }
     }
 
