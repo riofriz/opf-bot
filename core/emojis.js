@@ -43,24 +43,25 @@ module.exports = {
 
     customEmojis: function (str, message) {
         try {
-            if (/;([\w]+);/g.test(str)) {
+            if (/:([\w]+):/g.test(str)) {
+                let search = str.replace(';', '');
                 db.Emojis.findOne({"name": str}, function (err, doc) {
                     if (doc) {
                         let emojiName = doc.name;
                         let emojiFile = doc.file;
-                        if (typeof emojiName !== 'undefined' && emojiName !== '') {
+                        if (typeof emojiName.trim() !== 'undefined' && emojiName.trim() !== '') {
                             message.channel.send({file: __dirname + '/customemoji/' + emojiFile});
+                            if (message.author.id !== '441203112460681216') {
+                                message.channel.fetchMessage(message.id)
+                                    .then(m => {
+                                        m.delete();
+                                    });
+                            }
                         }
                     } else {
                         message.channel.send('Sorry, i couldn\'t find this emoji in my amazing database. :(');
                     }
                 });
-                if (message.author.id !== '441203112460681216') {
-                    message.channel.fetchMessage(message.id)
-                        .then(m => {
-                            m.delete();
-                        });
-                }
             }
         } catch (e){ console.log(e); }
     },
