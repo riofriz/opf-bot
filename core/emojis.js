@@ -180,6 +180,8 @@ module.exports = {
         let string = [];
         let counter = 0;
 
+        console.log(db.Emoji.size);
+
         db.Emoji.find().forEach( function(myDoc) {
             //string.push('``:'+myDoc.name+':``');
             console.log(this.size);
