@@ -21,7 +21,7 @@ module.exports = {
                             //message.channel.send({file: __dirname + '/customemoji/' + emojiFile});
                             let embed = new Discord.RichEmbed()
                                 .setColor('#36393e')
-                                .setImage({file: __dirname + '/customemoji/' + emojiFile});
+                                .setImage('http://104.131.78.209/bot/core/customemoji/'+emojiFile);
                             message.channel.send({embed: embed});
                             if (message.author.id !== '441203112460681216') {
                                 message.channel.fetchMessage(message.id)
