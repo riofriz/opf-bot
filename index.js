@@ -30,6 +30,14 @@ let notification = true;
 
 const talkedRecently = new Set();
 
+const SimpleNodeLogger = require('simple-node-logger'),
+    opts = {
+        logFilePath:'opfbot.log',
+        timestampFormat:'YYYY-MM-DD HH:mm:ss.SSS'
+    },
+log = SimpleNodeLogger.createSimpleLogger( opts );
+
+
 let randomRankIncrease = Math.random() * 7;
 randomRankIncrease = Math.floor(randomRankIncrease);
 
