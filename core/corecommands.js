@@ -169,7 +169,7 @@ module.exports = {
         let commandsString = '';
         for (let i = 0; i!==allCommands.length; i++) {
             if (allCommands[i] !== '') {
-                commandsString += '``o-' + allCommands[i] + '``';
+                commandsString += '``o-' + allCommands[i] + '`` ';
             }
         }
         message.channel.send(commandsString.replace('undefined', ''));
