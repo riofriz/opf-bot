@@ -1135,7 +1135,7 @@ module.exports = {
 
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
-            'content-type': 'application/json'
+            'Content-Type': 'application/json'
         };
 
         let options = {
