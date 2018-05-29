@@ -162,6 +162,17 @@ module.exports = {
                 }
             });
         } catch (e){ console.log(e); }
+    },
+
+    commands: function(message) {
+        let allCommands = corevars.isAvailable();
+        let commandsString = '';
+        for (let i = 0; i!==allCommands.length; i++) {
+            if (allCommands[i] !== '') {
+                commandsString += '``o-' + allCommands[i] + '``';
+            }
+        }
+        message.channel.send(commandsString.replace('undefined', ''));
     }
 
     // tooManyTags: function(message) {

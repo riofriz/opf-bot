@@ -3,7 +3,7 @@ module.exports = {
      * @param value
      * @returns {boolean}
      */
-    isAvailable: function (value) {
+    isAvailable: function () {
         const commandsArray = [
             'hello',
             'help',
@@ -52,13 +52,14 @@ module.exports = {
             "nosebleed",
             "gif",
             "yt",
-            "boobhug"
+            "boobhug",
+            "poll",
+            "emojiadd",
+            "emojiremove",
+            "emojipermission",
+            "wuami"
         ];
-        if (commandsArray.indexOf(value) === -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return commandsArray;
     },
 
     /**

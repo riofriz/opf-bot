@@ -208,6 +208,10 @@ client.on("message", (message) => {
             corecommands.ping(message, client);
         }
 
+        if(command === "rawcommands") {
+            corecommands.commands(message);
+        }
+
         if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-' || message.content === '+'){
             corecommands.help(commandPrefix, message);
             corecommands.deleteMessage(message);
