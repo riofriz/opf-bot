@@ -958,7 +958,7 @@ module.exports = {
                     finalResult = 'https://orig00.deviantart.net/31de/f/2012/108/1/a/makorra_ship_by_animewaterfall-d4wnoj7.gif';
                 }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
-                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                        finalResult = 'I am not powerful enough to mesure such big love!! (DON\'T KILL ME, DON\'T KILL ME!!!)'
                 }
                 if (message.isMentioned('434009741832880128') && message.isMentioned('118473291504549893')) { //jacky x sam
                     finalResult = 'Affinity: **100%** ``[=========================]``';
