@@ -1145,6 +1145,7 @@ module.exports = {
         };
 
         request(options, function (error, response, body) {
+            console.log(body);
             try {
                 if (!error && response.statusCode === 200) {
                     let json_body = JSON.parse(body);
