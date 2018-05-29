@@ -951,21 +951,11 @@ module.exports = {
                 }
 
                 if (message.isMentioned('273453235287883776')) { //grin dahling
-                    finalResult = 'Affinity: DAHLING';
+                    finalResult = 'This user belongs to Master Cookie. I had to disable his shipping to you or she\'d dismantle me and throw me in a spare bot parts dumpster. She is all for recycling.';
                 }
 
                 if(message.isMentioned('273453235287883776') && message.isMentioned('415230548248887296')) { //grin x 10th
                     finalResult = 'https://orig00.deviantart.net/31de/f/2012/108/1/a/makorra_ship_by_animewaterfall-d4wnoj7.gif';
-                }
-
-                if (message.isMentioned('273453235287883776') && args[2] === 'bikki') { //grin x bikki
-                    finalResult = 'Affinity: **100%** ``[=========================]``';
-                }
-                if (message.isMentioned('273453235287883776') && string.toLowerCase().includes("neko's voice")) { //grin x neko's voice
-                    finalResult = 'Affinity: **100%** ``[=========================]``';
-                }
-                if (message.isMentioned('341465382655361035') && string.toLowerCase().includes("grin's voice")) { //neko x grin's voice
-                    finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
                     finalResult = 'I am not powerful enough to mesure such big love!!'
@@ -977,7 +967,7 @@ module.exports = {
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
                 if (message.isMentioned('415230548248887296') && message.isMentioned('408255473821679617')) { // riofriz x 10th
-                    finalResult = 'INTIMACY+++++';
+                    finalResult = 'INTIMACY+++++ . Grin is not as possessive, he won\'t dismantle me.';
                 }
                 if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x zibo
                     finalResult = 'https://media3.giphy.com/media/l2Je3n9VXC8z3baTe/giphy.gif'
@@ -1140,7 +1130,7 @@ module.exports = {
         };
 
         let options = {
-            url: 'https://wunameaas.herokuapp.com/wuami/'+string,
+            url: 'https://wunameaas.herokuapp.com/wuami/'+string.trim(),
             method: 'GET',
             headers: headers
         };
