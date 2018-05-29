@@ -434,7 +434,7 @@ client.on("message", (message) => {
         }
 
         if (commandWithArgs === 'wuami') {
-            fun.wuami(message);
+            fun.wuami(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
