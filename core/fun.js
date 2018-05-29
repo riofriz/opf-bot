@@ -5,6 +5,7 @@ let qs = require('qs');
 let request = require('request');
 const youtubeSearch = require('youtube-search');
 let youtubeApiKey = process.env.YOUTUBE;
+const cheerio = require('cheerio');
 
 module.exports = {
 
@@ -1135,7 +1136,7 @@ module.exports = {
 
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
-            'Content-Type': 'text/plain'
+            'Content-Type': 'application/json'
         };
 
         let options = {
@@ -1148,23 +1149,27 @@ module.exports = {
             console.log(body);
             try {
                 if (!error && response.statusCode === 200) {
-                    let json_body = JSON.parse(body);
-                    let result = 'Can\'t find it :(';
-                    let counter = 1;
-                    for (let key in json_body) {
-                        console.log(json_body);
-                        // if (json_body.hasOwnProperty(key)) {
-                        //     if (counter === 1) {
-                        //         result = '';
-                        //     }
-                        //     result += json_body[key]['word'];
-                        //     if (json_body.length !== counter) {
-                        //         result += ' , ';
-                        //     }
-                        //     counter++;
-                        // }
-                    }
-                    message.channel.send(result.replace('undefined', '').trim());
+                    const $ = cheerio.load(body);
+                    let name = $('.hero-unit p b').text();
+                    console.log(name);
+
+                    // let json_body = JSON.parse(body);
+                    // let result = 'Can\'t find it :(';
+                    // let counter = 1;
+                    // for (let key in json_body) {
+                    //     console.log(json_body);
+                    //     // if (json_body.hasOwnProperty(key)) {
+                    //     //     if (counter === 1) {
+                    //     //         result = '';
+                    //     //     }
+                    //     //     result += json_body[key]['word'];
+                    //     //     if (json_body.length !== counter) {
+                    //     //         result += ' , ';
+                    //     //     }
+                    //     //     counter++;
+                    //     // }
+                    // }
+                    // message.channel.send(result.replace('undefined', '').trim());
                 } else {
                     console.log(error.message);
                 }
