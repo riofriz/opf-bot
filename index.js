@@ -433,6 +433,11 @@ client.on("message", (message) => {
             }
         }
 
+        if (commandWithArgs === 'wuami') {
+            fun.wuami(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (commandWithArgs === 'ship') {
             fun.ship(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);

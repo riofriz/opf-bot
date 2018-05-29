@@ -171,8 +171,7 @@ module.exports = {
             "oh, hi mark",
             "congratulations",
             "dun dun duuun!",
-            "akuuuuu",
-            "no pizza"
+            "akuuuuu"
         ];
         let result;
         let string;
@@ -666,6 +665,38 @@ module.exports = {
             .setImage('http://24.media.tumblr.com/8bcfa67fd56db0085af62e4fb2e08a92/tumblr_msifvprvL61ss73zlo1_500.gif');
         message.channel.send({embed: embed});
     },
+    
+    customEmojis: function(str, message) {
+        let customEmojis = [
+            'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
+            'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
+            'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
+            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo1',
+            'asd', 'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
+            'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
+        ];
+        let result;
+        let extension;
+        for (let i = 0; i !== customEmojis.length; i++) {
+            if (str.includes(':'+customEmojis[i]+':')) {
+                result = customEmojis[i];
+            }
+        }
+        if (result === 'pWdiepie' || result === 'megarot' || result === 'asd' || result === 'blob') {
+            extension = '.gif';
+        } else {
+            extension = '.png';
+        }
+        if (str.includes(':'+result+':') && str.includes('``:'+result+':``') === false) {
+            message.channel.send({file: __dirname + '/customemoji/' + result + extension});
+            if (message.author.id !== '441203112460681216') {
+                message.channel.fetchMessage(message.id)
+                    .then(m => {
+                        m.delete();
+                    });
+            }
+        }
+    },
 
     neko: function(message) {
         let headers = {
@@ -1088,5 +1119,57 @@ module.exports = {
         catch (err) {
             console.log(err);
         }
+    },
+
+    wuami: function(message, args) {
+        let string;
+        if (args[0]) {
+            for (let i = 0; i !== args.length; i++) {
+                string += args[i] + ' ';
+            }
+            string = string.replace('undefined', '');
+            string = string.trim();
+        } else {
+            string = message.author.username;
+        }
+
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let options = {
+            url: 'https://wunameaas.herokuapp.com/wuami/'+string,
+            method: 'GET',
+            headers: headers
+        };
+
+        request(options, function (error, response, body) {
+            try {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    let result = 'Can\'t find it :(';
+                    let counter = 1;
+                    for (let key in json_body) {
+                        console.log(json_body);
+                        // if (json_body.hasOwnProperty(key)) {
+                        //     if (counter === 1) {
+                        //         result = '';
+                        //     }
+                        //     result += json_body[key]['word'];
+                        //     if (json_body.length !== counter) {
+                        //         result += ' , ';
+                        //     }
+                        //     counter++;
+                        // }
+                    }
+                    message.channel.send(result.replace('undefined', '').trim());
+                } else {
+                    console.log(error.message);
+                }
+            } catch (err) {
+                message.channel.send('You are not fit to have an awesome name!');
+                console.log(err);
+            }
+        });
     }
 };
