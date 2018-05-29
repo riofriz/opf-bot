@@ -1146,30 +1146,11 @@ module.exports = {
         };
 
         request(options, function (error, response, body) {
-            console.log(body);
             try {
                 if (!error && response.statusCode === 200) {
                     const $ = cheerio.load(body);
                     let name = $('.hero-unit p b').text();
-                    console.log(name);
-
-                    // let json_body = JSON.parse(body);
-                    // let result = 'Can\'t find it :(';
-                    // let counter = 1;
-                    // for (let key in json_body) {
-                    //     console.log(json_body);
-                    //     // if (json_body.hasOwnProperty(key)) {
-                    //     //     if (counter === 1) {
-                    //     //         result = '';
-                    //     //     }
-                    //     //     result += json_body[key]['word'];
-                    //     //     if (json_body.length !== counter) {
-                    //     //         result += ' , ';
-                    //     //     }
-                    //     //     counter++;
-                    //     // }
-                    // }
-                    // message.channel.send(result.replace('undefined', '').trim());
+                    message.channel.send('**'+string+'** *from this day forward you will also be known as* **'+name+'**');
                 } else {
                     console.log(error.message);
                 }
