@@ -175,6 +175,7 @@ module.exports = {
             if (counter !== allCommands.length) {
                 commandsString += ', ';
             }
+            counter++;
         }
         message.channel.send(commandsString.replace('undefined', ''));
     }
