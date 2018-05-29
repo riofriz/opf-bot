@@ -167,7 +167,7 @@ module.exports = {
     commands: function(message) {
         let allCommands = corevars.isAvailable();
         let commandsString = '';
-        let counter = 0;
+        let counter = 1;
         for (let i = 0; i!==allCommands.length; i++) {
             if (allCommands[i] !== '') {
                 commandsString += '``o-' + allCommands[i] + '``';
