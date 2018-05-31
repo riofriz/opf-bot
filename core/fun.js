@@ -956,7 +956,7 @@ module.exports = {
                 }
 
                 if (message.isMentioned('415230548248887296')) {
-                    finalResult = 'Affinity: **0%%** ``[...]``';
+                    finalResult = 'Affinity: **0%** ``[...]``';
                 }
                 if(message.isMentioned('273453235287883776') && message.isMentioned('415230548248887296')) { //grin x 10th
                     finalResult = 'https://orig00.deviantart.net/31de/f/2012/108/1/a/makorra_ship_by_animewaterfall-d4wnoj7.gif';
