@@ -289,7 +289,7 @@ client.on("message", (message) => {
         }
 
         if (commandWithArgs === 'boiii') {
-            fun.boii(message);
+            fun.boii(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
