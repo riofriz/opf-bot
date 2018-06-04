@@ -337,6 +337,30 @@ module.exports = {
         message.channel.send(dick);
     },
 
+    boii: function(message, args) {
+        if (!args[0]) {
+            message.channel.send('You should give me for how long you want me to go bbbbbooooiiiiiii');
+        } else {
+            try {
+                if (args[1]) {
+                    message.channel.send('Uhm.. what?');
+                } else {
+                    if (parseInt(args[0].trim()) < 1900) {
+                        let boi = 'i';
+                        for (let i = 0; i <= parseInt(args[0].trim()); i++) {
+                            boi += 'i';
+                        }
+                        message.channel.send('Hey bbbbbbbooo' + boi + '!');
+                    } else {
+                        message.channel.send('Can\'t hold my breath for that long bbbbbooiiiiii');
+                    }
+                }
+            } catch(err) {
+                message.channel.send('That\'s not a number, bbbboiiiiii');
+            }
+        }
+    },
+
     whops: function(message) {
         let whops = [
         "I didn't want to be a toy",

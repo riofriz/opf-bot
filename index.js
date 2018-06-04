@@ -288,6 +288,11 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === 'boiii') {
+            fun.boii(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (command === 'muhahaha') {
             fun.evilLaugh(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
