@@ -17,7 +17,8 @@ let rpgcore = require('./rpg/corefunctions');
 let pvp = require('./rpg/pvp');
 let laughters = require('./core/oplaughs');
 let withparameters = require('./core/withparameters');
-let emojis = require('./core/emojis')
+let emojis = require('./core/emojis');
+let games = require('./core/games');
 let cooldown = 5000;
 
 // Let's call discord now.
@@ -522,6 +523,11 @@ client.on("message", (message) => {
 
         if(commandWithArgs === 'emojipermission') {
             emojis.emojiPermission(message, args);
+        }
+
+        //GAMES
+        if(commandWithArgs === 'popquiz') {
+            games.popquiz(message, args);
         }
     }
 
