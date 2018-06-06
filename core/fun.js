@@ -154,7 +154,7 @@ module.exports = {
     },
 
     wednesday: function(message) {
-        if(message.author.id() === '122093067921522690' || message.author.id === '146822995908755456') { //tony or sprazi
+        if(message.author.id === '122093067921522690' || message.author.id === '146822995908755456') { //tony or sprazi
             message.channel.send('He 👉 <:wednesday:443773378277408768> is <:thot:446252685642170369> . He 👉 <:wednesday:443773378277408768> is <:gay:446211332816109579> . And he only cum on 🇼 🇪 🇩 🇳 🇪 🇸 🇩 🅰 🇾');
         } else {
             message.author.send('Stop trying to use the wednesday command!!');
