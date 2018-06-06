@@ -313,6 +313,11 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (command === 'wednesday') {
+            fun.wednesday(message);
+            corecommands.deleteMessage(message);
+        }
+
         if (commandWithArgs === 'poets') {
             fun.poets(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
