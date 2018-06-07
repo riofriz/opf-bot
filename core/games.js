@@ -49,6 +49,44 @@ module.exports = {
                             } else {
                                 message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'** ```'+answersString+'```----------');
                             }
+
+
+                            message.channel.awaitMessages(filter, {
+                                max: 200,
+                                time: 50000,
+                                errors: ['time']
+                            })
+                                .then(collected => {
+                                })
+                                // .catch is called on error - time up is considered an error (says so in docs)
+                                .catch(collected => {
+                                    if (collected.size > 0) {
+                                        let finalArray = [];
+                                        let result = '';
+                                        let counter = 0;
+                                        function countInArray(array, what) {
+                                            var count = 0;
+                                            for (var i = 0; i < array.length; i++) {
+                                                if (array[i] === what) {
+                                                    count++;
+                                                }
+                                            }
+                                            return count;
+                                        }
+                                        collected.forEach(function (convertedArray, key) {
+                                            finalArray.push(argsArray[parseInt(convertedArray.content)]);
+                                            if (counter+1 === collected.size) {
+                                                for (let i = 0; i !== argsArray.length; i++) {
+                                                    result += '**'+argsArray[i] + '** received **' + countInArray(finalArray, argsArray[i]) + '** votes!\n';
+                                                }
+                                                message.channel.send('There were '+collected.size+' entries! \n\n'+result);
+                                            }
+                                            counter++;
+                                        });
+                                    }
+                                });
+
+
                         })
                         .catch(console.error);
 
