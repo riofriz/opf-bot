@@ -16,8 +16,10 @@ module.exports = {
                     };
                     trivia.getQuestions(options)
                         .then(questions => {
-                            console.log(questions);
-                            console.log(questions.results.incorrect_answers);
+                            //console.log(questions);
+                            console.log(questions['results']);
+                            console.log(questions['results']['incorrect_answers']);
+                            console.log(questions['incorrect_answers']);
                         })
                         .catch(console.error);
 
