@@ -22,7 +22,7 @@ module.exports = {
 
                     message.channel.send("popquiztest")
                         .catch(console.error); // add error handling here
-                }, 900000);
+                }, 5000);
             } else if (args[0].trim() === 'off') {
                 return clearInterval(interval);
             }
