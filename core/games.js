@@ -17,6 +17,7 @@ module.exports = {
                     trivia.getQuestions(options)
                         .then(questions => {
                             console.log(questions);
+                            console.log(questions.results.incorrect_answers);
                         })
                         .catch(console.error);
 
