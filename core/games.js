@@ -36,15 +36,17 @@ module.exports = {
                                 [answers[i], answers[j]] = [answers[j], answers[i]]; // eslint-disable-line no-param-reassign
                             }
                             for (let i = 0; i <= answers.length; i++) {
-                                answersString += '*'+answers[i]+'*\n';
+                                if (answers[i] !== 'undefined') {
+                                    answersString += '*' + answers[i] + '*\n';
+                                }
                             }
 
                             if (difficulty === 'easy') { berry = 150; } else if (difficulty === 'medium') { berry = 300; } else if (difficulty === 'hard') { berry = 450; }
 
                             if (type === 'boolean') {
-                                message.channel.send('Ok! '+difficulty+' question:\n**'+question+'**\n\nPossible answers:\n'+answersString);
+                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n\n*True*\n*False*\n----------');
                             } else {
-                                message.channel.send('Ok! '+difficulty+' question:\n**'+question+'**\n'+answersString);
+                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n\nPossible answers:\n'+answersString+'\n----------');
                             }
                         })
                         .catch(console.error);
