@@ -15,8 +15,8 @@ module.exports = {
                     };
                     trivia.getQuestions(options)
                         .then(questions => {
-                            // console.log(questions['results']);
-                            // console.log(questions['results'][0]['incorrect_answers']);
+                            console.log(questions['results']);
+                            console.log(questions['results'][0]['incorrect_answers']);
 
                             let type = questions['results'][0]['type'];
                             let correct = questions['results'][0]['correct_answer'];
@@ -37,16 +37,16 @@ module.exports = {
                             }
                             for (let i = 0; i <= answers.length; i++) {
                                 if (answers[i] !== 'undefined') {
-                                    answersString += answers[i] + '\n';
+                                    answersString += answers[i] + ' \n';
                                 }
                             }
-                            answersString = answersString.replace('undefined'+/\n/g, "");
+                            answersString = answersString.replace('undefined '+/\n/g, "");
                             if (difficulty === 'easy') { berry = 150; } else if (difficulty === 'medium') { berry = 300; } else if (difficulty === 'hard') { berry = 450; }
 
                             if (type === 'boolean') {
-                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n```True\nFalse\n```----------');
+                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'** ```True \nFalse \n```----------');
                             } else {
-                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n```'+answersString+'```----------');
+                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'** ```'+answersString+'```----------');
                             }
                         })
                         .catch(console.error);
