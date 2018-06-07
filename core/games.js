@@ -35,8 +35,9 @@ module.exports = {
                                 const j = Math.floor(Math.random() * (i + 1));
                                 [answers[i], answers[j]] = [answers[j], answers[i]]; // eslint-disable-line no-param-reassign
                             }
+
                             for (let i = 0; i <= answers.length; i++) {
-                                if (answers[i] !== 'undefined') {
+                                if (typeof(answers[i]) !== 'undefined') {
                                     answersString += answers[i] + ' \n';
                                 }
                             }
