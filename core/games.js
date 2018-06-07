@@ -40,7 +40,7 @@ module.exports = {
                                     answersString += answers[i] + '\n';
                                 }
                             }
-
+                            answersString = answersString.replace('undefined'+/\n/g, "");
                             if (difficulty === 'easy') { berry = 150; } else if (difficulty === 'medium') { berry = 300; } else if (difficulty === 'hard') { berry = 450; }
 
                             if (type === 'boolean') {

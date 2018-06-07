@@ -28,7 +28,7 @@ module.exports = {
         let string;
         let zeroone = Math.floor(Math.random() * 1.99);
         for (let i = 0; i !== substrings.length; i++) {
-            if (str.includes(substrings[i])) {
+            if (str.includes(substrings[i]) && str !== 'undefined') {
                 result = substrings[i];
             }
         }
