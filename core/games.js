@@ -21,7 +21,7 @@ module.exports = {
                             let type = questions['results'][0]['type'];
                             let correct = questions['results'][0]['correct_answer'];
                             let incorrect = questions['results'][0]['incorrect_answers'];
-                            let question = questions['results'][0]['question'];
+                            let question = decodeURIComponent(questions['results'][0]['question']);
                             let difficulty = questions['results'][0]['difficulty'];
                             let answers = [correct];
                             let berry;
