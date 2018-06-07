@@ -18,8 +18,13 @@ module.exports = {
                         .then(questions => {
                             //console.log(questions);
                             console.log(questions['results']);
-                            console.log(questions['results']['incorrect_answers']);
-                            console.log(questions['incorrect_answers']);
+                            console.log(questions['results'][0]['incorrect_answers']);
+
+
+                            // for (let i = array.length - 1; i > 0; i--) {
+                            //     const j = Math.floor(Math.random() * (i + 1));
+                            //     [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
+                            // }
                         })
                         .catch(console.error);
 
