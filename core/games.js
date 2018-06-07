@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Trivia = require('trivia-api');
-const trivia = new Trivia({ encoding: 'url3986' });
+const trivia = new Trivia();
 
 module.exports = {
 
@@ -37,16 +37,16 @@ module.exports = {
                             }
                             for (let i = 0; i <= answers.length; i++) {
                                 if (answers[i] !== 'undefined') {
-                                    answersString += '*' + answers[i] + '*\n';
+                                    answersString += answers[i] + '\n';
                                 }
                             }
 
                             if (difficulty === 'easy') { berry = 150; } else if (difficulty === 'medium') { berry = 300; } else if (difficulty === 'hard') { berry = 450; }
 
                             if (type === 'boolean') {
-                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n\n*True*\n*False*\n----------');
+                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n```True\nFalse\n```----------');
                             } else {
-                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n\nPossible answers:\n'+answersString+'\n----------');
+                                message.channel.send('Ok! '+difficulty+' question:\n----------\n**'+question+'**\n```'+answersString+'```----------');
                             }
                         })
                         .catch(console.error);
