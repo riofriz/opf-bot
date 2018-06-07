@@ -11,20 +11,41 @@ module.exports = {
                 interval = setInterval(function () {
                     // use the message's channel (TextChannel) to send a new message
                     let options = {
-                        amount: 1,
-                        difficulty: 'medium'
+                        amount: 1
                     };
                     trivia.getQuestions(options)
                         .then(questions => {
-                            //console.log(questions);
-                            console.log(questions['results']);
-                            console.log(questions['results'][0]['incorrect_answers']);
+                            // console.log(questions['results']);
+                            // console.log(questions['results'][0]['incorrect_answers']);
 
+                            let type = questions['results'][0]['type'];
+                            let correct = questions['results'][0]['correct_answer'];
+                            let incorrect = questions['results'][0]['incorrect_answers'];
+                            let question = questions['results'][0]['question'];
+                            let difficulty = questions['results'][0]['difficulty'];
+                            let answers = [correct];
+                            let berry;
 
-                            // for (let i = array.length - 1; i > 0; i--) {
-                            //     const j = Math.floor(Math.random() * (i + 1));
-                            //     [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
-                            // }
+                            for (let inc = 0; inc <= incorrect.length; inc++) {
+                                answers.push(incorrect[inc]);
+                            }
+                            let answersString = '';
+
+                            for (let i = answers.length - 1; i > 0; i--) {
+                                const j = Math.floor(Math.random() * (i + 1));
+                                [answers[i], answers[j]] = [answers[j], answers[i]]; // eslint-disable-line no-param-reassign
+                            }
+                            for (let i = 0; i <= answers.length; i++) {
+                                answersString += '*'+answers[i]+'*\n';
+                            }
+
+                            if (difficulty === 'easy') { berry = 150; } else if (difficulty === 'medium') { berry = 300; } else if (difficulty === 'hard') { berry = 450; }
+
+                            if (type === 'boolean') {
+                                message.channel.send('Ok! '+difficulty+' question:\n**'+question+'**\n\nPossible answers:\n'+answersString);
+                            } else {
+                                message.channel.send('Ok! '+difficulty+' question:\n**'+question+'**\n'+answersString);
+                            }
                         })
                         .catch(console.error);
 
