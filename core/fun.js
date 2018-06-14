@@ -1009,6 +1009,9 @@ module.exports = {
                 if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x zibo
                     finalResult = 'https://media3.giphy.com/media/l2Je3n9VXC8z3baTe/giphy.gif'
                 }
+                if (message.isMentioned('307390107411939329')) {
+                    finalResult = 'Nope!! **0%**';
+                }
 
                 message.channel.send(finalResult);
             } else {
