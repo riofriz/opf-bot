@@ -68,7 +68,7 @@ module.exports = {
                     m.delete();
                 });
         } else {
-            message.channel.send('na na.. not allowed <:pfft:445023527888748544>');
+            message.channel.send('na na.. not allowed <:pfft:448636903915257866>');
         }
     },
 
@@ -125,7 +125,7 @@ module.exports = {
      */
     garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
-            message.channel.send('whops.. you can\'t.. <:pfft:445023527888748544>');
+            message.channel.send('whops.. you can\'t.. <:pfft:448636903915257866>');
         } else if (message.author.id === '273453235287883776') {
             message.channel.send('I\'m sorry Grin.. Can\'t let you use this command.. P..p..please understand..');
         } else {
@@ -326,7 +326,7 @@ module.exports = {
         let mention = '';
         let dick;
         if (randomNumber <= 5) {
-            ptff = '<:pfft:445023527888748544>';
+            ptff = '<:pfft:448636903915257866>';
         }
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
@@ -337,6 +337,8 @@ module.exports = {
                 dick = mention+' = 8=======================================================D ';
             } else if (mention.trim() === '<@273453235287883776>' || mention.trim() === '<@!273453235287883776>') {
                 dick = mention+' = {(\')}';
+            } else if (message.isMentioned('307390107411939329')){
+                dick = '<:pfft:448636903915257866>';
             } else {
                 dick = mention+' = 8'+bodystr+'D '+ptff;
             }
@@ -1143,7 +1145,7 @@ module.exports = {
             } else if ((message.isMentioned('273453235287883776') && message.author.id === '415230548248887296')) {
                 prankMessage = 'U cute, <@' + user + '> - *10th*';
             } else {
-                prankMessage = '<@' + user + '> <:pfftbot:449189450094870530> <:pfft:445023527888748544>';
+                prankMessage = '<@' + user + '> <:pfftbot:449189450094870530> <:pfft:448636903915257866>';
             }
             message.guild.channels.find('name', channels[randomNumber]).send(prankMessage)
         }

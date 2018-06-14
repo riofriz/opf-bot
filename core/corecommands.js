@@ -46,7 +46,7 @@ module.exports = {
             .addField(commandPrefix+"latest manga", "📰 Shows the latest OP issue 📰")
             .addField(commandPrefix+"latest anime", "Shows the latest OP episode")
             .addField(commandPrefix+"latest nakama", "Last user to join the forum")
-            .addField(commandPrefix+"love <user>", "<:pfft:445023527888748544>")
+            .addField(commandPrefix+"love <user>", "<:pfft:448636903915257866>")
             .addField(commandPrefix+"pokemon <name/id>", "❓ WHO'S THAT POKEMON ❓. only in #pokemon_channel")
             .addField(commandPrefix+"sgame", "Displays information about the game requested. only in #gamers-general")
             .addField(commandPrefix+"movie", "Displays information about the movie requested")
