@@ -126,7 +126,17 @@ module.exports = {
     garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
             message.channel.send('whops.. you can\'t.. <:pfft:448636903915257866>');
-        } else if (message.author.id === '273453235287883776' && !message.isMentioned('415230548248887296')) {
+        }  else if (!message.author.id === '415230548248887296' && message.isMentioned('273453235287883776')) {
+            let threat = [
+                'Listen, Super Girl: G is gonna break you down into so many little pieces that my grandmother, who can do a thousand-piece puzzle of clear-blue sky in less than an hour, will never be able to finish putting you back together again. Even if she does go back in time to when her vision was perfect.',
+                'G will throw him out of the window. And I won\'t open it first.',
+                'G will not feed your motives, just feed the bears.',
+                'G wishes she was an octopus. That way she could shove 8 legs up your ass!',
+                'Careful.. G will make your tongue and your rectum swap places.',
+                'You won\'t see G in the parking lot.',
+                'G will steal your pillow, making sleeping a slightly less pleasurable experience.'
+            ];
+        } if (message.author.id === '273453235287883776' && !message.isMentioned('415230548248887296')) {
             message.channel.send('I\'m sorry Grin.. Can\'t let you use this command with this user.. P..p..please understand..');
         } else {
             if (args[0]) {
