@@ -126,7 +126,7 @@ module.exports = {
     garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
             message.channel.send('whops.. you can\'t.. <:pfft:448636903915257866>');
-        } else if (message.author.id === '273453235287883776' && !message.isMentioned('273453235287883776')) {
+        } else if (message.author.id === '273453235287883776' && !message.isMentioned('415230548248887296')) {
             message.channel.send('I\'m sorry Grin.. Can\'t let you use this command with this user.. P..p..please understand..');
         } else {
             if (args[0]) {
