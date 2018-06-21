@@ -143,7 +143,7 @@ client.on("message", (message) => {
         notification = false;
         fun.ohno(message);
     }
-    if (fun.commandsWithNoCommands(message.content.toLowercase()) === "start up" || fun.commandsWithNoCommands(message.content.toLowercase()) === "startup") {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "start up" || fun.commandsWithNoCommands(message.content.toLowerCase()) === "startup") {
         message.channel.send('Did you mean you are an ENTREPRENEUR??');
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh, hi mark") {
