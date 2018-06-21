@@ -141,7 +141,10 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh noooooo") {
         allowed = true;
         notification = false;
-        fun.ohno(message)
+        fun.ohno(message);
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowercase()) === "start up" || fun.commandsWithNoCommands(message.content.toLowercase()) === "startup") {
+        message.channel.send('Did you mean you are an ENTREPRENEUR??');
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh, hi mark") {
         allowed = true;

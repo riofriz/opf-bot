@@ -195,7 +195,9 @@ module.exports = {
             "dun dun duuun!",
             "akuuuuu",
             "no pizza",
-            "heretic"
+            "heretic",
+            "start up",
+            "startup"
         ];
         let result;
         let string;
