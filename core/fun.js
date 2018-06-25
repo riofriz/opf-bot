@@ -197,7 +197,8 @@ module.exports = {
             "no pizza",
             "heretic",
             "start up",
-            "startup"
+            "startup",
+            "science"
         ];
         let result;
         let string;
