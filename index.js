@@ -100,8 +100,6 @@ client.on("message", (message) => {
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
-        allowed = true;
-        notification = false;
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
@@ -123,59 +121,37 @@ client.on("message", (message) => {
         fun.ezekiel(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "chuck norris") {
-        allowed = true;
-        notification = false;
         fun.chuckNorris(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "luv u") {
-        allowed = true;
-        notification = false;
         fun.luvU(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "zak") {
-        allowed = true;
-        notification = false;
         fun.zak(message);
         basiclogics.increaseCommands(message, randomRankIncrease);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh noooooo") {
-        allowed = true;
-        notification = false;
         fun.ohno(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "unlimited") {
-        allowed = true;
-        notification = false;
         message.channel.send({file: __dirname+'/asset/images/gripsofscience.png'});
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "start up" || fun.commandsWithNoCommands(message.content.toLowerCase()) === "startup") {
-        allowed = true;
-        notification = false;
         message.channel.send('Did you mean you are an ENTREPRENEUR??');
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh, hi mark") {
-        allowed = true;
-        notification = false;
         fun.himark(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "dun dun duuun!") {
-        allowed = true;
-        notification = false;
         message.channel.send('https://www.youtube.com/watch?v=cphNpqKpKc4');
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "akuuuuu") {
-        allowed = true;
-        notification = false;
         message.channel.send({file: 'http://24.media.tumblr.com/47eabb453963ea60b5c83e7bdc3cbd39/tumblr_mvndk3X7pb1qlsdwvo1_500.gif'});
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "no pizza") {
-        allowed = true;
-        notification = false;
         message.channel.send({file: 'https://i.imgur.com/fSA2tPt.jpg'});
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "heretic") {
-        allowed = true;
-        notification = false;
         message.channel.send({file: 'https://i.imgur.com/p0ugysA.jpg'});
     }
 
