@@ -198,7 +198,7 @@ module.exports = {
             "heretic",
             "start up",
             "startup",
-            "science"
+            "unlimited"
         ];
         let result;
         let string;

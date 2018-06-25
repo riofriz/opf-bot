@@ -143,7 +143,7 @@ client.on("message", (message) => {
         notification = false;
         fun.ohno(message);
     }
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "science") {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "unlimited") {
         allowed = true;
         notification = false;
         message.channel.send({file: __dirname+'/asset/images/gripsofscience.png'});
