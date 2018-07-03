@@ -102,7 +102,7 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
     }
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear" || message.author.nickname === 'symphogear') {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear" || message.author.nickname.trim().toLowerCase() === 'symphogear' || message.author.displayName.trim().toLowerCase() === 'symphogear') {
         allowed = true;
         notification = false;
         let embed = new Discord.RichEmbed()
