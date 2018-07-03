@@ -102,14 +102,13 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
     }
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear" || message.author.displayName === 'symphogear') {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
         allowed = true;
         notification = false;
         let embed = new Discord.RichEmbed()
             .setTitle('mmmh.. you mean ＳＹＭＰＨＯＧＥＡＲ, right?')
             .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
         message.channel.send({embed: embed});
-        message.channel.send(message.author.nickname);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "congratulations") {
         message.channel.send('https://www.youtube.com/watch?v=wDajqW561KM');
