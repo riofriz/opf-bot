@@ -39,4 +39,21 @@ module.exports = {
             message.channel.send({file: __dirname + '/oplaughters/' + result + '.gif'})
         }
     }
+
+    jojofights: function (str, message) {
+        let substrings = [
+            "oraoraora",
+            "mudamudamuda"
+        ];
+        let result;
+        let string;
+        for (let i = 0; i !== substrings.length; i++) {
+            if (str.includes(substrings[i]) && str !== 'undefined') {
+                result = substrings[i];
+            }
+        }
+        if (str.includes(result)) {
+            message.channel.send({file: __dirname + '/jojofight/' + result + '.gif'})
+        }
+    }
 };

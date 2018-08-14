@@ -180,6 +180,7 @@ client.on("message", (message) => {
     }
 
     laughters.oplaughters(message.content.toLowerCase(), message);
+    laughters.jojofights(message.content.toLowerCase(), message);
     emojis.customEmojis(message.content, message);
 
     // if (corecommands.tooManyTags(message) >= 10) {
