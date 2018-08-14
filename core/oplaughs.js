@@ -38,7 +38,7 @@ module.exports = {
             }
             message.channel.send({file: __dirname + '/oplaughters/' + result + '.gif'})
         }
-    }
+    },
 
     jojofights: function (str, message) {
         let substrings = [
