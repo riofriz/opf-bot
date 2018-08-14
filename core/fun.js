@@ -198,7 +198,8 @@ module.exports = {
             "heretic",
             "start up",
             "startup",
-            "unlimited"
+            "unlimited",
+            "alexa play despacito"
         ];
         let result;
         let string;

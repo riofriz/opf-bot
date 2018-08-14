@@ -154,6 +154,9 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "heretic") {
         message.channel.send({file: 'https://i.imgur.com/p0ugysA.jpg'});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "alexa play despacito") {
+        message.channel.send('https://www.youtube.com/watch?v=kJQP7kiw5Fk');
+    }
 
     // if (message.isMentioned('415230548248887296')) {
     //     allowed = true;
