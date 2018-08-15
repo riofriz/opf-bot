@@ -303,6 +303,10 @@ module.exports = {
         message.channel.send({embed: embed});
     },
 
+    say : function(message) {
+        message.channel.send(message.content.replace('o-say', ''));
+    },
+
     /**
      * @param message
      */

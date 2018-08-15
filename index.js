@@ -291,6 +291,12 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === 'say') {
+            fun.say(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+            corecommands.deleteMessage(message);
+        }
+
         if (commandWithArgs === 'boiii') {
             fun.boii(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
