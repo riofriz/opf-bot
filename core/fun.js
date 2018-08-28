@@ -85,7 +85,7 @@ module.exports = {
 
     yt: function(message) {
         let query;
-        query = query.replace('alexa play', '');
+        query = message.replace('alexa play', '');
         if(query !== '') {
             query = query.trim();
         } else {
