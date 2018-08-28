@@ -83,13 +83,10 @@ module.exports = {
             });
     },
 
-    yt: function(message, args) {
+    yt: function(message) {
         let query;
-        if(args[0]) {
-            for (let i = 0; i !== args.length; i++) {
-                query += args[i] + ' ';
-            }
-            query = query.replace('undefined', '');
+        query = query.replace('alexa play', '');
+        if(query !== '') {
             query = query.trim();
         } else {
             query = 'teh_pwnerer - teh noob song (PurePwnage.com)';
