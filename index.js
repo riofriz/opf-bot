@@ -154,9 +154,12 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "heretic") {
         message.channel.send({file: 'https://i.imgur.com/p0ugysA.jpg'});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "despacito") {
+        message.channel.send('https://www.youtube.com/watch?v=kJQP7kiw5Fk');
+    }
     if (message.content.toLowerCase().startsWith('alexa play')) {
-        //message.channel.send('https://www.youtube.com/watch?v=kJQP7kiw5Fk');
         fun.yt(message);
+        basiclogics.increaseCommands(message, randomRankIncrease);
     }
 
     // if (message.isMentioned('415230548248887296')) {
@@ -396,10 +399,6 @@ client.on("message", (message) => {
         if (commandWithArgs === 'series') {
             variousapi.mediaSearch(message, args, 'tv');
             basiclogics.increaseCommands(message, randomRankIncrease);
-        }
-
-        if(commandWithArgs === 'yt') {
-            fun.yt(message, args);
         }
 
         // USER SPECIFIC
