@@ -154,7 +154,7 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "heretic") {
         message.channel.send({file: 'https://i.imgur.com/p0ugysA.jpg'});
     }
-    if (message.content.startsWith('alexa play').toLowerCase()) {
+    if (message.content.toLowerCase().startsWith('alexa play')) {
         //message.channel.send('https://www.youtube.com/watch?v=kJQP7kiw5Fk');
         fun.yt(message);
     }
