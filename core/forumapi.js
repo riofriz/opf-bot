@@ -117,7 +117,17 @@ module.exports = {
                     if (doc) {
                         opfusername = doc.opfusername;
                         if (typeof opfusername !== 'undefined' && opfusername !== '') {
-                            message.channel.send('This user is *'+opfusername+'* on the forum.');
+                            let userResult;
+                            if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
+                                userResult = 'A person who really, really loves you! B-baka..';
+                                //message.channel.send('A person who really, really loves you! <:pfftbot:449189450094870530>');
+                            } else if ((message.isMentioned('273453235287883776') && message.author.id === '415230548248887296')) {
+                                userResult = 'B-baka.. you know exactly who he is.. He can\'t live without you.. <:pfftbot:449189450094870530>';
+                                //message.channel.send('A person who really, really loves you! <:pfftbot:449189450094870530>');
+                            } else {
+                                userResult = 'This user is *' + opfusername + '* on the forum.'
+                            }
+                            message.channel.send(userResult);
                         } else {
                             message.channel.send('Sorry, i couldn\'t find this user in my amazing database. :(');
                         }

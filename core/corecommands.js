@@ -7,6 +7,8 @@ let qs = require('qs');
 let https = require('https');
 const PasteeAPI = require('pastee-api');
 let Pastee = new PasteeAPI(process.env.PASTEBIN);
+let mongojs = require('mongojs');
+let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Emojis']);
 
 
 module.exports = {
@@ -44,7 +46,7 @@ module.exports = {
             .addField(commandPrefix+"latest manga", "📰 Shows the latest OP issue 📰")
             .addField(commandPrefix+"latest anime", "Shows the latest OP episode")
             .addField(commandPrefix+"latest nakama", "Last user to join the forum")
-            .addField(commandPrefix+"love <user>", "<:pfft:445023527888748544>")
+            .addField(commandPrefix+"love <user>", "<:pfft:448636903915257866>")
             .addField(commandPrefix+"pokemon <name/id>", "❓ WHO'S THAT POKEMON ❓. only in #pokemon_channel")
             .addField(commandPrefix+"sgame", "Displays information about the game requested. only in #gamers-general")
             .addField(commandPrefix+"movie", "Displays information about the movie requested")
@@ -135,6 +137,47 @@ module.exports = {
                     console.log(err);
                 });
             });
+    },
+
+    ping: function(message, client) {
+        message.channel.send('Pong! '+client.ping + ' ms');
+    },
+
+    hasEmojiPermission: function(message) {
+        try {
+            db.Emojis.findOne({"doc": "permissions"}, function (error, perms) {
+                if (perms) {
+                    if (JSON.parse(JSON.stringify(perms)).hasOwnProperty('allowed')) {
+                        let users = perms.allowed;
+                        let isAllowed = false;
+                        for (let i=0; i !== users.length; i++) {
+                            console.log(users[i].user+' - '+message.author.id);
+                            if (users[i].user === message.author.id) {
+                                isAllowed = true;
+                            }
+                        }
+                        console.log(isAllowed);
+                        return isAllowed;
+                    }
+                }
+            });
+        } catch (e){ console.log(e); }
+    },
+
+    commands: function(message) {
+        let allCommands = corevars.isAvailable();
+        let commandsString = '';
+        let counter = 1;
+        for (let i = 0; i!==allCommands.length; i++) {
+            if (allCommands[i] !== '') {
+                commandsString += '``o-' + allCommands[i] + '``';
+            }
+            if (counter !== allCommands.length) {
+                commandsString += ', ';
+            }
+            counter++;
+        }
+        message.channel.send(commandsString.replace('undefined', ''));
     }
 
     // tooManyTags: function(message) {

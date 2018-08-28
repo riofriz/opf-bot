@@ -113,14 +113,19 @@ module.exports = {
                             }
                         }
                         let randomMoves = corevars.getMeRandomElements(moves, 5).replace('undefined', '');
-                        let embed = new Discord.RichEmbed()
-                            .setThumbnail(url = thumb)
-                            .addField('Name:', name)
-                            .addField('ID:', id)
-                            .addField('Type:', types)
-                            .addField('Random Moves:', randomMoves.replace('-', ' '))
-                            .setColor(corevars.randomColor())
-                        message.channel.send({embed: embed});
+
+                        if (message.author.id === '273453235287883776' && args[0] === '10') {
+                            message.channel.send('10th is a Poke-Cookie who loves you!')
+                        } else {
+                            let embed = new Discord.RichEmbed()
+                                .setThumbnail(url = thumb)
+                                .addField('Name:', name)
+                                .addField('ID:', id)
+                                .addField('Type:', types)
+                                .addField('Random Moves:', randomMoves.replace('-', ' '))
+                                .setColor(corevars.randomColor());
+                            message.channel.send({embed: embed});
+                        }
                     }
                 } else {
                     message.channel.send('Erhm.. you sure that\'s a pokemon? https://bit.ly/2wdRln8')

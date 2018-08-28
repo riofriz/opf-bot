@@ -16,6 +16,9 @@ let commandsforberries = require('./userfunctions/commandsforberries');
 let rpgcore = require('./rpg/corefunctions');
 let pvp = require('./rpg/pvp');
 let laughters = require('./core/oplaughs');
+let withparameters = require('./core/withparameters');
+let emojis = require('./core/emojis');
+let games = require('./core/games');
 let cooldown = 5000;
 
 // Let's call discord now.
@@ -27,6 +30,14 @@ let allowed = false;
 let notification = true;
 
 const talkedRecently = new Set();
+
+const SimpleNodeLogger = require('simple-node-logger'),
+    opts = {
+        logFilePath:'opfbot.log',
+        timestampFormat:'YYYY-MM-DD HH:mm:ss.SSS'
+    },
+log = SimpleNodeLogger.createSimpleLogger( opts );
+
 
 let randomRankIncrease = Math.random() * 7;
 randomRankIncrease = Math.floor(randomRankIncrease);
@@ -89,8 +100,6 @@ client.on("message", (message) => {
 
     // COMMANDS THAT DON'T NEED THE PREFIX TO BE TRIGGERED
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "y'all" && message.author.id !== '441203112460681216') { //&& message.author.id !== '146822995908755456') {
-        allowed = true;
-        notification = false;
         message.channel.send("You know, every time you say *y'all* Grin dies inside.");
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "symphogear") {
@@ -101,6 +110,9 @@ client.on("message", (message) => {
             .setImage('https://notredreviews.files.wordpress.com/2012/03/1332063182783.gif');
         message.channel.send({embed: embed});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "congratulations") {
+        message.channel.send('https://www.youtube.com/watch?v=wDajqW561KM');
+    }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
         fun.darling(message);
         basiclogics.increaseCommands(message, randomRankIncrease);
@@ -109,31 +121,47 @@ client.on("message", (message) => {
         fun.ezekiel(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "chuck norris") {
-        allowed = true;
-        notification = false;
         fun.chuckNorris(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "luv u") {
-        allowed = true;
-        notification = false;
         fun.luvU(message);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "zak") {
-        allowed = true;
-        notification = false;
         fun.zak(message);
         basiclogics.increaseCommands(message, randomRankIncrease);
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh noooooo") {
-        allowed = true;
-        notification = false;
-        fun.ohno(message)
+        fun.ohno(message);
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "unlimited") {
+        message.channel.send({file: __dirname+'/asset/images/gripsofscience.png'});
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "start up" || fun.commandsWithNoCommands(message.content.toLowerCase()) === "startup") {
+        message.channel.send('Did you mean you are an ENTREPRENEUR??');
     }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "oh, hi mark") {
-        allowed = true;
-        notification = false;
-        fun.himark(message)
+        fun.himark(message);
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "dun dun duuun!") {
+        message.channel.send('https://www.youtube.com/watch?v=cphNpqKpKc4');
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "akuuuuu") {
+        message.channel.send({file: 'http://24.media.tumblr.com/47eabb453963ea60b5c83e7bdc3cbd39/tumblr_mvndk3X7pb1qlsdwvo1_500.gif'});
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "no pizza") {
+        message.channel.send({file: 'https://i.imgur.com/fSA2tPt.jpg'});
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "heretic") {
+        message.channel.send({file: 'https://i.imgur.com/p0ugysA.jpg'});
+    }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "despacito") {
+        message.channel.send('https://www.youtube.com/watch?v=kJQP7kiw5Fk');
+    }
+    if (message.content.toLowerCase().startsWith('alexa play')) {
+        fun.yt(message);
+        basiclogics.increaseCommands(message, randomRankIncrease);
+    }
+
     // if (message.isMentioned('415230548248887296')) {
     //     allowed = true;
     //     notification = false;
@@ -156,6 +184,8 @@ client.on("message", (message) => {
     }
 
     laughters.oplaughters(message.content.toLowerCase(), message);
+    laughters.jojofights(message.content.toLowerCase(), message);
+    emojis.customEmojis(message.content, message);
 
     // if (corecommands.tooManyTags(message) >= 10) {
     //     message.channel.send(fun.dontTagMe(message));
@@ -179,6 +209,14 @@ client.on("message", (message) => {
         if(command === "hello") {
             corecommands.helloMessage(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if(command === "ping") {
+            corecommands.ping(message, client);
+        }
+
+        if(command === "rawcommands") {
+            corecommands.commands(message);
         }
 
         if(command === "help" || message.content === 'o-' || message.content === 'op-' || message.content === 'opf-' || message.content === '+'){
@@ -236,6 +274,12 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (commandWithArgs === "phrasing") {
+            fun.phrasing(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+            corecommands.deleteMessage(message);
+        }
+
         if (commandWithArgs === "yomama") {
             yomomma.yomama(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
@@ -248,6 +292,17 @@ client.on("message", (message) => {
 
         if (commandWithArgs === 'nsfw') {
             fun.nsfw(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (commandWithArgs === 'say') {
+            fun.say(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+            corecommands.deleteMessage(message);
+        }
+
+        if (commandWithArgs === 'boiii') {
+            fun.boii(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
@@ -264,6 +319,11 @@ client.on("message", (message) => {
         if (commandWithArgs === 'garchu') {
             fun.garchu(client, message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (command === 'wednesday') {
+            fun.wednesday(message);
+            corecommands.deleteMessage(message);
         }
 
         if (commandWithArgs === 'poets') {
@@ -302,6 +362,12 @@ client.on("message", (message) => {
 
         if (commandWithArgs === 'boobslap') {
             fun.boobslap(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (commandWithArgs === 'boobhug') {
+            fun.boobhug(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if (command === 'nosebleed') {
@@ -336,17 +402,27 @@ client.on("message", (message) => {
         }
 
         // USER SPECIFIC
-        if (command === 'grin') {
-            fun.onlyForGrin(message);
+        if (commandWithArgs === 'grin') {
+            fun.onlyForGrin(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (command === 'niichan') {
+        if (commandWithArgs === 'chaud') {
+            fun.chaud(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (commandWithArgs === 'niichan') {
             if (message.author.id === '273453235287883776' || message.author.id === '!273453235287883776') {
-                fun.onlyForGrin(message);
+                fun.onlyForGrin(message, args);
             } else {
                 fun.rickroll(message);
             }
+        }
+
+        if (command === 'pumpkin') {
+            fun.pumpkin(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if (command === 'neko') {
@@ -354,13 +430,18 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
-        if (command === 'jacky') {
-            fun.jacky(message);
+        if (commandWithArgs === 'jacky') {
+            fun.jacky(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if (command === 'anja') {
             fun.anja(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
+        if (commandWithArgs === 'gif') {
+            fun.gif(message, args);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
@@ -373,6 +454,11 @@ client.on("message", (message) => {
             if (message.author.id === '171344312234278913' || message.author.id === '!171344312234278913') {
                 fun.neko(message);
             }
+        }
+
+        if (commandWithArgs === 'wuami') {
+            fun.wuami(message, args);
+            basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
         if (commandWithArgs === 'ship') {
@@ -420,6 +506,38 @@ client.on("message", (message) => {
             rpgcore.oprank(message, args, client);
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
+
+        if (command === 'testparam') {
+            withparameters.entervaluetest(message);
+        }
+
+        if(commandWithArgs === 'poll') {
+            withparameters.poll(message, args);
+        }
+
+        if (command === 'emojihelp') {
+            emojis.emojiHelp(message);
+        }
+
+        // ADMIN COMMANDS
+
+        if(commandWithArgs === 'emojiadd') {
+            console.log(corecommands.hasEmojiPermission(message));
+            emojis.addEmoji(message, args);
+        }
+
+        if(commandWithArgs === 'emojiremove') {
+            emojis.removeEmoji(message, args);
+        }
+
+        if(commandWithArgs === 'emojipermission') {
+            emojis.emojiPermission(message, args);
+        }
+
+        //GAMES
+        if(commandWithArgs === 'popquiz') {
+            games.popquiz(message, args);
+        }
     }
 
     //RPG COMMANDS
@@ -427,13 +545,13 @@ client.on("message", (message) => {
     if(corecommands.globalCheck(client, rpgPrefix, message, allowed) && message.content.toLowerCase().startsWith(rpgPrefix)) {
 
         if (rpgCommand === 'loot') {
-            cooldown = 300000;
-            if (talkedRecently.has(message.author.id)) {
-                message.channel.send("Hey hey hey.. slow down tiger. Estimated total cooldown: 5m.");
-            } else {
+            // cooldown = 300000;
+            // if (talkedRecently.has(message.author.id)) {
+            //     message.channel.send("Hey hey hey.. slow down tiger. Estimated total cooldown: 5m.");
+            // } else {
                 rpgcore.loot(message, talkedRecently);
                 basiclogics.increaseCommands(message, randomRankIncrease);
-            }
+            // }
         }
 
         if (rpgCommandWithArgs === 'mobfight') {

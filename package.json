@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.3.2",
     "dotenv": "^5.0.1",
     "google-translate-api": "^2.3.0",
+    "image-downloader": "^3.3.0",
     "jimp": "^0.2.28",
     "mongodb": "^3.1.0-beta4",
     "mongojs": "^2.5.0",
@@ -19,8 +21,11 @@
     "qs": "^6.5.2",
     "request": "^2.86.0",
     "rss-parser": "^3.1.2",
+    "simple-node-logger": "^0.93.37",
     "striptags": "^3.1.1",
+    "trivia-api": "^1.0.1",
     "xml2json": "^0.11.2",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "youtube-search": "^1.1.1"
   }
 }

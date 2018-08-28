@@ -1046,9 +1046,17 @@ module.exports = {
             "Yo mama's like a puppy... everybody wants to give her a hug."
         ];
         let randomNumber = Math.floor(Math.random()*yomamma.length);
+        let yomamaMessage;
 
         if (typeof args[0] !== 'undefined') {
-            message.channel.send(args[0]+', '+yomamma[randomNumber]);
+            if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
+                yomamaMessage = 'You mama would be super proud of your love for her <@273453235287883776>';
+            } else if ((message.isMentioned('273453235287883776') && message.author.id === '415230548248887296')) {
+                yomamaMessage = 'You mama would be super proud of your love for him <@415230548248887296>';
+            } else {
+                yomamaMessage = args[0] + ', ' + yomamma[randomNumber]
+            }
+            message.channel.send(yomamaMessage);
         } else {
             message.channel.send(yomamma[randomNumber]);
         }

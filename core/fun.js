@@ -3,6 +3,9 @@ const Discord = require('discord.js');
 let https = require('https');
 let qs = require('qs');
 let request = require('request');
+const youtubeSearch = require('youtube-search');
+let youtubeApiKey = process.env.YOUTUBE;
+const cheerio = require('cheerio');
 
 module.exports = {
 
@@ -65,7 +68,7 @@ module.exports = {
                     m.delete();
                 });
         } else {
-            message.channel.send('na na.. not allowed <:pfft:445023527888748544>');
+            message.channel.send('na na.. not allowed <:pfft:448636903915257866>');
         }
     },
 
@@ -80,14 +83,61 @@ module.exports = {
             });
     },
 
+    yt: function(message) {
+        let query;
+        query = message.content.replace('alexa play', '');
+        if(query !== '') {
+            query = query.trim();
+        } else {
+            query = 'teh_pwnerer - teh noob song (PurePwnage.com)';
+        }
+
+        let options = {
+            maxResults: 10,
+            key: youtubeApiKey
+        };
+
+        youtubeSearch(query, options, function(err, results) {
+            if(err) return console.log(err);
+            try {
+                let json_body = JSON.parse(JSON.stringify(results));
+                let randomNumber = Math.floor(Math.random() * json_body.length);
+                message.channel.send(results[randomNumber]['link']);
+            } catch (e) {
+                message.channel.send('Whops.. Not found..');
+            }
+        });
+    },
+
+    phrasing: function(message) {
+        let gif = 'https://i.imgur.com/i2yYun3.gif';
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .setImage('https://i.imgur.com/i2yYun3.gif');
+        message.channel.send({embed: embed});
+    },
+
     /**
      * @param message
      */
     garchu: function(client, message, args) {
         if (message.author.id === '307390107411939329') {
-            message.channel.send('whops.. you can\'t.. <:pfft:445023527888748544>');
-        } else if (message.author.id === '273453235287883776') {
-            message.channel.send('I\'m sorry Grin.. Can\'t let you use this command.. P..p..please understand..');
+            message.channel.send('whops.. you can\'t.. <:pfft:448636903915257866>');
+        } else if (message.author.id !== '415230548248887296' && message.isMentioned('273453235287883776')) {
+            let threat = [
+                'Listen, Super Girl: G is gonna break you down into so many little pieces that my grandmother, who can do a thousand-piece puzzle of clear-blue sky in less than an hour, will never be able to finish putting you back together again. Even if she does go back in time to when her vision was perfect.',
+                'G will throw him out of the window. And I won\'t open it first.',
+                'G will not feed your motives, just feed the bears.',
+                'G wishes she was an octopus. That way she could shove 8 legs up your ass!',
+                'Careful.. G will make your tongue and your rectum swap places.',
+                'You won\'t see G in the parking lot.',
+                'G will steal your pillow, making sleeping a slightly less pleasurable experience.'
+            ];
+            let randomNumber = Math.floor(Math.random() * threat.length);
+            message.channel.send(threat[randomNumber]);
+
+        } else if (message.author.id === '273453235287883776' && !message.isMentioned('415230548248887296')) {
+            message.channel.send('I\'m sorry Grin.. Can\'t let you use this command with this user.. P..p..please understand..');
         } else {
             if (args[0]) {
                 let firstStrip = args[0].replace('<@', '');
@@ -113,6 +163,14 @@ module.exports = {
         }
     },
 
+    wednesday: function(message) {
+        if(message.author.id === '122093067921522690' || message.author.id === '146822995908755456') { //tony or sprazi
+            message.channel.send('He 👉 <:wednesday:443773378277408768> is <:thot:446252685642170369> . He 👉 <:wednesday:443773378277408768> is <:gay:446211332816109579> . And he only cum on 🇼 🇪 🇩 🇳 🇪 🇸 🇩 🅰 🇾');
+        } else {
+            message.author.send('Stop trying to use the wednesday command!!');
+        }
+    },
+
     /**
      * @param str
      * @returns {*}
@@ -129,7 +187,16 @@ module.exports = {
             "luv u",
             "zak",
             "oh noooooo",
-            "oh, hi mark"
+            "oh, hi mark",
+            "congratulations",
+            "dun dun duuun!",
+            "akuuuuu",
+            "no pizza",
+            "heretic",
+            "start up",
+            "startup",
+            "unlimited",
+            "despacito"
         ];
         let result;
         let string;
@@ -233,6 +300,10 @@ module.exports = {
         message.channel.send({embed: embed});
     },
 
+    say : function(message) {
+        message.channel.send(message.content.replace('o-say', ''));
+    },
+
     /**
      * @param message
      */
@@ -273,7 +344,7 @@ module.exports = {
         let mention = '';
         let dick;
         if (randomNumber <= 5) {
-            ptff = '<:pfft:445023527888748544>';
+            ptff = '<:pfft:448636903915257866>';
         }
         for (i = 0; i<= randomNumber; i++) {
             bodystr += '=';
@@ -284,6 +355,8 @@ module.exports = {
                 dick = mention+' = 8=======================================================D ';
             } else if (mention.trim() === '<@273453235287883776>' || mention.trim() === '<@!273453235287883776>') {
                 dick = mention+' = {(\')}';
+            } else if (message.isMentioned('307390107411939329')){
+                dick = '<:pfft:448636903915257866>';
             } else {
                 dick = mention+' = 8'+bodystr+'D '+ptff;
             }
@@ -291,6 +364,30 @@ module.exports = {
             dick = '8'+bodystr+'D '+ptff;
         }
         message.channel.send(dick);
+    },
+
+    boii: function(message, args) {
+        if (!args[0]) {
+            message.channel.send('You should give me for how long you want me to go bbbbbooooiiiiiii');
+        } else {
+            try {
+                if (args[1]) {
+                    message.channel.send('Uhm.. what?');
+                } else {
+                    if (parseInt(args[0].trim()) < 1900) {
+                        let boi = 'i';
+                        for (let i = 0; i <= parseInt(args[0].trim()); i++) {
+                            boi += 'i';
+                        }
+                        message.channel.send('Hey bbbbbbbooo' + boi + '!');
+                    } else {
+                        message.channel.send('Can\'t hold my breath for that long bbbbbooiiiiii');
+                    }
+                }
+            } catch(err) {
+                message.channel.send('That\'s not a number, bbbboiiiiii');
+            }
+        }
     },
 
     whops: function(message) {
@@ -328,6 +425,9 @@ module.exports = {
     },
 
     onlyForGrin: function(message) {
+        let query;
+        query = 'anime-blush';
+
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
@@ -339,7 +439,7 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'anime-blush'}
+            qs: {'key': process.env.TENOR, 'q': query}
         };
 
         if (user === '273453235287883776' || user === '!273453235287883776') {
@@ -350,20 +450,38 @@ module.exports = {
 
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                let json_body = JSON.parse(body);
-                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
-                let embed = new Discord.RichEmbed()
-                    .setTitle(string)
-                    .setColor(corevars.randomColor())
-                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
-                message.channel.send({embed: embed});
+                try {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    let embed = new Discord.RichEmbed()
+                        .setTitle(string)
+                        .setColor(corevars.randomColor())
+                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                    message.channel.send({embed: embed});
+                } catch (e) {
+                    if (user === '273453235287883776' || user === '!273453235287883776') {
+                        message.channel.send('Sorry oniichan, i couldn\'t find what you were looking for.. <:tsun:432123531443175425>');
+                    } else {
+                        message.channel.send('Whops.. Not found..')
+                    }
+                }
             } else {
                 console.log(error.message);
             }
         });
     },
 
-    jacky: function(message) {
+    gif: function(message, args) {
+        let query;
+        if (!args[0]) {
+            query = 'random';
+        } else {
+            for (let i = 0; i !== args.length; i++) {
+                query += args[i] + ' ';
+            }
+            query = query.replace('undefined', '');
+            query = query.trim();
+        }
         let headers = {
             'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
         };
@@ -375,17 +493,75 @@ module.exports = {
             url: 'https://api.tenor.com/v1/random',
             method: 'GET',
             headers: headers,
-            qs: {'key': process.env.TENOR, 'q': 'black-butler'}
+            qs: {'key': process.env.TENOR, 'q': query}
+        };
+
+        let tosend;
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                try {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    if (query === 'random') {
+                        tosend = 'https://media.giphy.com/media/WCwFvyeb6WJna/giphy.gif';
+                    } else {
+                        tosend = json_body['results'][randomNumber]['media'][0]['gif']['url'];
+                    }
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(tosend);
+                    message.channel.send({embed: embed});
+                } catch (e) {
+                    message.channel.send('Whops.. Not found..')
+                }
+            } else {
+                console.log(error.message);
+            }
+        });
+    },
+
+    jacky: function(message, args) {
+        let query;
+        if (!args[0]) {
+            query = 'black-butler';
+        } else {
+            for (let i = 0; i !== args.length; i++) {
+                query += args[i] + ' ';
+            }
+            query = query.replace('undefined', '');
+            query = query.trim();
+        }
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let user = message.author.id;
+        let string;
+
+        let options = {
+            url: 'https://api.tenor.com/v1/random',
+            method: 'GET',
+            headers: headers,
+            qs: {'key': process.env.TENOR, 'q': query}
         };
 
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                let json_body = JSON.parse(body);
-                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
-                let embed = new Discord.RichEmbed()
-                    .setColor(corevars.randomColor())
-                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
-                message.channel.send({embed: embed});
+                try {
+                    let json_body = JSON.parse(body);
+                    let randomNumber = Math.floor(Math.random() * json_body['results'].length);
+                    let embed = new Discord.RichEmbed()
+                        .setColor(corevars.randomColor())
+                        .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                    message.channel.send({embed: embed});
+                } catch (e) {
+                    if (user === '171344312234278913' || user === '!171344312234278913') {
+                        message.channel.send('Sorry neechan, i couldn\'t find what you were looking for.. <:tsun:432123531443175425>');
+                    } else {
+                        message.channel.send('Whops.. Not found..')
+                    }
+                }
             } else {
                 console.log(error.message);
             }
@@ -419,6 +595,57 @@ module.exports = {
                 console.log(error.message);
             }
         });
+    },
+
+    chaud: function(message, args) {
+        //https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=hard&tags[]=hentai&thumbsize=all
+        if (message.channel.name === 'nsfw') {
+            let query;
+            if (!args[0]) {
+                query = 'hentai';
+            } else {
+                for (let i = 0; i !== args.length; i++) {
+                    query += args[i] + ' ';
+                }
+                query = query.replace('undefined', '');
+                query = query.trim();
+            }
+            let user = message.author.id;
+            let string;
+            let headers = {
+                'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+            };
+
+            let options = {
+                url: 'https://api.redtube.com/',
+                method: 'GET',
+                headers: headers,
+                qs: {
+                    'data': 'redtube.Videos.searchVideos',
+                    'output': 'json',
+                    'search': query,
+                    'thumbsize': 'medium'
+                }
+            };
+
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let json_body = JSON.parse(body);
+                    if (json_body['count'] > 0) {
+                        let randomNumber = Math.floor(Math.random() * json_body['videos'].length);
+                        if (json_body['videos'][randomNumber].hasOwnProperty('video')) {
+                            message.channel.send(json_body['videos'][randomNumber]['video']['url'] + ' <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                        }
+                    } else {
+                        message.channel.send('Whops.. sorry little pervert, couldn\'t find what you were looking for.. <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+                    }
+                } else {
+                    console.log(error.message);
+                }
+            });
+        } else {
+            message.channel.send('You wish.. This can only work in <#391591250492391435> <:eggplanthand:446252709910413312> <:eggplanthand:446252709910413312>');
+        }
     },
 
     riofriz: function(message) {
@@ -493,6 +720,38 @@ module.exports = {
             .setImage('http://24.media.tumblr.com/8bcfa67fd56db0085af62e4fb2e08a92/tumblr_msifvprvL61ss73zlo1_500.gif');
         message.channel.send({embed: embed});
     },
+    
+    customEmojis: function(str, message) {
+        let customEmojis = [
+            'pAngel', 'pAww', 'pBlank', 'pBlind', 'pNoMore', 'pKewl', 'pDuck', 'pDSip', 'pPresent', 'pHappy',
+            'pCash', 'pMurican', 'pEvil', 'pDerp', 'pDab', 'pNuu', 'pCrayon', 'pAhh', 'pAhhh', 'pWhine',
+            'pWhut', 'pWoah', 'pSci', 'pDawg', 'pScared', 'pSip', 'pCookie', 'pSleepy', 'pHmm', 'pVampire', 'pepeRope',
+            'pepeKMS', 'pepeCry', 'pepeAnimu', 'pepeTriggered', 'bikki', 'pWdiepie', 'megarot', 'gtfo', 'gtfo1',
+            'asd', 'pBooli', 'bunbun', 'dead', 'thinkk', 'benice', 'pCop', 'doffy', 'pepeOh', 'pepeSad', 'pepeWhy',
+            'pepeSmirk', 'tearsofjoy', 'fingerheart', 'blob'
+        ];
+        let result;
+        let extension;
+        for (let i = 0; i !== customEmojis.length; i++) {
+            if (str.includes(':'+customEmojis[i]+':')) {
+                result = customEmojis[i];
+            }
+        }
+        if (result === 'pWdiepie' || result === 'megarot' || result === 'asd' || result === 'blob') {
+            extension = '.gif';
+        } else {
+            extension = '.png';
+        }
+        if (str.includes(':'+result+':') && str.includes('``:'+result+':``') === false) {
+            message.channel.send({file: __dirname + '/customemoji/' + result + extension});
+            if (message.author.id !== '441203112460681216') {
+                message.channel.fetchMessage(message.id)
+                    .then(m => {
+                        m.delete();
+                    });
+            }
+        }
+    },
 
     neko: function(message) {
         let headers = {
@@ -513,6 +772,42 @@ module.exports = {
             string = 'ONEEE-CHAAAN! ^_^';
         } else {
             string = 'Enjoy this cute gif.. <:yay2:446663893511569428>'
+        }
+
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                let json_body = JSON.parse(body);
+                let randomNumber = Math.floor(Math.random()*json_body['results'].length);
+                let embed = new Discord.RichEmbed()
+                    .setTitle(string)
+                    .setColor(corevars.randomColor())
+                    .setImage(json_body['results'][randomNumber]['media'][0]['gif']['url']);
+                message.channel.send({embed: embed});
+            } else {
+                console.log(error.message);
+            }
+        });
+    },
+
+    pumpkin: function(message) {
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+        };
+
+        let user = message.author.id;
+        let string;
+
+        let options = {
+            url: 'https://api.tenor.com/v1/random',
+            method: 'GET',
+            headers: headers,
+            qs: {'key': process.env.TENOR, 'q': 'hacker'}
+        };
+
+        if (user === '156476072777482240' || user === '!156476072777482240') {
+            string = '01110100 01110010 01110101 01110100 01101000 00100000 01101001 01110011 00101100 00100000 01101001 00100000 01100100 01101111 01101110 00100111 01110100 00100000 01110010 01101111 01111000';
+        } else {
+            string = '01110000 01110101 01101101 01110000 01101011 01101001 01101110 00100000 01110010 01101111 01111000 00101110';
         }
 
         request(options, function (error, response, body) {
@@ -574,20 +869,21 @@ module.exports = {
     luvU: function(message) {
         let riofriz = '408255473821679617';
         let grin = '273453235287883776';
-        console.log(message.content);
+        let string;
         if (message.author.id === grin) {
-            if (message.content.toLowerCase().includes('<@408255473821679617>') || message.content.toLowerCase().includes('<@!408255473821679617>')) {
-                message.channel.send('He totally luv u back <3');
+            if (message.isMentioned('408255473821679617')) {
+                string = 'He totally luv u back <3';
             } else {
-                message.channel.send('I\'ll allow it only if is for riofriz.');
+                string = 'I\'ll allow it only if is for riofriz.';
             }
         } else if (message.author.id === riofriz) {
-            if (message.content.toLowerCase().includes('<@273453235287883776>') || message.content.toLowerCase().includes('<@!273453235287883776>')) {
-                message.channel.send('awwwwwww so damn sweet.');
+            if (message.isMentioned('<@273453235287883776>')) {
+                string = 'awwwwwww so damn sweet.';
             }
         } else {
-            message.channel.send('Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it');
+            string = 'Only riofriz is worthy of such lovely abbreviations. Please, don\'t use it.';
         }
+        message.channel.send(string);
     },
 
     zak: function(message) {
@@ -708,18 +1004,18 @@ module.exports = {
                     finalResult = 'Nope!! **0%**'
                 }
 
-                if (message.isMentioned('273453235287883776')) {
-                    finalResult = 'Affinity: DAHLING';
+                if (message.isMentioned('273453235287883776')) { //grin dahling
+                    finalResult = 'This user belongs to Master Cookie. I had to disable his shipping to you or she\'d dismantle me and throw me in a spare bot parts dumpster. She is all for recycling.';
                 }
 
-                if (message.isMentioned('273453235287883776') && args[2] === 'bikki') { //grin x bikki
-                    finalResult = 'Affinity: **100%** ``[=========================]``';
+                if (message.isMentioned('415230548248887296')) {
+                    finalResult = 'Affinity: **0%** ``[...]``';
                 }
-                if (message.isMentioned('273453235287883776') && string.toLowerCase().includes("neko's voice")) { //grin x neko's voice
-                    finalResult = 'Affinity: **100%** ``[=========================]``';
+                if(message.isMentioned('273453235287883776') && message.isMentioned('415230548248887296')) { //grin x 10th
+                    finalResult = 'https://orig00.deviantart.net/31de/f/2012/108/1/a/makorra_ship_by_animewaterfall-d4wnoj7.gif';
                 }
                 if (message.isMentioned('273453235287883776') && message.isMentioned('408255473821679617')) { //riofriz x grin
-                    finalResult = 'I am not powerful enough to mesure such big love!!'
+                        finalResult = 'I am not powerful enough to mesure such big love!! (DON\'T KILL ME, DON\'T KILL ME!!!)'
                 }
                 if (message.isMentioned('434009741832880128') && message.isMentioned('118473291504549893')) { //jacky x sam
                     finalResult = 'Affinity: **100%** ``[=========================]``';
@@ -728,10 +1024,13 @@ module.exports = {
                     finalResult = 'Affinity: **100%** ``[=========================]``';
                 }
                 if (message.isMentioned('415230548248887296') && message.isMentioned('408255473821679617')) { // riofriz x 10th
-                    finalResult = 'INTIMACY+++++';
+                    finalResult = 'INTIMACY+++++ . Grin is not as possessive, he won\'t dismantle me.';
                 }
                 if (message.isMentioned('146822995908755456') && message.isMentioned('408255473821679617')) { // riofriz x zibo
-                    finalResult = 'Nope!! **0%**'
+                    finalResult = 'https://media3.giphy.com/media/l2Je3n9VXC8z3baTe/giphy.gif'
+                }
+                if (message.isMentioned('307390107411939329')) {
+                    finalResult = 'Nope!! **0%**';
                 }
 
                 message.channel.send(finalResult);
@@ -757,6 +1056,25 @@ module.exports = {
         } else {
             image = 'http://i.imgur.com/7frjZnG.gif';
         }
+
+        let embed = new Discord.RichEmbed()
+            .setImage(image)
+            .setColor(corevars.randomColor());
+        message.channel.send(string);
+        message.channel.send({embed: embed});
+    },
+
+    boobhug: function(message, args) {
+        let image;
+        let string;
+
+        if (args[0]) {
+            string = '<@'+message.author.id+'> boob hugged '+args[0];
+        } else {
+            string = 'SELF BOOB HUG INCOMING!';
+        }
+
+        image = 'https://cdn.weeb.sh/images/rk6PsvOUM.gif';
 
         let embed = new Discord.RichEmbed()
             .setImage(image)
@@ -838,11 +1156,58 @@ module.exports = {
             user = user.trim();
         }
         let randomNumber = Math.floor(Math.random()*channels.length);
+        let prankMessage;
         try {
-            message.guild.channels.find('name', channels[randomNumber]).send('<@' + user + '> <:pfft:445023527888748544>')
+            if ((message.isMentioned('415230548248887296') && message.author.id === '273453235287883776')) {
+                prankMessage = 'I love you, <@' + user + '> - *grin*';
+            } else if ((message.isMentioned('273453235287883776') && message.author.id === '415230548248887296')) {
+                prankMessage = 'U cute, <@' + user + '> - *10th*';
+            } else {
+                prankMessage = '<@' + user + '> <:pfftbot:449189450094870530> <:pfft:448636903915257866>';
+            }
+            message.guild.channels.find('name', channels[randomNumber]).send(prankMessage)
         }
         catch (err) {
             console.log(err);
         }
+    },
+
+    wuami: function(message, args) {
+        let string;
+        if (args[0]) {
+            for (let i = 0; i !== args.length; i++) {
+                string += args[i] + ' ';
+            }
+            string = string.replace('undefined', '');
+            string = string.trim();
+        } else {
+            string = message.author.username;
+        }
+
+        let headers = {
+            'User-Agent': 'https://onepieceforum.net discord bot. For info contact comm.campione@gmail.com',
+            'Content-Type': 'application/json'
+        };
+
+        let options = {
+            url: 'https://wunameaas.herokuapp.com/wuami/'+string.trim(),
+            method: 'GET',
+            headers: headers
+        };
+
+        request(options, function (error, response, body) {
+            try {
+                if (!error && response.statusCode === 200) {
+                    const $ = cheerio.load(body);
+                    let name = $('.hero-unit p b').text();
+                    message.channel.send('**'+string+'** *from this day forward you will also be known as* **'+name+'**');
+                } else {
+                    console.log(error.message);
+                }
+            } catch (err) {
+                message.channel.send('You are not fit to have an awesome name!');
+                console.log(err);
+            }
+        });
     }
 };
