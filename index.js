@@ -326,6 +326,11 @@ client.on("message", (message) => {
             corecommands.deleteMessage(message);
         }
 
+        if (command === 'tama') {
+            fun.tama(message);
+            basiclogics.increaseCommands(message, randomRankIncrease);
+        }
+
         if (commandWithArgs === 'poets') {
             fun.poets(message);
             basiclogics.increaseCommands(message, randomRankIncrease);

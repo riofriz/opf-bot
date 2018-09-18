@@ -720,6 +720,13 @@ module.exports = {
             .setImage('http://24.media.tumblr.com/8bcfa67fd56db0085af62e4fb2e08a92/tumblr_msifvprvL61ss73zlo1_500.gif');
         message.channel.send({embed: embed});
     },
+
+    tama: function(message) {
+        let embed = new Discord.RichEmbed()
+            .setColor(corevars.randomColor())
+            .setImage('https://s2.imagebanana.com/file/180918/J8HLsw4x.png');
+        message.channel.send({embed: embed});
+    },
     
     customEmojis: function(str, message) {
         let customEmojis = [
