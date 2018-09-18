@@ -721,6 +721,10 @@ module.exports = {
         message.channel.send({embed: embed});
     },
 
+    vpn: function(message) {
+        message.channel.send('Users currently using VPN: (1) - <@307390107411939329>');
+    },
+
     tama: function(message) {
         let embed = new Discord.RichEmbed()
             .setColor(corevars.randomColor())

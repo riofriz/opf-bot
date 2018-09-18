@@ -331,6 +331,10 @@ client.on("message", (message) => {
             basiclogics.increaseCommands(message, randomRankIncrease);
         }
 
+        if (command === 'vpn') {
+            fun.vpn(message);
+        }
+
         if (commandWithArgs === 'poets') {
             fun.poets(message);
             basiclogics.increaseCommands(message, randomRankIncrease);
