@@ -196,7 +196,8 @@ module.exports = {
             "start up",
             "startup",
             "unlimited",
-            "despacito"
+            "despacito",
+            "phoenix"
         ];
         let result;
         let string;

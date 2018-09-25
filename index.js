@@ -113,6 +113,9 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "congratulations") {
         message.channel.send('https://www.youtube.com/watch?v=wDajqW561KM');
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "phoenix") {
+        message.channel.send('https://pa1.narvii.com/6705/2968a36f706e52664d2dd753ef07fbad0dccc223_hq.gif');
+    }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "darling") {
         fun.darling(message);
         basiclogics.increaseCommands(message, randomRankIncrease);
