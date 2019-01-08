@@ -157,6 +157,9 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "heretic") {
         message.channel.send({file: 'https://i.imgur.com/p0ugysA.jpg'});
     }
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "damn waifu") {
+        message.channel.send('WATCH COMMUNITY!!!!');
+    }
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "despacito") {
         message.channel.send('https://www.youtube.com/watch?v=kJQP7kiw5Fk');
     }
