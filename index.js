@@ -129,7 +129,7 @@ client.on("message", (message) => {
     if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "luv u") {
         fun.luvU(message);
     }
-    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "zak") {
+    if (fun.commandsWithNoCommands(message.content.toLowerCase()) === "zak" || fun.commandsWithNoCommands(message.content.toLowerCase()) === "marco") {
         fun.zak(message);
         basiclogics.increaseCommands(message, randomRankIncrease);
     }
