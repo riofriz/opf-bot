@@ -918,12 +918,12 @@ module.exports = {
         console.log('{'+message.content.toLowerCase()+'} '+ms+' '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
 
         setTimeout(function() {
-            if (message.content.toLowerCase().includes("marco")) {            
-                message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
-                console.log('Nik '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
-            } else {                
+            if (message.content.toLowerCase().includes("marco")) {    
                 message.channel.send('Polo - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
-                console.log('Polo '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
+                console.log('Polo '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');        
+            } else {            
+                message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
+                console.log('Nik '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');    
             }
         }, ms);
     },
