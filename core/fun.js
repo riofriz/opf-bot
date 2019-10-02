@@ -915,13 +915,13 @@ module.exports = {
         min = min % 60;
         hour = hour % 24;
 
+        console.log('{'+message.content.toLowerCase()+'} '+ms+' '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
+
         setTimeout(function() {
-            if (message.content.toLowerCase().includes("marco")) {
-                console.log('Zak '+ms+' '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
+            if (message.content.toLowerCase().includes("marco")) {            
                 message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
                 console.log('Nik '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
-            } else {
-                console.log('Marco '+ms+' '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
+            } else {                
                 message.channel.send('Polo - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
                 console.log('Polo '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
             }
