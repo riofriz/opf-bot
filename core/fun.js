@@ -916,7 +916,7 @@ module.exports = {
         hour = hour % 24;
 
         setTimeout(function() {
-            if (message.content.toLowerCase()).includes("marco") {
+            if (message.content.toLowerCase().includes("marco")) {
                 console.log('Zak '+ms+' '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
                 message.channel.send('Nik - '+'<@'+message.author.id+'> : '+hour+'h-'+min+'m-'+sec+'s');
                 console.log('Nik '+message.author.username+' '+hour+'h-'+min+'m-'+sec+'s');
