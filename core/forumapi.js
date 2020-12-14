@@ -4,7 +4,10 @@ let Parser = require('rss-parser');
 let parser = new Parser();
 let fs = require('fs');
 let mongojs = require('mongojs');
-let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Users']);
+//let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@ds143362.mlab.com:43362/opmegabot', ['Users']);
+
+let db = mongojs('mongodb://'+process.env.DBUSER+':'+process.env.DBPASSWORD+'@opmegabot-shard-00-00.a0a4q.mongodb.net:27017,opmegabot-shard-00-01.a0a4q.mongodb.net:27017,opmegabot-shard-00-02.a0a4q.mongodb.net:27017/opmegabot?ssl=true&replicaSet=atlas-1exj3i-shard-0&authSource=admin&retryWrites=true&w=majority', ['Users']);
+
 
 module.exports = {
     /**
